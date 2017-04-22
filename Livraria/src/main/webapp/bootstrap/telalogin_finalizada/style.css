@@ -1,5 +1,5 @@
 body{
-      background: url("aparadorlivros.jpg") no-repeat center center fixed;
+    background: url("aparadorlivros.jpg") no-repeat center center fixed;
     text-align: center;
     position: absolute;
     width: 350px;
@@ -25,4 +25,25 @@ body{
     box-shadow: 0 1px 0 #fff inset;
     padding: 25px 0 0;
     border: 1px solid #c4c6ca;
+}
+#content:before,
+#content:after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height:100%;
+    background: #f9f9f9;
+    border: 0px solid #c4c6ca;
+    box-shadow: 0 1px 0 #fff inset;
+    left: -1px;
+    top: 0;
+}
+#content:before{
+    transform:rotate(3deg);
+    z-index: -1;
+}
+#content:after{
+    background:  #000000;
+    transform:rotate(-2deg);
+    z-index: -2;
 }
