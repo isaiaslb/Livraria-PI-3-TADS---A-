@@ -93,3 +93,6 @@ input[type="submit"]{
     font-weight: bold;
     font-family: sans-serif,Arial;
 }
+input[type="submit"]:hover{
+    background:  #696969;
+}
