@@ -79,3 +79,17 @@ body{
     font-size: 20px;
     color: #D3D3D3;
 }
+input[type="submit"]{
+    width: 150px;
+    height: 40px;
+    border-radius: 40px;
+    border: 0px;
+    outline: none;
+    background: black;
+    color: #DCDDDF;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif,Arial;
+}
