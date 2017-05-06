@@ -5,32 +5,56 @@
  */
 package br.senac.tads.livraria.pi3a.connection;
 
-import static java.lang.Class.forName;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Fernanda
  */
+public final class ConnectionFectory {
 
+    private Connection con;
+    private final String url = "jdbc:mysql://localhost:3306/bdlivraria";
+    private final String usr = "root";
+    private final String pass = "";
 
-public class ConnectionFectory {
-    public static Connection getConnection(){
-        
+    public ConnectionFectory() {
+        conecta();
+    }
+
+    public Connection conecta() {
+        con = null; //informando que a conexão não esta vazia
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/BDLivraria","root"," ");
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnectionFectory.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Erro SQLException ao abrir conexão em ConnectionFectory", ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConnectionFectory.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Erro ClassNotFoundException em ConnectionFectory", ex);
+            Class.forName("com.mysql.jdbc.Driver"); //estanciando o drive de conexão com o banco
+            System.out.println("Conexão com Banco de Dados estabelecida");
+            con = DriverManager.getConnection(url, usr, pass);
+        } catch (SQLException sqle) {
+            System.out.println("Erro SQLException ao abrir conexão em ConnectionFectory" + sqle.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Erro ClassNotFoundException em ConnectionFectory" + cnfe.getMessage());
+        }
+
+        return con;
+    }
+
+    public void closeConnection() {
+
+        try {
+            if (con != null) {
+                con.close();
+                System.out.println("Conexão com Banco de Dados encerrada");
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println(" Erro ao Fechar Conexão com Banco de Dados: \n " + sqle.getMessage());
         }
     }
-}
 
+    //metodo para obter os dados da conexão sem ter que abrir e fechar o tempo todo novas conexões
+    public Connection getCon() {
+        return con;
+    }
+
+}
