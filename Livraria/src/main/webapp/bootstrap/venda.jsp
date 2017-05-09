@@ -1,3 +1,10 @@
+<%-- 
+    Document   : venda
+    Created on : 09/05/2017, 10:32:00
+    Author     : Fernanda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +34,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    
 </head>
 
 <body>
@@ -58,7 +64,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -73,7 +80,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -88,7 +96,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -150,8 +159,8 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                 <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
                                 <a href="empresa.html">Cadastro</a>
@@ -162,7 +171,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-edit"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
                                 <a href="produto.html">Cadastro</a>
@@ -173,7 +182,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-desktop"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
                                 <a href="usuario.html">Cadastro</a>
@@ -184,7 +193,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-arrows-v"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
                                 <a href="cliente.html">Cadastro</a>
@@ -196,10 +205,10 @@
                     </li>
 					
 					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-file"></i> Relatorio</a>
+                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
                     </li>
                     		<li>
-                        <a href="venda.html"><i class="fa fa-fw fa-file"></i> Venda</a>
+                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -214,87 +223,141 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Usuario
+                          Venda
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-desktop"></i> Bootstrap Elements
-                            </li>
-                        </ol>
+                     
                     </div>
                 </div>
                 <!-- /.row -->
+                <div class="row">                    
+                <div class="col-lg-12">
 
-                <!-- Main jumbotron for a primary marketing message or call to action -->
-                
-                  <div class="col-lg-6">
+                <form role="form">                         
+                       
 
-                      <form role="form">
-                        <div class="page-header">
-                            <h2>Cadastrar</h2>
-                        </div>
-                          <div class="form-group">
-                              <label>Nome</label>
-                              <input class="form-control" placeholder="Digite o nome...">
-                          </div>
-                             <div class="form-group">
-                              <label>Data de Nascimento</label>
-                              <input class="form-control" type="date">
-                          </div>
-                           <div class="form-group">
-                              <label>Sexo</label>
-                              <select class="form-control">
+                            <div class="col-lg-6">
+                                 <label for="codigo" class="alinhar">Codigo: </label>
+                                <input id="codigo" name="codigo" type="text"/>                        
+                            </div>
+
+                            <div class="col-lg-7">
+                              <label>Cliente</label>
+                              <select class="form-control-static">
                                   <option>Selecione...</option>
-                                <option value="m">Masculino</option>
-	                        <option value="f">Feminino</option>     
                               </select>
+                              <input id="codigo"  type="text"/>
+                             
+                                 <label for="data" class="alinhar">Data: </label>
+                                <input id="data" name="data" type="date"/>                        
+                            
                           </div>
+                    <br>
+                            <div class="col-lg-12">
+                              <label>Produto</label>
+                              <select class="form-control-static">
+                                  <option>Selecione...</option>
+                              </select>
+                              <input id="codigo"  type="text"/>
+                             
+                                 <label for="quantidade" class="alinhar">Quantidade: </label>
+                                <input id="data" name="quantidade" type="number"/>                        
+                                                         
+                        </div>                
                           
-                             <div class="form-group">
-                              <label>Email</label>
-                              <input class="form-control" placeholder="Digite o email...">
-                          </div>
-                             <div class="form-group">
-                              <label>Telefone</label>
-                              <input class="form-control" placeholder="Digite o telefone...">
-                          </div>
-                             <div class="form-group">
-                              <label>Celular</label>
-                              <input class="form-control" placeholder="Digite o celular...">
-                          </div>
-                             <div class="form-group">
-                              <label>Setor</label>
-                              <input class="form-control" placeholder="Digite o setor...">
-                          </div>
-                             <div class="form-group">
-                              <label>Senha</label>
-                              <input class="form-control" type="password" placeholder="Digite a senha...">
-                          </div>
-                          <div class="form-group">
-                              <label>Tipo de acesso</label>
-                              <select class="form-control">
-                                  <option>Selecione...</option>
-                                <option value="adm">Administrador</option>
-	                        <option value="comum">Comum</option>     
-                              </select>
-                          </div>
-                          <button type="button" class="btn btn-lg btn-default">Cadastrar</button>
+                <div class="row">
+                     <div class="col-lg-12">        
+                     
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Vl. Unitario</th>
+                                      </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                   
+                                
+                               
+
+                                </tbody>
+                            </table>
+                        </div>
+                                                     <div class="col-lg-6">
+                                 <label for="vendedor" class="alinhar">Vendedor: </label>
+                                <input id="codigo" name="vendedor" type="text"/> 
+                                
+                                <label for="total" class="alinhar">Total: </label>
+                                <input id="total" name="total" type="text"/> 
+                            </div>
+                         
+                                                     
+                    </div>
+                    <div class="col-lg-6">
+                                 <label for="tipoAcesso" class="alinhar">Tipo de Acesso: </label>
+                                <input id="tipoAcesso" name="tipoAcesso" type="text"/> 
+                                 <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                                 <button type="button" class="btn btn-lg btn-default">Sair</button>
+                            </div>
+
+                    </div>
+
+                    <!-- /.container-fluid -->
 
                 </div>
-              
+                <!-- /#page-wrapper -->
 
-
-                    <!-- /.col-sm-4 -->
-
-            <!-- /.container-fluid -->
-
+            </div>
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
+    </div>
+
     <!-- /#wrapper -->
 
     <!-- jQuery -->

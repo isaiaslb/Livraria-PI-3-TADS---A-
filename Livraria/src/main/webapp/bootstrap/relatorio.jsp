@@ -1,3 +1,10 @@
+<%-- 
+    Document   : relatorio
+    Created on : 09/05/2017, 10:15:20
+    Author     : Fernanda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Astec</a>
+                <a class="navbar-brand" href="index.html">SB Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -57,7 +64,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -72,7 +80,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -87,7 +96,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -149,19 +159,19 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
+                   <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
                                 <a href="empresa.html">Cadastro</a>
                             </li>
                             <li>
-                                <a href="#">Buscar</a>
+                                <a href="buscarEmpresa.html">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-edit"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
                                 <a href="produto.html">Cadastro</a>
@@ -172,33 +182,33 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-desktop"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
                                 <a href="usuario.html">Cadastro</a>
+                            </li>
+                            <li>
+                                <a href="buscarUsuario.html">Buscar</a>
+                            </li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="cli" class="collapse">
+                            <li>
+                                <a href="cliente.html">Cadastro</a>
                             </li>
                             <li>
                                 <a href="buscarCliente.html">Buscar</a>
                             </li>
                         </ul>
                     </li>
-					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-arrows-v"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="cli" class="collapse">
-                            <li>
-                                <a href="cliente.html">Cadastro</a>
-                            </li>
-                            <li>
-                                <a href="buscarCliente">Buscar</a>
-                            </li>
-                        </ul>
-                    </li>
 					
 					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-file"></i> Relatorio</a>
+                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
                     </li>
                     		<li>
-                        <a href="venda.html"><i class="fa fa-fw fa-file"></i> Venda</a>
+                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -207,101 +217,146 @@
 
         <div id="page-wrapper">
 
-            <div class="container-fluid">
+            
 
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Cliente
+                           Relatório
                         </h1>
+                        <ol class="breadcrumb">
+                            
+                            <li class="active">
+                                <i class="fa fa-list-alt"></i> Relatório
+                            </li>
+                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
+                <div class="row">                    
+                <div class="col-lg-12">
 
-       
-                  <div class="col-lg-6">
-                      <form role="form">
-                        <div class="page-header">
-                            <h2>Buscar</h2>
+                <form role="form"> 
+                            <div class="col-lg-6">
+                                 <label for="data" class="alinhar">Data Inicial: </label>
+                                <input id="data" name="data" type="date"/></br>                        
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="data" class="alinhar">Data Final: </label>
+                                <input id="data" name="data" type="date"/></br>
+                                
+                            </div>
+                            <button type="button" class="btn btn-lg btn-default">Gerar</button>                       
                         </div>
-                          <div class="page-header">
-                              <label>Pesquisa CPF</label>
-                              <input class="form-control" placeholder="Digite o CPF para busca...">
-                              <button type="button" class="btn btn-lg btn-default">Pesquisa</button>
-                          </div>
-                          
-                          <div class="form-group">
-                              <label>Nome</label>
-                              <input class="form-control" placeholder="Digite o nome...">
-                          </div>
-                          <div class="form-group">
-                              <label>CPF</label>
-                              <input class="form-control" placeholder="Digite o CPF...">
-                          </div>
-                          <div class="form-group">
-                              <label>Endereço</label>
-                              <input class="form-control" placeholder="Digite seu endereço...">
-                          </div>
-                          <div class="form-group">
-                              <label>Bairro</label>
-                              <input class="form-control" placeholder="Digite o bairro...">
-                          </div>
-						  <div class="form-group">
-                              <label>CEP</label>
-                              <input class="form-control" placeholder="Digite o CEP...">
-                          </div>
-                          <div class="form-group">
-                              <label>Estado</label>
-                              <select class="form-control">
-                                  <option>Selecione...</option>
-                                <option value="AC">Acre</option>
-	                               <option value="AL">Alagoas</option>
-	                                <option value="AP">Amapá</option>
-	                                 <option value="AM">Amazonas</option>
-	                                  <option value="BA">Bahia</option>
-	                                   <option value="CE">Ceará</option>
-	                                    <option value="DF">Distrito Federal</option>
-	                                     <option value="ES">Espírito Santo</option>
-	                                      <option value="GO">Goiás</option>
-	                                       <option value="MA">Maranhão</option>
-	                                        <option value="MT">Mato Grosso</option>
-	                                         <option value="MS">Mato Grosso do Sul</option>
-	                                          <option value="MG">Minas Gerais</option>
-	                                           <option value="PA">Pará</option>
-	                                            <option value="PB">Paraíba</option>
-	                                             <option value="PR">Paraná</option>
-	                                              <option value="PE">Pernambuco</option>
-	                                               <option value="PI">Piauí</option>
-	                                                <option value="RJ">Rio de Janeiro</option>
-	                                                 <option value="RN">Rio Grande do Norte</option>
-	                                                  <option value="RS">Rio Grande do Sul</option>
-	                                                   <option value="RO">Rondônia</option>
-	                                                    <option value="RR">Roraima</option>
-	                                                     <option value="SC">Santa Catarina</option>
-	                                                      <option value="SP">São Paulo</option>
-	                                                       <option value="SE">Sergipe</option>
-	                                                        <option value="TO">Tocantins</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label>Celular</label>
-                              <input class="form-control" placeholder="Digite o Celular...">
-                          </div>
-                          <div class="form-group">
-                              <label>Email</label>
-                              <input class="form-control" placeholder="Email...">
-                          </div>
-                          <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                          <button type="button" class="btn btn-lg btn-default">Excluir</button>
-                         
-                </div>
+                    </div>
+                </form>
+
+            
+                <h3>Dados do Relatório</h3>                  
+                <div class="row">
+                     <div class="col-lg-12">        
+                     
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Dia</th>
+                                        <th>Produto</th>
+                                        <th>Autor</th>
+                                        <th>Genêro</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor Compra</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+            </div>
+
             <!-- /.container-fluid -->
 
-        </div>
+        
         <!-- /#page-wrapper -->
 
     </div>
+
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -309,7 +364,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    </body>
-    
+
+</body>
+
 </html>
+

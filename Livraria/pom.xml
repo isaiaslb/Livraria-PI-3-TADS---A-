@@ -13,8 +13,13 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
     <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.3</version>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -22,9 +27,26 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    
 
     <build>
         <plugins>
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-war-plugin</artifactId>  
+                <configuration>  
+                    <webResources>  
+                        <webResource>  
+                            <directory>${basedir}/src/main/webapp/WEB-INF</directory>  
+                            <includes>  
+                                <include>web.xml</include>  
+                            </includes>  
+                            <targetPath>WEB-INF</targetPath>  
+                            <filtering>true</filtering>  
+                        </webResource>  
+                    </webResources>  
+                </configuration>  
+            </plugin>  
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

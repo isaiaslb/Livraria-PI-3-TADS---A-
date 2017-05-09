@@ -1,3 +1,10 @@
+<%-- 
+    Document   : buscarEmpresa
+    Created on : 09/05/2017, 10:25:25
+    Author     : Fernanda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +34,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    
 </head>
 
 <body>
@@ -149,8 +157,8 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-		<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
+                 <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
                                 <a href="empresa.html">Cadastro</a>
@@ -161,7 +169,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-edit"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
                                 <a href="produto.html">Cadastro</a>
@@ -171,8 +179,8 @@
                             </li>
                         </ul>
                     </li>
-					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-desktop"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
                                 <a href="usuario.html">Cadastro</a>
@@ -183,7 +191,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-arrows-v"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
                                 <a href="cliente.html">Cadastro</a>
@@ -195,10 +203,10 @@
                     </li>
 					
 					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-file"></i> Relatorio</a>
+                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
                     </li>
-                    <li>
-                        <a href="venda.html"><i class="fa fa-fw fa-file"></i> Venda</a>
+                    		<li>
+                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -213,68 +221,115 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Produto
+                            Empresa
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-wrench"></i> Produto
+                                <i class="fa fa-home"></i>Empresa
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
-       
-                  <div class="col-lg-6">
-                      <form role="form">
-                        <div class="page-header">
-                            <h2>Cadastrar</h2>
-                        </div>
-                          <div class="form-group">
-                              <label>Produto</label>
-                              <input class="form-control" placeholder="Digite o produto...">
+                <!-- Main jumbotron for a primary marketing message or call to action -->
+                
+               <div class="col-lg-6">
+                        <form role="form">
+                            <div class="page-header">
+                                <h2>Buscar Empresa</h2>
+                            </div>
+                            <div class="form-group">
+                                <label>CNPJ</label>
+                               
+                                <input class="form-control" placeholder="Digite o CNPJ"><br>
+                                
+                                   <button type="button" class="btn btn-lg btn-default">Pesquisar</button>
+                                    <button type="button" class="btn btn-lg btn-default">Limpar</button>
+                            </div>
+                           <div class="form-group">
+                              <label>Razão Social</label>
+                              <input class="form-control" placeholder="">
                           </div>
-						  <div class="form-group">
-                              <label>Genêro</label>
+                            <div class="form-group">
+                              <label>Insc. Estadual</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>Telefone Fixo</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>Endereço</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>Numero</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>Complemento</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>CEP</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>Bairro</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                            <div class="form-group">
+                              <label>Cidade</label>
+                              <input class="form-control" placeholder="">
+                          </div>
+                             <div class="form-group">
+                              <label>Estado</label>
                               <select class="form-control">
                                   <option>Selecione...</option>
-                                <option value="Literatura">Literatura</option>
-	                               <option value="Romance">Romance</option>
-	                                <option value="Autoajuda">Autoajuda</option>
-	                                 <option value="Infantojuvenil">Infantojuvenil</option>
-	                                  <option value="Didático">Didático</option>
-	                                   <option value="Artes">Artes</option>
-	                                    <option value="Dicionários">Dicionários</option>
+                                <option value="AC">Acre</option>
+	                               <option value="AL">Alagoas</option>
+	                                <option value="AP">Amapá</option>
+	                                 <option value="AM">Amazonas</option>
+	                                  <option value="BA">Bahia</option>
+	                                   <option value="CE">Ceará</option>
+	                                    <option value="DF">Distrito Federal</option>
+	                                     <option value="ES">Espírito Santo</option>
+	                                      <option value="GO">Goiás</option>
+	                                       <option value="MA">Maranhão</option>
+	                                        <option value="MT">Mato Grosso</option>
+	                                         <option value="MS">Mato Grosso do Sul</option>
+	                                          <option value="MG">Minas Gerais</option>
+	                                           <option value="PA">Pará</option>
+	                                            <option value="PB">Paraíba</option>
+	                                             <option value="PR">Paraná</option>
+	                                              <option value="PE">Pernambuco</option>
+	                                               <option value="PI">Piauí</option>
+	                                                <option value="RJ">Rio de Janeiro</option>
+	                                                 <option value="RN">Rio Grande do Norte</option>
+	                                                  <option value="RS">Rio Grande do Sul</option>
+	                                                   <option value="RO">Rondônia</option>
+	                                                    <option value="RR">Roraima</option>
+	                                                     <option value="SC">Santa Catarina</option>
+	                                                      <option value="SP">São Paulo</option>
+	                                                       <option value="SE">Sergipe</option>
+	                                                        <option value="TO">Tocantins</option>
                               </select>
                           </div>
-                          <div class="form-group">
-                              <label>Autor</label>
-                              <input class="form-control" placeholder="Digite o nome do autor...">
-                          </div>
-                          <div class="form-group">
-                              <label>Quantidade</label>
-                              <input class="form-control" placeholder="Digite a quantidade em unidades...">
-                          </div>
-						  <div class="form-group">
-                              <label>Valor de Compra</label>
-                              <input class="form-control" placeholder="Digite o valor de compra...">
-                          </div>
-                          
-                          <div class="form-group">
-                              <label>Valor de Venda</label>
-                              <input class="form-control" placeholder="Digite o valor de venda...">
-                          </div>
-                          <div class="form-group">
-                              <label>Descrição</label>
-                              <textarea class="form-control" placeholder="Digite a descrição do produto..." rows="3"></textarea>
-                          </div>
-                          <button type="button" class="btn btn-lg btn-default">Novo</button>
-                          <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                            
+                            <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                                    <button type="button" class="btn btn-lg btn-default">Excluir</button>
+                            <!---row row-->
 
                 </div>
+                
+
+
+                    <!-- /.col-sm-4 -->
+
             <!-- /.container-fluid -->
 
         </div>
@@ -290,4 +345,5 @@
     <script src="js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

@@ -1,3 +1,10 @@
+<%-- 
+    Document   : produto
+    Created on : 09/05/2017, 10:30:08
+    Author     : Fernanda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Astec</a>
+                <a class="navbar-brand" href="index.html">SB Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -149,8 +156,8 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
+		<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
                                 <a href="empresa.html">Cadastro</a>
@@ -161,7 +168,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-edit"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
                                 <a href="produto.html">Cadastro</a>
@@ -172,7 +179,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-desktop"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
                                 <a href="usuario.html">Cadastro</a>
@@ -183,7 +190,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-arrows-v"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
                                 <a href="cliente.html">Cadastro</a>
@@ -195,10 +202,10 @@
                     </li>
 					
 					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-file"></i> Relatorio</a>
+                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
                     </li>
                     <li>
-                        <a href="venda.html"><i class="fa fa-fw fa-file"></i> Venda</a>
+                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -213,8 +220,16 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Cliente
+                            Produto
                         </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-book"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-book"></i> Produto
+                            </li>
+                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -226,68 +241,46 @@
                             <h2>Cadastrar</h2>
                         </div>
                           <div class="form-group">
-                              <label>Nome</label>
-                              <input class="form-control" placeholder="Digite o nome...">
+                              <label>Produto</label>
+                              <input class="form-control" placeholder="Digite o produto...">
                           </div>
-                          <div class="form-group">
-                              <label>CPF</label>
-                              <input class="form-control" placeholder="Digite o CPF...">
-                          </div>
-                          <div class="form-group">
-                              <label>Endereço</label>
-                              <input class="form-control" placeholder="Digite seu endereço...">
-                          </div>
-                          <div class="form-group">
-                              <label>Bairro</label>
-                              <input class="form-control" placeholder="Digite o bairro...">
-                          </div>
-						  <div class="form-group">
-                              <label>CEP</label>
-                              <input class="form-control" placeholder="Digite o CEP...">
-                          </div>
-                          <div class="form-group">
-                              <label>Estado</label>
+			<div class="form-group">
+                              <label>Genêro</label>
                               <select class="form-control">
                                   <option>Selecione...</option>
-                                <option value="AC">Acre</option>
-	                               <option value="AL">Alagoas</option>
-	                                <option value="AP">Amapá</option>
-	                                 <option value="AM">Amazonas</option>
-	                                  <option value="BA">Bahia</option>
-	                                   <option value="CE">Ceará</option>
-	                                    <option value="DF">Distrito Federal</option>
-	                                     <option value="ES">Espírito Santo</option>
-	                                      <option value="GO">Goiás</option>
-	                                       <option value="MA">Maranhão</option>
-	                                        <option value="MT">Mato Grosso</option>
-	                                         <option value="MS">Mato Grosso do Sul</option>
-	                                          <option value="MG">Minas Gerais</option>
-	                                           <option value="PA">Pará</option>
-	                                            <option value="PB">Paraíba</option>
-	                                             <option value="PR">Paraná</option>
-	                                              <option value="PE">Pernambuco</option>
-	                                               <option value="PI">Piauí</option>
-	                                                <option value="RJ">Rio de Janeiro</option>
-	                                                 <option value="RN">Rio Grande do Norte</option>
-	                                                  <option value="RS">Rio Grande do Sul</option>
-	                                                   <option value="RO">Rondônia</option>
-	                                                    <option value="RR">Roraima</option>
-	                                                     <option value="SC">Santa Catarina</option>
-	                                                      <option value="SP">São Paulo</option>
-	                                                       <option value="SE">Sergipe</option>
-	                                                        <option value="TO">Tocantins</option>
+                                <option value="Literatura">Literatura</option>
+	                               <option value="Romance">Romance</option>
+	                                <option value="Autoajuda">Autoajuda</option>
+	                                 <option value="Infantojuvenil">Infantojuvenil</option>
+	                                  <option value="Didático">Didático</option>
+	                                   <option value="Artes">Artes</option>
+	                                    <option value="Dicionários">Dicionários</option>
                               </select>
                           </div>
                           <div class="form-group">
-                              <label>Celular</label>
-                              <input class="form-control" placeholder="Digite o Celular...">
+                              <label>Autor</label>
+                              <input class="form-control" placeholder="Digite o nome do autor...">
                           </div>
                           <div class="form-group">
-                              <label>Email</label>
-                              <input class="form-control" placeholder="Email...">
+                              <label>Quantidade</label>
+                              <input class="form-control" placeholder="Digite a quantidade em unidades...">
+                          </div>
+						  <div class="form-group">
+                              <label>Valor de Compra</label>
+                              <input class="form-control" placeholder="Digite o valor de compra...">
+                          </div>
+                          
+                          <div class="form-group">
+                              <label>Valor de Venda</label>
+                              <input class="form-control" placeholder="Digite o valor de venda...">
+                          </div>
+                          <div class="form-group">
+                              <label>Descrição</label>
+                              <textarea class="form-control" placeholder="Digite a descrição do produto..." rows="3"></textarea>
                           </div>
                           <button type="button" class="btn btn-lg btn-default">Novo</button>
-                          <button type="button" class="btn btn-lg btn-default">Cadastrar</button>
+                          <button type="button" class="btn btn-lg btn-default">Salvar</button>
+
                 </div>
             <!-- /.container-fluid -->
 
@@ -302,7 +295,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    </body>
-    
+
+</body>
 </html>

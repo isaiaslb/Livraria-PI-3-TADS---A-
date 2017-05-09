@@ -16,15 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "UsuarioServlet", urlPatterns = {"/UsuarioServlet"})
 public class UsuarioServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,51 +23,47 @@ public class UsuarioServlet extends HttpServlet {
 
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
 
-            String nome = null;
-            String email = null;
-            Integer fixo = 0;
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        Integer fixo = Integer.parseInt(request.getParameter("fixo"));
 
-//            String nome = request.getParameter("nome");
-//            String email = request.getParameter("email");
-//            Integer fixo = Integer.parseInt(request.getParameter("fixo"));
-
-            //Verificando se as informações existem no formulario
-            if (request.getParameter("nome") != null && !request.getParameter("nome").isEmpty()) {
-                nome = request.getParameter("nome");
-            }
-            if (request.getParameter("email") != null && !request.getParameter("email").isEmpty()) {
-                email = request.getParameter("email");
-            }
-            if (request.getParameter("fixo") != null && !request.getParameter("fixo").isEmpty()) {
-                fixo = Integer.parseInt(request.getParameter("fixo"));
-            }
-
-            if (nome.equals(null) || email.equals(null) || fixo == 0) {
-                request.setAttribute("resultado", "Preencha os campos acima!");
-                request.getRequestDispatcher("resultado.jsp").forward(request, response);// Caso ocorra erro será direcionado para pagina resultado
-            } else {
-                new ContatoDB().cadastrar(nome, email, fixo);
-                request.setAttribute("resultado", "Usuário Cadastrado!");
-                request.getRequestDispatcher("resultado.jsp").forward(request, response);// Caso ocorra erro será direcionado para pagina resultado
-            }
-
-        } finally {
-
-        }
-
+//        try {
+//
+//            String nome = null;
+//            String email = null;
+//            Integer fixo = 0;
+//
+////            String nome = request.getParameter("nome");
+////            String email = request.getParameter("email");
+////            Integer fixo = Integer.parseInt(request.getParameter("fixo"));
+//
+//            //Verificando se as informações existem no formulario
+//            if (request.getParameter("nome") != null && !request.getParameter("nome").isEmpty()) {
+//                nome = request.getParameter("nome");
+//            }
+//            if (request.getParameter("email") != null && !request.getParameter("email").isEmpty()) {
+//                email = request.getParameter("email");
+//            }
+//            if (request.getParameter("fixo") !=null && !request.getParameter("fixo").isEmpty()) {
+//                fixo = Integer.parseInt(request.getParameter("fixo"));
+//            }
+//
+//            if (nome.equals(null) || email.equals(null) || fixo == 0) {
+//                request.setAttribute("resultado", "Preencha os campos acima!");
+//                request.getRequestDispatcher("resultado.jsp").forward(request, response);// Caso ocorra erro será direcionado para pagina resultado
+//            } else {
+//                new ContatoDB().cadastrar(nome, email, fixo);
+//                request.setAttribute("resultado", "Usuário Cadastrado!");
+//                request.getRequestDispatcher("resultado.jsp").forward(request, response);// Caso ocorra erro será direcionado para pagina resultado
+//            }
+//
+//        } finally {
+//
+//        }
+//
     }
-
-}
+    }

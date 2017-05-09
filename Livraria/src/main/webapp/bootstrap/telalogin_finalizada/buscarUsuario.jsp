@@ -1,3 +1,10 @@
+<%-- 
+    Document   : buscarUsuario
+    Created on : 09/05/2017, 10:32:57
+    Author     : Fernanda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,7 +164,7 @@
                                 <a href="empresa.html">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarEmpresa.html">Buscar</a>
+                                <a href="buscarUsuario.html">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -168,7 +175,7 @@
                                 <a href="produto.html">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarProduto.html">Buscar</a>
+                                <a href="#">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -190,16 +197,13 @@
                                 <a href="cliente.html">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente.html">Buscar</a>
+                                <a href="buscarUsuario.html">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					
 					<li>
                         <a href="relatorio.html"><i class="fa fa-fw fa-file"></i> Relatorio</a>
-                    </li>
-                    		<li>
-                        <a href="venda.html"><i class="fa fa-fw fa-file"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -214,14 +218,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Empresa
+                            Usuario
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-desktop"></i>Empresa
+                                <i class="fa fa-desktop"></i>Usuario
                             </li>
                         </ol>
                     </div>
@@ -229,93 +233,23 @@
                 <!-- /.row -->
 
                 <!-- Main jumbotron for a primary marketing message or call to action -->
-                
-               <div class="col-lg-6">
-                        <form role="form">
-                            <div class="page-header">
-                                <h2>Buscar Empresa</h2>
-                            </div>
-                            <div class="form-group">
-                                <label>CNPJ</label>
-                               
-                                <input class="form-control" placeholder="Digite o CNPJ"><br>
-                                
-                                   <button type="button" class="btn btn-lg btn-default">Pesquisar</button>
-                                    <button type="button" class="btn btn-lg btn-default">Limpar</button>
-                            </div>
-                           <div class="form-group">
-                              <label>Razão Social</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Insc. Estadual</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Telefone Fixo</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Endereço</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Numero</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Complemento</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>CEP</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Bairro</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                            <div class="form-group">
-                              <label>Cidade</label>
-                              <input class="form-control" placeholder="">
-                          </div>
-                             <div class="form-group">
-                              <label>Estado</label>
-                              <select class="form-control">
-                                  <option>Selecione...</option>
-                                <option value="AC">Acre</option>
-	                               <option value="AL">Alagoas</option>
-	                                <option value="AP">Amapá</option>
-	                                 <option value="AM">Amazonas</option>
-	                                  <option value="BA">Bahia</option>
-	                                   <option value="CE">Ceará</option>
-	                                    <option value="DF">Distrito Federal</option>
-	                                     <option value="ES">Espírito Santo</option>
-	                                      <option value="GO">Goiás</option>
-	                                       <option value="MA">Maranhão</option>
-	                                        <option value="MT">Mato Grosso</option>
-	                                         <option value="MS">Mato Grosso do Sul</option>
-	                                          <option value="MG">Minas Gerais</option>
-	                                           <option value="PA">Pará</option>
-	                                            <option value="PB">Paraíba</option>
-	                                             <option value="PR">Paraná</option>
-	                                              <option value="PE">Pernambuco</option>
-	                                               <option value="PI">Piauí</option>
-	                                                <option value="RJ">Rio de Janeiro</option>
-	                                                 <option value="RN">Rio Grande do Norte</option>
-	                                                  <option value="RS">Rio Grande do Sul</option>
-	                                                   <option value="RO">Rondônia</option>
-	                                                    <option value="RR">Roraima</option>
-	                                                     <option value="SC">Santa Catarina</option>
-	                                                      <option value="SP">São Paulo</option>
-	                                                       <option value="SE">Sergipe</option>
-	                                                        <option value="TO">Tocantins</option>
-                              </select>
-                          </div>
+                <div class="jumbotron">
+                  <div class="col-lg-6">
+
+                      <form role="form">
+                        <div class="page-header">
+                            <h2>Cadastrar</h2>
+                        </div>
+                          <div class="form-group">
                             
-                            <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                                    <button type="button" class="btn btn-lg btn-default">Excluir</button>
-                            <!---row row-->
+                          <div class="form-group">
+                              <label>Buscar</label>
+                              <input class="form-control" placeholder="Digite a busca...">
+                          </div>
+                          
+                          
+                          </div>
+                          <button type="button" class="btn btn-lg btn-default">Buscar</button>
 
                 </div>
                 
@@ -340,3 +274,4 @@
 </body>
 
 </html>
+

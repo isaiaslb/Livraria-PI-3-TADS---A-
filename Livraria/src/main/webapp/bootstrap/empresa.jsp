@@ -1,3 +1,10 @@
+<%-- 
+    Document   : empresa
+    Created on : 09/05/2017, 10:28:51
+    Author     : Fernanda
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,7 +160,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
                                 <a href="empresa.html">Cadastro</a>
@@ -164,7 +171,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-edit"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
                                 <a href="produto.html">Cadastro</a>
@@ -175,7 +182,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-desktop"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
                                 <a href="usuario.html">Cadastro</a>
@@ -186,7 +193,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-arrows-v"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
                                 <a href="cliente.html">Cadastro</a>
@@ -198,10 +205,10 @@
                     </li>
 					
 	            <li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-file"></i> Relatorio</a>
+                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
                     </li>
                     		<li>
-                        <a href="venda.html"><i class="fa fa-fw fa-file"></i> Venda</a>
+                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                     </ul>
                 </div>
@@ -223,7 +230,7 @@
                                     <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                                 </li>
                                 <li class="active">
-                                    <i class="fa fa-bar-chart-o"></i> Empresa
+                                    <i class="fa fa-home"></i> Empresa
                                 </li>
                             </ol>
                         </div>
