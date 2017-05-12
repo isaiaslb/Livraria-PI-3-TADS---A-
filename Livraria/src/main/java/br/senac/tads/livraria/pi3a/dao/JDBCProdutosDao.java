@@ -6,7 +6,7 @@
 package br.senac.tads.livraria.pi3a.dao;
 
 
-import br.senac.tads.livraria.pi3a.connection.ConnectionFectory;
+//import br.senac.tads.livraria.pi3a.connection.ConnectionFectory;
 import br.senac.tads.livraria.pi3a.model.Produtos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,8 +25,8 @@ public class JDBCProdutosDao implements ProdutosDao{
     
     public JDBCProdutosDao(){
     
-        conecta = ConnectionFectory.conecta();
-             
+//        conecta = ConnectionFectory.conecta();
+//             
     }
     @Override
     public void inserir(Produtos produto) {

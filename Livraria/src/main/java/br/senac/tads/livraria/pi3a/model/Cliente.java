@@ -10,15 +10,51 @@ package br.senac.tads.livraria.pi3a.model;
  * @author douglas.gsilva2
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String cpf;
     private String end;
     private String bairro;
     private String cep;
     private String estado;
-    private int cel;
+    private String cel;
     private String email;
     
+     public Cliente(){
+        
+    }
+    public Cliente(String nome, String cpf, String end, String bairro, 
+            String cep, String estado, String cel, String email) {
+    this.nome = nome;
+    this.cpf = cpf;
+    this.end = end;
+    this.bairro = bairro;
+    this.cep = cep;
+    this.estado = estado;
+    this.cel = cel;
+    this.email = email;
+  }
+    
+    public Cliente(int id, String nome, String cpf, String end, String bairro, 
+            String cep, String estado, String cel, String email) {
+    this.id = id;    
+    this.nome = nome;
+    this.cpf = cpf;
+    this.end = end;
+    this.bairro = bairro;
+    this.cep = cep;
+    this.estado = estado;
+    this.cel = cel;
+    this.email = email;
+  }
+    
+     public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
@@ -67,11 +103,11 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public int getCel() {
+    public String getCel() {
         return cel;
     }
 
-    public void setCel(int cel) {
+    public void setCel(String cel) {
         this.cel = cel;
     }
 
