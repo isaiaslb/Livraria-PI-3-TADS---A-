@@ -18,18 +18,16 @@
             <table>
                 <tr>
                     <td>Nome:</td>
-                    <td><input type="text" name="nome" class="form-control" placeholder="Digite o nome..."></td>                    
+                    <td><input type="text" name="nome" id="nome"class="form-control" placeholder="Digite o nome..."></td>                    
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input  type="text" name="email" id="email" placeholder="Digite o email..."></td>
                 </tr>
                 <tr>
                     <td>Telefone:</td>
-                    <td><input type="text" nome="fixo" class="form-control" placeholder="Digite o fixo..."></td>
+                    <td><input type="text" name="fixo" id="fixo" class="form-control" placeholder="Digite o fixo..."></td>
                 </tr>
-                
-                <tr>
-                    <td>Email:</td>
-                    <td><input  type="text" nome="email" placeholder="Digite o email..."></td>
-                </tr>
-              
                 <tr>
                     <td><button type="submit" value="Cadastrar" class="btn btn-lg btn-default">Cadastrar</button></td>
                 </tr>

@@ -1,13 +1,16 @@
 package br.senac.tads.livraria.pi3a.controller;
 
-import br.senac.tads.livraria.pi3a.connection.ContatoDB;
+import br.senac.tads.livraria.pi3a.dao.UsuarioDAO;
+import br.senac.tads.livraria.pi3a.model.Usuario;
 import java.io.IOException;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,6 +23,9 @@ public class UsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Usuario.jsp");
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("Usuario.jsp");
+        dispatcher.forward(request, response);
 
     }
 
@@ -27,9 +33,25 @@ public class UsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nome = request.getParameter("nome");
+        String nome = request.getParameter("nome");        
         String email = request.getParameter("email");
-        Integer fixo = Integer.parseInt(request.getParameter("fixo"));
+        String fixo = request.getParameter("fixo");
+        
+        
+
+        // Cria um novo contato e salva
+        // através do DAO
+        Usuario novo = new Usuario(nome,email,fixo);
+        UsuarioDAO dao = new UsuarioDAO();
+        dao.incluirComTransacao(novo);
+
+        // Usa a sessao para manter os dados após
+        // redirect (técnica POST-REDIRECT-GET),
+        // usado para evitar dupla submissão dos
+        // dados
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("novoUsuario", novo);
+        response.sendRedirect("resultado.jsp");
 
 //        try {
 //
@@ -66,4 +88,4 @@ public class UsuarioServlet extends HttpServlet {
 //        }
 //
     }
-    }
+}

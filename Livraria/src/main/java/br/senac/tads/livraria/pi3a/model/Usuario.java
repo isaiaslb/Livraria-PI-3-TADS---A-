@@ -13,11 +13,22 @@ public class Usuario{
     private int id;
     private String nome;
     private String email;
-    private int fixo;
+    private String fixo;
     
     public Usuario(){
         
     }
+    public Usuario(String nome, String email, String fixo) {
+    this.nome = nome;
+    this.email = email;
+    this.fixo = fixo;
+  }
+    public Usuario(int id, String nome,String email, String fixo) {
+    this.id = id;
+    this.nome = nome;
+    this.email = email;
+    this.fixo = fixo;
+  }
 
     public int getId() {
         return id;
@@ -43,11 +54,11 @@ public class Usuario{
         this.email = email;
     }
 
-    public int getFixo() {
+    public String getFixo() {
         return fixo;
     }
 
-    public void setFixo(int fixo) {
+    public void setFixo(String fixo) {
         this.fixo = fixo;
     }
 }
