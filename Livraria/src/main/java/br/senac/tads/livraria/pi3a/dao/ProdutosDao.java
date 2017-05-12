@@ -5,6 +5,7 @@
  */
 package br.senac.tads.livraria.pi3a.dao;
 
+
 import br.senac.tads.livraria.pi3a.model.Produtos;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Marcus
  */
-public interface ProdutosDao {
+public interface ProdutosDao{
     
     public void inserir(Produtos produto);
     public void remover(Integer id); 
