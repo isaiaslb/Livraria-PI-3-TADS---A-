@@ -9,6 +9,7 @@ import br.senac.tads.livraria.pi3a.dao.ClienteDao;
 import br.senac.tads.livraria.pi3a.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,18 +22,35 @@ import javax.servlet.http.HttpSession;
  *
  * @author Douglas
  */
-@WebServlet(name = "ClienteServlet", urlPatterns = {"/ClienteServlet"})
+
+@WebServlet(name = "ClienteServlet", urlPatterns = {"/teste"})
 public class ClienteServlet extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Usuario.jsp");
+        String papel = request.getParameter("papel");
+        request.setAttribute("papelCliente", papel);
+
+        ClienteDao dao = new ClienteDao();
+        List<Cliente> lista = dao.listar();
+
+        request.setAttribute("listaCliente", lista);
+
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("cliente.jsp");
+                = request.getRequestDispatcher("bootstrap/cliente.jsp");
         dispatcher.forward(request, response);
+        
+        try {
+            dispatcher.forward(request, response);
+        } catch (IOException ex) {
+
+        }
 
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -42,22 +60,22 @@ public class ClienteServlet extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
         String estado = request.getParameter("estado");
-        String cel = request.getParameter("cel");
+        Integer cel = Integer.parseInt(request.getParameter("cel"));
         String email = request.getParameter("email");
 
         // Cria um novo contato e salva
         // através do DAO
         Cliente novo = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
         ClienteDao dao = new ClienteDao();
-        dao.incluirComTransacao(novo);
+        dao.incluir(novo);
 
         // Usa a sessao para manter os dados após
         // redirect (técnica POST-REDIRECT-GET),
         // usado para evitar dupla submissão dos
         // dados
         HttpSession sessao = request.getSession();
-        sessao.setAttribute("novoUsuario", novo);
-        response.sendRedirect("resultado.jsp");
+        sessao.setAttribute("novoCliente", novo);
+        response.sendRedirect("bootstrap/resultadoCliente.jsp");
 
     }
 }

@@ -17,14 +17,14 @@ public class Cliente {
     private String bairro;
     private String cep;
     private String estado;
-    private String cel;
+    private Integer cel;
     private String email;
     
      public Cliente(){
         
     }
     public Cliente(String nome, String cpf, String end, String bairro, 
-            String cep, String estado, String cel, String email) {
+            String cep, String estado, Integer cel, String email) {
     this.nome = nome;
     this.cpf = cpf;
     this.end = end;
@@ -36,7 +36,7 @@ public class Cliente {
   }
     
     public Cliente(int id, String nome, String cpf, String end, String bairro, 
-            String cep, String estado, String cel, String email) {
+            String cep, String estado, Integer cel, String email) {
     this.id = id;    
     this.nome = nome;
     this.cpf = cpf;
@@ -103,11 +103,11 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public String getCel() {
+    public Integer getCel() {
         return cel;
     }
 
-    public void setCel(String cel) {
+    public void setCel(Integer cel) {
         this.cel = cel;
     }
 

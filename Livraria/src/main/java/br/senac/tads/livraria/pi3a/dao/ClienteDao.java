@@ -45,9 +45,10 @@ public class ClienteDao extends ConexaoBD {
                 String bairro = resultados.getString("bairro");
                 String cep = resultados.getString("cep");
                 String estado = resultados.getString("estado");
-                String cel = resultados.getString("cel");
+                Integer cel = resultados.getInt("cel");
                 String email = resultados.getString("email");
-
+                
+                
                 p = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
                 break;
             }
@@ -96,7 +97,7 @@ public class ClienteDao extends ConexaoBD {
                 String bairro = resultados.getString("bairro");
                 String cep = resultados.getString("cep");
                 String estado = resultados.getString("estado");
-                String cel = resultados.getString("cel");
+                Integer cel = resultados.getInt("cel");
                 String email = resultados.getString("email");
 
                 Cliente cliente = new Cliente(id, nome, cpf, endereco, bairro, cep, estado, cel, email);
@@ -147,7 +148,7 @@ public class ClienteDao extends ConexaoBD {
             stmt.setString(4, cliente.getBairro());
             stmt.setString(5, cliente.getCep());
             stmt.setString(6, cliente.getEstado());
-            stmt.setString(7, cliente.getCel());
+            stmt.setInt(7, cliente.getCel());
             stmt.setString(8, cliente.getEmail());
 
             stmt.execute();
@@ -216,7 +217,7 @@ public class ClienteDao extends ConexaoBD {
             stmt.setString(4, cliente.getBairro());
             stmt.setString(5, cliente.getCep());
             stmt.setString(6, cliente.getEstado());
-            stmt.setString(7, cliente.getCel());
+            stmt.setInt(7, cliente.getCel());
             stmt.setString(8, cliente.getEmail());
             stmt.executeUpdate();
 
