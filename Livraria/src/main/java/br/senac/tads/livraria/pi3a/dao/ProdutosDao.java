@@ -16,7 +16,7 @@ import java.util.List;
 public interface ProdutosDao{
     
     public void inserir(Produtos produto);
-    public void remover(Integer id); 
+    public void remover(int id); 
     public List<Produtos> listar();
     public Produtos buscar(String produto, String Autor);
     public void alterar(Produtos produto);

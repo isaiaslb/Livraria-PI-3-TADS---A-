@@ -9,7 +9,6 @@ import br.senac.tads.livraria.pi3a.dao.JDBCProdutosDao;
 import br.senac.tads.livraria.pi3a.dao.ProdutosDao;
 import br.senac.tads.livraria.pi3a.model.Produtos;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +34,7 @@ public class ProdutoServlet extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        int id = Integer.parseInt(request.getParameter("id"));
         int filial = Integer.parseInt(request.getParameter("filial"));
         String produto = request.getParameter("produto");
         String autor = request.getParameter("autor");
@@ -49,7 +48,7 @@ public class ProdutoServlet extends HttpServlet {
 
         // Cria um novo contato e salva
         // através do DAO
-        Produtos novo = new Produtos(filial, produto, autor, genero, qtd, valCompra, valVenda, descricao);
+        Produtos novo = new Produtos(id,filial, produto, autor, genero, qtd, valCompra, valVenda, descricao);
         ProdutosDao dao = new JDBCProdutosDao();
         dao.inserir(novo);
 
