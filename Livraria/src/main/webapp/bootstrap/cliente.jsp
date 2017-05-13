@@ -237,27 +237,27 @@
                         </div>
                           <div class="form-group">
                               <label>Nome</label>
-                              <input class="form-control" placeholder="Digite o nome...">
+                              <input class="form-control" name="nome" placeholder="Digite o nome...">
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input class="form-control" placeholder="Digite o CPF...">
+                              <input class="form-control" name="cpf" placeholder="Digite o CPF...">
                           </div>
                           <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" placeholder="Digite seu endereço...">
+                              <input class="form-control" name="endereco" placeholder="Digite seu endereço...">
                           </div>
                           <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" placeholder="Digite o bairro...">
+                              <input class="form-control" name="bairro" placeholder="Digite o bairro...">
                           </div>
-						  <div class="form-group">
+	                  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" placeholder="Digite o CEP...">
+                              <input class="form-control" name="cep" placeholder="Digite o CEP...">
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
-                              <select class="form-control">
+                              <select class="form-control" name="estado">
                                   <option>Selecione...</option>
                                 <option value="AC">Acre</option>
 	                               <option value="AL">Alagoas</option>
@@ -290,11 +290,11 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input class="form-control" placeholder="Digite o Celular...">
+                              <input class="form-control" name="cel" placeholder="Digite o Celular...">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" placeholder="Email...">
+                              <input class="form-control" name="email" placeholder="Email...">
                           </div>
                           <button type="button" class="btn btn-lg btn-default">Novo</button>
                           <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>

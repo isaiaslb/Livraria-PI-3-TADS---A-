@@ -23,6 +23,7 @@
       <p><c:out value="${sessionScope.novoUsuario.estado}" /></p>
       <p><c:out value="${sessionScope.novoUsuario.cel}" /></p>
       <p><c:out value="${sessionScope.novoUsuario.email}" /></p>
+      
   </body>
   
   <%-- Apaga o valor da sessão --%>

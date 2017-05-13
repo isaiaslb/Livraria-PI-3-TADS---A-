@@ -60,14 +60,14 @@ public class ClienteServlet extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
         String estado = request.getParameter("estado");
-        Integer cel = Integer.parseInt(request.getParameter("cel"));
+        String cel = request.getParameter("cel");
         String email = request.getParameter("email");
 
         // Cria um novo contato e salva
         // através do DAO
         Cliente novo = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
         ClienteDao dao = new ClienteDao();
-        dao.incluir(novo);
+        dao.incluirComTransacao(novo);
 
         // Usa a sessao para manter os dados após
         // redirect (técnica POST-REDIRECT-GET),
