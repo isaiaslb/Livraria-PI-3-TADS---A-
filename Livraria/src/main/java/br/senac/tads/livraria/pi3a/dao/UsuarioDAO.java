@@ -7,6 +7,7 @@ package br.senac.tads.livraria.pi3a.dao;
 
 import br.senac.tads.livraria.pi3a.connection.ConexaoBD;
 import br.senac.tads.livraria.pi3a.model.Usuario;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,10 +25,7 @@ import java.util.logging.Logger;
  *
  * @author Fernanda
  */
-//public interface UsuarioDAO {
-//    public void inserir(Usuario usuario);
-//    
-//}
+
 public class UsuarioDAO extends ConexaoBD {
 
   public Usuario obterContato(int idUsuario) {
@@ -35,10 +33,7 @@ public class UsuarioDAO extends ConexaoBD {
     Connection conn = null;
     Usuario p = null;
 
-//    String sql = "SELECT ID_CONTATO, NM_CONTATO, DT_NASCIMENTO, VL_TELEFONE, VL_EMAIL "
-//	    + "FROM TB_CONTATO WHERE ID_CONTATO = ?";
-    
-    String sql = "SELECT cod_user, nome, email, fixo" + "FROM bdlivraria WHERE cod_user = ?";
+    String sql = "SELECT cod_user, nome, email, fixo,cel,setor,sexo,senha,tp_acesso" + "FROM bdlivraria WHERE cod_user = ?";
     
     try {
       conn = obterConexao();
@@ -49,12 +44,16 @@ public class UsuarioDAO extends ConexaoBD {
       while (resultados.next()) {
 	int id = resultados.getInt("cod_user");
 	String nome = resultados.getString("nome");
-	//Date dataNasc = resultados.getDate("DT_NASCIMENTO");
-        String email = resultados.getString("email");
+	String email = resultados.getString("email");
         String fixo = resultados.getString("fixo");
-	
-	
-	p = new Usuario(nome, email,fixo);
+	String cel = resultados.getString("cel");
+	String setor = resultados.getString("setor");
+        String sexo = resultados.getString("sexo");
+        String senha = resultados.getString("senha");
+        String tipoAcesso = resultados.getString("tipoAcesso");
+        Date dataNasc = resultados.getDate("dataNasc");
+
+	p = new Usuario(nome, email,fixo,cel,setor,sexo,senha,tipoAcesso,dataNasc);
 	break;
       }
     } catch (SQLException ex) {
@@ -87,10 +86,7 @@ public class UsuarioDAO extends ConexaoBD {
     Statement stmt = null;
     Connection conn = null;
 
-//    String sql = "SELECT ID_CONTATO, NM_CONTATO, DT_NASCIMENTO, VL_TELEFONE, VL_EMAIL "
-//	    + "FROM TB_CONTATO";
-
-    String sql = "SELECT cod_user, nome, email,fixo " + "FROM bdlivraria";
+    String sql = "SELECT cod_user, nome, email,fixo,cel,setor,sexo,senha,tp_acesso,dtnasc" + "FROM bdlivraria";
 
     List<Usuario> lista = new ArrayList<Usuario>();
     try {
@@ -98,18 +94,21 @@ public class UsuarioDAO extends ConexaoBD {
       stmt = conn.createStatement();
       ResultSet resultados = stmt.executeQuery(sql);
 
-     // DateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+     DateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
 
       while (resultados.next()) {
 	int id = resultados.getInt("cod_user");
 	String nome = resultados.getString("nome");        
 	String email = resultados.getString("email");
         String fixo = resultados.getString("fixo");
-        //Date dataNasc = resultados.getDate("DT_NASCIMENTO");
-//                System.out.println(String.valueOf(id) + ", " + nome + ", "
-//                        + formatadorData.format(dataNasc) + ", " + email + ", "
-//                        + telefone);
-	Usuario usuario = new Usuario(id, nome, email,fixo);
+        String cel = resultados.getString("cel");
+        String setor = resultados.getString("setor");
+        String sexo = resultados.getString("sexo");
+        String senha = resultados.getString("senha");
+        String tipoAcesso = resultados.getString("tipoAcesso");        
+        Date dataNasc = resultados.getDate("dataNasc");
+
+	Usuario usuario = new Usuario(id, nome, email,fixo,cel,setor,sexo,senha,tipoAcesso,dataNasc);
 	lista.add(usuario);
       }
 
@@ -139,17 +138,11 @@ public class UsuarioDAO extends ConexaoBD {
     return lista;
   }
 
-  // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
-  // http://www.mkyong.com/jdbc/jdbc-transaction-example/
   public void incluirComTransacao(Usuario usuario) {
     PreparedStatement stmt = null;
     Connection conn = null;
 
-//    String sql = "INSERT INTO TB_CONTATO "
-//	    + "(NM_CONTATO, DT_NASCIMENTO, VL_TELEFONE, VL_EMAIL, DT_CADASTRO) "
-//	    + "VALUES (?, ?, ?, ?, ?)";
-    
-    String sql = "INSERT INTO usuario (nome, email,fixo) values(?,?,?)";
+    String sql = "INSERT INTO usuario (nome, email,fixo,cel,setor,sexo,senha,tp_acesso,dtnasc) values(?,?,?,?,?,?,?,?,?)";
     try {
       conn = obterConexao();
 
@@ -158,8 +151,13 @@ public class UsuarioDAO extends ConexaoBD {
       stmt.setString(1, usuario.getNome());      
       stmt.setString(2, usuario.getEmail());
       stmt.setString(3, usuario.getFixo());
-      //stmt.setDate(2, new java.sql.Date(usuario.getDtNascimento().getTime()));
-      //stmt.setDate(5, new java.sql.Date(System.currentTimeMillis()));
+      stmt.setString(4, usuario.getCel());
+      stmt.setString(5, usuario.getSetor());
+      stmt.setString(6, usuario.getSexo());  
+      stmt.setString(7, usuario.getSenha());
+      stmt.setString(8, usuario.getTipoAcesso());
+      stmt.setDate(9, new java.sql.Date(usuario.getDataNasc().getTime()));
+     // stmt.setDate(5, new java.sql.Date(System.currentTimeMillis()));
 
       stmt.execute();
 
@@ -177,7 +175,7 @@ public class UsuarioDAO extends ConexaoBD {
     } catch (SQLException ex) {
       try {
 	// Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
-	if (conn != null & !conn.isClosed()) {
+	if (conn != null && !conn.isClosed()) {
 	  conn.rollback();
 	}
       } catch (SQLException ex1) {
@@ -215,21 +213,22 @@ public class UsuarioDAO extends ConexaoBD {
   public void incluir(Usuario usuario) {
     PreparedStatement stmt = null;
     Connection conn = null;
-
-//    String sql = "INSERT INTO TB_CONTATO "
-//	    + "(NM_CONTATO, DT_NASCIMENTO, VL_TELEFONE, VL_EMAIL, DT_CADASTRO) "
-//	    + "VALUES (?, ?, ?, ?, ?)";
     
-    String sql = "INSERT INTO usuario (nome, email, fixo) values(?,?,?)";
+    String sql = "INSERT INTO usuario (nome, email, fixo,cel,setor,sexo,senha,tp_acesso,dtnasc) values(?,?,?,?,?,?,?,?,?)";
     
     try {
       conn = obterConexao();
       stmt = conn.prepareStatement(sql);
       stmt.setString(1, usuario.getNome());
-      //stmt.setDate(2, new java.sql.Date(usuario.getDtNascimento().getTime()));
       stmt.setString(2, usuario.getEmail());
-      stmt.setString(3, usuario.getFixo());      
-      //stmt.setDate(5, new java.sql.Date(System.currentTimeMillis()));
+      stmt.setString(3, usuario.getFixo());  
+      stmt.setString(4, usuario.getCel());
+      stmt.setString(5, usuario.getSetor());
+      stmt.setString(6, usuario.getSexo());
+      stmt.setString(7, usuario.getSenha());
+      stmt.setString(8, usuario.getTipoAcesso());
+      stmt.setDate(9, new java.sql.Date(usuario.getDataNasc().getTime()));
+      //stmt.setDate(9, new java.sql.Date(System.currentTimeMillis()));
       stmt.executeUpdate();
       //System.out.println("Registro incluido com sucesso.");
 
@@ -256,4 +255,3 @@ public class UsuarioDAO extends ConexaoBD {
   }
 
 }
-
