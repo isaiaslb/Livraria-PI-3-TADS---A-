@@ -10,18 +10,33 @@ package br.senac.tads.livraria.pi3a.model;
  * @author Marcus
  */
 public class Produtos {
+    private int id;
+    private int prodId;   
+    private int prodFilial;
+    private String prodNome;
+    private String prodAutor;
+    private String prodGenero;
+    private int prodQtd;
+    private double prodValCompra;
+    private double prodValVenda;
+    private String prodDesc;
     
-    public static int prodId;   
-    public static int prodFilial;
-    public static String prodNome;
-    public static String prodAutor;
-    public static String prodGenero;
-    public static int prodQtd;
-    public static double prodValCompra;
-    public static double prodValVenda;
-    public static String prodDesc;
-      
-    public static int getIdProd(){
+    public Produtos(){
+        
+    }
+    public Produtos(int id, int filial, String nome, String autor, 
+            String genero, int qtd, double valCompra, double valVenda, String descricao) {
+    this.prodId = id;
+    this.prodFilial = filial;
+    this.prodNome = nome;
+    this.prodAutor = autor;
+    this.prodGenero = genero;
+    this.prodQtd = qtd;
+    this.prodValCompra = valCompra;
+    this.prodValVenda = valVenda;
+    this.prodDesc = descricao;
+  }      
+    public int getIdProd(){
         return prodId;
     }
     
@@ -29,7 +44,7 @@ public class Produtos {
         this.prodId = id;
     }
     
-    public static int getFilialProd(){
+    public int getFilialProd(){
         return prodFilial;
     }
     
@@ -37,7 +52,7 @@ public class Produtos {
         this.prodFilial = filial;
     }
     
-    public static String getNomeProd(){
+    public String getNomeProd(){
         return prodNome;
     }
     
@@ -45,41 +60,49 @@ public class Produtos {
         this.prodNome = nome;
     }
     
-    public static String getAutorProd(){
+    public String getAutorProd(){
         return prodAutor;
     }
     
     public void setAutorProd(String autor){
         this.prodAutor = autor;
     }
-    public static String getGeneroProd(){
+    public String getGeneroProd(){
         return prodGenero;        
     }
     public void setGeneroProd(String genero){
         this.prodGenero = genero;
     }
-    public static int getQtdProd(){
+    public int getQtdProd(){
         return prodQtd;
     }
     public void setQtdProd(int qtd){
         this.prodQtd = qtd;
     }
-    public static double getValCompraProd(){
+    public double getValCompraProd(){
         return prodValCompra;
     }
     public void setValCompraProd(double vCompra){
         this.prodValCompra = vCompra;
     }
-    public static double getValVendaProd(){
+    public double getValVendaProd(){
         return prodValVenda;
     }
     public void setValVendaProd(double vVenda){
         this.prodValVenda = vVenda;
     }
-    public static String getDescProd(){
+    public String getDescProd(){
         return prodDesc;
     }
     public void setDescProd(String desc){
         this.prodDesc = desc;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
