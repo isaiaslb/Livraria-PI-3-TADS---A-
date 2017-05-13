@@ -13,7 +13,7 @@
     <title>JSP Page</title>
   </head>
   <body>
-    <h1>Novo usuario adicionado</h1>
+    <h1>Novo cliente adicionado</h1>
       <%-- sessionScope permite obter os dados da sessão --%>
       <h2><c:out value="${sessionScope.novoUsuario.nome}" /></h2>
       <p><c:out value="${sessionScope.novoUsuario.cpf}" /></p>
