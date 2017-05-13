@@ -1,9 +1,3 @@
-<%-- 
-    Document   : resultado
-    Created on : 30/04/2017, 13:53:59
-    Author     : Fernanda
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -19,6 +13,12 @@
       <h2><c:out value="${sessionScope.novoUsuario.nome}" /></h2>
       <p><c:out value="${sessionScope.novoUsuario.email}" /></p>
       <p><c:out value="${sessionScope.novoUsuario.fixo}" /></p>
+      <p><c:out value="${sessionScope.novoUsuario.cel}" /></p>
+      <p><c:out value="${sessionScope.novoUsuario.setor}" /></p>
+      <p><c:out value="${sessionScope.novoUsuario.sexo}" /></p>
+      <p><c:out value="${sessionScope.novoUsuario.senha}" /></p>
+      <p><c:out value="${sessionScope.novoUsuario.tipoAcesso}" /></p>
+      <p><c:out value="${sessionScope.novoUsuario.dataNasc}" /></p>
   </body>
   
   <%-- Apaga o valor da sessão --%>
