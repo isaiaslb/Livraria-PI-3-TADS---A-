@@ -7,8 +7,9 @@ package br.senac.tads.livraria.pi3a.model;
  */
 public class Empresa {
     private int id;
-    private String cnpj;
+
     private String razao;
+        private String cnpj;
     private String ie;
     private String telefone;
     private String end;
@@ -22,10 +23,11 @@ public class Empresa {
      public Empresa(){
         
     }
-    public Empresa(String cnpj, String razao,String ie, String telefone, String end, 
+    public Empresa(String razao, String cnpj, String ie, String telefone, String end, 
             String numero, String complemento, String cep, String bairro,String cidade,String estado) {
-    this.cnpj = cnpj;
+    
     this.razao = razao;
+    this.cnpj = cnpj;
     this.ie = ie;
     this.telefone = telefone;
     this.end = end;
@@ -38,11 +40,12 @@ public class Empresa {
     
   }
     
-    public Empresa(int id,String cnpj, String razao, String ie, String telefone, String end, 
+    public Empresa(int id,String razao, String cnpj,  String ie, String telefone, String end, 
             String numero, String complemento, String cep, String bairro,String cidade,String estado) {
     this.id = id;    
-    this.cnpj = cnpj;
+ 
     this.razao = razao;
+       this.cnpj = cnpj;
     this.ie = ie;
     this.telefone = telefone;
     this.end = end;

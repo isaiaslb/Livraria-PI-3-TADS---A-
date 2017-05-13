@@ -12,7 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,13 +26,12 @@ import java.util.logging.Logger;
  */
 public class EmpresaDao extends ConexaoBD {
 
-    Connection conn = null;
     public Empresa obterContato(int idEmpresa) {
         PreparedStatement stmt = null;
-        
+        Connection conn = null;
         Empresa p = null;
 
-        String sql = "SELECT cnpj, razao, ie, telefone, end, numero, complemento, cep,bairro,cidade,estado"
+        String sql = "SELECT RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO"
                 + "FROM bdlivraria WHERE cod_user = ?";
 
         try {
@@ -40,19 +42,19 @@ public class EmpresaDao extends ConexaoBD {
 
             while (resultados.next()) {
                 int id = resultados.getInt("COD_EMP");
-                String cnpj = resultados.getString("cnpj");
-                String razao = resultados.getString("razao");
-                String ie = resultados.getString("ie");
-                String telefone = resultados.getString("telefone");
-                String end = resultados.getString("endereco");
-                String numero = resultados.getString("numero");
-                String complemento = resultados.getString("complemento");
-                String cep = resultados.getString("cep");
-                String bairro = resultados.getString("bairro");
+                String razao = resultados.getString("RZ_SOCIAL");
+                String cnpj = resultados.getString("CNPJ");
+                String ie = resultados.getString("INS_ESTAD");
+                String telefone = resultados.getString("TEL");
+                String end = resultados.getString("ENDERECO");
+                String numero = resultados.getString("NUMERO");
+                String complemento = resultados.getString("COMPLEMENTO");
+                String cep = resultados.getString("CEP");
+                String bairro = resultados.getString("BAIRRO");
                 String cidade = resultados.getString("cidade");
                 String estado = resultados.getString("Estado");
-                
-                p = new Empresa(cnpj, razao, ie, telefone, end, numero, complemento, cep,bairro,cidade,estado);
+
+                p = new Empresa(razao, cnpj, ie, telefone, end, numero, complemento, cep, bairro, cidade, estado);
                 break;
             }
         } catch (SQLException ex) {
@@ -78,15 +80,11 @@ public class EmpresaDao extends ConexaoBD {
         }
         return p;
     }
-    
-    
-    
 
     public List<Empresa> listar() {
         Statement stmt = null;
-     
-
-        String sql = "SELECT cod_user, cnpj, razao, ie, telefone, end, numero, complemento, cep,bairro,cidade,estado"
+        Connection conn = null;
+        String sql = "SELECT cod_user, RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO"
                 + "FROM bdlivraria";
 
         List<Empresa> lista = new ArrayList<Empresa>();
@@ -97,10 +95,10 @@ public class EmpresaDao extends ConexaoBD {
 
             while (resultados.next()) {
                 int id = resultados.getInt("COD_EMP");
+                String razao = resultados.getString("RZ_SOCIAL");
                 String cnpj = resultados.getString("cnpj");
-                String razao = resultados.getString("razao");
-                String ie = resultados.getString("ie");
-                String telefone = resultados.getString("telefone");
+                String ie = resultados.getString("INS_ESTAD");
+                String telefone = resultados.getString("tel");
                 String end = resultados.getString("endereco");
                 String numero = resultados.getString("numero");
                 String complemento = resultados.getString("complemento");
@@ -109,7 +107,7 @@ public class EmpresaDao extends ConexaoBD {
                 String cidade = resultados.getString("cidade");
                 String estado = resultados.getString("Estado");
 
-                Empresa empresa = new Empresa(id, cnpj, razao, ie, telefone, end, numero, complemento, cep,bairro,cidade,estado);
+                Empresa empresa = new Empresa(id, razao, cnpj, ie, telefone, end, numero, complemento, cep, bairro, cidade, estado);
                 lista.add(empresa);
             }
 
@@ -141,17 +139,16 @@ public class EmpresaDao extends ConexaoBD {
     // http://www.mkyong.com/jdbc/jdbc-transaction-example/
     public void incluirComTransacao(Empresa empresa) {
         PreparedStatement stmt = null;
-        
-
-        String sql = "INSERT INTO EMPRESA (cnpj, razao, ie, telefone, end, numero, complemento, cep,bairro,cidade,estado) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
+        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
 
             conn.setAutoCommit(false); // Permite usar transacoes para multiplos comandos no banco de dados
             stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, empresa.getCnpj());
-            stmt.setString(2, empresa.getRazao());
+            stmt.setString(1, empresa.getRazao());
+            stmt.setString(2, empresa.getCnpj());
             stmt.setString(3, empresa.getIe());
             stmt.setString(4, empresa.getTelefone());
             stmt.setString(5, empresa.getEndereco());
@@ -161,7 +158,6 @@ public class EmpresaDao extends ConexaoBD {
             stmt.setString(9, empresa.getBairro());
             stmt.setString(10, empresa.getCidade());
             stmt.setString(11, empresa.getEstado());
-
             stmt.execute();
 
             // ResultSet para recuperar o ID gerado automaticamente no banco de dados.
@@ -211,20 +207,17 @@ public class EmpresaDao extends ConexaoBD {
             }
         }
     }
-    
-    
 
     public void incluir(Empresa empresa) {
         PreparedStatement stmt = null;
-     
-
-        String sql = "INSERT INTO EMPRESA (cnpj, razao, ie, telefone, end, numero, complemento, cep,bairro,cidade,estado) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
+        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, empresa.getCnpj());
-            stmt.setString(2, empresa.getRazao());
+            stmt.setString(1, empresa.getRazao());
+            stmt.setString(2, empresa.getCnpj());
             stmt.setString(3, empresa.getIe());
             stmt.setString(4, empresa.getTelefone());
             stmt.setString(5, empresa.getEndereco());
@@ -257,19 +250,20 @@ public class EmpresaDao extends ConexaoBD {
             }
         }
     }
-    
+
     public void remover(int id) {
+        Connection conn = null;
         try {
             String sql = "DELETE FROM EMPRESA WHERE COD_EMP= ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
-            
+
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException ("Erro ao deletar registro de Empresa EmpresaDao");
+            throw new RuntimeException("Erro ao deletar registro de Empresa EmpresaDao");
         }
-        
+
     }
 }

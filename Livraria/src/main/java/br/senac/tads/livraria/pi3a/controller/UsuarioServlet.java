@@ -3,7 +3,11 @@ package br.senac.tads.livraria.pi3a.controller;
 import br.senac.tads.livraria.pi3a.dao.UsuarioDAO;
 import br.senac.tads.livraria.pi3a.model.Usuario;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +28,7 @@ public class UsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Usuario.jsp");
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("Usuario.jsp");
+                = request.getRequestDispatcher("bootstrap/usuario.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -34,58 +38,44 @@ public class UsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String nome = request.getParameter("nome");        
-        String email = request.getParameter("email");
-        String fixo = request.getParameter("fixo");
         
+        String sexo = request.getParameter("sexo");
+        String email = request.getParameter("email");
+        String fixo = request.getParameter("telefone");
+        String cel = request.getParameter("celular");
+        String setor = request.getParameter("setor");
+        String senha = request.getParameter("senha");
+        String tipoAcesso = request.getParameter("tipoAcesso");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataNasc;
+        
+        try {
+            dataNasc = sdf.parse(request.getParameter("dataNasc"));
+            Usuario novo = new Usuario(nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.incluirComTransacao(novo);
+            
+            HttpSession sessao = request.getSession();
+        sessao.setAttribute("novoUsuario", novo);
+        response.sendRedirect("resultado.jsp");
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
         
 
         // Cria um novo contato e salva
         // através do DAO
-        Usuario novo = new Usuario(nome,email,fixo);
-        UsuarioDAO dao = new UsuarioDAO();
-        dao.incluirComTransacao(novo);
+       
 
         // Usa a sessao para manter os dados após
         // redirect (técnica POST-REDIRECT-GET),
         // usado para evitar dupla submissão dos
         // dados
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("novoUsuario", novo);
-        response.sendRedirect("resultado.jsp");
+        
 
-//        try {
-//
-//            String nome = null;
-//            String email = null;
-//            Integer fixo = 0;
-//
-////            String nome = request.getParameter("nome");
-////            String email = request.getParameter("email");
-////            Integer fixo = Integer.parseInt(request.getParameter("fixo"));
-//
-//            //Verificando se as informações existem no formulario
-//            if (request.getParameter("nome") != null && !request.getParameter("nome").isEmpty()) {
-//                nome = request.getParameter("nome");
-//            }
-//            if (request.getParameter("email") != null && !request.getParameter("email").isEmpty()) {
-//                email = request.getParameter("email");
-//            }
-//            if (request.getParameter("fixo") !=null && !request.getParameter("fixo").isEmpty()) {
-//                fixo = Integer.parseInt(request.getParameter("fixo"));
-//            }
-//
-//            if (nome.equals(null) || email.equals(null) || fixo == 0) {
-//                request.setAttribute("resultado", "Preencha os campos acima!");
-//                request.getRequestDispatcher("resultado.jsp").forward(request, response);// Caso ocorra erro será direcionado para pagina resultado
-//            } else {
-//                new ContatoDB().cadastrar(nome, email, fixo);
-//                request.setAttribute("resultado", "Usuário Cadastrado!");
-//                request.getRequestDispatcher("resultado.jsp").forward(request, response);// Caso ocorra erro será direcionado para pagina resultado
-//            }
-//
-//        } finally {
-//
-//        }
-//
     }
 }

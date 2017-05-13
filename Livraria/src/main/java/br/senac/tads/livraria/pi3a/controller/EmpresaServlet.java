@@ -38,10 +38,10 @@ public class EmpresaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String razao = request.getParameter("RZ_SOCIAL");
         String cnpj = request.getParameter("cnpj");
-        String razao = request.getParameter("razao");
-        String ie = request.getParameter("inscricaoEstadual");
-        String telefone = request.getParameter("telefone");
+        String ie = request.getParameter("INS_ESTAD");
+        String telefone = request.getParameter("tel");
         String endereco = request.getParameter("endereco");
         String numero = request.getParameter("numero");
         String complemento = request.getParameter("complemento");
@@ -52,7 +52,7 @@ public class EmpresaServlet extends HttpServlet {
 
         // Cria um novo contato e salva
         // através do DAO
-        Empresa novo = new Empresa(cnpj,razao,ie,telefone,endereco,numero,complemento,cep,bairro,cidade,estado);
+        Empresa novo = new Empresa(razao,cnpj,ie,telefone,endereco,numero,complemento,cep,bairro,cidade,estado);
         EmpresaDao dao = new EmpresaDao();
         dao.incluirComTransacao(novo);
 

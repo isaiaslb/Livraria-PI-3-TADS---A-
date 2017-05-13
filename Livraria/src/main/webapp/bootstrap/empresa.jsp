@@ -239,10 +239,12 @@
 
                     <!-- /.row -->
                    <div class="col-lg-6">
-                        <form role="form">
+                       
                             <div class="page-header">
                                 <h2>Cadastrar Empresa</h2>
                             </div>
+                       
+                       <form action="${pageContext.request.contextPath}/EmpresaServlet"method="post">
                             <div class="form-group">
                                 <label>CNPJ</label>
                                
@@ -319,8 +321,9 @@
                               </select>
                           </div>
                             
-                            <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                                   
+                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>
+                            
+                            </form>  
                             <!---row row-->
 
                 </div>

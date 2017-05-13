@@ -1,9 +1,3 @@
-<%-- 
-    Document   : usuario
-    Created on : 09/05/2017, 10:13:11
-    Author     : Fernanda
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -239,59 +233,60 @@
                 
                   <div class="col-lg-6">
 
-                      <form role="form">
+                     
                         <div class="page-header">
                             <h2>Cadastrar</h2>
                         </div>
+                          <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
-                              <input class="form-control" placeholder="Digite o nome...">
+                              <input name="nome" id="nome" class="form-control" placeholder="Digite o nome...">
                           </div>
                              <div class="form-group">
                               <label>Data de Nascimento</label>
-                              <input class="form-control" type="date">
+                              <input name="dataNasc" id="dataNasc" class="form-control" type="text">
                           </div>
                            <div class="form-group">
                               <label>Sexo</label>
-                              <select class="form-control">
+                              <select name="sexo" id="sexo" class="form-control">
                                   <option>Selecione...</option>
-                                <option value="m">Masculino</option>
-	                        <option value="f">Feminino</option>     
+                                <option name="m" id="m" value="m">Masculino</option>
+	                        <option name="f" id="f" value="f">Feminino</option>     
                               </select>
                           </div>
                           
                              <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" placeholder="Digite o email...">
+                              <input name="email" id="email" class="form-control" placeholder="Digite o email...">
                           </div>
                              <div class="form-group">
                               <label>Telefone</label>
-                              <input class="form-control" placeholder="Digite o telefone...">
+                              <input name="telefone" id="telefone" class="form-control" placeholder="Digite o telefone...">
                           </div>
                              <div class="form-group">
                               <label>Celular</label>
-                              <input class="form-control" placeholder="Digite o celular...">
+                              <input name="celular" id="celular" class="form-control" placeholder="Digite o celular...">
                           </div>
                              <div class="form-group">
                               <label>Setor</label>
-                              <input class="form-control" placeholder="Digite o setor...">
+                              <input name="setor" id="setor" class="form-control" placeholder="Digite o setor...">
                           </div>
                              <div class="form-group">
                               <label>Senha</label>
-                              <input class="form-control" type="password" placeholder="Digite a senha...">
+                              <input name="senha" id="senha" class="form-control" type="password" placeholder="Digite a senha...">
                           </div>
                           <div class="form-group">
                               <label>Tipo de acesso</label>
-                              <select class="form-control">
+                              <select name="tipoAcesso" id="tipoAcesso" class="form-control">
                                   <option>Selecione...</option>
-                                <option value="adm">Administrador</option>
-	                        <option value="comum">Comum</option>     
+                                <option name="tipoAdm" id="tipoAdm" value="adm">Administrador</option>
+	                        <option name="tipoComum" id="tipoComum" value="comum">Comum</option>     
                               </select>
                           </div>
-                          <button type="button" class="btn btn-lg btn-default">Cadastrar</button>
+                          <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>
 
                 </div>
-              
+              </form>
 
 
                     <!-- /.col-sm-4 -->
