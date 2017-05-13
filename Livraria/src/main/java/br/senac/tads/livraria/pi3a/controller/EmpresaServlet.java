@@ -19,26 +19,27 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Douglas
+ * @author Antonio
  */
 @WebServlet(name = "EmpresaServlet", urlPatterns = {"/EmpresaServlet"})
 public class EmpresaServlet extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Usuario.jsp");
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("empresa.jsp");
+                = request.getRequestDispatcher("Empresa.jsp");
         dispatcher.forward(request, response);
 
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String cnpj = request.getParameter("cnpj");
         String razao = request.getParameter("razao");
-
         String ie = request.getParameter("inscricaoEstadual");
         String telefone = request.getParameter("telefone");
         String endereco = request.getParameter("endereco");
