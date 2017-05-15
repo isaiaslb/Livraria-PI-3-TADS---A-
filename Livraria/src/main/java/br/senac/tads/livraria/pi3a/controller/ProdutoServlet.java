@@ -34,21 +34,21 @@ public class ProdutoServlet extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int filial = Integer.parseInt(request.getParameter("filial"));
-        String produto = request.getParameter("produto");
-        String autor = request.getParameter("autor");
-        String genero = request.getParameter("genero");
-        int qtd = Integer.parseInt(request.getParameter("qtd"));
-        double valCompra = Double.parseDouble(request.getParameter("valCompra"));
-        double valVenda = Double.parseDouble(request.getParameter("valVenda"));
-        String descricao = request.getParameter("descricao");
+//        int id = Integer.parseInt(request.getParameter("id"));
+        int filial = Integer.parseInt(request.getParameter("PRODFILIAL"));
+        String produto = request.getParameter("PRODNOME");
+        String autor = request.getParameter("PRODAUTOR");
+        String genero = request.getParameter("PRODGENERO");
+        int qtd = Integer.parseInt(request.getParameter("PRODQTD"));
+        double valCompra = Double.parseDouble(request.getParameter("PRODVALCOMPRA"));
+        double valVenda = Double.parseDouble(request.getParameter("PRODVALVENDA"));
+        String descricao = request.getParameter("PRODDESC");
         
         
 
         // Cria um novo contato e salva
         // através do DAO
-        Produtos novo = new Produtos(id,filial, produto, autor, genero, qtd, valCompra, valVenda, descricao);
+        Produtos novo = new Produtos(filial, produto, autor, genero, qtd, valCompra, valVenda, descricao);
         ProdutosDao dao = new JDBCProdutosDao();
         dao.inserir(novo);
 
