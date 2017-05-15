@@ -254,4 +254,27 @@ public class UsuarioDAO extends ConexaoBD {
     }
   }
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
