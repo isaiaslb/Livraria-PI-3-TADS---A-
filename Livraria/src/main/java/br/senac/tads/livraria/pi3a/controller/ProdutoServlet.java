@@ -27,7 +27,7 @@ public class ProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("produto.jsp");
+                = request.getRequestDispatcher("bootstrap/produto.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -57,7 +57,7 @@ public class ProdutoServlet extends HttpServlet {
         // usado para evitar dupla submissão dos
         // dados
         HttpSession sessao = request.getSession();
-        sessao.setAttribute("novoUsuario", novo);
+        sessao.setAttribute("novoProduto", novo);
         response.sendRedirect("resultado.jsp");
     }
 
