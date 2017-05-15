@@ -46,7 +46,7 @@ public class EmpresaDao extends ConexaoBD {
                 String cnpj = resultados.getString("CNPJ");
                 String ie = resultados.getString("INS_ESTAD");
                 String telefone = resultados.getString("TEL");
-                String end = resultados.getString("ENDERECO");
+                String endereco = resultados.getString("ENDERECO");
                 String numero = resultados.getString("NUMERO");
                 String complemento = resultados.getString("COMPLEMENTO");
                 String cep = resultados.getString("CEP");
@@ -54,7 +54,7 @@ public class EmpresaDao extends ConexaoBD {
                 String cidade = resultados.getString("cidade");
                 String estado = resultados.getString("Estado");
 
-                p = new Empresa(razao, cnpj, ie, telefone, end, numero, complemento, cep, bairro, cidade, estado);
+                p = new Empresa(razao, cnpj, ie, telefone, endereco, numero, complemento, cep, bairro, cidade, estado);
                 break;
             }
         } catch (SQLException ex) {
@@ -99,7 +99,7 @@ public class EmpresaDao extends ConexaoBD {
                 String cnpj = resultados.getString("cnpj");
                 String ie = resultados.getString("INS_ESTAD");
                 String telefone = resultados.getString("tel");
-                String end = resultados.getString("endereco");
+                String endereco = resultados.getString("endereco");
                 String numero = resultados.getString("numero");
                 String complemento = resultados.getString("complemento");
                 String cep = resultados.getString("cep");
@@ -107,7 +107,7 @@ public class EmpresaDao extends ConexaoBD {
                 String cidade = resultados.getString("cidade");
                 String estado = resultados.getString("Estado");
 
-                Empresa empresa = new Empresa(id, razao, cnpj, ie, telefone, end, numero, complemento, cep, bairro, cidade, estado);
+                Empresa empresa = new Empresa(id, razao, cnpj, ie, telefone, endereco, numero, complemento, cep, bairro, cidade, estado);
                 lista.add(empresa);
             }
 

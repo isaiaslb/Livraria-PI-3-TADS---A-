@@ -244,52 +244,54 @@
                                 <h2>Cadastrar Empresa</h2>
                             </div>
                        
-                       <form action="${pageContext.request.contextPath}/EmpresaServlet"method="post">
+                            <form action="${pageContext.request.contextPath}/EmpresaServlet" method="post">
                             <div class="form-group">
+                              <label>Razão Social</label>
+                              <input name="RZ_SOCIAL" class="form-control" placeholder="Informe a Razão...">
+                          </div>
+                           
+                           <div class="form-group">
                                 <label>CNPJ</label>
                                
-                                <input class="form-control" placeholder="Informe o CNPJ...">
+                                <input name="cnpj" class="form-control" placeholder="Informe o CNPJ...">
                                 
                             </div>
-                             <div class="form-group">
-                              <label>Razão Social</label>
-                              <input class="form-control" placeholder="Informe a Razão...">
-                          </div>
+                            
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input class="form-control" placeholder="Informe Inscrição Estadual...">
+                              <input name="INS_ESTAD" class="form-control" placeholder="Informe Inscrição Estadual...">
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
-                              <input class="form-control" placeholder="Informe Telefone...">
+                              <input name="tel" class="form-control" placeholder="Informe Telefone...">
                           </div>
                             <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" placeholder="Informe Endereço...">
+                              <input name="endereco" class="form-control" placeholder="Informe Endereço...">
                           </div>
                             <div class="form-group">
                               <label>Numero</label>
-                              <input class="form-control" placeholder="Informe Número...">
+                              <input name="numero" class="form-control" placeholder="Informe Número...">
                           </div>
                             <div class="form-group">
                               <label>Complemento</label>
-                              <input class="form-control" placeholder="Informe Complemento...">
+                              <input name="complemento" class="form-control" placeholder="Informe Complemento...">
                           </div>
                             <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" placeholder="Informe CEP...">
+                              <input name="cep" class="form-control" placeholder="Informe CEP...">
                           </div>
                             <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" placeholder="Informe Bairro...">
+                              <input name="bairro" class="form-control" placeholder="Informe Bairro...">
                           </div>
                             <div class="form-group">
                               <label>Cidade</label>
-                              <input class="form-control" placeholder="Informe Cidade...">
+                              <input name="cidade" class="form-control" placeholder="Informe Cidade...">
                           </div>
                              <div class="form-group">
                               <label>Estado</label>
-                              <select class="form-control">
+                              <select class="form-control" name="estado">
                                   <option>Selecione...</option>
                                 <option value="AC">Acre</option>
 	                               <option value="AL">Alagoas</option>
@@ -323,7 +325,7 @@
                             
                             <button type="submit" class="btn btn-lg btn-default">Salvar</button>
                             
-                            </form>  
+                            
                             <!---row row-->
 
                 </div>

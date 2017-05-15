@@ -12,7 +12,7 @@ public class Empresa {
         private String cnpj;
     private String ie;
     private String telefone;
-    private String end;
+    private String endereco;
     private String numero;
     private String complemento;
     private String cep;
@@ -23,14 +23,14 @@ public class Empresa {
      public Empresa(){
         
     }
-    public Empresa(String razao, String cnpj, String ie, String telefone, String end, 
+    public Empresa(String razao, String cnpj, String ie, String telefone, String endereco, 
             String numero, String complemento, String cep, String bairro,String cidade,String estado) {
     
     this.razao = razao;
     this.cnpj = cnpj;
     this.ie = ie;
     this.telefone = telefone;
-    this.end = end;
+    this.endereco = endereco;
     this.numero = numero;
     this.complemento = complemento;
     this.cep = cep;
@@ -40,7 +40,7 @@ public class Empresa {
     
   }
     
-    public Empresa(int id,String razao, String cnpj,  String ie, String telefone, String end, 
+    public Empresa(int id,String razao, String cnpj,  String ie, String telefone, String endereco, 
             String numero, String complemento, String cep, String bairro,String cidade,String estado) {
     this.id = id;    
  
@@ -48,7 +48,7 @@ public class Empresa {
        this.cnpj = cnpj;
     this.ie = ie;
     this.telefone = telefone;
-    this.end = end;
+    this.endereco = endereco;
     this.numero = numero;
     this.complemento = complemento;
     this.cep = cep;
@@ -97,11 +97,11 @@ public class Empresa {
     }
 
     public String getEndereco() {
-        return end;
+        return endereco;
     }
 
     public void setEndereco(String endereco) {
-        this.end = endereco;
+        this.endereco = endereco;
     }
 
     public String getNumero() {

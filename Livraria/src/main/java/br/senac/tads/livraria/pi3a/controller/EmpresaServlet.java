@@ -52,17 +52,17 @@ public class EmpresaServlet extends HttpServlet {
 
         // Cria um novo contato e salva
         // através do DAO
-        Empresa novo = new Empresa(razao,cnpj,ie,telefone,endereco,numero,complemento,cep,bairro,cidade,estado);
+        Empresa nova = new Empresa(razao,cnpj,ie,telefone,endereco,numero,complemento,cep,bairro,cidade,estado);
         EmpresaDao dao = new EmpresaDao();
-        dao.incluirComTransacao(novo);
+        dao.incluirComTransacao(nova);
 
         // Usa a sessao para manter os dados após
         // redirect (técnica POST-REDIRECT-GET),
         // usado para evitar dupla submissão dos
         // dados
         HttpSession sessao = request.getSession();
-        sessao.setAttribute("novaEmpresa", novo);
-        response.sendRedirect("resultado.jsp");
+        sessao.setAttribute("novaEmpresa", nova);
+        response.sendRedirect("resultadoEmpresa.jsp");
 
     }
 }
