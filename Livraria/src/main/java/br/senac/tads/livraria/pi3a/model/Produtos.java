@@ -10,8 +10,8 @@ package br.senac.tads.livraria.pi3a.model;
  * @author Marcus
  */
 public class Produtos {
-    private int id;
-    private int prodId;   
+    //private int id;
+    //private int prodId;   
     private int prodFilial;
     private String prodNome;
     private String prodAutor;
@@ -24,9 +24,9 @@ public class Produtos {
     public Produtos(){
         
     }
-    public Produtos(int id, int filial, String nome, String autor, 
+    public Produtos(int filial, String nome, String autor, 
             String genero, int qtd, double valCompra, double valVenda, String descricao) {
-    this.prodId = id;
+   // this.prodId = id;
     this.prodFilial = filial;
     this.prodNome = nome;
     this.prodAutor = autor;
@@ -36,14 +36,14 @@ public class Produtos {
     this.prodValVenda = valVenda;
     this.prodDesc = descricao;
   }      
-    public int getIdProd(){
+  /*  public int getIdProd(){
         return prodId;
     }
     
     public void setIdProd(int id){
         this.prodId = id;
     }
-    
+    */
     public int getFilialProd(){
         return prodFilial;
     }
@@ -98,11 +98,11 @@ public class Produtos {
         this.prodDesc = desc;
     }
 
-    public int getId() {
+    /*public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
+    }*/
 }

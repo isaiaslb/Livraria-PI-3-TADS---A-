@@ -89,7 +89,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Produtos produto = new Produtos();
-                produto.setIdProd(rs.getInt("PRODID"));
+                //produto.setIdProd(rs.getInt("PRODID"));
                 produto.setFilialProd(rs.getInt("PRODFILIAL"));
                 produto.setNomeProd(rs.getString("PRODNOME"));
                 produto.setAutorProd(rs.getString("PRODAUTOR"));
@@ -124,7 +124,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             
             rs.next();
             
-            p.setIdProd(rs.getInt("PRODID"));
+            //p.setIdProd(rs.getInt("PRODID"));
             p.setFilialProd(rs.getInt("PRODFILIAL"));
             p.setNomeProd(rs.getString("PRODNOME"));
             p.setAutorProd(rs.getString("PRODAUTOR"));
@@ -162,7 +162,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.setDouble(6, produto.getValCompraProd());
             ps.setDouble(7, produto.getValVendaProd());
             ps.setString(8, produto.getDescProd());
-            ps.setInt(9, produto.getId());
+            //ps.setInt(9, produto.getId());
             
             ps.executeUpdate();
             

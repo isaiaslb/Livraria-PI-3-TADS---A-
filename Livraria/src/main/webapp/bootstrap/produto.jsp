@@ -236,17 +236,21 @@
 
        
                   <div class="col-lg-6">
-                      <form role="form">
+                      <form role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
                         <div class="page-header">
                             <h2>Cadastrar</h2>
                         </div>
                           <div class="form-group">
+                              <label>Filial</label>
+                              <input name="PRODFILIAL" class="form-control" type="number" placeholder="Digite a quantidade em unidades...">
+                          </div>                        
+                          <div class="form-group">
                               <label>Produto</label>
-                              <input class="form-control" placeholder="Digite o produto...">
+                              <input name="PRODNOME" class="form-control" placeholder="Digite o produto...">
                           </div>
 			<div class="form-group">
                               <label>Genêro</label>
-                              <select class="form-control">
+                              <select name="PRODGENERO" class="form-control">
                                   <option>Selecione...</option>
                                 <option value="Literatura">Literatura</option>
 	                               <option value="Romance">Romance</option>
@@ -259,27 +263,27 @@
                           </div>
                           <div class="form-group">
                               <label>Autor</label>
-                              <input class="form-control" placeholder="Digite o nome do autor...">
+                              <input name="PRODAUTOR" class="form-control" placeholder="Digite o nome do autor...">
                           </div>
                           <div class="form-group">
                               <label>Quantidade</label>
-                              <input class="form-control" placeholder="Digite a quantidade em unidades...">
+                              <input name="PRODQTD" class="form-control" type="number" placeholder="Digite a quantidade em unidades...">
                           </div>
-						  <div class="form-group">
+			  <div class="form-group">
                               <label>Valor de Compra</label>
-                              <input class="form-control" placeholder="Digite o valor de compra...">
+                              <input name="PRODVALCOMPRA" class="form-control" type="number" placeholder="Digite o valor de compra...">
                           </div>
                           
                           <div class="form-group">
                               <label>Valor de Venda</label>
-                              <input class="form-control" placeholder="Digite o valor de venda...">
+                              <input name="PRODVALVENDA" class="form-control" type="number" placeholder="Digite o valor de venda...">
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>
-                              <textarea class="form-control" placeholder="Digite a descrição do produto..." rows="3"></textarea>
+                              <textarea name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
                           </div>
                           <button type="button" class="btn btn-lg btn-default">Novo</button>
-                          <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                          <button type="submit" class="btn btn-lg btn-default">Salvar</button>
 
                 </div>
             <!-- /.container-fluid -->
