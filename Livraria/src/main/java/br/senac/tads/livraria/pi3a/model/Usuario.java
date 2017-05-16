@@ -7,9 +7,6 @@ package br.senac.tads.livraria.pi3a.model;
 
 import java.util.Date;
 
-
-
-
 /**
  *
  * @author Fernanda
@@ -26,7 +23,6 @@ public class Usuario {
     private String senha;
     private String tipoAcesso;
     private Date dataNasc;
-    private String hashSenha;
             
     public Usuario() {
 
@@ -120,7 +116,7 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-  this.hashSenha = BCrypt.hashpw(senha, BCrypt.gensalt());
+    this.senha = senha;
     }
 
     public String getTipoAcesso() {
@@ -138,17 +134,4 @@ public class Usuario {
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
-    
-    
-    
-     public String getHashSenha() {
-    return hashSenha;
-  }
-
-    
-    
-    
-    
-    
-    
 }
