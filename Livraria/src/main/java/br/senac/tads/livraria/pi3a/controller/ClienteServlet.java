@@ -39,7 +39,7 @@ public class ClienteServlet extends HttpServlet {
         request.setAttribute("listaCliente", lista);
 
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("bootstrap/cliente.jsp");
+                = request.getRequestDispatcher("bootstrap/.jsp");
         dispatcher.forward(request, response);
         
         try {

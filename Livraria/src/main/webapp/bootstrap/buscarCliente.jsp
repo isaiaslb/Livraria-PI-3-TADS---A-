@@ -160,10 +160,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
-                                <a href="empresa.html">Cadastro</a>
+                                <a href="empresa.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="#">Buscar</a>
+                                <a href="buscarEmpresa.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -171,10 +171,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produtos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
-                                <a href="produto.html">Cadastro</a>
+                                <a href="produto.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarProduto.html">Buscar</a>
+                                <a href="buscarProduto.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -182,30 +182,30 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
-                                <a href="usuario.html">Cadastro</a>
+                                <a href="usuario.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente.html">Buscar</a>
+                                <a href="buscarUsuario.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
-					<li>
+	         <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
-                                <a href="cliente.html">Cadastro</a>
+                                <a href="cliente.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente">Buscar</a>
+                                <a href="buscarCliente.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					
-					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
+		    <li>
+                        <a href="relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
                     </li>
-                    		<li>
-                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
+                    <li>
+                        <a href="venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -228,7 +228,7 @@
 
        
                   <div class="col-lg-6">
-                      <form role="form">
+                    <form role="form">
                         <div class="page-header">
                             <h2>Buscar</h2>
                         </div>
@@ -237,7 +237,8 @@
                               <input class="form-control" placeholder="Digite o CPF para busca...">
                               <button type="button" class="btn btn-lg btn-default">Pesquisa</button>
                           </div>
-                          
+                    </form>
+                    
                           <div class="form-group">
                               <label>Nome</label>
                               <input class="form-control" placeholder="Digite o nome...">

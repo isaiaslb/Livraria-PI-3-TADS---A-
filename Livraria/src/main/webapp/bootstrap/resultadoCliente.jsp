@@ -14,16 +14,17 @@
   </head>
   <body>
     <h1>Novo cliente adicionado</h1>
+    <c:forEach items="${ListaCliente}" var="contato">
       <%-- sessionScope permite obter os dados da sessão --%>
-      <h2><c:out value="${sessionScope.novoUsuario.nome}" /></h2>
-      <p><c:out value="${sessionScope.novoUsuario.cpf}" /></p>
-      <p><c:out value="${sessionScope.novoUsuario.endereco}" /></p>
-      <p><c:out value="${sessionScope.novoUsuario.bairro}" /></p>
-      <p><c:out value="${sessionScope.novoUsuario.cep}" /></p>
-      <p><c:out value="${sessionScope.novoUsuario.estado}" /></p>
-      <p><c:out value="${sessionScope.novoUsuario.cel}" /></p>
-      <p><c:out value="${sessionScope.novoUsuario.email}" /></p>
-      
+      <input value="${contato.nome}" />
+      <p value="${contato.cpf}" />
+      <p value="${contato.end}" />
+      <p value="${contato.bairro}" />
+      <p value="${contato.cep}" />
+      <p value="${contato.estado}" />
+      <p value="${contato.cel}" />
+      <p value="${contato.email}" />
+    </c:forEach>  
   </body>
   
   <%-- Apaga o valor da sessão --%>
