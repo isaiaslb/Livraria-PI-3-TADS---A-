@@ -237,7 +237,7 @@
 
                             <div class="col-lg-6">
                                  <label for="codigo" class="alinhar">Codigo: </label>
-                                <input id="codigo" name="codigo" type="text"/>                        
+                                 <input id="codigo" name="codigo" type="text"/></br></br>                        
                             </div>
 
                             <div class="col-lg-7">
@@ -245,22 +245,22 @@
                               <select class="form-control-static">
                                   <option>Selecione...</option>
                               </select>
-                              <input id="codigo"  type="text"/>
+                              <input id="codigo"  type="text"/></br></br> 
                              
                                  <label for="data" class="alinhar">Data: </label>
-                                <input id="data" name="data" type="date"/>                        
+                                <input id="data" name="data" type="date"/> </br> </br>                        
                             
                           </div>
                     <br>
                             <div class="col-lg-12">
                               <label>Produto</label>
                               <select class="form-control-static">
-                                  <option>Selecione...</option>
+                                  <option>Selecione...</option> 
                               </select>
                               <input id="codigo"  type="text"/>
                              
                                  <label for="quantidade" class="alinhar">Quantidade: </label>
-                                <input id="data" name="quantidade" type="number"/>                        
+                                <input id="data" name="quantidade" type="number"/></br> </br>                        
                                                          
                         </div>                
                           
@@ -329,19 +329,19 @@
                                 </tbody>
                             </table>
                         </div>
-                                                     <div class="col-lg-6">
+                            <div class="col-lg-6">
                                  <label for="vendedor" class="alinhar">Vendedor: </label>
                                 <input id="codigo" name="vendedor" type="text"/> 
                                 
                                 <label for="total" class="alinhar">Total: </label>
-                                <input id="total" name="total" type="text"/> 
+                                <input id="total" name="total" type="text"/> </br> </br>
                             </div>
                          
                                                      
                     </div>
                     <div class="col-lg-6">
                                  <label for="tipoAcesso" class="alinhar">Tipo de Acesso: </label>
-                                <input id="tipoAcesso" name="tipoAcesso" type="text"/> 
+                                <input id="tipoAcesso" name="tipoAcesso" type="text"/> </br> </br>
                                  <button type="button" class="btn btn-lg btn-default">Salvar</button>
                                  <button type="button" class="btn btn-lg btn-default">Sair</button>
                             </div>

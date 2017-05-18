@@ -119,7 +119,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
 		<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-dashboard"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
                                 <a href="empresa.jsp">Cadastro</a>
