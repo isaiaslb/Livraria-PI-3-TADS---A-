@@ -193,24 +193,28 @@
                       <form role="form">
                           <div>
                               
-                              <label>Pesquisa Código</label>
-                              <input class="form-control" type="number" placeholder="Digite o Código do produto..."></br>
-                              
                               <label>Pesquisa Produto</label>
-                              <input class="form-control" type="text" placeholder="Digite o Nome do produto..."></br>
+                              <input name="buscaProduto" class="form-control" type="text" placeholder="Digite o Nome do produto..."></br>
                               
-                              <button type="button" class="btn btn-lg btn-default">Pesquisar</button>
+                              <label>Pesquisa Autor</label>
+                              <input name="buscaAutor" class="form-control" type="text" placeholder="Digite o Nome do Autor..."></br>
+                              
+                              <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>
                               <button type="button" class="btn btn-lg btn-default">Limpar</button></br></br>
                               
                           </div>
                           
                           <div class="form-group">
                               <label>Produto</label>
-                              <input class="form-control" placeholder="Digite o produto..." disabled="">
+                              <input name="PRODNOME" class="form-control" placeholder="" disabled="true">
                           </div>
                           <div class="form-group">
+                              <label>Autor</label>
+                              <input name="PRODAUTOR" class="form-control" placeholder="" disabled="true">
+                          </div>                          
+                          <div class="form-group">
                               <label>Genêro</label>
-                              <select class="form-control" disabled="">
+                              <select name="PRODGENERO" class="form-control" disabled="true">
                                   <option>Selecione...</option>
                                 <option value="Literatura">Literatura</option>
 	                               <option value="Romance">Romance</option>
@@ -222,128 +226,28 @@
                               </select>
                           </div>
                           <div class="form-group">
-                              <label>Autor</label>
-                              <input class="form-control" placeholder="Digite o nome do autor..." disabled="">
-                          </div>
-                          <div class="form-group">
                               <label>Quantidade</label>
-                              <input class="form-control" placeholder="Digite a quantidade em unidades..." disabled="">
+                              <input name="PRODQTD" class="form-control" placeholder="" disabled="true">
                           </div>
-						  <div class="form-group">
+			  <div class="form-group">
                               <label>Valor de Compra</label>
-                              <input class="form-control" placeholder="Digite o valor de compra..." disabled="">
+                              <input name="PRODVALCOMPRA" class="form-control" placeholder="" disabled="true">
                           </div>
                           
                           <div class="form-group">
                               <label>Valor de Venda</label>
-                              <input class="form-control" placeholder="Digite o valor de venda..." disabled="">
+                              <input name="PRODVALVENDA" class="form-control" placeholder="" disabled="true">
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>
-                              <textarea class="form-control" placeholder="Digite a descrição do produto..." rows="3" disabled=""></textarea>
+                              <textarea name="PRODDESC" class="form-control" placeholder="" rows="3" disabled="true"></textarea>
                           </div>
                           <div class="form-group">
-                              <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                              <button type="button" class="btn btn-lg btn-default">Excluir</button>
+                              <button type="submit" class="btn btn-lg btn-default">Editar</button>
                           </div>    
                           
                 </div>
             <!-- /.container-fluid -->
-                <div class="row">
-                     <div class="col-lg-12">        
-                     
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Código</th>
-                                        <th>Produto</th>
-                                        <th>Autor</th>
-                                        <th>Genêro</th>
-                                        <th>Quantidade</th>
-                                        <th>Valor</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-            </div>
 
         </div>
         <!-- /#page-wrapper -->
