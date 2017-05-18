@@ -53,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Astec</a>
+                <a class="navbar-brand" href="index.jsp">Astec</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -163,10 +163,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
-                                <a href="empresa.html">Cadastro</a>
+                                <a href="empresa.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarEmpresa.html">Buscar</a>
+                                <a href="buscarEmpresa.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -174,10 +174,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
-                                <a href="produto.html">Cadastro</a>
+                                <a href="produto.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarProduto.html">Buscar</a>
+                                <a href="buscarProduto.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -185,10 +185,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
-                                <a href="usuario.html">Cadastro</a>
+                                <a href="usuario.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarUsuario.html">Buscar</a>
+                                <a href="buscarUsuario.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -196,44 +196,21 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
-                                <a href="cliente.html">Cadastro</a>
+                                <a href="cliente.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente.html">Buscar</a>
+                                <a href="buscarCliente.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					
                     <li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
+                        <a href="relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
                     </li>
                     <li>
-                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
+                        <a href="venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
-                    <!--
-					<li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-					<li>
-						<a href="charts.html"><i class="fa fa-fw fa-bar--o"></i> Cadastro de Empresa</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li> 
-					<li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
-					
-					-->
+                    
                     
                 </ul>
             </div>

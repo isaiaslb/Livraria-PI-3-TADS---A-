@@ -37,8 +37,8 @@ public class UsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nome = request.getParameter("nome");        
-        
+        String nome = request.getParameter("nome");
+
         String sexo = request.getParameter("sexo");
         String email = request.getParameter("email");
         String fixo = request.getParameter("telefone");
@@ -48,34 +48,26 @@ public class UsuarioServlet extends HttpServlet {
         String tipoAcesso = request.getParameter("tipoAcesso");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dataNasc;
-        
+
         try {
             dataNasc = sdf.parse(request.getParameter("dataNasc"));
             Usuario novo = new Usuario(nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
             UsuarioDAO dao = new UsuarioDAO();
             dao.incluirComTransacao(novo);
-            
+
             HttpSession sessao = request.getSession();
-        sessao.setAttribute("novoUsuario", novo);
-        response.sendRedirect("resultado.jsp");
-            
-            
+            sessao.setAttribute("novoUsuario", novo);
+            response.sendRedirect("resultado.jsp");
+
         } catch (ParseException ex) {
             Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-        
-
         // Cria um novo contato e salva
         // através do DAO
-       
-
         // Usa a sessao para manter os dados após
         // redirect (técnica POST-REDIRECT-GET),
         // usado para evitar dupla submissão dos
         // dados
-        
-
     }
 }

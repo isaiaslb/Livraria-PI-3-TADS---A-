@@ -50,12 +50,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="index.jsp">Astec</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
                             <a href="#">
@@ -65,7 +64,7 @@
                                     </span>
                                     <div class="media-body">
                                         <h5 class="media-heading">
-                                            <strong>John Smith</strong>
+                                            <strong>Login</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -81,7 +80,7 @@
                                     </span>
                                     <div class="media-body">
                                         <h5 class="media-heading">
-                                            <strong>John Smith</strong>
+                                            <strong>Log in</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -97,7 +96,7 @@
                                     </span>
                                     <div class="media-body">
                                         <h5 class="media-heading">
-                                            <strong>John Smith</strong>
+                                            <strong>Log in</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -111,45 +110,8 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Log in <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
                         <li>
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -163,10 +125,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresas <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
-                                <a href="empresa.html">Cadastro</a>
+                                <a href="empresa.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarEmpresa.html">Buscar</a>
+                                <a href="buscarEmpresa.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -174,10 +136,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
-                                <a href="produto.html">Cadastro</a>
+                                <a href="produto.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarProduto.html">Buscar</a>
+                                <a href="buscarProduto.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -185,10 +147,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
-                                <a href="usuario.html">Cadastro</a>
+                                <a href="usuario.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarUsuario.html">Buscar</a>
+                                <a href="buscarUsuario.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -196,19 +158,19 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
-                                <a href="cliente.html">Cadastro</a>
+                                <a href="cliente.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente.html">Buscar</a>
+                                <a href="buscarCliente.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					
 					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
+                        <a href="relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
                     </li>
                     		<li>
-                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
+                        <a href="venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -225,12 +187,6 @@
                         <h1 class="page-header">
                            Relatório
                         </h1>
-                        <ol class="breadcrumb">
-                            
-                            <li class="active">
-                                <i class="fa fa-list-alt"></i> Relatório
-                            </li>
-                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -239,15 +195,14 @@
 
                 <form role="form"> 
                             <div class="col-lg-6">
-                                 <label for="data" class="alinhar">Data Inicial: </label>
+                                <label for="data" class="alinhar">Data Inicial: </label>
                                 <input id="data" name="data" type="date"/></br>                        
                             </div>
                             <div class="col-lg-6">
                                 <label for="data" class="alinhar">Data Final: </label>
-                                <input id="data" name="data" type="date"/></br>
-                                
+                                <input id="data" name="data" type="date"/></br></br>
                             </div>
-                            <button type="button" class="btn btn-lg btn-default">Gerar</button>                       
+                            <button type="button" class="btn btn-lg btn-default">Gerar</button>                  
                         </div>
                     </div>
                 </form>

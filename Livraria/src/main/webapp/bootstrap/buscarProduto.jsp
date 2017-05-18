@@ -50,12 +50,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="index.jsp">Astec</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
                             <a href="#">
@@ -64,7 +63,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Log in</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -79,7 +78,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Log in</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -94,7 +93,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Log in</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -108,45 +107,8 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Log in <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
                         <li>
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
@@ -160,10 +122,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="emp" class="collapse">
                             <li>
-                                <a href="empresa.html">Cadastro</a>
+                                <a href="empresa.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarEmpresa.html">Buscar</a>
+                                <a href="buscarEmpresa.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -171,21 +133,21 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="prod" class="collapse">
                             <li>
-                                <a href="produto.html">Cadastro</a>
+                                <a href="produto.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarProduto.html">Buscar</a>
+                                <a href="buscarProduto.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					<li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuário <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="usu" class="collapse">
                             <li>
-                                <a href="usuario.html">Cadastro</a>
+                                <a href="usuario.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarUsuario.html">Buscar</a>
+                                <a href="buscarUsuario.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -193,19 +155,19 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
-                                <a href="cliente.html">Cadastro</a>
+                                <a href="cliente.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente.html">Buscar</a>
+                                <a href="buscarCliente.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
 					
 					<li>
-                        <a href="relatorio.html"><i class="fa fa-fw fa-list-alt"></i> Relatorio</a>
+                        <a href="relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
                     </li>
                     <li>
-                        <a href="venda.html"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
+                        <a href="venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
                     </li>
                 </ul>
             </div>
@@ -220,16 +182,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Produto
+                            Buscar produto
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-book"></i> Produto
-                            </li>
-                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -237,25 +191,26 @@
        
                   <div class="col-lg-6">
                       <form role="form">
-                        <div class="page-header">
-                            <h2>Buscar</h2>
-                        </div>
-                          <div class="page-header">
+                          <div>
+                              
                               <label>Pesquisa Código</label>
-                              <input class="form-control" type="number" placeholder="Digite o Código do produto...">
+                              <input class="form-control" type="number" placeholder="Digite o Código do produto..."></br>
+                              
                               <label>Pesquisa Produto</label>
-                              <input class="form-control" type="text" placeholder="Digite o Nome do produto...">                              
+                              <input class="form-control" type="text" placeholder="Digite o Nome do produto..."></br>
+                              
                               <button type="button" class="btn btn-lg btn-default">Pesquisar</button>
-                              <button type="button" class="btn btn-lg btn-default">Limpar</button>
+                              <button type="button" class="btn btn-lg btn-default">Limpar</button></br></br>
+                              
                           </div>
                           
                           <div class="form-group">
                               <label>Produto</label>
-                              <input class="form-control" placeholder="Digite o produto...">
+                              <input class="form-control" placeholder="Digite o produto..." disabled="">
                           </div>
                           <div class="form-group">
                               <label>Genêro</label>
-                              <select class="form-control">
+                              <select class="form-control" disabled="">
                                   <option>Selecione...</option>
                                 <option value="Literatura">Literatura</option>
 	                               <option value="Romance">Romance</option>
@@ -268,24 +223,24 @@
                           </div>
                           <div class="form-group">
                               <label>Autor</label>
-                              <input class="form-control" placeholder="Digite o nome do autor...">
+                              <input class="form-control" placeholder="Digite o nome do autor..." disabled="">
                           </div>
                           <div class="form-group">
                               <label>Quantidade</label>
-                              <input class="form-control" placeholder="Digite a quantidade em unidades...">
+                              <input class="form-control" placeholder="Digite a quantidade em unidades..." disabled="">
                           </div>
 						  <div class="form-group">
                               <label>Valor de Compra</label>
-                              <input class="form-control" placeholder="Digite o valor de compra...">
+                              <input class="form-control" placeholder="Digite o valor de compra..." disabled="">
                           </div>
                           
                           <div class="form-group">
                               <label>Valor de Venda</label>
-                              <input class="form-control" placeholder="Digite o valor de venda...">
+                              <input class="form-control" placeholder="Digite o valor de venda..." disabled="">
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>
-                              <textarea class="form-control" placeholder="Digite a descrição do produto..." rows="3"></textarea>
+                              <textarea class="form-control" placeholder="Digite a descrição do produto..." rows="3" disabled=""></textarea>
                           </div>
                           <div class="form-group">
                               <button type="button" class="btn btn-lg btn-default">Salvar</button>
