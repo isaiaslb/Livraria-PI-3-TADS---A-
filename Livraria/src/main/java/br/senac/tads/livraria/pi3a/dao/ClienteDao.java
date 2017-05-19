@@ -28,8 +28,7 @@ public class ClienteDao extends ConexaoBD {
         Connection conn = null;
         Cliente p = null;
 
-        String sql = "SELECT nome, cpf, endereco, bairro, cep, estado, cel, email"
-                + "FROM bdlivraria WHERE cpf = ?";
+        String sql = "SELECT * FROM cliente where cpf = ?";
 
         try {
             conn = obterConexao();
