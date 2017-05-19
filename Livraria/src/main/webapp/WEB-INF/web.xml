@@ -16,6 +16,7 @@
         <servlet-name>BuscarUsuario</servlet-name>
         <servlet-class>br.senac.tads.livraria.pi3a.controller.BuscarUsuario</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>EmpresaServlet</servlet-name>
         <url-pattern>/EmpresaServlet</url-pattern>

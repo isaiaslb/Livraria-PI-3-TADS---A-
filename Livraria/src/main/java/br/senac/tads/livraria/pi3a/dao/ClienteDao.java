@@ -23,34 +23,41 @@ import java.util.logging.Logger;
  */
 public class ClienteDao extends ConexaoBD {
 
-    public Cliente obterContato(int idCliente) {
+    public Cliente obterCliente(String idCliente) {
         PreparedStatement stmt = null;
         Connection conn = null;
         Cliente p = null;
 
-        String sql = "SELECT nome, cpf, endereco, bairro, cep, estado, cel, email"
-                + "FROM bdlivraria WHERE cod_user = ?";
+        String sql = "SELECT * FROM cliente where cpf = ?";
 
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
-            stmt.setLong(1, idCliente);
+            stmt.setString(1, idCliente);
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-                int id = resultados.getInt("COD_CLI");
-                String nome = resultados.getString("nome");
-                String cpf = resultados.getString("cpf");
-                String endereco = resultados.getString("endereco");
-                String bairro = resultados.getString("bairro");
-                String cep = resultados.getString("cep");
-                String estado = resultados.getString("estado");
-                String cel = resultados.getString("cel");
-                String email = resultados.getString("email");
-                
-                
-                p = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
-                break;
+//                int id = resultados.getInt("COD_CLI");
+//                String nome = resultados.getString("nome");
+//                String cpf = resultados.getString("cpf");
+//                String endereco = resultados.getString("endereco");
+//                String bairro = resultados.getString("bairro");
+//                String cep = resultados.getString("cep");
+//                String estado = resultados.getString("estado");
+//                String cel = resultados.getString("cel");
+//                String email = resultados.getString("email");                
+               // p.setId(resultados.getInt("cod_cli"));
+                p.setNome(resultados.getString("nome"));
+                p.setNome(resultados.getString("cpf"));
+                p.setNome(resultados.getString("endereco"));
+                p.setNome(resultados.getString("bairro"));
+                p.setNome(resultados.getString("cep"));
+                p.setNome(resultados.getString("estado"));
+                p.setNome(resultados.getString("cel"));
+                p.setNome(resultados.getString("email"));
+
+//                p = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
+//                break;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -190,37 +190,37 @@
 
        
                   <div class="col-lg-6">
-                    <form role="form">
+                    <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
                           <div>
                               <label>Pesquisa CPF</label>
-                              <input class="form-control" placeholder="Digite o CPF para busca..."></br>
-                              <button type="button" class="btn btn-lg btn-default">Pesquisa</button></br></br>
+                              <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
+                              <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                           </div>
                     </form>
                     
                           <div class="form-group">
                               <label>Nome</label>
-                              <input class="form-control" placeholder="Digite o nome..." disabled="">
+                              <input class="form-control" value="${listaCliente.nome}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input class="form-control" placeholder="Digite o CPF..." disabled="">
+                              <input class="form-control" value="${p.cpf}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" placeholder="Digite seu endereço..." disabled="">
+                              <input class="form-control" value="${p.endereco}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" placeholder="Digite o bairro..." disabled="">
+                              <input class="form-control" value="${p.bairro}" disabled="">
                           </div>
-						  <div class="form-group">
+			  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" placeholder="Digite o CEP..." disabled="">
+                              <input class="form-control" value="${p.cep}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
-                              <select class="form-control" disabled="">
+                              <select class="form-control" value="${p.estado}" disabled="">
                                   <option>Selecione...</option>
                                 <option value="AC">Acre</option>
 	                               <option value="AL">Alagoas</option>
@@ -253,11 +253,11 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input class="form-control" placeholder="Digite o Celular..." disabled="">
+                              <input class="form-control" value="${p.cel}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" placeholder=" Digite o Email..." disabled="">
+                              <input class="form-control" value="${p.email}" disabled="">
                           </div>
                           <button type="button" class="btn btn-lg btn-default">Salvar</button>
                           <button type="button" class="btn btn-lg btn-default">Excluir</button>
