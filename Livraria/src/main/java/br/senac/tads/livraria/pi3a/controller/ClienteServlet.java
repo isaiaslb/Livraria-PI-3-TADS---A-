@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
  *
  * @author Douglas
  */
-
 @WebServlet(name = "ClienteServlet", urlPatterns = {"/teste"})
 public class ClienteServlet extends HttpServlet {
 
@@ -30,23 +29,9 @@ public class ClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Usuario.jsp");
-        String papel = request.getParameter("papel");
-        request.setAttribute("papelCliente", papel);
-
-        ClienteDao dao = new ClienteDao();
-        List<Cliente> lista = dao.listar();
-
-        request.setAttribute("listaCliente", lista);
-
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("bootstrap/.jsp");
+                = request.getRequestDispatcher("cliente.jsp");
         dispatcher.forward(request, response);
-        
-        try {
-            dispatcher.forward(request, response);
-        } catch (IOException ex) {
-
-        }
 
     }
 
