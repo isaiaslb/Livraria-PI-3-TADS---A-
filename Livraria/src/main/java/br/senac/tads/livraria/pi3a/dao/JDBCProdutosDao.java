@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Marcus
  */
-public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
+public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao{
 
     Connection conn = null;
 
@@ -38,7 +38,6 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
         }
     }
 
-    @Override
     public void inserir(Produtos produto) {
         try {
 
@@ -60,27 +59,25 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             //conecta.close();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException ("Erro ao incluir um novo registro de produtos JDBCProdutosDao");
+            throw new RuntimeException("Erro ao incluir um novo registro de produtos JDBCProdutosDao");
         }
     }
 
-    @Override
     public void remover(int id) {
         try {
             String sql = "DELETE FROM PRODUTOS WHERE PRODID= ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
-            
+
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException ("Erro ao deletar registro de produtos JDBCProdutosDao");
+            throw new RuntimeException("Erro ao deletar registro de produtos JDBCProdutosDao");
         }
-        
+
     }
 
-    @Override
     public List<Produtos> listar() {
         List<Produtos> produtos = new ArrayList<Produtos>();
         try {
@@ -99,7 +96,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
                 produto.setValVendaProd(rs.getDouble("PRODVALVENDA"));
                 produto.setDescProd(rs.getString("PRODDESC"));
                 produtos.add(produto);
-                
+
                 ps.close();
                 rs.close();
             }
@@ -111,49 +108,88 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
 
     }
 
-    @Override
-    public Produtos buscar(String produto, String autor) {
-        try {
-            Produtos p = new Produtos();
-            String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ? OR PRODAUTOR = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            
+    public Produtos buscar(String produto, String autor)  {
+
+        // String sql = "SELECT * FROM produtos WHERE id_produtos = " + id + " AND deletado_produtos = false";
+        String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ?";
+
+        try (
+                //Cria um statement para executar as instruções SQL
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, produto);
-            ps.setString(2, autor);
+            //Cria o objeto que recebe o resultado da  query executada
             ResultSet rs = ps.executeQuery();
-            
-            rs.next();
-            
-            //p.setIdProd(rs.getInt("PRODID"));
-            p.setFilialProd(rs.getInt("PRODFILIAL"));
-            p.setNomeProd(rs.getString("PRODNOME"));
-            p.setAutorProd(rs.getString("PRODAUTOR"));
-            p.setGeneroProd(rs.getString("PRODGENERO"));
-            p.setQtdProd(rs.getInt("PRODQTD"));
-            p.setValCompraProd(rs.getDouble("PRODVALCOMPRA"));
-            p.setValVendaProd(rs.getDouble("PRODVALVENDA"));
-            p.setDescProd(rs.getString("PRODDESC"));
-            
-            ps.close();
+
+            //Percorre o resultado da query criando e adicionando os clientes 
+            //encotrados na lista de clientes inicialmente declarada.
+            while (rs.next()) {
+                Produtos produtos = new Produtos();
+
+                produtos.setIdProd(rs.getInt("PRODID"));
+                produtos.setFilialProd(rs.getInt("PRODFILIAL"));
+                produtos.setNomeProd(rs.getString("PRODNOME"));
+                produtos.setGeneroProd(rs.getString("PRODGENERO"));
+                produtos.setAutorProd(rs.getString("PRODAUTOR"));
+                produtos.setQtdProd(rs.getInt("PRODQTD"));
+                produtos.setValCompraProd(rs.getDouble("PRODVALCOMPRA"));
+                produtos.setValVendaProd(rs.getInt("PRODVALVENDA"));
+                produtos.setDescProd(rs.getString("PRODDESC"));
+
+                return produtos;
+
+            }
+
             rs.close();
-            
-            return p;
-                        
+            ps.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Erro ao buscar registro de produtos JDBCProdutosDao");
         }
-        
+        return null;
     }
+        
 
-    @Override
+//        try {
+//            Produtos p = new Produtos();
+//            String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ? OR PRODAUTOR = ?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            
+//            ps.setString(1, produto);
+//            ps.setString(2, autor);
+//            ResultSet rs = ps.executeQuery();
+//            
+//            rs.next();
+//            
+//            //p.setIdProd(rs.getInt("PRODID"));
+//            p.setFilialProd(rs.getInt("PRODFILIAL"));
+//            p.setNomeProd(rs.getString("PRODNOME"));
+//            p.setAutorProd(rs.getString("PRODAUTOR"));
+//            p.setGeneroProd(rs.getString("PRODGENERO"));
+//            p.setQtdProd(rs.getInt("PRODQTD"));
+//            p.setValCompraProd(rs.getDouble("PRODVALCOMPRA"));
+//            p.setValVendaProd(rs.getDouble("PRODVALVENDA"));
+//            p.setDescProd(rs.getString("PRODDESC"));
+//            
+//            ps.close();
+//            rs.close();
+//            
+//            return p;
+//                        
+//        } catch (SQLException ex) {
+//            Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
+//            throw new RuntimeException("Erro ao buscar registro de produtos JDBCProdutosDao");
+//        }
+//        
+    
+
     public void alterar(Produtos produto) {
         try {
             String sql = "UPDATE PRODUTOS SET PRODFILIAL=?,PRODNOME=?,PRODAUTOR=?,"
-                    +"PRODGENERO=?,PRODQTD=?,PRODVALCOMPRA=?,PRODVALVENDA=?,PRODDESC=? WHERE PRODID=?";
-            
+                    + "PRODGENERO=?,PRODQTD=?,PRODVALCOMPRA=?,PRODVALVENDA=?,PRODDESC=? WHERE PRODID=?";
+
             PreparedStatement ps = conn.prepareStatement(sql);
-            
+
             ps.setInt(1, produto.getFilialProd());
             ps.setString(2, produto.getNomeProd());
             ps.setString(3, produto.getAutorProd());
@@ -163,11 +199,11 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.setDouble(7, produto.getValVendaProd());
             ps.setString(8, produto.getDescProd());
             //ps.setInt(9, produto.getId());
-            
+
             ps.executeUpdate();
-            
+
             ps.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Erro ao atualizar o registro de produtos JDBCProdutosDao");
