@@ -19,13 +19,13 @@
     <title>Livraria Astec</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/bootstrap/css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -204,23 +204,23 @@
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input class="form-control" value="${p.cpf}" disabled="">
+                              <input class="form-control" value="${listaCliente.cpf}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" value="${p.endereco}" disabled="">
+                              <input class="form-control" value="${listaCliente.end}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" value="${p.bairro}" disabled="">
+                              <input class="form-control" value="${listaCliente.bairro}" disabled="">
                           </div>
 			  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" value="${p.cep}" disabled="">
+                              <input class="form-control" value="${listaCliente.cep}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
-                              <select class="form-control" value="${p.estado}" disabled="">
+                              <select class="form-control" name="estado" value="${listaCliente.estado}" >
                                   <option>Selecione...</option>
                                 <option value="AC">Acre</option>
 	                               <option value="AL">Alagoas</option>
@@ -253,11 +253,11 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input class="form-control" value="${p.cel}" disabled="">
+                              <input class="form-control" value="${listaCliente.cel}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" value="${p.email}" disabled="">
+                              <input class="form-control" value="${listaCliente.email}" disabled="">
                           </div>
                           <button type="button" class="btn btn-lg btn-default">Salvar</button>
                           <button type="button" class="btn btn-lg btn-default">Excluir</button>

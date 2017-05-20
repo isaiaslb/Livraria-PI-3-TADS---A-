@@ -26,13 +26,14 @@ public class ClienteDao extends ConexaoBD {
     public Cliente obterCliente(String idCliente) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        Cliente p = null;
+        Cliente p = new Cliente();
 
         String sql = "SELECT * FROM cliente where cpf = ?";
 
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
+            System.out.println(idCliente);
             stmt.setString(1, idCliente);
             ResultSet resultados = stmt.executeQuery();
 
@@ -46,15 +47,15 @@ public class ClienteDao extends ConexaoBD {
 //                String estado = resultados.getString("estado");
 //                String cel = resultados.getString("cel");
 //                String email = resultados.getString("email");                
-               // p.setId(resultados.getInt("cod_cli"));
+                //p.setId(resultados.getInt("cod_cli"));
                 p.setNome(resultados.getString("nome"));
-                p.setNome(resultados.getString("cpf"));
-                p.setNome(resultados.getString("endereco"));
-                p.setNome(resultados.getString("bairro"));
-                p.setNome(resultados.getString("cep"));
-                p.setNome(resultados.getString("estado"));
-                p.setNome(resultados.getString("cel"));
-                p.setNome(resultados.getString("email"));
+                p.setCpf(resultados.getString("cpf"));
+                p.setEnd(resultados.getString("endereco"));
+                p.setBairro(resultados.getString("bairro"));
+                p.setCep(resultados.getString("cep"));
+                p.setEstado(resultados.getString("estado"));
+                p.setCel(resultados.getString("cel"));
+                p.setEmail(resultados.getString("email"));
 
 //                p = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
 //                break;

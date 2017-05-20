@@ -111,7 +111,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao{
     public Produtos buscar(String produto, String autor)  {
 
         // String sql = "SELECT * FROM produtos WHERE id_produtos = " + id + " AND deletado_produtos = false";
-        String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ?";
+        String sql = "SELECT * FROM PRODUTOS WHERE nome_prod = ?";
 
         try (
                 //Cria um statement para executar as instruções SQL

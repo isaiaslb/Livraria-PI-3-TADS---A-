@@ -184,7 +184,7 @@
                               <input name="buscaProduto" class="form-control" type="text" placeholder="Digite o Nome do produto..."></br>
                               
                               <label>Pesquisa Autor</label>
-                              <input name="buscaAutor" class="form-control" type="text" placeholder="Digite o Nome do Autor..."></br>
+                              <input name="buscaAutor" class="form-control" type="text" placeholder="Digite o Nome do Autor..."/></br>
                               
                               <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>
                               <button type="button" class="btn btn-lg btn-default">Limpar</button></br></br>
