@@ -38,7 +38,6 @@
     <![endif]-->
 
 </head>
-
 <body>
 
     <div id="wrapper">
@@ -193,23 +192,24 @@
                       <form role="form" action="${pageContext.request.contextPath}/teste" method="post">
                           <div class="form-group">
                               <label>Nome</label>
-                              <input class="form-control" name="nome" placeholder="Digite o nome...">
+                              <input class="form-control" maxlength="150" name="nome" placeholder="Digite o nome..." required />
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input class="form-control" name="cpf" placeholder="Digite o CPF...">
+                              <input type="text" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
+                              
                           </div>
                           <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" name="endereco" placeholder="Digite seu endereço...">
+                              <input class="form-control" name="endereco" maxlength="100" placeholder="Digite seu endereço..." />
                           </div>
                           <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" name="bairro" placeholder="Digite o bairro...">
+                              <input class="form-control" name="bairro" maxlength="100" placeholder="Digite o bairro..." />
                           </div>
 	                  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" name="cep" placeholder="Digite o CEP...">
+                              <input class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
@@ -246,13 +246,13 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input class="form-control" name="cel" placeholder="Digite o Celular...">
+                              <input type="tel" class="form-control" maxlength="11" name="cel" placeholder="Digite o Celular...">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" name="email" placeholder="Email...">
+                              <input class="form-control" type="email" maxlength="100" name="email" placeholder="Email..." required>
                           </div>
-                          <button type="button" class="btn btn-lg btn-default">Novo</button>
+                          <button type="reset" class="btn btn-lg btn-default">Novo</button>
                           <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>
                       </form>      
                   </div>

@@ -33,6 +33,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript">
+        function habilita_a(){
+            document.getElementsByTagName('input').disabled = false; //Habilitando
+        }
+    </script>
 
 </head>
 
@@ -155,10 +161,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="cli" class="collapse">
                             <li>
-                                <a href="cliente.jsp">Cadastro</a>
+                                <a href="${pageContext.request.contextPath}/bootstrap/cliente.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="buscarCliente.jsp">Buscar</a>
+                                <a href="${pageContext.request.contextPath}/bootstrap/buscarCliente.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>
@@ -200,27 +206,27 @@
                     
                           <div class="form-group">
                               <label>Nome</label>
-                              <input class="form-control" value="${listaCliente.nome}" disabled="">
+                              <input class="form-control" id="a" value="${listaCliente.nome}" disabled />
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input class="form-control" value="${listaCliente.cpf}" disabled="">
+                              <input class="form-control" value="${listaCliente.cpf}" disabled />
                           </div>
                           <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" value="${listaCliente.end}" disabled="">
+                              <input class="form-control" id="a" value="${listaCliente.end}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" value="${listaCliente.bairro}" disabled="">
+                              <input class="form-control" id="a" value="${listaCliente.bairro}" disabled="">
                           </div>
 			  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" value="${listaCliente.cep}" disabled="">
+                              <input class="form-control" id="a" value="${listaCliente.cep}" disabled="">
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
-                              <select class="form-control" name="estado" value="${listaCliente.estado}" >
+                              <select class="form-control" id="a" name="estado" value="${listaCliente.estado}" disabled="">
                                   <option>Selecione...</option>
                                 <option value="AC">Acre</option>
 	                               <option value="AL">Alagoas</option>
@@ -253,13 +259,14 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input class="form-control" value="${listaCliente.cel}" disabled="">
+                              <input class="form-control" id="a" value="${listaCliente.cel}" disabled>
                           </div>
                           <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" value="${listaCliente.email}" disabled="">
+                              <input class="form-control" id="a" value="${listaCliente.email}" disabled>
                           </div>
                           <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                          <button type="submit" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
                           <button type="button" class="btn btn-lg btn-default">Excluir</button>
                          
                 </div>
@@ -272,10 +279,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
     
     </body>
     
