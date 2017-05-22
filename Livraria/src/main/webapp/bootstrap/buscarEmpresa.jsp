@@ -1,7 +1,7 @@
 <%-- 
     Document   : buscarEmpresa
     Created on : 09/05/2017, 10:25:25
-    Author     : Fernanda
+    Author     : Antonio
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -192,22 +192,25 @@
                 <!-- Main jumbotron for a primary marketing message or call to action -->
                 
                <div class="col-lg-6">
-                        <form role="form">
+                        <form action="${pageContext.request.contextPath}/EmpresaServlet" method="post">
+                           
                             <div class="form-group">
                                 <label>CNPJ</label>
                                
-                                <input class="form-control" placeholder="Digite o CNPJ"><br>
+                                <input  class="form-control" name="buscarCnpj" placeholder="Digite o CNPJ"><br>
                                 
-                                   <button type="button" class="btn btn-lg btn-default">Pesquisar</button>
-                                    <button type="button" class="btn btn-lg btn-default">Limpar</button>
+                                   <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>
+                                                                       
                             </div>
+                            
                            <div class="form-group">
                               <label>Razão Social</label>
-                              <input class="form-control" placeholder="" disabled="">
+                              <input  class="form-control"  id="e" value="${listaEmpresa.razao}" disabled="">
                           </div>
+                                                                                    
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input class="form-control" placeholder="" disabled="">
+                              <input  class="form-control" placeholder="" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
@@ -215,7 +218,7 @@
                           </div>
                             <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" placeholder="" disabled="">
+                              <input  class="form-control" placeholder="" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Numero</label>
@@ -271,8 +274,9 @@
                               </select>
                           </div>
                             
-                            <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                                    <button type="button" class="btn btn-lg btn-default">Excluir</button>
+                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>
+                            <button type="submit" class="btn btn-lg btn-default">Editar</button>
+                                    <button type="submit"class="btn btn-lg btn-default">Excluir</button>
                             <!---row row-->
 
                 </div>
