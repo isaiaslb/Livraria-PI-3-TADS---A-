@@ -11,7 +11,7 @@ package br.senac.tads.livraria.pi3a.model;
  */
 public class Produtos {
     //private int id;
-    private int prodId;   
+    //private int prodId;   
     private int prodFilial;
     private String prodNome;
     private String prodAutor;
@@ -36,65 +36,66 @@ public class Produtos {
     this.prodValVenda = valVenda;
     this.prodDesc = descricao;
   }      
-    public int getIdProd(){
+  /*  public int getIdProd(){
         return prodId;
     }
     
     public void setIdProd(int id){
         this.prodId = id;
     }
+    */
     
-    public int getFilialProd(){
+    public int getProdFilial(){
         return prodFilial;
     }
     
-    public void setFilialProd(int filial){
+    public void setProdFilial(int filial){
         this.prodFilial = filial;
     }
     
-    public String getNomeProd(){
+    public String getProdNome(){
         return prodNome;
     }
     
-    public void setNomeProd(String nome){
+    public void setProdNome(String nome){
         this.prodNome = nome;
     }
     
-    public String getAutorProd(){
+    public String getProdAutor(){
         return prodAutor;
     }
     
-    public void setAutorProd(String autor){
+    public void setProdAutor(String autor){
         this.prodAutor = autor;
     }
-    public String getGeneroProd(){
+    public String getProdGenero(){
         return prodGenero;        
     }
-    public void setGeneroProd(String genero){
+    public void setProdGenero(String genero){
         this.prodGenero = genero;
     }
-    public int getQtdProd(){
+    public int getProdQtd(){
         return prodQtd;
     }
-    public void setQtdProd(int qtd){
+    public void setProdQtd(int qtd){
         this.prodQtd = qtd;
     }
-    public double getValCompraProd(){
+    public double getProdValCompra(){
         return prodValCompra;
     }
-    public void setValCompraProd(double vCompra){
+    public void setProdValCompra(double vCompra){
         this.prodValCompra = vCompra;
     }
-    public double getValVendaProd(){
+    public double getProdValVenda(){
         return prodValVenda;
     }
-    public void setValVendaProd(double vVenda){
+    public void setProdValVenda(double vVenda){
         this.prodValVenda = vVenda;
     }
-    public String getDescProd(){
+    public String getProdDesc(){
         return prodDesc;
     }
-    public void setDescProd(String desc){
+    public void setProdDesc(String desc){
         this.prodDesc = desc;
     }
 

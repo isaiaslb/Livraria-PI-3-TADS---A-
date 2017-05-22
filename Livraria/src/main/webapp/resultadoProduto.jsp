@@ -18,13 +18,13 @@
       <%-- sessionScope permite obter os dados da sessão --%>
       
       
-      <p><c:out value="${sessionScope.novoProduto.prodnome}" /></p>
-      <p><c:out value="${sessionScope.novoProduto.prodgenero}" /></p>
-      <p><c:out value="${sessionScope.novoProduto.prodautor}" /></p>
-      <p><c:out value="${sessionScope.novoProduto.prodqtd}" /></p>
-      <p><c:out value="${sessionScope.novoProduto.prodvalcompra}" /></p>
-      <p><c:out value="${sessionScope.novoProduto.prodvalvenda}" /></p>
-      <p><c:out value="${sessionScope.novoProduto.proddesc}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodNome}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodGenero}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodAutor}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodQtd}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodValCompra}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodValVenda}" /></p>
+      <p><c:out value="${sessionScope.novoProduto.prodDesc}" /></p>
       
   </body>
   
