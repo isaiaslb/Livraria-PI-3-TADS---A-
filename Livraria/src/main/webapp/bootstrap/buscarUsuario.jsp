@@ -1,7 +1,7 @@
 <%-- 
     Document   : buscarUsuario
     Created on : 09/05/2017, 10:19:20
-    Author     : Fernanda
+    Author     : Isaias
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,13 +19,13 @@
         <title>Livraria Astec</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="${pageContext.request.contextPath}/bootstrap/css/sb-admin.css" rel="stylesheet">
+        <link href="css/sb-admin.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="${pageContext.request.contextPath}/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -108,10 +108,10 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${usuAutenticado.nome} <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Log in <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/Autenticador"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -194,22 +194,24 @@
                     <div class="col-lg-6">
 
                         <form role="form">
-                            <div class="form-group">
-                                <label>Buscar</label>
-                                <input class="form-control" placeholder="Digite a busca..."></br>
-                                <button type="button" class="btn btn-lg btn-default">Buscar</button>
-                            </div>
+                             <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
+                          <div>
+                              <label>Buscar</label>
+                              <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
+                              <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
+                          </div>
+                    </form>
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="form-control" name="nome" value="${usuario.nome}" disabled="">
+                                <input class="form-control" name="nome" value="${listaCliente.nome}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
-                                <input class="form-control" type="date" disabled="">
+                                <input class="form-control" name="dataNasc" id="dataNasc" value="${listaCliente.nome}" type="date" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Sexo</label>
-                                <select class="form-control" disabled="">
+                                <select class="form-control" name="sexo" id="sexo" value="${listaCliente.nome}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="m" >Masculino</option>
                                     <option value="f">Feminino</option>     
@@ -218,27 +220,27 @@
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" disabled="">
+                                <input class="form-control" name="email" id="email" value="${listaCliente.nome}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Telefone</label>
-                                <input class="form-control" disabled="">
+                                <input class="form-control" name="telefone" id="telefone" value="${listaCliente.nome}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="form-control" disabled="">
+                                <input class="form-control" name="celular" id="celular" value="${listaCliente.nome}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Setor</label>
-                                <input class="form-control" disabled="">
+                                <input class="form-control" name="setor" id="setor" value="${listaCliente.nome}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
-                                <input class="form-control" type="password" disabled="">
+                                <input class="form-control" name="senha" id="senha" value="${listaCliente.nome}" type="password" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Tipo de acesso</label>
-                                <select class="form-control" disabled="">
+                                <select class="form-control" name="tipoAcesso" id="tipoAcesso" value="${listaCliente.nome}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="adm">Administrador</option>
                                     <option value="comum">Comum</option>     
@@ -254,10 +256,10 @@
             <!-- /#wrapper -->
 
             <!-- jQuery -->
-            <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
+            <script src="js/jquery.js"></script>
 
             <!-- Bootstrap Core JavaScript -->
-            <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
 
     </body>
 
