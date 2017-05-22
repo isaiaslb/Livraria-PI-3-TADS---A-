@@ -175,65 +175,67 @@
                 <!-- /.navbar-collapse -->
             </nav>
 
-       
-                  <div class="col-lg-6">
-                      <form role="form">
-                          <div>
-                              
-                              <label>Pesquisa Produto</label>
-                              <input name="buscaProduto" class="form-control" type="text" placeholder="Digite o Nome do produto..."></br>
-                              
-                              <label>Pesquisa Autor</label>
-                              <input name="buscaAutor" class="form-control" type="text" placeholder="Digite o Nome do Autor..."/></br>
-                              
-                              <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>
-                              <button type="button" class="btn btn-lg btn-default">Limpar</button></br></br>
-                              
-                          </div>
-                          
-                          <div class="form-group">
-                              <label>Produto</label>
-                              <input name="PRODNOME" class="form-control" placeholder="" disabled="true">
-                          </div>
-                          <div class="form-group">
-                              <label>Autor</label>
-                              <input name="PRODAUTOR" class="form-control" placeholder="" disabled="true">
-                          </div>                          
-                          <div class="form-group">
-                              <label>Genêro</label>
-                              <select name="PRODGENERO" class="form-control" disabled="true">
-                                  <option>Selecione...</option>
-                                <option value="Literatura">Literatura</option>
-	                               <option value="Romance">Romance</option>
-	                                <option value="Autoajuda">Autoajuda</option>
-	                                 <option value="Infantojuvenil">Infantojuvenil</option>
-	                                  <option value="Didático">Didático</option>
-	                                   <option value="Artes">Artes</option>
-	                                    <option value="Dicionários">Dicionários</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label>Quantidade</label>
-                              <input name="PRODQTD" class="form-control" placeholder="" disabled="true">
-                          </div>
-			  <div class="form-group">
-                              <label>Valor de Compra</label>
-                              <input name="PRODVALCOMPRA" class="form-control" placeholder="" disabled="true">
-                          </div>
-                          
-                          <div class="form-group">
-                              <label>Valor de Venda</label>
-                              <input name="PRODVALVENDA" class="form-control" placeholder="" disabled="true">
-                          </div>
-                          <div class="form-group">
-                              <label>Descrição</label>
-                              <textarea name="PRODDESC" class="form-control" placeholder="" rows="3" disabled="true"></textarea>
-                          </div>
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-lg btn-default">Editar</button>
-                          </div>    
-                          
-                </div>
+
+            <div class="col-lg-6">
+                <form role="form">
+                    <div>
+                        <label>Pesquisa Produto</label>
+                        <input name="buscaProduto" class="form-control" var="testeBuscaProduto" type="text" placeholder="Digite o Nome do produto..."></br>
+                        <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>
+                    </div>
+                    <div>
+                        <label>Pesquisa Autor</label>
+                        <input name="buscaAutor" class="form-control" var="testeBuscaAutor" type="text" placeholder="Digite o Nome do Autor..."/></br>
+                        <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                
+                    </div>                   
+                    <div class="form-group">
+                        <label>Filial</label>
+                        <input  class="form-control" id="p" value="${buscaProdutos.prodFilial}" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label>Produto</label>
+                        <input  class="form-control" id="p" value="${buscaProdutos.prodNome}" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label>Autor</label>
+                        <input class="form-control" id="p" value="${buscaProdutos.prodAutor}" disabled/>
+                    </div>                          
+                    <div class="form-group">
+                        <label>Genêro</label>
+                        <select class="form-control" id="p" name="PRODGENERO" value="${buscaProdutos.prodGenero}" disabled="">
+                            <option>Selecione...</option>
+                            <option value="Literatura">Literatura</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Autoajuda">Autoajuda</option>
+                            <option value="Infantojuvenil">Infantojuvenil</option>
+                            <option value="Didático">Didático</option>
+                            <option value="Artes">Artes</option>
+                            <option value="Dicionários">Dicionários</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input class="form-control" id="p" value="${buscaProdutos.prodQtd}" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor de Compra</label>
+                        <input class="form-control" id="p" value="${buscaProdutos.prodValCompra}" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor de Venda</label>
+                        <input class="form-control" id="p" value="${buscaProdutos.prodValVenda}" disabled/>
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        <textarea  class="form-control" id="p" value="${buscaProdutos.prodDesc}"  rows="3" disabled></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                        <button type="submit" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
+                        <button type="button" class="btn btn-lg btn-default">Excluir</button>
+                    </div>    
+
+            </div>
             <!-- /.container-fluid -->
 
             <!-- jQuery -->
