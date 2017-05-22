@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,47 +21,53 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Fernanda
+ * @author Isaias
  */
-
 public class UsuarioDAO extends ConexaoBD {
 
-    public Usuario obterContato(int idUsuario) {
+    public Usuario obterUsuario(String idUsuario) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        Usuario p = null;
+        Usuario p = new Usuario();
 
-        String sql = "SELECT cod_user, nome, email, fixo,cel,setor,sexo,senha,tp_acesso" + "FROM bdlivraria WHERE cod_user = ?";
+        String sql = "SELECT * FROM usuario where cpf = ?";
 
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
-            stmt.setLong(1, idUsuario);
+            System.out.println(idUsuario);
+            stmt.setString(1, idUsuario);
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-                int id = resultados.getInt("cod_user");
-                String nome = resultados.getString("nome");
-                String email = resultados.getString("email");
-                String fixo = resultados.getString("fixo");
-                String cel = resultados.getString("cel");
-                String setor = resultados.getString("setor");
-                String sexo = resultados.getString("sexo");
-                String senha = resultados.getString("senha");
-                String tipoAcesso = resultados.getString("tipoAcesso");
-                Date dataNasc = resultados.getDate("dataNasc");
+//                int id = resultados.getInt("COD_CLI");
+//                String nome = resultados.getString("nome");
+//                String cpf = resultados.getString("cpf");
+//                String endereco = resultados.getString("endereco");
+//                String bairro = resultados.getString("bairro");
+//                String cep = resultados.getString("cep");
+//                String estado = resultados.getString("estado");
+//                String cel = resultados.getString("cel");
+//                String email = resultados.getString("email");                
+                //p.setId(resultados.getInt("cod_cli"));
+                p.setNome(resultados.getString("nome"));
+                p.setDataNasc(resultados.getDate("dataNasc"));
+                p.setSexo(resultados.getString("sexo"));
+                p.setEmail(resultados.getString("email"));
+                p.setFixo(resultados.getString("telefone"));
+                p.setCel(resultados.getString("celular"));
+                p.setSetor(resultados.getString("setor"));
+                p.setSetor(resultados.getString("senha"));
+                p.setSetor(resultados.getString("tipoAcesso"));
+                
 
-                p = new Usuario(nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
-                break;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            // Código colocado aqui para garantir que a conexão com o banco
-            // seja sempre fechada, independentemente se executado com sucesso
-            // ou erro.
+
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -85,7 +90,8 @@ public class UsuarioDAO extends ConexaoBD {
         Statement stmt = null;
         Connection conn = null;
 
-        String sql = "SELECT cod_user, nome, email,fixo,cel,setor,sexo,senha,tp_acesso,dtnasc" + "FROM bdlivraria";
+        String sql = "SELECT cod_user, nome, cpf, endereco, bairro, cep, estado, cel, email"
+                + "FROM bdlivraria";
 
         List<Usuario> lista = new ArrayList<Usuario>();
         try {
@@ -93,21 +99,23 @@ public class UsuarioDAO extends ConexaoBD {
             stmt = conn.createStatement();
             ResultSet resultados = stmt.executeQuery(sql);
 
-            DateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
-
             while (resultados.next()) {
-                int id = resultados.getInt("cod_user");
+                int id = resultados.getInt("COD_CLI");
                 String nome = resultados.getString("nome");
-                String email = resultados.getString("email");
-                String fixo = resultados.getString("fixo");
-                String cel = resultados.getString("cel");
-                String setor = resultados.getString("setor");
                 String sexo = resultados.getString("sexo");
+                String email = resultados.getString("email");
+                String fixo = resultados.getString("telefone");
+                String cel = resultados.getString("celular");
+                String setor = resultados.getString("setor");
                 String senha = resultados.getString("senha");
                 String tipoAcesso = resultados.getString("tipoAcesso");
-                Date dataNasc = resultados.getDate("dataNasc");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataNasc = null;
 
-                Usuario usuario = new Usuario(id, nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
+                // Cria um novo contato e salva
+                // através do DAO
+                Usuario usuario = new Usuario(nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
+
                 lista.add(usuario);
             }
 
@@ -116,9 +124,7 @@ public class UsuarioDAO extends ConexaoBD {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            // Código colocado aqui para garantir que a conexão com o banco
-            // seja sempre fechada, independentemente se executado com sucesso
-            // ou erro.
+
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -137,11 +143,15 @@ public class UsuarioDAO extends ConexaoBD {
         return lista;
     }
 
+    // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
+    // http://www.mkyong.com/jdbc/jdbc-transaction-example/
     public void incluirComTransacao(Usuario usuario) {
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "INSERT INTO usuario (nome, email,fixo,cel,setor,sexo,senha,tp_acesso,dtnasc) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuario (nome,"
+                + "email, fixo, cel, setor, sexo, senha, tp_acesso) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
 
@@ -155,8 +165,7 @@ public class UsuarioDAO extends ConexaoBD {
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
             stmt.setString(8, usuario.getTipoAcesso());
-            stmt.setDate(9, new java.sql.Date(usuario.getDataNasc().getTime()));
-            // stmt.setDate(5, new java.sql.Date(System.currentTimeMillis()));
+        
 
             stmt.execute();
 
@@ -168,13 +177,12 @@ public class UsuarioDAO extends ConexaoBD {
                 usuario.setId(idNovo);
                 System.out.println("***** ID NOVO CADASTRADO: " + String.valueOf(idNovo));
 
-                // Executar próximos INSERTs USANDO O ID novo.
             }
             conn.commit();
         } catch (SQLException ex) {
             try {
                 // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
-                if (conn != null && !conn.isClosed()) {
+                if (conn != null & !conn.isClosed()) {
                     conn.rollback();
                 }
             } catch (SQLException ex1) {
@@ -213,8 +221,9 @@ public class UsuarioDAO extends ConexaoBD {
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "INSERT INTO usuario (nome, email, fixo,cel,setor,sexo,senha,tp_acesso,dtnasc) values(?,?,?,?,?,?,?,?,?)";
-
+        String sql = "INSERT INTO usuario (nome,"
+                + "email, fixo, cel, setor, sexo, senha, tp_acesso) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
@@ -226,10 +235,8 @@ public class UsuarioDAO extends ConexaoBD {
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
             stmt.setString(8, usuario.getTipoAcesso());
-            stmt.setDate(9, new java.sql.Date(usuario.getDataNasc().getTime()));
-            //stmt.setDate(9, new java.sql.Date(System.currentTimeMillis()));
+        
             stmt.executeUpdate();
-            //System.out.println("Registro incluido com sucesso.");
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -251,32 +258,5 @@ public class UsuarioDAO extends ConexaoBD {
                 }
             }
         }
-    }
-
-    public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
-        Usuario usuRetorno = null;
-        String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
-
-        try {
-            Connection conn = obterConexao();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getSenha());
-            //stmt.setString(8,usuario.getTipoAcesso());
-
-            ResultSet resultado = stmt.executeQuery();
-
-            if (resultado.next()) {
-                usuRetorno = new Usuario();
-              //  usuRetorno.setId(resultado.getInt("id"));
-                usuRetorno.setNome(resultado.getString("nome"));
-                usuRetorno.setSenha(resultado.getString("senha"));
-                //usuRetorno.setTipoAcesso(resultado.getString("tp_acesso"));
-            }
-            //System.out.println("Conectado");
-        } catch (SQLException e) {
-            System.out.println("Erro de SQL: " + e.getMessage());
-        }
-        return usuRetorno;
     }
 }
