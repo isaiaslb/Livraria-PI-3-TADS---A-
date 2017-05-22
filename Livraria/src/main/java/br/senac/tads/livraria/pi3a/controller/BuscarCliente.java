@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,11 +28,11 @@ public class BuscarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
 //        String papel = request.getParameter("papel");
 //        request.setAttribute("papelCliente", papel);
         String b = request.getParameter("buscarCpf");
-        
+
         ClienteDao dao = new ClienteDao();
         Cliente lista = dao.obterCliente(b);
 
@@ -46,6 +47,30 @@ public class BuscarCliente extends HttpServlet {
         } catch (IOException ex) {
 
         }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+         Cliente cli = new Cliente();
+         cli.setNome(request.getParameter("nome"));
+         cli.setCpf(request.getParameter("cpf"));
+         cli.setEnd(request.getParameter("endereco"));
+         cli.setBairro(request.getParameter("bairro"));
+         cli.setCep(request.getParameter("cep"));
+         cli.setEstado(request.getParameter("estado"));
+         cli.setCel(request.getParameter("cel"));
+         cli.setEmail(request.getParameter("email"));
+        
+        ClienteDao dao = new ClienteDao();
+        dao.atualizar(cli);
+        
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("atualizaCliente", cli);
+        response.sendRedirect("bootstrap/buscarCliente.jsp");
+        
 
     }
 

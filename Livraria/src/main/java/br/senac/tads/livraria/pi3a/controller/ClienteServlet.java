@@ -60,7 +60,7 @@ public class ClienteServlet extends HttpServlet {
         // dados
         HttpSession sessao = request.getSession();
         sessao.setAttribute("novoCliente", novo);
-        response.sendRedirect("bootstrap/resultadoCliente.jsp");
+        response.sendRedirect("bootstrap/cliente.jsp");
 
     }
 }
