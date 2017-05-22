@@ -222,18 +222,18 @@
                           </div>
 			  <div class="form-group">
                               <label>Valor de Compra</label>
-                              <input name="PRODVALCOMPRA" class="form-control" type="number" placeholder="Digite o valor de compra...">
+                              <input name="PRODVALCOMPRA" class="form-control" type="number" min="0.00" max="99999.99" step="0.01" placeholder="Digite o valor de compra...">
                           </div>
                           
                           <div class="form-group">
                               <label>Valor de Venda</label>
-                              <input name="PRODVALVENDA" class="form-control" type="number" placeholder="Digite o valor de venda...">
+                              <input name="PRODVALVENDA" class="form-control" type="number" min="0.00" max="99999.99" step="0.01" placeholder="Digite o valor de venda...">
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>
                               <textarea name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
                           </div>
-                          <button type="button" class="btn btn-lg btn-default">Novo</button>
+                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>
                           <button type="submit" class="btn btn-lg btn-default">Salvar</button>
 
                 </div>
