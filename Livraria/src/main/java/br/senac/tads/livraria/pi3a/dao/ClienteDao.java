@@ -138,6 +138,70 @@ public class ClienteDao extends ConexaoBD {
 
     // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
     // http://www.mkyong.com/jdbc/jdbc-transaction-example/
+ 
+       public void atualizar(Cliente cliente) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+
+        String sql = "UPDATE CLIENTE SET (nome=?,"
+                + "cpf=?, endereco=?, bairro=?, cep=?, estado=?, cel=?, email=?) "
+                + "WHERE cpf=?";
+        try {
+            conn = obterConexao();
+
+            conn.setAutoCommit(false); // Permite usar transacoes para multiplos comandos no banco de dados
+            stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getEnd());
+            stmt.setString(4, cliente.getBairro());
+            stmt.setString(5, cliente.getCep());
+            stmt.setString(6, cliente.getEstado());
+            stmt.setString(7, cliente.getCel());
+            stmt.setString(8, cliente.getEmail());
+
+            stmt.execute();
+
+            conn.commit();
+        } catch (SQLException ex) {
+            try {
+                // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
+                if (conn != null & !conn.isClosed()) {
+                    conn.rollback();
+                }
+            } catch (SQLException ex1) {
+                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            try {
+                // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
+                if (conn != null & !conn.isClosed()) {
+                    conn.rollback();
+                }
+            } catch (SQLException ex1) {
+                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    
     public void incluirComTransacao(Cliente cliente) {
         PreparedStatement stmt = null;
         Connection conn = null;

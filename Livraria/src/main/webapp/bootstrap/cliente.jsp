@@ -252,7 +252,7 @@
                               <label>Email</label>
                               <input class="form-control" type="email" maxlength="100" name="email" placeholder="Email..." required>
                           </div>
-                          <button type="reset" class="btn btn-lg btn-default">Novo</button>
+                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>
                           <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>
                       </form>      
                   </div>
