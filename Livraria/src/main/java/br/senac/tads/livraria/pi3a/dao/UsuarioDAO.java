@@ -59,7 +59,6 @@ public class UsuarioDAO extends ConexaoBD {
                 p.setSetor(resultados.getString("setor"));
                 p.setSetor(resultados.getString("senha"));
                 p.setSetor(resultados.getString("tipoAcesso"));
-                
 
             }
         } catch (SQLException ex) {
@@ -165,7 +164,6 @@ public class UsuarioDAO extends ConexaoBD {
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
             stmt.setString(8, usuario.getTipoAcesso());
-        
 
             stmt.execute();
 
@@ -235,7 +233,7 @@ public class UsuarioDAO extends ConexaoBD {
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
             stmt.setString(8, usuario.getTipoAcesso());
-        
+
             stmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -258,5 +256,32 @@ public class UsuarioDAO extends ConexaoBD {
                 }
             }
         }
+    }
+
+    public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
+        Usuario usuRetorno = null;
+        String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
+
+        try {
+            Connection conn = obterConexao();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getSenha());
+            //stmt.setString(8,usuario.getTipoAcesso());
+
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                usuRetorno = new Usuario();
+                //  usuRetorno.setId(resultado.getInt("id"));
+                usuRetorno.setNome(resultado.getString("nome"));
+                usuRetorno.setSenha(resultado.getString("senha"));
+                //usuRetorno.setTipoAcesso(resultado.getString("tp_acesso"));
+            }
+            //System.out.println("Conectado");
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return usuRetorno;
     }
 }
