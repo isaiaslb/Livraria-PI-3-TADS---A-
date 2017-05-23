@@ -22,6 +22,25 @@ import javax.servlet.http.HttpSession;
  *
  * @author Fernanda
  */
+//@WebServlet("/Autenticador")package br.senac.tads.livraria.pi3a.controller;
+
+import br.senac.tads.livraria.pi3a.dao.UsuarioDAO;
+import br.senac.tads.livraria.pi3a.model.Usuario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ *
+ * @author Fernanda
+ */
 //@WebServlet("/Autenticador")
 @WebServlet(name = "Autenticador", urlPatterns = {"/Autenticador"})
 public class Autenticador extends HttpServlet {
