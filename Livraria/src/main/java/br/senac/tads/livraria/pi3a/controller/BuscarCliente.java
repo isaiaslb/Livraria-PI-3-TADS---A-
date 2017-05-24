@@ -32,7 +32,7 @@ public class BuscarCliente extends HttpServlet {
 
 //        String papel = request.getParameter("papel");
 //        request.setAttribute("papelCliente", papel);
-        String b = request.getParameter("buscarCnpj");
+        String b = request.getParameter("buscarCpf");
 
         ClienteDao dao = new ClienteDao();
         Cliente lista = dao.obterCliente(b);

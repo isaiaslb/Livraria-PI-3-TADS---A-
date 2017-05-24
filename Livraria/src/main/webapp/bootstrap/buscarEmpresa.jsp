@@ -36,9 +36,9 @@
 
          <script type="text/javascript">
             function habilita_a() {
-                document.getElementById('rz_social').disabled = false;
-                document.getElementById('ins_estad').disabled = false;
-                document.getElementById('tel').disabled = false;
+                document.getElementById('razao').disabled = false;
+                document.getElementById('ie').disabled = false;
+                document.getElementById('telefone').disabled = false;
                 document.getElementById('endereco').disabled = false;
                 document.getElementById('numero').disabled = false;
                 document.getElementById('complemento').disabled = false;
@@ -212,23 +212,23 @@
                             <div class="form-group">
                                 <label>CNPJ</label>
                                
-                                <input class="form-control" name="buscarCnpj"  placeholder="Digite o CNPJ para buscar..."></br>
+                                <input class="form-control" name="buscarCnpj" var="testaBusca"  placeholder="Digite o CNPJ para buscar..."></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                                                                        
                             </div>
                             </form>
-                   
+                   <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="post">
                   
                             
                              <div class="form-group">
                               <label>Razão Social</label>
-                              <input  class="form-control" name="rz_social" id="rz_social" value="${listaEmpresa.razao}" disabled="">
+                              <input  class="form-control" name="razaoBusca" id="razao" value="${listaEmpresa.razao}" disabled="">
                           </div>
                             
                             <div class="form-group">
                                 <label>CNPJ</label>
 
-                                <input  class="form-control"name="cnpj"  id="cnpj" value="${listaEmpresa.cnpj}" disabled="">
+                                <input  class="form-control"name="cnpjBusca"  id="cnpj" value="${listaEmpresa.cnpj}" disabled="">
 
                             </div>
                             
@@ -236,39 +236,39 @@
                                                                                     
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input  class="form-control" name="ins_estad" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
+                              <input  class="form-control" name="ieBusca" id="ie" value="${listaEmpresa.ie}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
-                              <input class="form-control" name="tel"; id="tel" value="${listaEmpresa.telefone}"disabled="">
+                              <input class="form-control" name="telefoneBusca" id="telefone" value="${listaEmpresa.telefone}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Endereço</label>
-                              <input  class="form-control" name="endereco" id="endereco" value="${listaEmpresa.endereco}"disabled="">
+                              <input  class="form-control" name="enderecoBusca" id="endereco" value="${listaEmpresa.endereco}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Numero</label>
-                              <input class="form-control" name="numero" id="numero" value="${listaEmpresa.numero}" disabled="">
+                              <input class="form-control" name="numeroBusca" id="numero" value="${listaEmpresa.numero}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Complemento</label>
-                              <input class="form-control" name="complemento" id="complemento" value="${listaEmpresa.complemento}" disabled="">
+                              <input class="form-control" name="complementoBusca" id="complemento" value="${listaEmpresa.complemento}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" name="cep" id="cep" value="${listaEmpresa.cep}" disabled="">
+                              <input class="form-control" name="cepBusca" id="cep" value="${listaEmpresa.cep}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" name="bairro" id="bairro" value="${listaEmpresa.bairro}" disabled="">
+                              <input class="form-control" name="bairroBusca" id="bairro" value="${listaEmpresa.bairro}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Cidade</label>
-                              <input class="form-control" name="cidade" id="cidade" value="${listaEmpresa.cidade}" disabled="">
+                              <input class="form-control" name="cidadeBusca" id="cidade" value="${listaEmpresa.cidade}" disabled="">
                           </div>
                              <div class="form-group">
                               <label>Estado</label>
-                              <select class="form-control" id="estado" name="estado" value="${listaEmpresa.estado}" disabled="">
+                              <select class="form-control" name="estadoBusca" id="estado"  value="${listaEmpresa.estado}" disabled="">
                                   <option>Selecione...</option>
                                 <option value="AC">Acre</option>
 	                               <option value="AL">Alagoas</option>
@@ -299,11 +299,10 @@
 	                                                        <option value="TO">Tocantins</option>
                               </select>
                           </div>
-                            
-                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>
-                                <button type="submit" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
+                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>                    
+                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
                             <button type="submit" class="btn btn-lg btn-default">Excluir</button>
-                   
+                   </form>
                                   
                                
                                  
