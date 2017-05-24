@@ -62,7 +62,7 @@ public class EmpresaServlet extends HttpServlet {
         // dados
         HttpSession sessao = request.getSession();
         sessao.setAttribute("novaEmpresa", nova);
-        response.sendRedirect("resultadoEmpresa.jsp");
+        response.sendRedirect("Empresa.jsp");
 
     }
 }

@@ -29,9 +29,10 @@ public class BuscarCliente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
 //        String papel = request.getParameter("papel");
 //        request.setAttribute("papelCliente", papel);
-        String b = request.getParameter("buscarCpf");
+        String b = request.getParameter("buscarCnpj");
 
         ClienteDao dao = new ClienteDao();
         Cliente lista = dao.obterCliente(b);

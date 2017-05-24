@@ -38,16 +38,12 @@ public class BuscarEmpresa extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        String papel = request.getParameter("papel");
-//        request.setAttribute("papelCliente", papel);
+//String b = request.getParameter("buscarCpf");
 
+      //  EmpresaDao dao = new EmpresaDao();
+      //Empresa lista = dao.obterEmpresa(b);
 
-        String b = request.getParameter("buscarCnpj");
-
-        EmpresaDao dao = new EmpresaDao();
-       // Empresa lista = dao.obterContato(1);
-
-        //request.setAttribute("listaEmpresa", lista);
+       // request.setAttribute("listaEmpresa", lista);
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/buscarEmpresa.jsp");
@@ -60,4 +56,33 @@ public class BuscarEmpresa extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         
+         Empresa emp = new Empresa();
+        emp.setRazao(request.getParameter("rz_social"));
+         emp.setCnpj(request.getParameter("cnpj"));
+        emp.setIe(request.getParameter("ins_estad"));
+        emp.setTelefone(request.getParameter("tel"));
+        emp.setEndereco(request.getParameter("endereco"));
+        emp.setComplemento(request.getParameter("complemento"));
+        emp.setCep(request.getParameter("cep"));
+        emp.setBairro(request.getParameter("bairro"));
+        emp.setCidade(request.getParameter("cidade"));
+        emp.setEstado(request.getParameter("estado"));
+        
+        
+        EmpresaDao dao = new EmpresaDao();
+        //dao.atualizar(emp);
+        
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("atualizaEmpresa", emp);
+        response.sendRedirect("bootstrap/buscarEmpresa.jsp");
+        
+
+    }
+    
+
 }

@@ -222,13 +222,13 @@
                             
                              <div class="form-group">
                               <label>Razão Social</label>
-                              <input  class="form-control"  id="rz_social" value="${listaEmpresa.razao}" disabled="">
+                              <input  class="form-control" name="rz_social" id="rz_social" value="${listaEmpresa.razao}" disabled="">
                           </div>
                             
                             <div class="form-group">
                                 <label>CNPJ</label>
 
-                                <input  class="form-control"  id="cnpj" value="${listaEmpresa.cnpj}" disabled="">
+                                <input  class="form-control"name="cnpj"  id="cnpj" value="${listaEmpresa.cnpj}" disabled="">
 
                             </div>
                             
@@ -236,35 +236,35 @@
                                                                                     
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input  class="form-control"  id="ins_estad" value="${listaEmpresa.ie}"disabled="">
+                              <input  class="form-control" name="ins_estad" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
-                              <input class="form-control"  id="tel" value="${listaEmpresa.telefone}"disabled="">
+                              <input class="form-control" name="tel"; id="tel" value="${listaEmpresa.telefone}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Endereço</label>
-                              <input  class="form-control" id="endereco" value="${listaEmpresa.endereco}"disabled="">
+                              <input  class="form-control" name="endereco" id="endereco" value="${listaEmpresa.endereco}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Numero</label>
-                              <input class="form-control" id="numero" value="${listaEmpresa.numero}" disabled="">
+                              <input class="form-control" name="numero" id="numero" value="${listaEmpresa.numero}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Complemento</label>
-                              <input class="form-control" id="complemento" value="${listaEmpresa.complemento}" disabled="">
+                              <input class="form-control" name="complemento" id="complemento" value="${listaEmpresa.complemento}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" id="cep" value="${listaEmpresa.cep}" disabled="">
+                              <input class="form-control" name="cep" id="cep" value="${listaEmpresa.cep}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" id="bairro" value="${listaEmpresa.bairro}" disabled="">
+                              <input class="form-control" name="bairro" id="bairro" value="${listaEmpresa.bairro}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Cidade</label>
-                              <input class="form-control" id="cidade" value="${listaEmpresa.cidade}" disabled="">
+                              <input class="form-control" name="cidade" id="cidade" value="${listaEmpresa.cidade}" disabled="">
                           </div>
                              <div class="form-group">
                               <label>Estado</label>
