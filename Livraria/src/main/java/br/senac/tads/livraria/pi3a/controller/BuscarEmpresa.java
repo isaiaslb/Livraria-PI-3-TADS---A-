@@ -5,17 +5,24 @@
  */
 package br.senac.tads.livraria.pi3a.controller;
 
+import br.senac.tads.livraria.pi3a.dao.EmpresaDao;
+import br.senac.tads.livraria.pi3a.model.Empresa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Fernanda
  */
+
+@WebServlet(name = "BuscarEmpresa", urlPatterns = {"/buscarEmpresa"})
 public class BuscarEmpresa extends HttpServlet {
 
     /**
@@ -27,60 +34,30 @@ public class BuscarEmpresa extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BuscarEmpresa</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BuscarEmpresa at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+//        String papel = request.getParameter("papel");
+//        request.setAttribute("papelCliente", papel);
+
+
+        String b = request.getParameter("buscarCnpj");
+
+        EmpresaDao dao = new EmpresaDao();
+       // Empresa lista = dao.obterContato(1);
+
+        //request.setAttribute("listaEmpresa", lista);
+
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("bootstrap/buscarEmpresa.jsp");
+        dispatcher.forward(request, response);
+
+        try {
+            dispatcher.forward(request, response);
+        } catch (IOException ex) {
+
+        }
+
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

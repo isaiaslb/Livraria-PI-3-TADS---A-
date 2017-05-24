@@ -25,8 +25,7 @@ import java.util.logging.Logger;
  * @author Antonio
  */
 public class EmpresaDao extends ConexaoBD {
-
-    public Empresa obterContato(int idEmpresa) {
+ public Empresa obterContato(int idEmpresa) {
         PreparedStatement stmt = null;
         Connection conn = null;
         Empresa p = null;
@@ -80,6 +79,9 @@ public class EmpresaDao extends ConexaoBD {
         }
         return p;
     }
+
+
+
 
     public List<Empresa> listar() {
         Statement stmt = null;
@@ -251,19 +253,5 @@ public class EmpresaDao extends ConexaoBD {
         }
     }
 
-    public void remover(int id) {
-        Connection conn = null;
-        try {
-            String sql = "DELETE FROM EMPRESA WHERE COD_EMP= ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
 
-            ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Erro ao deletar registro de Empresa EmpresaDao");
-        }
-
-    }
 }

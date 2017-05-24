@@ -158,7 +158,7 @@
                                 <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/buscarEmpresa.jsp">Buscar</a>
+                                <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
                             </li>
                         </ul>
                     </li>

@@ -256,9 +256,7 @@ public class UsuarioDAO extends ConexaoBD {
                 }
             }
         }
-    }
-
-    public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
+    }public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
         Usuario usuRetorno = null;
         String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
 
@@ -284,4 +282,6 @@ public class UsuarioDAO extends ConexaoBD {
         }
         return usuRetorno;
     }
+
+  
 }
