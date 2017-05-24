@@ -45,9 +45,9 @@ public class BuscarEmpresa extends HttpServlet {
         String b = request.getParameter("buscarCnpj");
 
         EmpresaDao dao = new EmpresaDao();
-        Empresa lista = dao.obterContato(1);
+       // Empresa lista = dao.obterContato(1);
 
-        request.setAttribute("listaEmpresa", lista);
+        //request.setAttribute("listaEmpresa", lista);
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/buscarEmpresa.jsp");
