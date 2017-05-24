@@ -34,6 +34,11 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script type="text/javascript">
+            function habilita_a() {
+                document.getElementById('p').disabled = false;                
+            }
+        </script>
 
     </head>
 
@@ -134,10 +139,10 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
                                 <li>
-                                    <a href="produto.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
                                 </li>
                                 <li>
-                                    <a href="buscarProduto.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
@@ -156,10 +161,10 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="cli" class="collapse">
                                 <li>
-                                    <a href="cliente.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/cliente.jsp">Cadastro</a>
                                 </li>
                                 <li>
-                                    <a href="buscarCliente.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarCliente.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
@@ -177,32 +182,35 @@
 
 
             <div class="col-lg-6">
-                <form role="form">
+                <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="get">
+                    <div> 
                     <div>
                         <label>Pesquisa Produto</label>
-                        <input name="buscaProduto" class="form-control" var="testeBuscaProduto" type="text" placeholder="Digite o Nome do produto..."></br>
-                        <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>
+                        <input  class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."></br>                        
                     </div>
                     <div>
                         <label>Pesquisa Autor</label>
-                        <input name="buscaAutor" class="form-control" var="testeBuscaAutor" type="text" placeholder="Digite o Nome do Autor..."/></br>
-                        <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                
+                        <input name="buscaAutor" class="form-control" var="testeBuscaAutor" type="text" placeholder="Digite o Nome do Autor..."/></br>                    
                     </div>                   
+                        <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                    
+                    </div>  
+                </form>
+                    <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="post">    
                     <div class="form-group">
                         <label>Filial</label>
-                        <input  class="form-control" id="p" value="${buscaProdutos.prodFilial}" disabled/>
+                        <input  class="form-control" id="p" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Produto</label>
-                        <input  class="form-control" id="p" value="${buscaProdutos.prodNome}" disabled/>
+                        <input  class="form-control" id="p" name="bNome" value="${buscaProdutos.prodNome}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Autor</label>
-                        <input class="form-control" id="p" value="${buscaProdutos.prodAutor}" disabled/>
+                        <input class="form-control" id="p" name="bAutor" value="${buscaProdutos.prodAutor}" disabled/>
                     </div>                          
                     <div class="form-group">
                         <label>Genêro</label>
-                        <select class="form-control" id="p" name="PRODGENERO" value="${buscaProdutos.prodGenero}" disabled="">
+                        <select class="form-control" id="p" name="bGenero" value="${buscaProdutos.prodGenero}" disabled="">
                             <option>Selecione...</option>
                             <option value="Literatura">Literatura</option>
                             <option value="Romance">Romance</option>
@@ -215,19 +223,19 @@
                     </div>
                     <div class="form-group">
                         <label>Quantidade</label>
-                        <input class="form-control" id="p" value="${buscaProdutos.prodQtd}" disabled/>
+                        <input class="form-control" id="p" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Valor de Compra</label>
-                        <input class="form-control" id="p" value="${buscaProdutos.prodValCompra}" disabled/>
+                        <input class="form-control" id="p" name="bValCompra" value="${buscaProdutos.prodValCompra}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Valor de Venda</label>
-                        <input class="form-control" id="p" value="${buscaProdutos.prodValVenda}" disabled/>
+                        <input class="form-control" id="p" name="bValVenda" value="${buscaProdutos.prodValVenda}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Descrição</label>
-                        <textarea  class="form-control" id="p" value="${buscaProdutos.prodDesc}"  rows="3" disabled></textarea>
+                        <textarea  class="form-control" id="p" name="bDesc" value="${buscaProdutos.prodDesc}"  rows="3" disabled></textarea>
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-lg btn-default">Salvar</button>

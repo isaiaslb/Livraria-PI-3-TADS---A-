@@ -46,17 +46,28 @@ public class BuscarProduto extends HttpServlet {
          }
     }
     
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        JDBCProdutosDao dao = new JDBCProdutosDao();
-//        String livro = request.getParameter("titulo");
-//        Produtos resultadoPesquisa = dao.buscar(livro, null);
-//        
-//        //request.setAttribute("livro", resultadoPesquisa);
-//        request.getServletContext().setAttribute("livro", resultadoPesquisa);
-//        //request.getRequestDispatcher("bootstrap/buscarProduto.jsp").forward(request, response);
-//        response.sendRedirect(request.getContextPath() + "/bootstrap/buscarProduto.jsp");
-//    }
-//    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        JDBCProdutosDao dao = new JDBCProdutosDao();
+        Produtos produtos = new Produtos();
+        
+        produtos.setProdFilial(Integer.parseInt(request.getParameter("bFilial")));
+        produtos.setProdNome(request.getParameter("bNome"));
+        produtos.setProdAutor(request.getParameter("bAutor"));
+        produtos.setProdGenero(request.getParameter("bGenero"));
+        produtos.setProdQtd(Integer.parseInt(request.getParameter("bQtd")));
+        produtos.setProdValCompra(Double.parseDouble(request.getParameter("bValCompra")));
+        produtos.setProdValVenda(Double.parseDouble(request.getParameter("bValVenda")));
+        produtos.setProdDesc(request.getParameter("bDesc"));
+        
+        
+        //request.setAttribute("livro", resultadoPesquisa);
+        //request.getServletContext().setAttribute("livro", resultadoPesquisa);
+        //request.getRequestDispatcher("bootstrap/buscarProduto.jsp").forward(request, response);
+        response.sendRedirect("/bootstrap/buscarProduto.jsp");
+        //response.sendRedirect(request.getContextPath() + "/bootstrap/buscarProduto.jsp");
+    }
+    
 }
