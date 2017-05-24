@@ -212,27 +212,27 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="form-control" id="nome" value="${listaCliente.nome}" disabled />
+                                <input class="form-control" name="nomeBusca" id="nome" value="${listaCliente.nome}" disabled />
                             </div>
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input class="form-control" value="${listaCliente.cpf}" disabled />
+                                <input class="form-control" name="cpfBusca" value="${listaCliente.cpf}" disabled />
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>
-                                <input class="form-control" id="end" value="${listaCliente.end}" disabled="">
+                                <input class="form-control" name="endBusca" id="end" value="${listaCliente.end}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Bairro</label>
-                                <input class="form-control" id="bairro" value="${listaCliente.bairro}" disabled="">
+                                <input class="form-control" name="bairroBusca" id="bairro" value="${listaCliente.bairro}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input class="form-control" id="cep" value="${listaCliente.cep}" disabled="">
+                                <input class="form-control" name="cepBusca" id="cep" value="${listaCliente.cep}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
-                                <select class="form-control" id="est" name="estado" value="${listaCliente.estado}" disabled="">
+                                <select class="form-control" id="est" name="estadoBusca" value="${listaCliente.estado}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
@@ -265,16 +265,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="form-control" id="cel" value="${listaCliente.cel}" disabled>
+                                <input class="form-control" id="cel" name="celBusca" value="${listaCliente.cel}" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" id="email" value="${listaCliente.email}" disabled>
+                                <input class="form-control" id="email" name="emailBusca" value="${listaCliente.email}" disabled>
                             </div>
-                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>
-                        </form>
-                            <button type="submit" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
+                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>                    
+                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
                             <button type="submit" class="btn btn-lg btn-default">Excluir</button>
+                        </form>
                        
                     </div>
                     <!-- /.container-fluid -->

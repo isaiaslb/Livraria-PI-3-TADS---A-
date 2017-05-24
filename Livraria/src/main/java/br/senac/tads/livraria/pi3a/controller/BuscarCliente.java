@@ -53,24 +53,25 @@ public class BuscarCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-         Cliente cli = new Cliente();
-         cli.setNome(request.getParameter("nome"));
-         cli.setCpf(request.getParameter("cpf"));
-         cli.setEnd(request.getParameter("endereco"));
-         cli.setBairro(request.getParameter("bairro"));
-         cli.setCep(request.getParameter("cep"));
-         cli.setEstado(request.getParameter("estado"));
-         cli.setCel(request.getParameter("cel"));
-         cli.setEmail(request.getParameter("email"));
+
+        ClienteDao cli = new ClienteDao();
+        Cliente clientes = new Cliente();
+ 
+        clientes.setNome(request.getParameter("nomeBusca"));
+        clientes.setEnd(request.getParameter("endBusca"));
+        clientes.setBairro(request.getParameter("bairroBusca"));
+        clientes.setCep(request.getParameter("cepBusca"));
+        clientes.setEstado(request.getParameter("estadoBusca"));
+        clientes.setCel(request.getParameter("celBusca"));
+        clientes.setEmail(request.getParameter("emailBusca"));
+
+        try {
+            cli.atualizar(clientes);
+        } catch (Exception ex) {
+
+        }
         
-        ClienteDao dao = new ClienteDao();
-        dao.atualizar(cli);
-        
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("atualizaCliente", cli);
-        response.sendRedirect("bootstrap/buscarCliente.jsp");
-        
+        //response.sendRedirect("bootstrap/cliente.jsp");
 
     }
 

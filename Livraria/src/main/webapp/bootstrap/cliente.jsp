@@ -189,14 +189,14 @@
                     </div>
                 </div>
                   <div class="col-lg-6">
-                      <form role="form" action="${pageContext.request.contextPath}/teste" method="post">
+                      <form role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
                               <input class="form-control" maxlength="150" name="nome" placeholder="Digite o nome..." required />
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input type="text" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
+                              <input type="text" OnKeyPress="formatar('###.###.###-##', this)" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
                               
                           </div>
                           <div class="form-group">

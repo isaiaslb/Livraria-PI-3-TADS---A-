@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Douglas
  */
-@WebServlet(name = "ClienteServlet", urlPatterns = {"/teste"})
+@WebServlet(name = "ClienteServlet", urlPatterns = {"/clienteServlet"})
 public class ClienteServlet extends HttpServlet {
 
     @Override
@@ -41,7 +41,7 @@ public class ClienteServlet extends HttpServlet {
 
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
-        String endereco = request.getParameter("endereco");
+        String end = request.getParameter("endereco");
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
         String estado = request.getParameter("estado");
@@ -50,7 +50,7 @@ public class ClienteServlet extends HttpServlet {
 
         // Cria um novo contato e salva
         // através do DAO
-        Cliente novo = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
+        Cliente novo = new Cliente(nome, cpf, end, bairro, cep, estado, cel, email);
         ClienteDao dao = new ClienteDao();
         dao.incluirComTransacao(novo);
 

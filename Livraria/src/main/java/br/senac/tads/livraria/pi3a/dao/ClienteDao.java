@@ -38,16 +38,7 @@ public class ClienteDao extends ConexaoBD {
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-//                int id = resultados.getInt("COD_CLI");
-//                String nome = resultados.getString("nome");
-//                String cpf = resultados.getString("cpf");
-//                String endereco = resultados.getString("endereco");
-//                String bairro = resultados.getString("bairro");
-//                String cep = resultados.getString("cep");
-//                String estado = resultados.getString("estado");
-//                String cel = resultados.getString("cel");
-//                String email = resultados.getString("email");                
-                //p.setId(resultados.getInt("cod_cli"));
+                
                 p.setNome(resultados.getString("nome"));
                 p.setCpf(resultados.getString("cpf"));
                 p.setEnd(resultados.getString("endereco"));
@@ -143,26 +134,25 @@ public class ClienteDao extends ConexaoBD {
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "UPDATE CLIENTE SET (nome=?,"
-                + "cpf=?, endereco=?, bairro=?, cep=?, estado=?, cel=?, email=?) "
+        String sql = "UPDATE CLIENTE SET nome=?,"
+                + "endereco=?, bairro=?, cep=?, estado=?, cel=?, email=? "
                 + "WHERE cpf=?";
         try {
             conn = obterConexao();
 
-            conn.setAutoCommit(false); // Permite usar transacoes para multiplos comandos no banco de dados
-            stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt = conn.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getEnd());
-            stmt.setString(4, cliente.getBairro());
-            stmt.setString(5, cliente.getCep());
-            stmt.setString(6, cliente.getEstado());
-            stmt.setString(7, cliente.getCel());
-            stmt.setString(8, cliente.getEmail());
+            stmt.setString(2, cliente.getEnd());
+            stmt.setString(3, cliente.getBairro());
+            stmt.setString(4, cliente.getCep());
+            stmt.setString(5, cliente.getEstado());
+            stmt.setString(6, cliente.getCel());
+            stmt.setString(7, cliente.getEmail());
+            stmt.setString(8, cliente.getCpf());
+            
 
-            stmt.execute();
+            stmt.executeUpdate();
 
-            conn.commit();
         } catch (SQLException ex) {
             try {
                 // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
