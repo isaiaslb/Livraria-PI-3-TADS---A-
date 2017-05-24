@@ -209,7 +209,7 @@
                           </div>
 	                  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
+                              <input OnKeyPress="formatar('#####-###', this)" class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
@@ -246,7 +246,7 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input type="tel" class="form-control" maxlength="11" name="cel" placeholder="Digite o Celular...">
+                              <input OnKeyPress="formatar('##-#####-####', this)" type="tel" class="form-control" maxlength="11" name="cel" placeholder="Digite o Celular...">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
@@ -263,7 +263,18 @@
 
     </div>
     <!-- /#wrapper -->
-
+            <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+            </script>  
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 
