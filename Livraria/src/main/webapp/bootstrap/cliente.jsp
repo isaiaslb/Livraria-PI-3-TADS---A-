@@ -189,14 +189,14 @@
                     </div>
                 </div>
                   <div class="col-lg-6">
-                      <form role="form" action="${pageContext.request.contextPath}/teste" method="post">
+                      <form role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
                               <input class="form-control" maxlength="150" name="nome" placeholder="Digite o nome..." required />
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input type="text" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
+                              <input type="text" OnKeyPress="formatar('###.###.###-##', this)" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
                               
                           </div>
                           <div class="form-group">
@@ -209,7 +209,7 @@
                           </div>
 	                  <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
+                              <input OnKeyPress="formatar('#####-###', this)" class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
@@ -246,7 +246,7 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input type="tel" class="form-control" maxlength="11" name="cel" placeholder="Digite o Celular...">
+                              <input OnKeyPress="formatar('##-#####-####', this)" type="tel" class="form-control" maxlength="11" name="cel" placeholder="Digite o Celular...">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
@@ -263,7 +263,18 @@
 
     </div>
     <!-- /#wrapper -->
-
+            <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+            </script>  
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 
