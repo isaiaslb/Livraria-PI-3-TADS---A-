@@ -9,6 +9,7 @@ import br.senac.tads.livraria.pi3a.dao.EmpresaDao;
 import br.senac.tads.livraria.pi3a.model.Empresa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +20,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Fernanda
+ * @author Douglas
  */
-
 @WebServlet(name = "BuscarEmpresa", urlPatterns = {"/buscarEmpresa"})
 public class BuscarEmpresa extends HttpServlet {
 
@@ -30,12 +30,10 @@ public class BuscarEmpresa extends HttpServlet {
             throws ServletException, IOException {
 
 
-//        String papel = request.getParameter("papel");
-//        request.setAttribute("papelCliente", papel);
         String b = request.getParameter("buscarCnpj");
 
         EmpresaDao dao = new EmpresaDao();
-       Empresa lista = dao.obterEmpresa(b);
+        Empresa lista = dao.obterEmpresa(b);
 
         request.setAttribute("listaEmpresa", lista);
 
@@ -54,29 +52,29 @@ public class BuscarEmpresa extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-        EmpresaDao empresas = new EmpresaDao();
-       Empresa emp = new Empresa();
-        
-        emp.setRazao(request.getParameter("buscaRz_social"));
-        emp.setIe(request.getParameter("buscaIns_estad"));
-        emp.setTelefone(request.getParameter("buscaTel"));
-        emp.setEndereco(request.getParameter("buscaEndereco"));
-        emp.setComplemento(request.getParameter("buscaComplemento"));
-        emp.setCep(request.getParameter("buscaCep"));
-        emp.setBairro(request.getParameter("buscaBairro"));
-        emp.setCidade(request.getParameter("buscaCidade"));
-        emp.setEstado(request.getParameter("buscaEstado"));
-        
-        
-       try {
-            empresas.atualizar(emp);
+
+        EmpresaDao emp = new EmpresaDao();
+        Empresa empresas = new Empresa();
+ 
+         empresas.setRazao(request.getParameter("razaoBusca"));
+        empresas.setIe(request.getParameter("ieBusca"));
+        empresas.setTelefone(request.getParameter("telefoneBusca"));
+        empresas.setEndereco(request.getParameter("enderecoBusca"));
+        empresas.setNumero(request.getParameter("numeroBusca"));
+        empresas.setComplemento(request.getParameter("complementoBusca"));
+        empresas.setCep(request.getParameter("cepBusca"));
+        empresas.setBairro(request.getParameter("bairroBusca"));
+        empresas.setCidade(request.getParameter("cidadeBusca"));
+        empresas.setEstado(request.getParameter("estadoBusca"));
+
+        try {
+            emp.atualizar(empresas);
         } catch (Exception ex) {
 
         }
+        
         //response.sendRedirect("bootstrap/cliente.jsp");
 
     }
-    
 
 }

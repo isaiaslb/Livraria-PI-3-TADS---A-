@@ -12,20 +12,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author Antonio
+ * @author Douglas
  */
 public class EmpresaDao extends ConexaoBD {
- public Empresa obterEmpresa(String idEmpresa) {
+
+    public Empresa obterEmpresa(String idEmpresa) {
         PreparedStatement stmt = null;
         Connection conn = null;
         Empresa p = new Empresa();
@@ -41,7 +39,7 @@ public class EmpresaDao extends ConexaoBD {
 
             while (resultados.next()) {
                 
-                p.setRazao(resultados.getString("rz_social"));
+               p.setRazao(resultados.getString("rz_social"));
                 p.setCnpj(resultados.getString("cnpj"));
                 p.setIe(resultados.getString("ins_estad"));
                 p.setTelefone(resultados.getString("tel"));
@@ -52,7 +50,6 @@ public class EmpresaDao extends ConexaoBD {
                 p.setBairro(resultados.getString("bairro"));
                 p.setCidade(resultados.getString("cidade"));
                 p.setEstado(resultados.getString("estado"));
-               
 
 //                p = new Cliente(nome, cpf, endereco, bairro, cep, estado, cel, email);
 //                break;
@@ -81,13 +78,11 @@ public class EmpresaDao extends ConexaoBD {
         return p;
     }
 
-
-
-
     public List<Empresa> listar() {
         Statement stmt = null;
         Connection conn = null;
-        String sql = "SELECT cod_user, RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO"
+
+       String sql = "SELECT cod_user, RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO"
                 + "FROM bdlivraria";
 
         List<Empresa> lista = new ArrayList<Empresa>();
@@ -110,6 +105,7 @@ public class EmpresaDao extends ConexaoBD {
                 String cidade = resultados.getString("cidade");
                 String estado = resultados.getString("Estado");
 
+               
                 Empresa empresa = new Empresa(id, razao, cnpj, ie, telefone, endereco, numero, complemento, cep, bairro, cidade, estado);
                 lista.add(empresa);
             }
@@ -137,8 +133,11 @@ public class EmpresaDao extends ConexaoBD {
         }
         return lista;
     }
-    
-    public void atualizar(Empresa empresa) {
+
+    // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
+    // http://www.mkyong.com/jdbc/jdbc-transaction-example/
+ 
+       public void atualizar(Empresa empresa) {
         PreparedStatement stmt = null;
         Connection conn = null;
 
@@ -148,7 +147,7 @@ public class EmpresaDao extends ConexaoBD {
         try {
             conn = obterConexao();
 
-            stmt = conn.prepareStatement(sql);
+             stmt = conn.prepareStatement(sql);
             stmt.setString(1, empresa.getRazao());
             stmt.setString(2, empresa.getIe());
             stmt.setString(3, empresa.getTelefone());
@@ -160,7 +159,6 @@ public class EmpresaDao extends ConexaoBD {
             stmt.setString(9, empresa.getEstado());
             stmt.setString(10, empresa.getEstado());
             stmt.setString(11, empresa.getCnpj());
-            
 
             stmt.executeUpdate();
 
@@ -201,12 +199,12 @@ public class EmpresaDao extends ConexaoBD {
             }
         }
     }
-
-    // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
-    // http://www.mkyong.com/jdbc/jdbc-transaction-example/
+    
+    
     public void incluirComTransacao(Empresa empresa) {
         PreparedStatement stmt = null;
         Connection conn = null;
+
         String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -225,6 +223,7 @@ public class EmpresaDao extends ConexaoBD {
             stmt.setString(9, empresa.getBairro());
             stmt.setString(10, empresa.getCidade());
             stmt.setString(11, empresa.getEstado());
+
             stmt.execute();
 
             // ResultSet para recuperar o ID gerado automaticamente no banco de dados.
@@ -278,11 +277,12 @@ public class EmpresaDao extends ConexaoBD {
     public void incluir(Empresa empresa) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO) "
+
+        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
-            stmt = conn.prepareStatement(sql);
+             stmt = conn.prepareStatement(sql);
             stmt.setString(1, empresa.getRazao());
             stmt.setString(2, empresa.getCnpj());
             stmt.setString(3, empresa.getIe());
@@ -317,6 +317,4 @@ public class EmpresaDao extends ConexaoBD {
             }
         }
     }
-
-
 }
