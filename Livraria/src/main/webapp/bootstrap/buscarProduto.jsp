@@ -210,8 +210,8 @@
                     </div>                          
                     <div class="form-group">
                         <label>Genêro</label>
-                        <select class="form-control" id="p" name="bGenero"  disabled="">
-                            <option value="${buscaProdutos.prodGenero}">Selecione...</option>
+                        <select class="form-control" id="p" name="bGenero" value="${buscaProdutos.prodGenero}" disabled="">
+                            <option>Selecione...</option>
                             <option value="Literatura">Literatura</option>
                             <option value="Romance">Romance</option>
                             <option value="Autoajuda">Autoajuda</option>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="form-group">
                         <label>Descrição</label>
-                        <textarea  class="form-control" id="p" name="bDesc" rows="3" disabled>${buscaProdutos.prodDesc}</textarea>
+                        <textarea  class="form-control" id="p" name="bDesc" value="${buscaProdutos.prodDesc}"  rows="3" disabled></textarea>
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-lg btn-default">Salvar</button>
