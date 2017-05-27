@@ -13,11 +13,6 @@
         <servlet-name>BuscarProduto</servlet-name>
         <servlet-class>br.senac.tads.livraria.pi3a.controller.BuscarProduto</servlet-class>
     </servlet>
-    
-    <servlet>
-        <servlet-name>BuscarUsuario</servlet-name>
-        <servlet-class>br.senac.tads.livraria.pi3a.controller.BuscarUsuario</servlet-class>
-    </servlet>
     <servlet>
         <servlet-name>Autenticador</servlet-name>
         <servlet-class>br.senac.tads.livraria.pi3a.controller.Autenticador</servlet-class>
@@ -28,10 +23,6 @@
         <url-pattern>/BuscarProduto</url-pattern>
     </servlet-mapping>
     
-    <servlet-mapping>
-        <servlet-name>BuscarUsuario</servlet-name>
-        <url-pattern>/BuscarUsuario</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Autenticador</servlet-name>
         <url-pattern>/Autenticador</url-pattern>
