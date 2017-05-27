@@ -23,12 +23,12 @@ public class Usuario {
     private String senha;
     private String tipoAcesso;
     private Date dataNasc;
-            
+    private String cpf;        
     public Usuario() {
 
     }
 
-    public Usuario(String nome, String email, String fixo, String cel, String setor,
+    public Usuario(String nome,String cpf, String email, String fixo, String cel, String setor,
             String sexo, String senha, String tipoAcesso, Date dataNasc) {
         this.nome = nome;
         this.email = email;
@@ -39,9 +39,10 @@ public class Usuario {
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
         this.dataNasc = dataNasc;
+        this.cpf = cpf;
     }
 
-    public Usuario(int id, String nome, String email, String fixo, String cel,
+    public Usuario(int id, String nome,String cpf, String email, String fixo, String cel,
             String setor, String sexo, String senha, String tipoAcesso, Date dataNasc) {
         this.id = id;
         this.nome = nome;
@@ -53,6 +54,7 @@ public class Usuario {
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
         this.dataNasc = dataNasc;
+        this.cpf = cpf;
     }
 
     public int getId() {
@@ -133,5 +135,12 @@ public class Usuario {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
+    }
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+    this.cpf = cpf;
     }
 }
