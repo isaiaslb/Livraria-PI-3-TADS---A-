@@ -191,6 +191,10 @@
                               <label>Nome</label>
                               <input name="nome" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}">
                           </div>
+                          <div class="form-group">
+                              <label>CPF</label>
+                              <input name="cpf" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}">
+                          </div>
                              <div class="form-group">
                               <label>Data de Nascimento</label>
                               <input name="dataNasc" id="dataNasc" class="form-control" type="text">
