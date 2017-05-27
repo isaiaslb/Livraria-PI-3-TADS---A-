@@ -36,7 +36,7 @@ public class UsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nome = request.getParameter("nome");
-
+        String cpf = request.getParameter("cpf");    
         String sexo = request.getParameter("sexo");
         String email = request.getParameter("email");
         String fixo = request.getParameter("telefone");
@@ -49,7 +49,7 @@ public class UsuarioServlet extends HttpServlet {
 
         // Cria um novo contato e salva
         // através do DAO
-        Usuario novo = new Usuario(nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
+        Usuario novo = new Usuario(nome,cpf, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
         UsuarioDAO dao = new UsuarioDAO();
         dao.incluirComTransacao(novo);
 
