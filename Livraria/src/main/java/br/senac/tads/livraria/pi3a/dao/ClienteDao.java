@@ -38,7 +38,7 @@ public class ClienteDao extends ConexaoBD {
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-                
+
                 p.setNome(resultados.getString("nome"));
                 p.setCpf(resultados.getString("cpf"));
                 p.setEnd(resultados.getString("endereco"));
@@ -75,34 +75,28 @@ public class ClienteDao extends ConexaoBD {
         return p;
     }
 
-    public List<Cliente> listar() {
-        Statement stmt = null;
+    public ArrayList<Cliente> listar() {
+        PreparedStatement stmt = null;
         Connection conn = null;
+        Cliente p = new Cliente();
 
-        String sql = "SELECT cod_user, nome, cpf, endereco, bairro, cep, estado, cel, email"
-                + "FROM bdlivraria";
+        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
 
-        List<Cliente> lista = new ArrayList<Cliente>();
+        String sql = "SELECT cod_cli, nome, cpf, email FROM cliente";
+
         try {
             conn = obterConexao();
-            stmt = conn.createStatement();
-            ResultSet resultados = stmt.executeQuery(sql);
+            stmt = conn.prepareStatement(sql);
+            ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-                int id = resultados.getInt("COD_CLI");
-                String nome = resultados.getString("nome");
-                String cpf = resultados.getString("cpf");
-                String endereco = resultados.getString("endereco");
-                String bairro = resultados.getString("bairro");
-                String cep = resultados.getString("cep");
-                String estado = resultados.getString("estado");
-                String cel = resultados.getString("cel");
-                String email = resultados.getString("email");
-
-                Cliente cliente = new Cliente(id, nome, cpf, endereco, bairro, cep, estado, cel, email);
-                lista.add(cliente);
+                p.setId(resultados.getInt("id"));
+                p.setNome(resultados.getString("nome"));
+                p.setCpf(resultados.getString("cpf"));
+                p.setEmail(resultados.getString("email"));
             }
-
+            listaCliente.add(p);
+            
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -124,13 +118,12 @@ public class ClienteDao extends ConexaoBD {
                 }
             }
         }
-        return lista;
+        return listaCliente;
     }
 
     // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
     // http://www.mkyong.com/jdbc/jdbc-transaction-example/
- 
-       public void atualizar(Cliente cliente) {
+    public void atualizar(Cliente cliente) {
         PreparedStatement stmt = null;
         Connection conn = null;
 
@@ -149,7 +142,6 @@ public class ClienteDao extends ConexaoBD {
             stmt.setString(6, cliente.getCel());
             stmt.setString(7, cliente.getEmail());
             stmt.setString(8, cliente.getCpf());
-            
 
             stmt.executeUpdate();
 
@@ -190,8 +182,7 @@ public class ClienteDao extends ConexaoBD {
             }
         }
     }
-    
-    
+
     public void incluirComTransacao(Cliente cliente) {
         PreparedStatement stmt = null;
         Connection conn = null;

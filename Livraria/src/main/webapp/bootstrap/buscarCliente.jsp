@@ -205,7 +205,7 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
                             <div>
                                 <label>Pesquisa CPF</label>
-                                <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
+                                <input class="form-control" name="buscarCpf" placeholder="Digite o CPF para buscar..."></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>

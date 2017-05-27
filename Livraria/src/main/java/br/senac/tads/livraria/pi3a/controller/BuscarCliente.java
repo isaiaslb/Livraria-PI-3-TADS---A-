@@ -9,6 +9,7 @@ import br.senac.tads.livraria.pi3a.dao.ClienteDao;
 import br.senac.tads.livraria.pi3a.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,20 +30,22 @@ public class BuscarCliente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
 //        String papel = request.getParameter("papel");
 //        request.setAttribute("papelCliente", papel);
         String b = request.getParameter("buscarCpf");
 
         ClienteDao dao = new ClienteDao();
         Cliente lista = dao.obterCliente(b);
-
         request.setAttribute("listaCliente", lista);
-
+        
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/buscarCliente.jsp");
         dispatcher.forward(request, response);
 
+        ArrayList<Cliente> list = dao.listar();
+        request.setAttribute("listCliente", list);
+        
+        
         try {
             dispatcher.forward(request, response);
         } catch (IOException ex) {
@@ -57,7 +60,7 @@ public class BuscarCliente extends HttpServlet {
 
         ClienteDao cli = new ClienteDao();
         Cliente clientes = new Cliente();
- 
+
         clientes.setNome(request.getParameter("nomeBusca"));
         clientes.setEnd(request.getParameter("endBusca"));
         clientes.setBairro(request.getParameter("bairroBusca"));
@@ -71,9 +74,8 @@ public class BuscarCliente extends HttpServlet {
         } catch (Exception ex) {
 
         }
-        
-        //response.sendRedirect("bootstrap/cliente.jsp");
 
+        //response.sendRedirect("bootstrap/cliente.jsp");
     }
 
 }
