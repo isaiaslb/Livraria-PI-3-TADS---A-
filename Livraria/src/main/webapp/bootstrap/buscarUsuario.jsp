@@ -194,7 +194,7 @@
                     <div class="col-lg-6">
 
                         <form role="form">
-                             <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
+                             <form role="form" action="${pageContext.request.contextPath}/buscarUsuario" method="get">
                           <div>
                               <label>Buscar</label>
                               <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
@@ -203,15 +203,19 @@
                     </form>
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="form-control" name="nome" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="nomeBusca" value="${listaUsuario.nome}" disabled="">
+                            </div>
+                            <div class="form-group">
+                                <label>CPF</label>
+                                <input class="form-control" name="cpfBusca" value="${listaUsuario.cpf}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
-                                <input class="form-control" name="dataNasc" id="dataNasc" value="${listaCliente.nome}" type="date" disabled="">
+                                <input class="form-control" name="dataNasc" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Sexo</label>
-                                <select class="form-control" name="sexo" id="sexo" value="${listaCliente.nome}" disabled="">
+                                <select class="form-control" name="sexo" id="sexo" value="${listaUsuario.sexo}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="m" >Masculino</option>
                                     <option value="f">Feminino</option>     
@@ -220,27 +224,27 @@
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" name="email" id="email" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="email" id="email" value="${listaUsuario.email}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Telefone</label>
-                                <input class="form-control" name="telefone" id="telefone" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="telefone" id="telefone" value="${listaUsuario.telefone}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="form-control" name="celular" id="celular" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="celular" id="celular" value="${listaUsuario.celular}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Setor</label>
-                                <input class="form-control" name="setor" id="setor" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="setor" id="setor" value="${listaUsuario.setor}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
-                                <input class="form-control" name="senha" id="senha" value="${listaCliente.nome}" type="password" disabled="">
+                                <input class="form-control" name="senha" id="senha" value="${listaUsuario.senha}" type="password" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Tipo de acesso</label>
-                                <select class="form-control" name="tipoAcesso" id="tipoAcesso" value="${listaCliente.nome}" disabled="">
+                                <select class="form-control" name="tipoAcesso" id="tipoAcesso" value="${listaUsuario.tipoAcesso}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="adm">Administrador</option>
                                     <option value="comum">Comum</option>     
