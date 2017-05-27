@@ -52,15 +52,14 @@ public class UsuarioDAO extends ConexaoBD {
                 //p.setId(resultados.getInt("cod_cli"));
                 p.setNome(resultados.getString("nome"));
                 p.setCpf(resultados.getString("cpf"));
-                p.setDataNasc(resultados.getDate("dataNasc"));
+                p.setDataNasc(resultados.getDate("dtNasc"));
                 p.setSexo(resultados.getString("sexo"));
                 p.setEmail(resultados.getString("email"));
-                p.setFixo(resultados.getString("telefone"));
-                p.setCel(resultados.getString("celular"));
-                p.setSetor(resultados.getString("setor"));
-                p.setSetor(resultados.getString("senha"));
-                p.setSetor(resultados.getString("tipoAcesso"));
-
+                p.setTelefone(resultados.getString("fixo"));
+                p.setCelular(resultados.getString("cel"));
+                p.setSetor(resultados.getString("setor"));               
+                p.setSenha(resultados.getString("senha")); 
+                p.setTipoAcesso(resultados.getString("tpAcesso"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,8 +159,8 @@ public class UsuarioDAO extends ConexaoBD {
             stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getFixo());
-            stmt.setString(4, usuario.getCel());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setString(4, usuario.getCelular());
             stmt.setString(5, usuario.getSetor());
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
@@ -230,8 +229,8 @@ public class UsuarioDAO extends ConexaoBD {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getFixo());
-            stmt.setString(4, usuario.getCel());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setString(4, usuario.getCelular());
             stmt.setString(5, usuario.getSetor());
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
