@@ -16,43 +16,45 @@ public class Usuario {
     private int id;
     private String nome;
     private String email;
-    private String fixo;
+    private String telefone;
     private String cel;
     private String setor;
     private String sexo;
     private String senha;
     private String tipoAcesso;
     private Date dataNasc;
-            
+    private String cpf;        
     public Usuario() {
 
     }
 
-    public Usuario(String nome, String email, String fixo, String cel, String setor,
+    public Usuario(String nome,String cpf, String email, String telefone, String cel, String setor,
             String sexo, String senha, String tipoAcesso, Date dataNasc) {
         this.nome = nome;
         this.email = email;
-        this.fixo = fixo;
+        this.telefone = telefone;
         this.cel = cel;
         this.setor = setor;
         this.sexo = sexo;
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
         this.dataNasc = dataNasc;
+        this.cpf = cpf;
     }
 
-    public Usuario(int id, String nome, String email, String fixo, String cel,
+    public Usuario(int id, String nome,String cpf, String email, String telefone, String cel,
             String setor, String sexo, String senha, String tipoAcesso, Date dataNasc) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.fixo = fixo;
+        this.telefone = telefone;
         this.cel = cel;
         this.setor = setor;
         this.sexo = sexo;
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
         this.dataNasc = dataNasc;
+        this.cpf = cpf;
     }
 
     public int getId() {
@@ -79,19 +81,19 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getFixo() {
-        return fixo;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setFixo(String fixo) {
-        this.fixo = fixo;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public String getCel() {
+    public String getCelular() {
         return cel;
     }
 
-    public void setCel(String cel) {
+    public void setCelular(String cel) {
         this.cel = cel;
     }
 
@@ -133,5 +135,12 @@ public class Usuario {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
+    }
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+    this.cpf = cpf;
     }
 }

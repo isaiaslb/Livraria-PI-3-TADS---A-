@@ -51,15 +51,15 @@ public class UsuarioDAO extends ConexaoBD {
 //                String email = resultados.getString("email");                
                 //p.setId(resultados.getInt("cod_cli"));
                 p.setNome(resultados.getString("nome"));
-                p.setDataNasc(resultados.getDate("dataNasc"));
+                p.setCpf(resultados.getString("cpf"));
+                p.setDataNasc(resultados.getDate("dtNasc"));
                 p.setSexo(resultados.getString("sexo"));
                 p.setEmail(resultados.getString("email"));
-                p.setFixo(resultados.getString("telefone"));
-                p.setCel(resultados.getString("celular"));
-                p.setSetor(resultados.getString("setor"));
-                p.setSetor(resultados.getString("senha"));
-                p.setSetor(resultados.getString("tipoAcesso"));
-
+                p.setTelefone(resultados.getString("fixo"));
+                p.setCelular(resultados.getString("cel"));
+                p.setSetor(resultados.getString("setor"));               
+                p.setSenha(resultados.getString("senha")); 
+                p.setTipoAcesso(resultados.getString("tpAcesso"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,7 +89,7 @@ public class UsuarioDAO extends ConexaoBD {
         Statement stmt = null;
         Connection conn = null;
 
-        String sql = "SELECT cod_user, nome, cpf, endereco, bairro, cep, estado, cel, email"
+        String sql = "SELECT cod_user, nome, email, fixo, cel, setor, sexo, senha, tp_acesso,dtnasc, cpf"
                 + "FROM bdlivraria";
 
         List<Usuario> lista = new ArrayList<Usuario>();
@@ -99,8 +99,9 @@ public class UsuarioDAO extends ConexaoBD {
             ResultSet resultados = stmt.executeQuery(sql);
 
             while (resultados.next()) {
-                int id = resultados.getInt("COD_CLI");
+                int id = resultados.getInt("cod_user");
                 String nome = resultados.getString("nome");
+                String cpf = resultados.getString("cpf");
                 String sexo = resultados.getString("sexo");
                 String email = resultados.getString("email");
                 String fixo = resultados.getString("telefone");
@@ -113,7 +114,7 @@ public class UsuarioDAO extends ConexaoBD {
 
                 // Cria um novo contato e salva
                 // através do DAO
-                Usuario usuario = new Usuario(nome, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
+                Usuario usuario = new Usuario(nome, cpf, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
 
                 lista.add(usuario);
             }
@@ -149,8 +150,8 @@ public class UsuarioDAO extends ConexaoBD {
         Connection conn = null;
 
         String sql = "INSERT INTO usuario (nome,"
-                + "email, fixo, cel, setor, sexo, senha, tp_acesso) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                + "email, fixo, cel, setor, sexo, senha, tp_acesso,dtnasc, cpf) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
 
@@ -158,13 +159,14 @@ public class UsuarioDAO extends ConexaoBD {
             stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getFixo());
-            stmt.setString(4, usuario.getCel());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setString(4, usuario.getCelular());
             stmt.setString(5, usuario.getSetor());
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
             stmt.setString(8, usuario.getTipoAcesso());
-
+            stmt.setDate(9, (java.sql.Date) usuario.getDataNasc());
+            stmt.setString(10, usuario.getCpf());
             stmt.execute();
 
             // ResultSet para recuperar o ID gerado automaticamente no banco de dados.
@@ -220,19 +222,20 @@ public class UsuarioDAO extends ConexaoBD {
         Connection conn = null;
 
         String sql = "INSERT INTO usuario (nome,"
-                + "email, fixo, cel, setor, sexo, senha, tp_acesso) "
+                + "email, fixo, cel, setor, sexo, senha, tp_acesso,dtnasc,cpf) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getFixo());
-            stmt.setString(4, usuario.getCel());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setString(4, usuario.getCelular());
             stmt.setString(5, usuario.getSetor());
             stmt.setString(6, usuario.getSexo());
             stmt.setString(7, usuario.getSenha());
             stmt.setString(8, usuario.getTipoAcesso());
+            stmt.setDate(9, (java.sql.Date) usuario.getDataNasc());
 
             stmt.executeUpdate();
 

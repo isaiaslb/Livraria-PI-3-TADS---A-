@@ -9,6 +9,7 @@ import br.senac.tads.livraria.pi3a.dao.EmpresaDao;
 import br.senac.tads.livraria.pi3a.model.Empresa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,35 +20,22 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Fernanda
+ * @author Douglas
  */
-
 @WebServlet(name = "BuscarEmpresa", urlPatterns = {"/buscarEmpresa"})
 public class BuscarEmpresa extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-//        String papel = request.getParameter("papel");
-//        request.setAttribute("papelCliente", papel);
 
 
         String b = request.getParameter("buscarCnpj");
 
         EmpresaDao dao = new EmpresaDao();
-       // Empresa lista = dao.obterContato(1);
+        Empresa lista = dao.obterEmpresa(b);
 
-        //request.setAttribute("listaEmpresa", lista);
+        request.setAttribute("listaEmpresa", lista);
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/buscarEmpresa.jsp");
@@ -60,4 +48,33 @@ public class BuscarEmpresa extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        EmpresaDao emp = new EmpresaDao();
+        Empresa empresas = new Empresa();
+ 
+         empresas.setRazao(request.getParameter("razaoBusca"));
+        empresas.setIe(request.getParameter("ieBusca"));
+        empresas.setTelefone(request.getParameter("telefoneBusca"));
+        empresas.setEndereco(request.getParameter("enderecoBusca"));
+        empresas.setNumero(request.getParameter("numeroBusca"));
+        empresas.setComplemento(request.getParameter("complementoBusca"));
+        empresas.setCep(request.getParameter("cepBusca"));
+        empresas.setBairro(request.getParameter("bairroBusca"));
+        empresas.setCidade(request.getParameter("cidadeBusca"));
+        empresas.setEstado(request.getParameter("estadoBusca"));
+
+        try {
+            emp.atualizar(empresas);
+        } catch (Exception ex) {
+
+        }
+        
+        //response.sendRedirect("bootstrap/cliente.jsp");
+
+    }
+
 }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : buscarUsuario
-    Created on : 09/05/2017, 10:19:20
+    Document   : buscarClienteUsuario
+    Created on : 08/05/2017, 13:10:07
     Author     : Isaias
 --%>
 
@@ -19,13 +19,13 @@
         <title>Livraria Astec</title>
 
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/sb-admin.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/bootstrap/css/sb-admin.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,8 +33,19 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
-
+<!--
+        <script type="text/javascript">
+            function habilita_a() {
+                document.getElementById('nome').disabled = false;
+                document.getElementById('end').disabled = false;
+                document.getElementById('bairro').disabled = false;
+                document.getElementById('cep').disabled = false;
+                document.getElementById('est').disabled = false;
+                document.getElementById('cel').disabled = false;
+                document.getElementById('email').disabled = false;
+            }
+        </script>
+-->
     </head>
 
     <body>
@@ -108,10 +119,10 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Log in <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${usuAutenticado.nome} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                <a href="${pageContext.request.contextPath}/Autenticador"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -142,7 +153,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuário<i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuário <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="usu" class="collapse">
                                 <li>
                                     <a href="usuario.jsp">Cadastro</a>
@@ -156,10 +167,10 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="cli" class="collapse">
                                 <li>
-                                    <a href="cliente.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/cliente.jsp">Cadastro</a>
                                 </li>
                                 <li>
-                                    <a href="buscarCliente.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarCliente.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
@@ -183,35 +194,37 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Buscar usuário
+                                Buscar Usuario
                             </h1>
                         </div>
                     </div>
                     <!-- /.row -->
 
-                    <!-- Main jumbotron for a primary marketing message or call to action -->
 
                     <div class="col-lg-6">
-
-                        <form role="form">
-                             <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
-                          <div>
-                              <label>Buscar</label>
-                              <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
-                              <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
-                          </div>
-                    </form>
+                        <form role="form" action="${pageContext.request.contextPath}/buscarUsuario" method="get">
+                            <div>
+                                <label>Pesquisa CPF</label>
+                                <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
+                                <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
+                            </div>
+                        </form>
+                        <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="form-control" name="nome" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="nomeBusca" value="${listaUsuario.nome}" disabled="">
+                            </div>
+                            <div class="form-group">
+                                <label>CPF</label>
+                                <input class="form-control" name="cpfBusca" value="${listaUsuario.cpf}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
-                                <input class="form-control" name="dataNasc" id="dataNasc" value="${listaCliente.nome}" type="date" disabled="">
+                                <input class="form-control" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Sexo</label>
-                                <select class="form-control" name="sexo" id="sexo" value="${listaCliente.nome}" disabled="">
+                                <select class="form-control" name="sexoBusca" id="sexo" value="${listaUsuario.sexo}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="m" >Masculino</option>
                                     <option value="f">Feminino</option>     
@@ -220,34 +233,36 @@
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" name="email" id="email" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="emailBusca" id="email" value="${listaUsuario.email}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Telefone</label>
-                                <input class="form-control" name="telefone" id="telefone" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="telefoneBusca" id="telefone" value="${listaUsuario.telefone}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="form-control" name="celular" id="celular" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="celularBusca" id="celular" value="${listaUsuario.celular}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Setor</label>
-                                <input class="form-control" name="setor" id="setor" value="${listaCliente.nome}" disabled="">
+                                <input class="form-control" name="setorBusca" id="setor" value="${listaUsuario.setor}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
-                                <input class="form-control" name="senha" id="senha" value="${listaCliente.nome}" type="password" disabled="">
+                                <input class="form-control" name="senhaBusca" id="senha" value="${listaUsuario.senha}" type="password" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Tipo de acesso</label>
-                                <select class="form-control" name="tipoAcesso" id="tipoAcesso" value="${listaCliente.nome}" disabled="">
+                                <select class="form-control" name="tipoAcessoBusca" id="tipoAcesso" value="${listaUsuario.tipoAcesso}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="adm">Administrador</option>
                                     <option value="comum">Comum</option>     
                                 </select>
                             </div>
                         </form>
+                       
                     </div>
+                    <!-- /.container-fluid -->
 
                 </div>
                 <!-- /#page-wrapper -->
@@ -256,12 +271,11 @@
             <!-- /#wrapper -->
 
             <!-- jQuery -->
-            <script src="js/jquery.js"></script>
+            <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 
             <!-- Bootstrap Core JavaScript -->
-            <script src="js/bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 
     </body>
 
 </html>
-
