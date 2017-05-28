@@ -17,31 +17,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Douglas
  */
-@WebServlet(name = "BuscarCliente", urlPatterns = {"/buscarCliente"})
-public class BuscarCliente extends HttpServlet {
+@WebServlet(name = "VendaServlet", urlPatterns = {"/vendaServlet"})
+public class VendaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        String papel = request.getParameter("papel");
-//        request.setAttribute("papelCliente", papel);
-        String b = request.getParameter("buscarCpf");
-
         ClienteDao dao = new ClienteDao();
-        Cliente lista = dao.obterCliente(b);
-        request.setAttribute("listaCliente", lista);
-        
+        List<Cliente> list = dao.listar();
+        request.setAttribute("listCliente", list);
+
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("bootstrap/buscarCliente.jsp");
+                = request.getRequestDispatcher("bootstrap/venda.jsp");
         dispatcher.forward(request, response);
-        
+
         try {
             dispatcher.forward(request, response);
         } catch (IOException ex) {
@@ -54,24 +49,6 @@ public class BuscarCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ClienteDao cli = new ClienteDao();
-        Cliente clientes = new Cliente();
-
-        clientes.setNome(request.getParameter("nomeBusca"));
-        clientes.setEnd(request.getParameter("endBusca"));
-        clientes.setBairro(request.getParameter("bairroBusca"));
-        clientes.setCep(request.getParameter("cepBusca"));
-        clientes.setEstado(request.getParameter("estadoBusca"));
-        clientes.setCel(request.getParameter("celBusca"));
-        clientes.setEmail(request.getParameter("emailBusca"));
-
-        try {
-            cli.atualizar(clientes);
-        } catch (Exception ex) {
-
-        }
-
-        //response.sendRedirect("bootstrap/cliente.jsp");
     }
 
 }

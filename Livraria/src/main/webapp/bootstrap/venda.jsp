@@ -200,7 +200,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="listar" items="${listCliente}">
+                                        <c:forEach items="${listCliente}" var="listar">
                                         <tr>
                                             <td><c:out value="${listar.id}"/></td>
                                             <td><c:out value="${listar.nome}"/></td>
@@ -236,12 +236,12 @@
                             </div>
 
                             <div class="col-lg-7">
-                                <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
+                                <form role="form" action="${pageContext.request.contextPath}/vendaServlet" method="get">
 
                                     <label>Cliente</label>
                                     <input id="codigo"  type="text"/> 
 
-                                    <button type="button" href="#dialog" name="modal" class="btn btn-lg btn-default" style="width: 10px; height: 10px;">...</button></br></br>
+                                    <button type="submit" href="#dialog" name="modal" class="btn btn-lg btn-default" style="width: 10px; height: 10px;">...</button></br></br>
                                 </form>
                                 <label for="data" class="alinhar">Data</label>
                                 <input id="data" name="data" type="date"/> </br> </br>                        

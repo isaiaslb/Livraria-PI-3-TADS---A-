@@ -75,12 +75,12 @@ public class ClienteDao extends ConexaoBD {
         return p;
     }
 
-    public ArrayList<Cliente> listar() {
+    public List<Cliente> listar() {
         PreparedStatement stmt = null;
         Connection conn = null;
         Cliente p = new Cliente();
 
-        ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+        List<Cliente> listaCliente = new ArrayList<Cliente>();
 
         String sql = "SELECT cod_cli, nome, cpf, email FROM cliente";
 
