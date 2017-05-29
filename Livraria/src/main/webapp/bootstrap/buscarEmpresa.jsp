@@ -1,7 +1,7 @@
 <%-- 
     Document   : buscarEmpresa
     Created on : 09/05/2017, 10:26:07
-    Author     : Antonio
+    Author     : Antonio Carlos
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
