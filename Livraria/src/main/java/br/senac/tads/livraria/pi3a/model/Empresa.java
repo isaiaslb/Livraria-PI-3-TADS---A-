@@ -3,7 +3,7 @@ package br.senac.tads.livraria.pi3a.model;
 
 /**
  *
- * @author Antonio
+ * @author Antonio Carlos
  */
 public class Empresa {
     private int id;
