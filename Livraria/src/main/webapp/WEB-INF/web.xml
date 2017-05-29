@@ -10,19 +10,10 @@
     </filter-mapping>
     
     <servlet>
-        <servlet-name>BuscarProduto</servlet-name>
-        <servlet-class>br.senac.tads.livraria.pi3a.controller.BuscarProduto</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Autenticador</servlet-name>
         <servlet-class>br.senac.tads.livraria.pi3a.controller.Autenticador</servlet-class>
     </servlet>
-   
-    <servlet-mapping>
-        <servlet-name>BuscarProduto</servlet-name>
-        <url-pattern>/BuscarProduto</url-pattern>
-    </servlet-mapping>
-    
+      
     <servlet-mapping>
         <servlet-name>Autenticador</servlet-name>
         <url-pattern>/Autenticador</url-pattern>

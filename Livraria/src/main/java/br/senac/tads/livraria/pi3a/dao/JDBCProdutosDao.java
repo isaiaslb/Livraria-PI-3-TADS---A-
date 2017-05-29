@@ -42,8 +42,8 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
     public void inserir(Produtos produto) {
         try {
 
-            String sql = "INSERT INTO PRODUTOS (PRODFILIAL, PRODNOME, PRODAUTOR, PRODGENERO, PRODQTD, PRODVALCOMPRA, PRODVALVENDA, PRODDESC) VALUES"
-                    + "(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO PRODUTOS (PRODFILIAL, PRODNOME, PRODAUTOR, PRODGENERO, PRODQTD, PRODVALCOMPRA, PRODVALVENDA, PRODDESC, ENABLED) VALUES"
+                    + "(?,?,?,?,?,?,?,?,true)";
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, produto.getProdFilial());
             ps.setString(2, produto.getProdNome());
@@ -112,14 +112,13 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
     }
 
     @Override
-    public Produtos buscar(String produto, String autor) {
+    public Produtos buscar(String produto) {
         try {
             Produtos p = new Produtos();
-            String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ? OR PRODAUTOR = ?";
+            String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ? AND ENABLED = TRUE";
             PreparedStatement ps = conn.prepareStatement(sql);
             
-            ps.setString(1, produto);
-            ps.setString(2, autor);
+            ps.setString(1, produto);            
             ResultSet rs = ps.executeQuery();
             
             rs.next();
@@ -163,7 +162,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.setDouble(7, produto.getProdValVenda());
             ps.setString(8, produto.getProdDesc());
             //ps.setInt(9, produto.getId());
-            
+                        
             ps.executeUpdate();
             
             ps.close();

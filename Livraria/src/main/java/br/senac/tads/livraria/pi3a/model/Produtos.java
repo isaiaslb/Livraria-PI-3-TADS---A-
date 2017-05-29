@@ -36,14 +36,14 @@ public class Produtos {
     this.prodValVenda = valVenda;
     this.prodDesc = descricao;
   }      
-  /*  public int getIdProd(){
+    /*public int getIdProd(){
         return prodId;
     }
     
     public void setIdProd(int id){
         this.prodId = id;
     }
-    */
+  */
     
     public int getProdFilial(){
         return prodFilial;

@@ -18,7 +18,7 @@ public interface ProdutosDao{
     public void inserir(Produtos produto);
     public void remover(int id); 
     public List<Produtos> listar();
-    public Produtos buscar(String produto, String Autor);
+    public Produtos buscar(String produto);
     public void alterar(Produtos produto);
     
 }
