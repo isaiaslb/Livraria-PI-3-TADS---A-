@@ -20,7 +20,6 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/bootstrap/css/modal.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="${pageContext.request.contextPath}/bootstrap/css/sb-admin.css" rel="stylesheet">
 
@@ -184,38 +183,6 @@
 
                 <div class="container-fluid">
 
-                    <div id="boxes">
-
-                        <div id="dialog" class="window">
-                            <a href="#" class="close">[X]</a><br />
-                            Selecione o cliente desejado<br />  
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>CPF</th>
-                                            <th>E-mail</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach items="${listCliente}" var="listar">
-                                        <tr>
-                                            <td><c:out value="${listar.id}"/></td>
-                                            <td><c:out value="${listar.nome}"/></td>
-                                            <td><c:out value="${listar.cpf}"/></td>
-                                            <td><c:out value="${listar.email}"/></td>
-                                        </tr>    
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-
-                    </div>
-
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
@@ -241,7 +208,7 @@
                                     <label>Cliente</label>
                                     <input id="codigo"  type="text"/> 
 
-                                    <button type="submit" href="#dialog" name="modal" class="btn btn-lg btn-default" style="width: 10px; height: 10px;">...</button></br></br>
+                                    <button type="submit" class="btn btn-lg btn-default" style="width: 10px; height: 10px;">...</button></br></br>
                                 </form>
                                 <label for="data" class="alinhar">Data</label>
                                 <input id="data" name="data" type="date"/> </br> </br>                        
@@ -361,7 +328,6 @@
 
         <!-- jQuery -->
         <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
-        <script src="${pageContext.request.contextPath}/bootstrap/js/modal.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 

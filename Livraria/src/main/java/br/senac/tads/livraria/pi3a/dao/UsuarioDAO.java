@@ -260,7 +260,7 @@ public class UsuarioDAO extends ConexaoBD {
             }
         }
     }public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
-        Usuario usuRetorno = null;
+        Usuario usuRetorno = new Usuario();
         String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
 
         try {
@@ -273,7 +273,6 @@ public class UsuarioDAO extends ConexaoBD {
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
-                usuRetorno = new Usuario();
                 //  usuRetorno.setId(resultado.getInt("id"));
                 usuRetorno.setNome(resultado.getString("nome"));
                 usuRetorno.setSenha(resultado.getString("senha"));
