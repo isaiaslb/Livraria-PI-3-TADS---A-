@@ -184,35 +184,7 @@
 
                 <div class="container-fluid">
 
-                    <div id="boxes">
-
-                        <div id="dialog" class="window">
-                            <a href="#" class="close">[X]</a><br />
-                            Selecione o cliente desejado<br />  
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>CPF</th>
-                                            <th>E-mail</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach items="${listCliente}" var="listar">
-                                        <tr>
-                                            <td><c:out value="${listar.id}"/></td>
-                                            <td><c:out value="${listar.nome}"/></td>
-                                            <td><c:out value="${listar.cpf}"/></td>
-                                            <td><c:out value="${listar.email}"/></td>
-                                        </tr>    
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
+                    
 
                     </div>
 
