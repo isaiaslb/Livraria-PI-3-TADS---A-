@@ -197,14 +197,16 @@
                         <form action="${pageContext.request.contextPath}/EmpresaServlet" method="post">
                             <div class="form-group">
                                 <label>Razão Social</label>
-                                <input name="RZ_SOCIAL" class="form-control" placeholder="Informe a Razão...">
+                                <input onKeypress="return teste(event)" maxlength="50" name="RZ_SOCIAL" class="form-control" placeholder="Informe a Razão...">
                             </div>
 
                             <div class="form-group">
                                 <label>CNPJ</label>
 
-                                <input name="cnpj" onKeyPress="MascaraCNPJ(form1.cnpj);" class="form-control" onBlur="ValidarCNPJ(form1.cnpj);" placeholder="Informe o CNPJ...">
+                                <input name="cnpj" onkeypress="formatar('##.###.###/####-##',this)" onKeyDown='return SomenteNumero(event)' class="form-control" maxlength="18" id="cnpj" placeholder="Informe o CNPJ...">
 
+                                
+                                
                             </div>
 
                             <div class="form-group">
@@ -213,7 +215,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Telefone Fixo</label>
-                                <input name="tel" onKeyPress="MascaraTelefone(form1.tel);"  class="form-control" placeholder="Informe Telefone...">
+                                <input name="tel" class="form-control" OnKeyPress="formatar('##-#####-####', this)" type="tel" maxlength="13" placeholder="Informe Telefone...">
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>
@@ -229,7 +231,7 @@
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input name="cep" class="form-control" placeholder="Informe CEP...">
+                                <input name="cep" OnKeyPress="formatar('#####-###', this)" class="form-control" name="cep" maxlength="9" type="text" id="cep"placeholder="Informe CEP...">
                             </div>
                             <div class="form-group">
                                 <label>Bairro</label>
@@ -287,63 +289,56 @@
             </div>
             <!-- /#wrapper -->
             
-            function MascaraTelefone(tel){  
-        if(mascaraInteiro(tel)==false){
-                event.returnValue = false;
-        }       
-        return formataCampo(tel, '(00) 0000-0000', event);
-}
-
-function ValidarCNPJ(ObjCnpj){
-        var cnpj = ObjCnpj.value;
-        var valida = new Array(6,5,4,3,2,9,8,7,6,5,4,3,2);
-        var dig1= new Number;
-        var dig2= new Number;
-
-        exp = /\.|\-|\//g
-        cnpj = cnpj.toString().replace( exp, "" ); 
-        var digito = new Number(eval(cnpj.charAt(12)+cnpj.charAt(13)));
-
-        for(i = 0; i<valida.length; i++){
-                dig1 += (i>0? (cnpj.charAt(i-1)*valida[i]):0);  
-                dig2 += cnpj.charAt(i)*valida[i];       
-        }
-        dig1 = (((dig1%11)<2)? 0:(11-(dig1%11)));
-        dig2 = (((dig2%11)<2)? 0:(11-(dig2%11)));
-
-        if(((dig1*10)+dig2) != digito)  
-                alert('CNPJ Invalido!');
-
-}
-
+             <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
                 
-                function MascaraCNPJ(cnpj){
-        if(mascaraInteiro(cnpj)==false){
-                event.returnValue = false;
-        }       
-        return formataCampo(cnpj, '00.000.000/0000-00', event);
+                
+            </script>  
+            
+            <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
 }
+                
+            </script>
 
+            <script>
+                function teste(e)
+	{
+		var expressao;
 
-            <!-- jQuery -->
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+            
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-
-            <!-- Morris Charts JavaScript -->
-            <script src="js/plugins/morris/raphael.min.js"></script>
-            <script src="js/plugins/morris/morris.min.js"></script>
-            <script src="js/plugins/morris/morris-data.js"></script>
-
-            <!-- Flot Charts JavaScript -->
-            <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-            <script src="js/plugins/flot/jquery.flot.js"></script>
-            <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-            <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-            <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-            <script src="js/plugins/flot/flot-data.js"></script>
-
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
     </body>
 
 </html>
