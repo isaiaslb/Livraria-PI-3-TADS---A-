@@ -205,14 +205,14 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="get">
                             <div>
                                 <label>Pesquisa CPF</label>
-                                <input class="form-control" name="buscarCpf" placeholder="Digite o CPF para buscar..."></br>
+                                <input OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" class="form-control" name="buscarCpf" placeholder="Digite o CPF para buscar..."></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="form-control" name="nomeBusca" id="nome" value="${listaCliente.nome}" disabled />
+                                <input onKeypress="return teste(event)"  maxlength="150" class="form-control" name="nomeBusca" id="nome" value="${listaCliente.nome}" disabled />
                             </div>
                             <div class="form-group">
                                 <label>CPF</label>
@@ -220,15 +220,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>
-                                <input class="form-control" name="endBusca" id="end" value="${listaCliente.end}" disabled="">
+                                <input onKeypress="return teste(event)"  maxlength="100" class="form-control" name="endBusca" id="end" value="${listaCliente.end}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Bairro</label>
-                                <input class="form-control" name="bairroBusca" id="bairro" value="${listaCliente.bairro}" disabled="">
+                                <input  onKeypress="return teste(event)" maxlength="100" class="form-control" name="bairroBusca" id="bairro" value="${listaCliente.bairro}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input class="form-control" name="cepBusca" id="cep" value="${listaCliente.cep}" disabled="">
+                                <input OnKeyPress="formatar('#####-###', this)" onKeyDown='return SomenteNumero(event)' maxlength="9" class="form-control" name="cepBusca" id="cep" value="${listaCliente.cep}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
@@ -265,11 +265,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="form-control" id="cel" name="celBusca" value="${listaCliente.cel}" disabled>
+                                <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" class="form-control" id="cel" name="celBusca" value="${listaCliente.cel}" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" id="email" name="emailBusca" value="${listaCliente.email}" disabled>
+                                <input class="form-control" type="email" maxlength="100" id="email" name="emailBusca" value="${listaCliente.email}" disabled>
                             </div>
                             <button type="submit" class="btn btn-lg btn-default">Salvar</button>                    
                             <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
@@ -285,6 +285,53 @@
             </div>
             <!-- /#wrapper -->
 
+             <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
+
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+
+ <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+                
+                
+            </script>  
             <!-- jQuery -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 

@@ -192,24 +192,24 @@
                       <form role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
-                              <input class="form-control" maxlength="150" name="nome" placeholder="Digite o nome..." required />
+                              <input class="form-control" onKeypress="return teste(event)"  maxlength="150" name="nome" placeholder="Digite o nome..." required />
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input type="text" OnKeyPress="formatar('###.###.###-##', this)" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
+                              <input type="text" OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
                               
                           </div>
                           <div class="form-group">
                               <label>Endereço</label>
-                              <input class="form-control" name="endereco" maxlength="100" placeholder="Digite seu endereço..." />
+                              <input class="form-control" onKeypress="return teste(event)" name="endereco" maxlength="100" placeholder="Digite seu endereço..." />
                           </div>
                           <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" name="bairro" maxlength="100" placeholder="Digite o bairro..." />
+                              <input class="form-control" onKeypress="return teste(event)" name="bairro" maxlength="100" placeholder="Digite o bairro..." />
                           </div>
 	                  <div class="form-group">
                               <label>CEP</label>
-                              <input OnKeyPress="formatar('#####-###', this)" class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
+                              <input OnKeyPress="formatar('#####-###', this)" onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
                           </div>
                           <div class="form-group">
                               <label>Estado</label>
@@ -246,7 +246,7 @@
                           </div>
                           <div class="form-group">
                               <label>Celular</label>
-                              <input OnKeyPress="formatar('##-#####-####', this)" type="tel" class="form-control" maxlength="11" name="cel" placeholder="Digite o Celular...">
+                              <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' type="tel" class="form-control" maxlength="13" name="cel" placeholder="Digite Celular...">
                           </div>
                           <div class="form-group">
                               <label>Email</label>
@@ -275,6 +275,38 @@
 			
 		}
             </script>  
+            <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
+
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 

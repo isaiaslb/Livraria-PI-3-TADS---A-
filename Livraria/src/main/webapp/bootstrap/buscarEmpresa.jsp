@@ -208,14 +208,14 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="get">
                             <div>
                                 <label>Pesquisa CNPJ</label>
-                                <input class="form-control" name="buscarCnpj" var="testaBusca" placeholder="Digite o CNPJ para buscar..."></br>
+                                <input class="form-control" name="buscarCnpj" var="testaBusca" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o CNPJ para buscar..."></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>
                         <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="post">
                             <div class="form-group">
                               <label>Razão Social</label>
-                              <input  class="form-control" name="razaoBusca" id="rz_social" value="${listaEmpresa.razao}" disabled />
+                              <input  class="form-control" onKeypress="return teste(event)" maxlength="50" name="razaoBusca" id="rz_social" value="${listaEmpresa.razao}" disabled />
                           </div>
                             
                             <div class="form-group">
@@ -229,35 +229,35 @@
                                                                                     
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input  class="form-control" name="ieBusca" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
+                              <input OnKeyPress="formatar('###.###.###.###', this)" onKeyDown='return SomenteNumero(event)' maxlength="15"  class="form-control" name="ieBusca" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
-                              <input class="form-control" name="telefoneBusca" id="tel" value="${listaEmpresa.telefone}"disabled="">
+                              <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13"class="form-control" name="telefoneBusca" id="tel" value="${listaEmpresa.telefone}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Endereço</label>
-                              <input  class="form-control" name="enderecoBusca" id="endereco" value="${listaEmpresa.endereco}"disabled="">
+                              <input onKeypress="return teste(event)" maxlength="100"  class="form-control" name="enderecoBusca" id="endereco" value="${listaEmpresa.endereco}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Numero</label>
-                              <input class="form-control" name="numeroBusca" id="numero" value="${listaEmpresa.numero}" disabled="">
+                              <input maxlength="9" onKeyDown='return SomenteNumero(event)' class="form-control" name="numeroBusca" id="numero" value="${listaEmpresa.numero}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Complemento</label>
-                              <input class="form-control" name="complementoBusca" id="complemento" value="${listaEmpresa.complemento}" disabled="">
+                              <input  class="form-control" maxlength="50" name="complementoBusca" id="complemento" value="${listaEmpresa.complemento}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>CEP</label>
-                              <input class="form-control" name="cepBusca" id="cep" value="${listaEmpresa.cep}" disabled="">
+                              <input OnKeyPress="formatar('#####-###', this)"onKeyDown='return SomenteNumero(event)' maxlength="9" class="form-control" name="cepBusca" id="cep" value="${listaEmpresa.cep}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Bairro</label>
-                              <input class="form-control" name="bairroBusca" id="bairro" value="${listaEmpresa.bairro}" disabled="">
+                              <input class="form-control" onKeypress="return teste(event)" maxlength="50" name="bairroBusca" id="bairro" value="${listaEmpresa.bairro}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Cidade</label>
-                              <input class="form-control" name="cidadeBusca" id="cidade" value="${listaEmpresa.cidade}" disabled="">
+                              <input onKeypress="return teste(event)" maxlength="50" class="form-control" name="cidadeBusca" id="cidade" value="${listaEmpresa.cidade}" disabled="">
                           </div>
                              <div class="form-group">
                               <label>Estado</label>
@@ -304,6 +304,55 @@
 
             </div>
             <!-- /#wrapper -->
+            
+             <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
+
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+
+ <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+                
+                
+            </script>  
+
 
             <!-- jQuery -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
