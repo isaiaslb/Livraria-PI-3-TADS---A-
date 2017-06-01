@@ -41,10 +41,10 @@ public class ConexaoBD {
 
     // Passo 2: Abrir a conexão
     conn = DriverManager.getConnection(
-	    //"jdbc:mysql://localhost:3306/bdlivraria",
-            "jdbc:mysql://localhost:3306/bdlivraria?useTimezone=true&serverTimezone=UTC",            
+	    "jdbc:mysql://localhost:3306/bdlivraria",
 	    "root", // usuário BD
-	    "root"); // senha BD
+	    ""); // senha BD
     return conn;
   }
+
 }

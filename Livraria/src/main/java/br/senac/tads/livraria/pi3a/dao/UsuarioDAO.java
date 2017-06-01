@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.tads.livraria.pi3a.dao;
 
 import br.senac.tads.livraria.pi3a.connection.ConexaoBD;
@@ -260,7 +255,7 @@ public class UsuarioDAO extends ConexaoBD {
             }
         }
     }public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
-        Usuario usuRetorno = new Usuario();
+        Usuario usuRetorno = null;
         String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
 
         try {
@@ -273,6 +268,7 @@ public class UsuarioDAO extends ConexaoBD {
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
+                usuRetorno = new Usuario();
                 //  usuRetorno.setId(resultado.getInt("id"));
                 usuRetorno.setNome(resultado.getString("nome"));
                 usuRetorno.setSenha(resultado.getString("senha"));
