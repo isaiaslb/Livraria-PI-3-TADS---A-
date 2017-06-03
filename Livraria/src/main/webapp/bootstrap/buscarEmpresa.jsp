@@ -211,8 +211,9 @@
                                 <input class="form-control" name="buscarCnpj" var="testaBusca" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o CNPJ para buscar..."></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
-                        </form>
+                        </form>                            
                         <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="post">
+                            <input class="form-control" id="cod" name="codigoBusca" type="hidden" value="${listaEmpresa.id}"/>
                             <div class="form-group">
                               <label>Razão Social</label>
                               <input  class="form-control" onKeypress="return teste(event)" maxlength="50" name="razaoBusca" id="rz_social" value="${listaEmpresa.razao}" disabled />

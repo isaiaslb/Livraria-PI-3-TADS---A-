@@ -6,8 +6,8 @@
 package br.senac.tads.livraria.pi3a.controller;
 
 import br.senac.tads.livraria.pi3a.dao.JDBCProdutosDao;
-
 import br.senac.tads.livraria.pi3a.model.Produtos;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,8 +30,7 @@ public class BuscarProduto extends HttpServlet {
         String bProduto = request.getParameter("buscaProduto");        
         
          JDBCProdutosDao dao = new JDBCProdutosDao();
-         Produtos busca = dao.buscar(bProduto);
-         
+         Produtos busca = dao.buscar(bProduto);         
          request.setAttribute("buscaProdutos", busca);
          
          RequestDispatcher dispatcher
@@ -50,22 +49,23 @@ public class BuscarProduto extends HttpServlet {
             throws ServletException, IOException {
         
         JDBCProdutosDao dao = new JDBCProdutosDao();
-        Produtos produtos = new Produtos();
+        Produtos prod = new Produtos();        
+        prod.setProdId(Integer.parseInt(request.getParameter("bId")));
+        prod.setProdFilial(Integer.parseInt(request.getParameter("bFilial")));
+        prod.setProdNome(request.getParameter("bNome"));
+        prod.setProdAutor(request.getParameter("bAutor"));
+        prod.setProdGenero(request.getParameter("bGenero"));
+        prod.setProdQtd(Integer.parseInt(request.getParameter("bQtd")));
+        prod.setProdValCompra(Double.parseDouble(request.getParameter("bValCompra")));
+        prod.setProdValVenda(Double.parseDouble(request.getParameter("bValVenda")));
+        prod.setProdDesc(request.getParameter("bDesc"));                
         
-        produtos.setProdFilial(Integer.parseInt(request.getParameter("bFilial")));
-        produtos.setProdNome(request.getParameter("bNome"));
-        produtos.setProdAutor(request.getParameter("bAutor"));
-        produtos.setProdGenero(request.getParameter("bGenero"));
-        produtos.setProdQtd(Integer.parseInt(request.getParameter("bQtd")));
-        produtos.setProdValCompra(Double.parseDouble(request.getParameter("bValCompra")));
-        produtos.setProdValVenda(Double.parseDouble(request.getParameter("bValVenda")));
-        produtos.setProdDesc(request.getParameter("bDesc"));
-        
-        dao.alterar(produtos);
+        //request.getSession().setAttribute("prod", prod);
+        dao.alterar(prod);
         
         //request.setAttribute("livro", resultadoPesquisa);
         //request.getServletContext().setAttribute("livro", resultadoPesquisa);
-        //request.getRequestDispatcher("bootstrap/buscarProduto.jsp").forward(request, response);
+        request.getRequestDispatcher("bootstrap/buscarProduto.jsp").forward(request, response);
         //response.sendRedirect("/bootstrap/buscarProduto.jsp");
         //response.sendRedirect(request.getContextPath() + "/bootstrap/buscarProduto.jsp");
     }

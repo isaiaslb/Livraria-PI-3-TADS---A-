@@ -123,7 +123,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             
             rs.next();
             
-            //p.setIdProd(rs.getInt("PRODID"));
+            p.setProdId(rs.getInt("PRODID"));
             p.setProdFilial(rs.getInt("PRODFILIAL"));
             p.setProdNome(rs.getString("PRODNOME"));
             p.setProdAutor(rs.getString("PRODAUTOR"));
@@ -161,7 +161,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.setDouble(6, produto.getProdValCompra());
             ps.setDouble(7, produto.getProdValVenda());
             ps.setString(8, produto.getProdDesc());
-            //ps.setInt(9, produto.getId());
+            ps.setInt(9, produto.getProdId());
                         
             ps.executeUpdate();
             
