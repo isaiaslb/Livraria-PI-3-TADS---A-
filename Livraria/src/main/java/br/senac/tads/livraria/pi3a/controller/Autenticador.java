@@ -5,26 +5,6 @@ import br.senac.tads.livraria.pi3a.model.Usuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-/**
- *
- * @author Fernanda
- */
-//@WebServlet("/Autenticador")package br.senac.tads.livraria.pi3a.controller;
-
-import br.senac.tads.livraria.pi3a.dao.UsuarioDAO;
-import br.senac.tads.livraria.pi3a.model.Usuario;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,10 +52,10 @@ public class Autenticador extends HttpServlet {
             Usuario usuAutenticado = usuDao.autenticacao(usu);
 
             if (usuAutenticado != null) {
-
-               HttpSession session = request.getSession();
+                HttpSession session = request.getSession();
                 session.setAttribute("usuAutenticado", usuAutenticado);
-                request.getRequestDispatcher("bootstrap/index.jsp").forward(request, response);
+                
+                response.sendRedirect(request.getContextPath() + "/bootstrap/index.jsp");
 
             } else {
                 response.sendRedirect("erroLogin.jsp");
