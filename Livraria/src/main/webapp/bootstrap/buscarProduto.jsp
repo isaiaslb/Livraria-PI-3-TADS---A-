@@ -198,7 +198,7 @@
                 <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="get">
                     <div>                     
                       <label>Pesquisa Produto</label>
-                      <input  onKeypress="return teste(event)" maxlength="100" class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."></br>                        
+                      <input   maxlength="100" class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."></br>                        
                       <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                    
                     </div>  
                 </form>
@@ -271,7 +271,7 @@
 	{
 		var expressao;
 
-		expressao = /[a-zA-Z]/;
+		expressao = /[a-zA-Z ]/;
 
 		if(expressao.test(String.fromCharCode(e.keyCode)))
 		{

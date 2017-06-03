@@ -197,7 +197,7 @@
                           </div>                        
                           <div class="form-group">
                               <label>Produto</label>
-                              <input onKeypress="return teste(event)" maxlength="100" name="PRODNOME" class="form-control" placeholder="Digite o produto...">
+                              <input  maxlength="100" name="PRODNOME" class="form-control" placeholder="Digite o produto...">
                           </div>
 			<div class="form-group">
                               <label>Genêro</label>
@@ -263,7 +263,7 @@
 	{
 		var expressao;
 
-		expressao = /[a-zA-Z]/;
+		expressao = /[a-zA-Z ]/;
 
 		if(expressao.test(String.fromCharCode(e.keyCode)))
 		{

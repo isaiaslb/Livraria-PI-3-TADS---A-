@@ -294,7 +294,7 @@
 	{
 		var expressao;
 
-		expressao = /[a-zA-Z]/;
+		expressao = /[a-zA-Z ]/;
 
 		if(expressao.test(String.fromCharCode(e.keyCode)))
 		{
