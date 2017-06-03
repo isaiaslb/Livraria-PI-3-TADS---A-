@@ -51,7 +51,7 @@ public class BuscarEmpresa extends HttpServlet {
 
         EmpresaDao emp = new EmpresaDao();
         Empresa empresas = new Empresa();
- 
+         empresas.setId(Integer.parseInt(request.getParameter("codigoBusca")));
          empresas.setRazao(request.getParameter("razaoBusca"));
         empresas.setIe(request.getParameter("ieBusca"));
         empresas.setTelefone(request.getParameter("telefoneBusca"));

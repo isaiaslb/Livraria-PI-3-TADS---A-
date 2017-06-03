@@ -210,13 +210,11 @@
                             </div>
                         </form>
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
+                            <input type="hidden" name="cpfBusca" value="${listaCliente.cpf}" />
+                         
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input onKeypress="return teste(event)"  maxlength="150" class="form-control" name="nomeBusca" id="nome" value="${listaCliente.nome}" disabled />
-                            </div>
-                            <div class="form-group">
-                                <label>CPF</label>
-                                <input class="form-control" name="cpfBusca" value="${listaCliente.cpf}" disabled />
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>
@@ -284,7 +282,7 @@
 
             </div>
             <!-- /#wrapper -->
-
+        </div>
              <script>
                function SomenteNumero(e){
     var tecla=(window.event)?event.keyCode:e.which;   

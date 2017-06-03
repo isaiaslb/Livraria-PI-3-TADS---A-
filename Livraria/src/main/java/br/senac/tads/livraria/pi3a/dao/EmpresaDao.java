@@ -143,7 +143,7 @@ public class EmpresaDao extends ConexaoBD {
 
         String sql = "UPDATE Empresa SET rz_social=?,"
                 + "ins_estad=?, tel=?, endereco=?, numero=?, complemento=?, cep=?,bairro=?,cidade=?,estado=? "
-                + "WHERE cnpj=?";
+                + "WHERE COD_EMP=?";
         try {
             conn = obterConexao();
 
@@ -158,7 +158,7 @@ public class EmpresaDao extends ConexaoBD {
             stmt.setString(8, empresa.getCidade());
             stmt.setString(9, empresa.getEstado());
             stmt.setString(10, empresa.getEstado());
-            stmt.setString(11, empresa.getCnpj());
+            stmt.setInt(11, empresa.getId());
 
             stmt.executeUpdate();
 

@@ -96,7 +96,7 @@ public class ClienteDao extends ConexaoBD {
                 p.setEmail(resultados.getString("email"));
             }
             listaCliente.add(p);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -145,41 +145,8 @@ public class ClienteDao extends ConexaoBD {
 
             stmt.execute();
 
-        } catch (SQLException ex) {
-            try {
-                // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
-                if (conn != null & !conn.isClosed()) {
-                    conn.rollback();
-                }
-            } catch (SQLException ex1) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            try {
-                // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
-                if (conn != null & !conn.isClosed()) {
-                    conn.rollback();
-                }
-            } catch (SQLException ex1) {
-                Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("ERRO NO UPDATE");
         }
     }
 

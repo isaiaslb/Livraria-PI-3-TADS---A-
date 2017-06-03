@@ -35,29 +35,29 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style>
-    
-table{
-    width: 100%;
-    border-collapse:collapse;
-}
-table tr {
-    border-bottom: solid white 8px; /*Distancia entre tr*/
-}
-table tr td {
-    background-color:White;  /*Cor para criar ilusão de borda*/
-}
-table tr td:not(:last-child) {
-    padding: 1px 0 1px 1px; /*Retirar padding a direita da td, exceto da última para não criar colapso de bordas*/
-}
-table tr td span {
-    display:block;
-    background-color:white;
-    padding:5px 5px 0 5px;
-}
-table tr:nth-child(even) td span {
-    background-color:White; /*Se desejar alternar cores das linhas*/
-}
-            
+
+            table{
+                width: 100%;
+                border-collapse:collapse;
+            }
+            table tr {
+                border-bottom: solid white 8px; /*Distancia entre tr*/
+            }
+            table tr td {
+                background-color:White;  /*Cor para criar ilusão de borda*/
+            }
+            table tr td:not(:last-child) {
+                padding: 1px 0 1px 1px; /*Retirar padding a direita da td, exceto da última para não criar colapso de bordas*/
+            }
+            table tr td span {
+                display:block;
+                background-color:white;
+                padding:5px 5px 0 5px;
+            }
+            table tr:nth-child(even) td span {
+                background-color:White; /*Se desejar alternar cores das linhas*/
+            }
+
         </style>
     </head>
 
@@ -207,176 +207,179 @@ table tr:nth-child(even) td span {
 
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">
-                                Venda
-                                 <img src="imagens/venda_carinho.png" width="50">
-                            </h1>
-                           
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">                    
-                        <div class="col-lg-12">                         
 
 
-                            <div class="col-lg-6">
-                               <table ><tr>
-                                   <td><label for="codigo" class="alinhar" >Codigo filial:</label></td>
-                                   <td><input class="form-control" id="codigo" name="codigo" type="text" disabled/></td>
-                                   </div>
-                                   </tr>
-                                   
-                             <tr>
-                            <div class="col-lg-7">
-                                <form role="form" action="${pageContext.request.contextPath}/vendaServlet" method="get">
-                                        <td>
-                                    <label>Cliente:</label></td>
-                                        <td>
-                                    <input id="codigoCli"  class="form-control" placeholder="Digite o cpf.." type="text"/></td>
-                                    <td><img src="imagens/Imagens-em-png-queroimagem.png" width="30"></td>
-                                    </td>
-                                    <td><label> Nome do cliente label</label></td>
-                                    </tr>
-                                    <tr>
-                                   <td><label for="vendedor" class="alinhar" >Vendedor:</label></td>
-                                   <td><input class="form-control" id="vendedor" name="vendedor" type="text" disabled/></td>
-                                   </div>
-                                   </tr>
-                                    </form>
-                                        </table>                                                     
-                            </div>
-                                <div class="col-lg-6">
-                                    
-                               <table >
-                                   
-                             <tr>
-                            <div class="col-lg-7">
-                                <form role="form" action="${pageContext.request.contextPath}/vendaServlet" method="get">
-                                        <td>
-                                    <label>Produto:</label></td>
-                                        <td>
-                                    <input id="produto"  class="form-control" placeholder="produto.." type="text"/></td>
-                                        <td><img src="imagens/adicionar.jpg" width="30"></td>
-                                    </td>
-                                    
-                                    </tr>
-                                    <tr>
-                                   <td><label for="qnt" class="alinhar" >Quantidade:</label></td>
-                                   <td><input class="form-control" id="qnt" name="qnt" type="numer" /></td>
-                                   </div>
-                                   </tr>
-                                    </form>
-                                        </table>                                                     
-                            </div>
-                            <br>
-                                 
+                </div>
 
-                            <div class="row">
-                                <div class="col-lg-12">        
-
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Codigo</th>
-                                                    <th>Produto</th>
-                                                    <th>Quantidade</th>
-                                                    <th>Vl. Unitario</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        
-
-                                        <h2><label for="total" class="alinhar">Total</label></h2>
-                                        <input id="total" class="form-control" name="total" type="text" disabled=""/> </br> </br>
-                                    </div>
-
-
-                                </div>
-                                <div class="col-lg-6">
-                                   
-                                    <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                                    <button type="button" class="btn btn-lg btn-default">Sair</button>
-                                </div>
-
-                            </div>
-
-                            <!-- /.container-fluid -->
-
-                        </div>
-                        <!-- /#page-wrapper -->
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Venda
+                            <img src="imagens/venda_carinho.png" width="50">
+                        </h1>
 
                     </div>
                 </div>
+                <!-- /.row -->
+                <div class="row">                    
+                    <div class="col-lg-12">                         
 
-                <!-- Máscara para cobrir a tela -->
-                <div id="mask"></div>
 
+                        <div class="col-lg-6">
+                            <table ><tr>
+                                    <td><label for="codigo" class="alinhar" >Codigo filial:</label></td>
+                                    <td><input class="form-control" id="codigo" name="codigo" type="text" disabled/></td>
+                                    </div>
+                                </tr>
+
+                                <tr>
+                                <div class="col-lg-7">
+                                    <form  action="${pageContext.request.contextPath}/vendaServlet" method="get">
+                                        <input type="hidden" name="comando" value="buscaCli"  />
+                                        <td><label>Cliente:</label></td>
+                                        <td><input class="form-control" name="clibusca" placeholder="Digite o cpf.." type="text"/></td>
+                                        <td><input type="image" src="imagens/Imagens-em-png-queroimagem.png" width="30"></td>           
+                                        <td><label>${sessionScope.listCliente.nome}</label></td>
+
+
+                                        </tr>
+                                    </form>   
+                                    <tr>
+                                        <td><label for="vendedor" class="alinhar" >Vendedor:</label></td>
+                                        <td><input class="form-control" value="${usuAutenticado.nome}" id="vendedor" name="vendedor" type="text" disabled/></td>
+                                </div>
+                                </tr>
+
+                            </table>                                                     
+                        </div>
+                        <div class="col-lg-6">
+
+                            <table >
+
+                                <tr>
+                                <div class="col-lg-7">
+                                    <form  action="${pageContext.request.contextPath}/vendaServlet" method="get">
+                                        <input type="hidden" name="comando" value="buscaProd"  />
+                                        <td><label>Produto:</label></td>
+                                        <td><input class="form-control" nome="prodbusca" placeholder="produto.." type="text"/></td>
+                                        <td><input type="image" src="imagens/adicionar.jpg" width="30"></td>
+                                        </tr>
+                                    </form>    
+                                    <tr>
+                                        <td><label for="qnt" class="alinhar" >Quantidade:</label></td>
+                                        <td><input class="form-control" id="qnt" name="qnt" type="numer" /></td>
+                                </div>
+                                </tr>
+
+                            </table>                                                     
+                        </div>
+                        <br>
+
+
+                        <div class="row">
+                            <div class="col-lg-12">        
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Codigo</th>
+                                                <th>Produto</th>
+                                                <th>Quantidade</th>
+                                                <th>Vl. Unitario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6">
+
+
+                                    <h2><label for="total" class="alinhar">Total</label></h2>
+                                    <input id="total" class="form-control" name="total" type="text" disabled=""/> </br> </br>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                                <button type="button" class="btn btn-lg btn-default">Sair</button>
+                            </div>
+
+                        </div>
+
+                        <!-- /.container-fluid -->
+
+                    </div>
+                    <!-- /#page-wrapper -->
+
+                </div>
             </div>
+
+            <!-- Máscara para cobrir a tela -->
+            <div id="mask"></div>
+
         </div>
+    </div>
 
-        <!-- /#wrapper -->
+    <!-- /#wrapper -->
 
-        <!-- jQuery -->
-        <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 
-    </body>
+</body>
 
 </html>

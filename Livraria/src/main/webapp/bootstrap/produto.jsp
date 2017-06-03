@@ -231,7 +231,7 @@
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>
-                              <textarea  minlength="255" name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
+                              <textarea  maxlength="255" name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
                           </div>
                           <button type="reset" class="btn btn-lg btn-default">Limpar</button>
                           <button type="submit" class="btn btn-lg btn-default">Salvar</button>
