@@ -72,6 +72,7 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="emp" class="collapse">
@@ -83,6 +84,7 @@
                                 </li>
                             </ul>
                         </li>
+                         </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
@@ -179,6 +181,7 @@
                                     </div>
 
                                 </div>
+                                            <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
                                 <div class="col-lg-3 col-md-6">
                                     <div class="panel panel-green">
                                         <div class="panel-heading">
@@ -201,6 +204,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                            </c:if>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="panel panel-yellow">
                                         <div class="panel-heading">
@@ -224,6 +228,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                      <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">      
                                 <div class="col-lg-3 col-md-6">
                                     <div class="panel panel-red">
                                         <div class="panel-heading">
@@ -247,6 +252,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                                </c:if>
                             </form>
                         </div>
                         <!-- /.row -->

@@ -58,7 +58,7 @@
             </c:choose>
 
             <!-- Navigation -->  
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -90,39 +90,45 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="emp" class="collapse">
                                 <li>
-                                    <a href="empresa.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
                                 </li>
                                 <li>
-                                    <a href="buscarEmpresa.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
+                         </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
                                 <li>
-                                    <a href="produto.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
                                 </li>
                                 <li>
-                                    <a href="buscarProduto.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuário <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="usu" class="collapse">
+                                
                                 <li>
-                                    <a href="usuario.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
                                 </li>
+
                                 <li>
-                                    <a href="buscarUsuario.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarUsuario.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
+                        </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="cli" class="collapse">
@@ -134,17 +140,21 @@
                                 </li>
                             </ul>
                         </li>
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
+                        </li>
+                        </c:if>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/bootstrap/venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
+                        </li>
 
-                        <li>
-                            <a href="relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
-                        </li>
-                        <li>
-                            <a href="venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </nav>
+
 
             <div id="page-wrapper">
 
