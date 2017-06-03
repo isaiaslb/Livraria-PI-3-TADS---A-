@@ -143,4 +143,12 @@ public class Usuario {
     public void setCpf(String cpf) {
     this.cpf = cpf;
     }
+    public boolean temPapel(String papel) {
+     if(tipoAcesso.equals(papel)){
+         return true;
+     }else{
+            
+    return false; 
+     }    
+  }
 }
