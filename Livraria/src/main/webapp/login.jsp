@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 09/05/2017, 10:33:35
-    Author     : Fernanda
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <title>Livraria Astec</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" type="text/css" />
         <script type="text/javascript"></script>
     </head>
     <body>
@@ -37,4 +31,3 @@
 
     </body>
 </html>
-

@@ -33,19 +33,22 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-<!--
+
         <script type="text/javascript">
             function habilita_a() {
+
                 document.getElementById('nome').disabled = false;
-                document.getElementById('end').disabled = false;
-                document.getElementById('bairro').disabled = false;
-                document.getElementById('cep').disabled = false;
-                document.getElementById('est').disabled = false;
-                document.getElementById('cel').disabled = false;
+                document.getElementById('senha').disabled = false;
+                document.getElementById('dtnasc').disabled = false;
+                document.getElementById('sexo').disabled = false;
                 document.getElementById('email').disabled = false;
+                document.getElementById('fixo').disabled = false;
+                document.getElementById('cel').disabled = false;
+                document.getElementById('setor').disabled = false;
+                document.getElementById('tp_acesso').disabled = false;
             }
         </script>
--->
+
     </head>
 
     <body>
@@ -205,26 +208,26 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarUsuario" method="get">
                             <div>
                                 <label>Pesquisa CPF</label>
-                                <input class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
+                                <input  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="form-control" name="nomeBusca" value="${listaUsuario.nome}" disabled="">
+                                <input onKeypress="return teste(event)" maxlength="150"  class="form-control" name="nomeBusca" id="nome" value="${listaUsuario.nome}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input class="form-control" name="cpfBusca" value="${listaUsuario.cpf}" disabled="">
+                                <input class="form-control" name="cpfBusca" id="cpf" value="${listaUsuario.cpf}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
-                                <input class="form-control" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
+                                <input OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" class="form-control" id="dtnasc" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Sexo</label>
-                                <select class="form-control" name="sexoBusca" id="sexo" value="${listaUsuario.sexo}" disabled="">
+                                <select class="form-control" id="sexo" name="sexoBusca" id="sexo" value="${listaUsuario.sexo}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="m" >Masculino</option>
                                     <option value="f">Feminino</option>     
@@ -233,34 +236,37 @@
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" name="emailBusca" id="email" value="${listaUsuario.email}" disabled="">
+                                <input type="email" maxlength="30" class="form-control" id="email" name="emailBusca" id="email" value="${listaUsuario.email}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Telefone</label>
-                                <input class="form-control" name="telefoneBusca" id="telefone" value="${listaUsuario.telefone}" disabled="">
+                                <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" class="form-control" id="fixo" name="telefoneBusca" id="telefone" value="${listaUsuario.telefone}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="form-control" name="celularBusca" id="celular" value="${listaUsuario.celular}" disabled="">
+                                <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" class="form-control" id="cel" name="celularBusca" id="celular" value="${listaUsuario.celular}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Setor</label>
-                                <input class="form-control" name="setorBusca" id="setor" value="${listaUsuario.setor}" disabled="">
+                                <input onKeypress="return teste(event)" maxlength="150"  class="form-control" id="setor" name="setorBusca" id="setor" value="${listaUsuario.setor}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
-                                <input class="form-control" name="senhaBusca" id="senha" value="${listaUsuario.senha}" type="password" disabled="">
+                                <input class="form-control"  maxlength="15" name="senhaBusca" id="senha" value="${listaUsuario.senha}" type="password" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Tipo de acesso</label>
-                                <select class="form-control" name="tipoAcessoBusca" id="tipoAcesso" value="${listaUsuario.tipoAcesso}" disabled="">
+                                <select class="form-control" id="tp_acesso" name="tipoAcessoBusca" id="tipoAcesso" value="${listaUsuario.tipoAcesso}" disabled="">
                                     <option>Selecione...</option>
                                     <option value="adm">Administrador</option>
                                     <option value="comum">Comum</option>     
                                 </select>
                             </div>
+                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>                    
+                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
+                            <button type="submit" class="btn btn-lg btn-default">Excluir</button>
                         </form>
-                       
+
                     </div>
                     <!-- /.container-fluid -->
 
@@ -269,7 +275,53 @@
 
             </div>
             <!-- /#wrapper -->
+ <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
 
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+
+ <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+                
+                
+            </script>  
             <!-- jQuery -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 

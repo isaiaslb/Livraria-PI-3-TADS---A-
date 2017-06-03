@@ -193,11 +193,11 @@
                       <form role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
                           <div class="form-group">
                               <label>Filial</label>
-                              <input name="PRODFILIAL" class="form-control" type="number" placeholder="Digite a filial...">
+                              <input name="PRODFILIAL" class="form-control" maxlength="6" onkeypress="formatar('######', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o codigo da filial...">
                           </div>                        
                           <div class="form-group">
                               <label>Produto</label>
-                              <input name="PRODNOME" class="form-control" placeholder="Digite o produto...">
+                              <input onKeypress="return teste(event)" maxlength="100" name="PRODNOME" class="form-control" placeholder="Digite o produto...">
                           </div>
 			<div class="form-group">
                               <label>Genêro</label>
@@ -214,7 +214,7 @@
                           </div>
                           <div class="form-group">
                               <label>Autor</label>
-                              <input name="PRODAUTOR" class="form-control" placeholder="Digite o nome do autor...">
+                              <input onKeypress="return teste(event)" maxlength="100" name="PRODAUTOR" class="form-control" placeholder="Digite o nome do autor...">
                           </div>
                           <div class="form-group">
                               <label>Quantidade</label>
@@ -231,7 +231,7 @@
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>
-                              <textarea name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
+                              <textarea  minlength="255" name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
                           </div>
                           <button type="reset" class="btn btn-lg btn-default">Limpar</button>
                           <button type="submit" class="btn btn-lg btn-default">Salvar</button>
@@ -244,7 +244,53 @@
 
     </div>
     <!-- /#wrapper -->
+ <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
 
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+
+ <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+                
+                
+            </script>  
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

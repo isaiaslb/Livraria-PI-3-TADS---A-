@@ -189,15 +189,15 @@
                           <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
-                              <input name="nome" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}">
+                              <input name="nome" onKeypress="return teste(event)" maxlength="150" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}">
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input name="cpf" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}">
+                              <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}">
                           </div>
                              <div class="form-group">
                               <label>Data de Nascimento</label>
-                              <input name="dataNasc" id="dataNasc" class="form-control" type="text">
+                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text">
                           </div>
                            <div class="form-group">
                               <label>Sexo</label>
@@ -210,23 +210,23 @@
                           
                              <div class="form-group">
                               <label>Email</label>
-                              <input name="email" id="email" class="form-control" placeholder="Digite o email...">
+                              <input class="form-control" type="email" maxlength="30" name="email" placeholder="Email..." required>
                           </div>
                              <div class="form-group">
                               <label>Telefone</label>
-                              <input name="telefone" id="telefone" class="form-control" placeholder="Digite o telefone...">
+                              <input name="telefone" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" id="telefone" class="form-control" placeholder="Digite o telefone...">
                           </div>
                              <div class="form-group">
                               <label>Celular</label>
-                              <input name="celular" id="celular" class="form-control" placeholder="Digite o celular...">
+                              <input name="celular" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13"  id="celular" class="form-control" placeholder="Digite o celular...">
                           </div>
                              <div class="form-group">
                               <label>Setor</label>
-                              <input name="setor" id="setor" class="form-control" placeholder="Digite o setor...">
+                              <input name="setor" onKeypress="return teste(event)" maxlength="150" id="setor"  maxlength="30"  class="form-control" placeholder="Digite o setor...">
                           </div>
                              <div class="form-group">
                               <label>Senha</label>
-                              <input name="senha" id="senha" class="form-control" type="password" placeholder="Digite a senha...">
+                              <input name="senha" id="senha" maxlength="15" class="form-control" type="password" placeholder="Digite a senha...">
                           </div>
                           <div class="form-group">
                               <label>Tipo de acesso</label>
@@ -246,6 +246,53 @@
     </div>
     <!-- /#wrapper -->
 
+     <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
+
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+
+ <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+                
+                
+            </script>  
      <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 

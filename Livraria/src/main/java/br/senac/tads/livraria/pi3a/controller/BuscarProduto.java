@@ -27,11 +27,10 @@ public class BuscarProduto extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String bProduto = request.getParameter("buscaProduto");
-        String bAutor = request.getParameter("buscaAutor");
+        String bProduto = request.getParameter("buscaProduto");        
         
          JDBCProdutosDao dao = new JDBCProdutosDao();
-         Produtos busca = dao.buscar(bProduto, bAutor);
+         Produtos busca = dao.buscar(bProduto);
          
          request.setAttribute("buscaProdutos", busca);
          
@@ -62,11 +61,12 @@ public class BuscarProduto extends HttpServlet {
         produtos.setProdValVenda(Double.parseDouble(request.getParameter("bValVenda")));
         produtos.setProdDesc(request.getParameter("bDesc"));
         
+        dao.alterar(produtos);
         
         //request.setAttribute("livro", resultadoPesquisa);
         //request.getServletContext().setAttribute("livro", resultadoPesquisa);
         //request.getRequestDispatcher("bootstrap/buscarProduto.jsp").forward(request, response);
-        response.sendRedirect("/bootstrap/buscarProduto.jsp");
+        //response.sendRedirect("/bootstrap/buscarProduto.jsp");
         //response.sendRedirect(request.getContextPath() + "/bootstrap/buscarProduto.jsp");
     }
     

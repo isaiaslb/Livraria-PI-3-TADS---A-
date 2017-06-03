@@ -25,24 +25,36 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendaServlet", urlPatterns = {"/vendaServlet"})
 public class VendaServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void buscaCli(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ClienteDao dao = new ClienteDao();
-        List<Cliente> list = dao.listar();
-        request.setAttribute("listCliente", list);
+        String b = request.getParameter("clibusca");
 
+        ClienteDao dao = new ClienteDao();
+        Cliente lista = dao.obterCliente(b);
+        
+        request.getSession().setAttribute("listCliente", lista);
+        
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/venda.jsp");
         dispatcher.forward(request, response);
 
-        try {
-            dispatcher.forward(request, response);
-        } catch (IOException ex) {
+    }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String comando = request.getParameter("comando");
+        if (comando.equals("buscaCli")) {
+             buscaCli(request, response);  
+             return;
         }
-
+        
+//        String b = request.getParameter("clibusca");
+//
+//        ClienteDao dao = new ClienteDao();
+//        Cliente lista = dao.obterCliente(b);
+//        request.setAttribute("listaCliente", lista);
     }
 
     @Override

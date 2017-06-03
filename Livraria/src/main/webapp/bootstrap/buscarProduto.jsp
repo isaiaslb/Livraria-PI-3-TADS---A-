@@ -4,7 +4,6 @@
     Author     : Fernanda
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +35,14 @@
         <![endif]-->
         <script type="text/javascript">
             function habilita_a() {
-                document.getElementById('p').disabled = false;                
+                document.getElementById('filial').disabled = false;                
+                document.getElementById('produto').disabled = false;                
+                document.getElementById('autor').disabled = false;                
+                document.getElementById('genero').disabled = false;                
+                document.getElementById('qtd').disabled = false;                
+                document.getElementById('valCompra').disabled = false;                
+                document.getElementById('valVenda').disabled = false;                
+                document.getElementById('descricao').disabled = false;                
             }
         </script>
 
@@ -179,38 +185,39 @@
                 </div>
                 <!-- /.navbar-collapse -->
             </nav>
-
+                   
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                         Buscar Produto
+                    </h1>
+                </div>
+            </div>
 
             <div class="col-lg-6">
                 <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="get">
-                    <div> 
-                    <div>
-                        <label>Pesquisa Produto</label>
-                        <input  class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."></br>                        
-                    </div>
-                    <div>
-                        <label>Pesquisa Autor</label>
-                        <input name="buscaAutor" class="form-control" var="testeBuscaAutor" type="text" placeholder="Digite o Nome do Autor..."/></br>                    
-                    </div>                   
-                        <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                    
+                    <div>                     
+                      <label>Pesquisa Produto</label>
+                      <input  onKeypress="return teste(event)" maxlength="100" class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."></br>                        
+                      <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                    
                     </div>  
                 </form>
                     <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="post">    
                     <div class="form-group">
                         <label>Filial</label>
-                        <input  class="form-control" id="p" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
+                        <input maxlength="6" onkeypress="formatar('######', this)" onKeyDown='return SomenteNumero(event)' class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Produto</label>
-                        <input  class="form-control" id="p" name="bNome" value="${buscaProdutos.prodNome}" disabled/>
+                        <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="produto" name="bNome" value="${buscaProdutos.prodNome}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Autor</label>
-                        <input class="form-control" id="p" name="bAutor" value="${buscaProdutos.prodAutor}" disabled/>
+                        <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="autor" name="bAutor" value="${buscaProdutos.prodAutor}" disabled/>
                     </div>                          
                     <div class="form-group">
                         <label>Genêro</label>
-                        <select class="form-control" id="p" name="bGenero" value="${buscaProdutos.prodGenero}" disabled="">
+                        <select class="form-control" id="genero" name="bGenero" value="${buscaProdutos.prodGenero}" disabled="">
                             <option>Selecione...</option>
                             <option value="Literatura">Literatura</option>
                             <option value="Romance">Romance</option>
@@ -223,29 +230,75 @@
                     </div>
                     <div class="form-group">
                         <label>Quantidade</label>
-                        <input class="form-control" id="p" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
+                        <input type="number" class="form-control" id="qtd" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Valor de Compra</label>
-                        <input class="form-control" id="p" name="bValCompra" value="${buscaProdutos.prodValCompra}" disabled/>
+                        <input type="number" class="form-control" id="valCompra" name="bValCompra" value="${buscaProdutos.prodValCompra}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Valor de Venda</label>
-                        <input class="form-control" id="p" name="bValVenda" value="${buscaProdutos.prodValVenda}" disabled/>
+                        <input type="number" class="form-control" id="valVenda" name="bValVenda" value="${buscaProdutos.prodValVenda}" disabled/>
                     </div>
                     <div class="form-group">
                         <label>Descrição</label>
-                        <textarea  class="form-control" id="p" name="bDesc" value="${buscaProdutos.prodDesc}"  rows="3" disabled></textarea>
+                        <textarea maxlength="255" class="form-control" id="descricao" name="bDesc"  rows="3" disabled>${buscaProdutos.prodDesc}"</textarea>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-lg btn-default">Salvar</button>
-                        <button type="submit" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
-                        <button type="button" class="btn btn-lg btn-default">Excluir</button>
+                        <button type="submit" class="btn btn-lg btn-default">Salvar</button>
+                        <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
+                        <button type="submit" class="btn btn-lg btn-default">Excluir</button>
                     </div>    
 
             </div>
             <!-- /.container-fluid -->
+ <script>
+               function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+    	if (tecla==8 || tecla==0) return true;
+	else  return false;
+    }
+}
+                
+            </script>
 
+
+
+            <script>
+                function teste(e)
+	{
+		var expressao;
+
+		expressao = /[a-zA-Z]/;
+
+		if(expressao.test(String.fromCharCode(e.keyCode)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+                
+            </script>
+
+ <script>
+		function formatar(mascara, documento){
+			var i = documento.value.length;
+			var saida = mascara.substring(0,1);
+			var texto = mascara.substring(i)
+			
+			if (texto.substring(0,1) != saida){
+				documento.value += texto.substring(0,1);
+			}
+			
+		}
+                
+                
+            </script>  
             <!-- jQuery -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 

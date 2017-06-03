@@ -1,4 +1,3 @@
--- criando banco de dados BDLivraria
 CREATE DATABASE BDLivraria
 DEFAULT CHARACTER SET utf8 -- fotmatação de caracteres especiais, incluindo nossos caracteres latinos
 DEFAULT COLLATE utf8_general_ci; -- collate tambem é para definição de caracteres
@@ -8,7 +7,7 @@ Use BDLivraria;
 CREATE TABLE `usuario` (
   `COD_USER` int(11) NOT NULL AUTO_INCREMENT,
   `NOME` varchar(100) NOT NULL,
-  `EMAIL` varchar(30) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL,
   `FIXO` int(255) DEFAULT NULL,
   `ENABLED` tinyint(1) DEFAULT NULL,
   `CEL` int(255) DEFAULT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE `usuario` (
   `cpf` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`COD_USER`),
   UNIQUE KEY `cpf` (`cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) 
 
 
 CREATE TABLE CLIENTE ( 
@@ -31,7 +30,7 @@ CREATE TABLE CLIENTE (
   BAIRRO VARCHAR (100),
   CEP VARCHAR (9),
   ESTADO VARCHAR (50),    
-  CEL INTEGER (15), 
+  CEL VARCHAR (15), 
   EMAIL VARCHAR (100), 
 ENABLED BOOLEAN,
 CONSTRAINT PK_ID_CLI PRIMARY KEY (COD_CLI));

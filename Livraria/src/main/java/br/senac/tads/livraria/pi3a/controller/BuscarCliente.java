@@ -37,11 +37,11 @@ public class BuscarCliente extends HttpServlet {
         ClienteDao dao = new ClienteDao();
         Cliente lista = dao.obterCliente(b);
         request.setAttribute("listaCliente", lista);
-        
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/buscarCliente.jsp");
-        dispatcher.forward(request, response);
-        
+  
+
         try {
             dispatcher.forward(request, response);
         } catch (IOException ex) {
@@ -64,14 +64,13 @@ public class BuscarCliente extends HttpServlet {
         clientes.setEstado(request.getParameter("estadoBusca"));
         clientes.setCel(request.getParameter("celBusca"));
         clientes.setEmail(request.getParameter("emailBusca"));
+        clientes.setCpf(request.getParameter("cpfBusca"));
+        cli.atualizar(clientes);
 
-        try {
-            cli.atualizar(clientes);
-        } catch (Exception ex) {
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("bootstrap/buscarCliente.jsp");
+        dispatcher.forward(request, response);
 
-        }
-
-        //response.sendRedirect("bootstrap/cliente.jsp");
     }
 
 }

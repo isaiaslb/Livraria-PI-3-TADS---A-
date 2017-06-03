@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.senac.tads.livraria.pi3a.controller;
 
 import br.senac.tads.livraria.pi3a.dao.EmpresaDao;
@@ -20,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Douglas
+ * @author Antonio
  */
 @WebServlet(name = "BuscarEmpresa", urlPatterns = {"/buscarEmpresa"})
 public class BuscarEmpresa extends HttpServlet {

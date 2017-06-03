@@ -1,7 +1,7 @@
 <%-- 
     Document   : empresa
     Created on : 09/05/2017, 10:28:51
-    Author     : Antonio
+    Author     : Antonio Carlos
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -197,47 +197,47 @@
                         <form action="${pageContext.request.contextPath}/EmpresaServlet" method="post">
                             <div class="form-group">
                                 <label>Razão Social</label>
-                                <input name="RZ_SOCIAL" class="form-control" placeholder="Informe a Razão...">
+                                <input onKeypress="return teste(event)" maxlength="50" name="RZ_SOCIAL" class="form-control" placeholder="Informe a Razão...">
                             </div>
 
                             <div class="form-group">
                                 <label>CNPJ</label>
 
-                                <input name="cnpj" class="form-control" placeholder="Informe o CNPJ...">
+                                <input name="cnpj" onkeypress="formatar('##.###.###/####-##', this)" onKeyDown='return SomenteNumero(event)' class="form-control" maxlength="18" id="cnpj" placeholder="Informe o CNPJ...">
 
                             </div>
 
                             <div class="form-group">
                                 <label>Insc. Estadual</label>
-                                <input name="INS_ESTAD" class="form-control" placeholder="Informe Inscrição Estadual...">
+                                <input name="INS_ESTAD" OnKeyPress="formatar('###.###.###.###', this)" onKeyDown='return SomenteNumero(event)' maxlength="15" class="form-control" placeholder="Informe Inscrição Estadual...">
                             </div>
                             <div class="form-group">
                                 <label>Telefone Fixo</label>
-                                <input name="tel" class="form-control" placeholder="Informe Telefone...">
+                                <input name="tel" class="form-control" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' type="tel" maxlength="13" placeholder="Informe Telefone...">
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>
-                                <input name="endereco" class="form-control" placeholder="Informe Endereço...">
+                                <input name="endereco"  onKeypress="return teste(event)" maxlength="100" class="form-control" placeholder="Informe Endereço...">
                             </div>
                             <div class="form-group">
                                 <label>Numero</label>
-                                <input name="numero" class="form-control" placeholder="Informe Número...">
+                                <input name="numero" maxlength="9" onKeyDown='return SomenteNumero(event)'  class="form-control" placeholder="Informe Número...">
                             </div>
                             <div class="form-group">
                                 <label>Complemento</label>
-                                <input name="complemento" class="form-control" placeholder="Informe Complemento...">
+                                <input name="complemento" maxlength="50" class="form-control" placeholder="Informe Complemento...">
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input name="cep" class="form-control" placeholder="Informe CEP...">
+                                <input name="cep" OnKeyPress="formatar('#####-###', this)"onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep"placeholder="Informe CEP...">
                             </div>
                             <div class="form-group">
                                 <label>Bairro</label>
-                                <input name="bairro" class="form-control" placeholder="Informe Bairro...">
+                                <input name="bairro" onKeypress="return teste(event)" class="form-control" placeholder="Informe Bairro...">
                             </div>
                             <div class="form-group">
                                 <label>Cidade</label>
-                                <input name="cidade" class="form-control" placeholder="Informe Cidade...">
+                                <input name="cidade" onKeypress="return teste(event)" class="form-control" placeholder="Informe Cidade...">
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
@@ -287,25 +287,58 @@
             </div>
             <!-- /#wrapper -->
 
-            <!-- jQuery -->
+            <script>
+                function formatar(mascara, documento) {
+                    var i = documento.value.length;
+                    var saida = mascara.substring(0, 1);
+                    var texto = mascara.substring(i)
+
+                    if (texto.substring(0, 1) != saida) {
+                        documento.value += texto.substring(0, 1);
+                    }
+
+                }
+
+
+            </script>  
+
+            <script>
+                function SomenteNumero(e) {
+                    var tecla = (window.event) ? event.keyCode : e.which;
+                    if ((tecla > 47 && tecla < 58))
+                        return true;
+                    else {
+                        if (tecla == 8 || tecla == 0)
+                            return true;
+                        else
+                            return false;
+                    }
+                }
+
+            </script>
+
+            <script>
+                function teste(e)
+                {
+                    var expressao;
+
+                    expressao = /[a-zA-Z]/;
+
+                    if (expressao.test(String.fromCharCode(e.keyCode)))
+                    {
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }
+
+            </script>
+
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 
             <!-- Bootstrap Core JavaScript -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-
-            <!-- Morris Charts JavaScript -->
-            <script src="js/plugins/morris/raphael.min.js"></script>
-            <script src="js/plugins/morris/morris.min.js"></script>
-            <script src="js/plugins/morris/morris-data.js"></script>
-
-            <!-- Flot Charts JavaScript -->
-            <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-            <script src="js/plugins/flot/jquery.flot.js"></script>
-            <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-            <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-            <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-            <script src="js/plugins/flot/flot-data.js"></script>
-
     </body>
 
 </html>
