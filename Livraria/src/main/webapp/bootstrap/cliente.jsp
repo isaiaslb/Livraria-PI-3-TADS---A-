@@ -142,75 +142,7 @@
 
                     </ul>
                 </div>
-                  <div class="col-lg-6">
-                      <form role="form" onsubmit="window.open('resultadoCliente.jsp', 'popup', 'width=300,height=400');" action="${pageContext.request.contextPath}/clienteServlet" method="post">
-                          <div class="form-group">
-                              <label>Nome</label>
-                              <input class="form-control" onKeypress="return teste(event)"  maxlength="150" name="nome" placeholder="Digite o nome..." required />
-                          </div>
-                          <div class="form-group">
-                              <label>CPF</label>
-                              <input type="text" OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
-                              
-                          </div>
-                          <div class="form-group">
-                              <label>Endereço</label>
-                              <input class="form-control" onKeypress="return teste(event)" name="endereco" maxlength="100" placeholder="Digite seu endereço..." />
-                          </div>
-                          <div class="form-group">
-                              <label>Bairro</label>
-                              <input class="form-control" onKeypress="return teste(event)" name="bairro" maxlength="100" placeholder="Digite o bairro..." />
-                          </div>
-	                  <div class="form-group">
-                              <label>CEP</label>
-                              <input OnKeyPress="formatar('#####-###', this)" onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
-                          </div>
-                          <div class="form-group">
-                              <label>Estado</label>
-                              <select class="form-control" name="estado">
-                                  <option>Selecione...</option>
-                                <option value="AC">Acre</option>
-	                               <option value="AL">Alagoas</option>
-	                                <option value="AP">Amapá</option>
-	                                 <option value="AM">Amazonas</option>
-	                                  <option value="BA">Bahia</option>
-	                                   <option value="CE">Ceará</option>
-	                                    <option value="DF">Distrito Federal</option>
-	                                     <option value="ES">Espírito Santo</option>
-	                                      <option value="GO">Goiás</option>
-	                                       <option value="MA">Maranhão</option>
-	                                        <option value="MT">Mato Grosso</option>
-	                                         <option value="MS">Mato Grosso do Sul</option>
-	                                          <option value="MG">Minas Gerais</option>
-	                                           <option value="PA">Pará</option>
-	                                            <option value="PB">Paraíba</option>
-	                                             <option value="PR">Paraná</option>
-	                                              <option value="PE">Pernambuco</option>
-	                                               <option value="PI">Piauí</option>
-	                                                <option value="RJ">Rio de Janeiro</option>
-	                                                 <option value="RN">Rio Grande do Norte</option>
-	                                                  <option value="RS">Rio Grande do Sul</option>
-	                                                   <option value="RO">Rondônia</option>
-	                                                    <option value="RR">Roraima</option>
-	                                                     <option value="SC">Santa Catarina</option>
-	                                                      <option value="SP">São Paulo</option>
-	                                                       <option value="SE">Sergipe</option>
-	                                                        <option value="TO">Tocantins</option>
-                              </select>
-                          </div>
-                          <div class="form-group">
-                              <label>Celular</label>
-                              <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' type="tel" class="form-control" maxlength="13" name="cel" placeholder="Digite Celular...">
-                          </div>
-                          <div class="form-group">
-                              <label>Email</label>
-                              <input class="form-control" type="email" maxlength="100" name="email" placeholder="Email..." required>
-                          </div>
-                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>
-                          <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>
-                      </form>      
-                  </div>
-            <!-- /.container-fluid -->
+                         </nav>
 
             <div id="page-wrapper">
 
@@ -220,12 +152,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Cadastrar cliente
+                                Cadastrar Cliente
                             </h1>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <form role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
+                        <form onsubmit="window.open('resultadoCliente.jsp', 'popup', 'width=300,height=400');" role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input class="form-control" onKeypress="return teste(event)"  maxlength="150" name="nome" placeholder="Digite o nome..." required />
