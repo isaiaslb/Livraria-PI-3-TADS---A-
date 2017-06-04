@@ -145,62 +145,7 @@
                             </h1>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input name="nome" onKeypress="return teste(event)" maxlength="150" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}">
-                            </div>
-                            <div class="form-group">
-                                <label>CPF</label>
-                                <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}">
-                            </div>
-                            <div class="form-group">
-                                <label>Data de Nascimento</label>
-                                <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>Sexo</label>
-                                <select name="sexo" id="sexo" class="form-control">
-                                    <option>Selecione...</option>
-                                    <option name="m" id="m" value="m">Masculino</option>
-                                    <option name="f" id="f" value="f">Feminino</option>     
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" type="email" maxlength="30" name="email" placeholder="Email..." required>
-                            </div>
-                            <div class="form-group">
-                                <label>Telefone</label>
-                                <input name="telefone" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" id="telefone" class="form-control" placeholder="Digite o telefone...">
-                            </div>
-                            <div class="form-group">
-                                <label>Celular</label>
-                                <input name="celular" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13"  id="celular" class="form-control" placeholder="Digite o celular...">
-                            </div>
-                            <div class="form-group">
-                                <label>Setor</label>
-                                <input name="setor" onKeypress="return teste(event)" maxlength="150" id="setor"  maxlength="30"  class="form-control" placeholder="Digite o setor...">
-                            </div>
-                            <div class="form-group">
-                                <label>Senha</label>
-                                <input name="senha" id="senha" maxlength="15" class="form-control" type="password" placeholder="Digite a senha...">
-                            </div>
-                            <div class="form-group">
-                                <label>Tipo de acesso</label>
-                                <select name="tipoAcesso" id="tipoAcesso" class="form-control">
-                                    <option>Selecione...</option>
-                                    <option name="tipoAdm" id="tipoAdm" value="adm">Administrador</option>
-                                    <option name="tipoComum" id="tipoComum" value="comum">Comum</option>     
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>
-
-                    </div>
-                    </form>
-                </div>
+                    
                   <div class="col-lg-6">
                           <form onsubmit="window.open('resultadoUsuario.jsp', 'popup', 'width=300,height=400');" action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                           <div class="form-group">
@@ -213,7 +158,7 @@
                           </div>
                              <div class="form-group">
                               <label>Data de Nascimento</label>
-                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text"required/>
+                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text" placeholder="dd/mm/aaaa" required/>
                           </div>
                            <div class="form-group">
                               <label>Sexo</label>
@@ -253,10 +198,20 @@
                               </select>
                           </div>
                           <button type="reset" class="btn btn-lg btn-default">Limpar</button>
-                          <button type="submit" class="btn btn-lg btn-default">Salvar</button>
+                          <button type="submit" class="btn btn-lg btn-default">Salvar</button>  </form>
+
+
+                        <!---row row-->
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- /#page-wrapper -->
 
             </div>
             <!-- /#wrapper -->
+
 
             <script>
                 function SomenteNumero(e) {

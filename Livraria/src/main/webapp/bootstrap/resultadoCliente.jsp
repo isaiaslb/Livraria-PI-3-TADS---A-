@@ -12,7 +12,7 @@
       <%-- sessionScope permite obter os dados da sessão --%>
       
       
-      <p><c:out value="${sessionScope.novoCliente.nome}" /></p>
+      <h2><p><c:out value="${sessionScope.novoCliente.nome}" /></p></h2>
       <p><c:out value="${sessionScope.novoCliente.cpf}" /></p>
       <p><c:out value="${sessionScope.novoCliente.end}" /></p>
       <p><c:out value="${sessionScope.novoCliente.bairro}" /></p>
@@ -20,8 +20,9 @@
       <p><c:out value="${sessionScope.novoCliente.estado}" /></p>
       <p><c:out value="${sessionScope.novoCliente.cel}" /></p>
       <p><c:out value="${sessionScope.novoCliente.email}" /></p>
-  </body>
-  
+ 
+</div>
+       </body>
   <%-- Apaga o valor da sessão --%>
   <c:remove scope="session" var="novoCliente" />
   
