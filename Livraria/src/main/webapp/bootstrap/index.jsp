@@ -145,7 +145,7 @@
                     <div class="row">
                         <div align="center" class="col-lg-12">
                             <h1  class="page-header">
-                                Bem vindo a livraria Astec
+                              Olá ${usuAutenticado.nome}, Seja Bem vindo a Livraria Astec
                             </h1>
 
 
