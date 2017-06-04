@@ -35,16 +35,7 @@ public class UsuarioDAO extends ConexaoBD {
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-//                int id = resultados.getInt("COD_CLI");
-//                String nome = resultados.getString("nome");
-//                String cpf = resultados.getString("cpf");
-//                String endereco = resultados.getString("endereco");
-//                String bairro = resultados.getString("bairro");
-//                String cep = resultados.getString("cep");
-//                String estado = resultados.getString("estado");
-//                String cel = resultados.getString("cel");
-//                String email = resultados.getString("email");                
-                //p.setId(resultados.getInt("cod_cli"));
+
                 p.setNome(resultados.getString("nome"));
                 p.setCpf(resultados.getString("cpf"));
                 p.setDataNasc(resultados.getDate("dtNasc"));
@@ -137,9 +128,6 @@ public class UsuarioDAO extends ConexaoBD {
         }
         return lista;
     }
-
-    // http://stackoverflow.com/questions/17459094/getting-id-after-insert-within-a-transaction-oracle
-    // http://www.mkyong.com/jdbc/jdbc-transaction-example/
     public void incluirComTransacao(Usuario usuario) {
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -254,7 +242,8 @@ public class UsuarioDAO extends ConexaoBD {
                 }
             }
         }
-    }public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
+    }
+    public Usuario autenticacao(Usuario usuario) throws ClassNotFoundException {
         Usuario usuRetorno = null;
         String sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
 
@@ -263,23 +252,19 @@ public class UsuarioDAO extends ConexaoBD {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getSenha());
-            //stmt.setString(8,usuario.getTipoAcesso());
 
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
                 usuRetorno = new Usuario();
-                //  usuRetorno.setId(resultado.getInt("id"));
+                usuRetorno.setId(resultado.getInt("cod_user"));
                 usuRetorno.setNome(resultado.getString("nome"));
                 usuRetorno.setSenha(resultado.getString("senha"));
-                //usuRetorno.setTipoAcesso(resultado.getString("tp_acesso"));
+                usuRetorno.setTipoAcesso(resultado.getString("tp_acesso"));
             }
-            //System.out.println("Conectado");
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
         return usuRetorno;
     }
-
-  
 }

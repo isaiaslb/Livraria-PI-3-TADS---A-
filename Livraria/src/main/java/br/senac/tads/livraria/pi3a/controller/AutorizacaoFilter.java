@@ -1,5 +1,6 @@
 package br.senac.tads.livraria.pi3a.controller;
 
+import br.senac.tads.livraria.pi3a.model.Usuario;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -17,11 +18,7 @@ import javax.servlet.http.HttpSession;
  * @author Fernanda
  */
 
-@WebFilter(filterName = "AutorizacaoFilter", urlPatterns = "/*")
-//@WebFilter("/*")
-//@WebFilter(filterName = "AutorizacaoFilter",
-//	servletNames = {"Autenticador", "UsuarioServlet"},
-//	urlPatterns = {"/protegido/*"})
+@WebFilter(filterName = "AutorizacaoFilter",urlPatterns = "/bootstrap/*")
 public class AutorizacaoFilter implements Filter {
 
     @Override
@@ -42,13 +39,19 @@ public class AutorizacaoFilter implements Filter {
                 || url.lastIndexOf("Autenticador") > -1) {
             chain.doFilter(request, response);
         } else {
-            ((HttpServletResponse) response).sendRedirect("login.jsp");
+            ((HttpServletResponse) response).sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
         }
-
     }
-
-    private static boolean verificarAcesso(HttpServletRequest request, HttpServletResponse response) {
-
+    private static boolean verificarAcesso(Usuario usuario, HttpServletRequest request, HttpServletResponse response) {
+        String paginaAcessada = request.getRequestURI();
+        String pagina
+                = paginaAcessada.replace(request.getContextPath(), "");
+                if(pagina.endsWith("") && usuario.temPapel("Admin")){
+                    return true;
+                }else if(pagina.endsWith("venda") && pagina.endsWith("produto") && pagina.endsWith("cliente")
+                        && usuario.temPapel("Com")){
+                    return true;
+                }
         return false;
     }
 
