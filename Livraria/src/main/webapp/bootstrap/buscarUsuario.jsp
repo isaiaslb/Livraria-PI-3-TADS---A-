@@ -208,7 +208,7 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarUsuario" method="get">
                             <div>
                                 <label>Pesquisa CPF</label>
-                                <input  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."></br>
+                                <input  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."required/></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>

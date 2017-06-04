@@ -208,7 +208,7 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="get">
                             <div>
                                 <label>Pesquisa CNPJ</label>
-                                <input class="form-control" name="buscarCnpj" var="testaBusca" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o CNPJ para buscar..."></br>
+                                <input class="form-control" name="buscarCnpj" var="testaBusca" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o CNPJ para buscar..."required/></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>                            

@@ -231,7 +231,7 @@
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input name="cep" OnKeyPress="formatar('#####-###', this)"onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep"placeholder="Informe CEP..."required/>
+                                <input name="cep" OnKeyPress="formatar('#####-###', this)"onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep"placeholder="Informe CEP..."/>
                             </div>
                             <div class="form-group">
                                 <label>Bairro</label>
@@ -277,8 +277,9 @@
 
 
 
-                            <button type="submit" class="btn btn-lg btn-default"  >Salvar</button>
+                            
                             <button type="reset" class="btn btn-lg btn-default">Limpar</button>
+                            <button type="submit" class="btn btn-lg btn-default"  >Salvar</button>
                         </form>
 
 

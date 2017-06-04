@@ -189,7 +189,7 @@
                     </div>
                 </div>
                   <div class="col-lg-6">
-                      <form role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
+                      <form role="form" onsubmit="window.open('resultadoCliente.jsp', 'popup', 'width=300,height=400');" action="${pageContext.request.contextPath}/clienteServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
                               <input class="form-control" onKeypress="return teste(event)"  maxlength="150" name="nome" placeholder="Digite o nome..." required />

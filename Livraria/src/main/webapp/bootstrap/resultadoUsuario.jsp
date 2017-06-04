@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+         <h1>Novo Usuario adicionado</h1>
       <p><c:out value="${sessionScope.novoUsuario.nome}" /></p>
       <p><c:out value="${sessionScope.novoUsuario.cpf}" /></p>
       <p><c:out value="${sessionScope.novoUsuario.dataNasc}" /></p>

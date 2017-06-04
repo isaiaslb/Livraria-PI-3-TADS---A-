@@ -190,18 +190,18 @@
 
        
                   <div class="col-lg-6">
-                      <form role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
+                      <form onsubmit="window.open('resultadoProduto.jsp', 'popup', 'width=300,height=400');" role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
                           <div class="form-group">
                               <label>Filial</label>
-                              <input name="PRODFILIAL" class="form-control" maxlength="6" onkeypress="formatar('######', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o codigo da filial...">
+                              <input name="PRODFILIAL" class="form-control" maxlength="6" onkeypress="formatar('######', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o codigo da filial..."required/>
                           </div>                        
                           <div class="form-group">
                               <label>Produto</label>
-                              <input  maxlength="100" name="PRODNOME" class="form-control" placeholder="Digite o produto...">
+                              <input  maxlength="100" name="PRODNOME" class="form-control" placeholder="Digite o produto..."required/>
                           </div>
 			<div class="form-group">
                               <label>Genêro</label>
-                              <select name="PRODGENERO" class="form-control">
+                              <select name="PRODGENERO" class="form-control"required/>
                                   <option>Selecione...</option>
                                 <option value="Literatura">Literatura</option>
 	                               <option value="Romance">Romance</option>
@@ -214,20 +214,20 @@
                           </div>
                           <div class="form-group">
                               <label>Autor</label>
-                              <input onKeypress="return teste(event)" maxlength="100" name="PRODAUTOR" class="form-control" placeholder="Digite o nome do autor...">
+                              <input onKeypress="return teste(event)" maxlength="100" name="PRODAUTOR" class="form-control" placeholder="Digite o nome do autor..."required/>
                           </div>
                           <div class="form-group">
                               <label>Quantidade</label>
-                              <input name="PRODQTD" class="form-control" type="number" placeholder="Digite a quantidade em unidades...">
+                              <input name="PRODQTD" class="form-control" type="number" placeholder="Digite a quantidade em unidades..."required/>
                           </div>
 			  <div class="form-group">
                               <label>Valor de Compra</label>
-                              <input name="PRODVALCOMPRA" class="form-control" type="number" min="0.00" max="99999.99" step="0.01" placeholder="Digite o valor de compra...">
+                              <input name="PRODVALCOMPRA" class="form-control" type="number" min="0.00" max="99999.99" step="0.01" placeholder="Digite o valor de compra..."required/>
                           </div>
                           
                           <div class="form-group">
                               <label>Valor de Venda</label>
-                              <input name="PRODVALVENDA" class="form-control" type="number" min="0.00" max="99999.99" step="0.01" placeholder="Digite o valor de venda...">
+                              <input name="PRODVALVENDA" class="form-control" type="number" min="0.00" max="99999.99" step="0.01" placeholder="Digite o valor de venda..."required/>
                           </div>
                           <div class="form-group">
                               <label>Descrição</label>

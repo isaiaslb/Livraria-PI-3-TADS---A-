@@ -186,18 +186,18 @@
                     </div>
                 </div>
                   <div class="col-lg-6">
-                          <form action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
+                          <form onsubmit="window.open('resultadoUsuario.jsp', 'popup', 'width=300,height=400');" action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
-                              <input name="nome" onKeypress="return teste(event)" maxlength="150" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}">
+                              <input name="nome" onKeypress="return teste(event)" maxlength="150" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}"required/>
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}">
+                              <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}"required/>
                           </div>
                              <div class="form-group">
                               <label>Data de Nascimento</label>
-                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text">
+                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text"required/>
                           </div>
                            <div class="form-group">
                               <label>Sexo</label>
@@ -226,17 +226,18 @@
                           </div>
                              <div class="form-group">
                               <label>Senha</label>
-                              <input name="senha" id="senha" maxlength="15" class="form-control" type="password" placeholder="Digite a senha...">
+                              <input name="senha" id="senha" maxlength="15" class="form-control" type="password" placeholder="Digite a senha..."required/>
                           </div>
                           <div class="form-group">
                               <label>Tipo de acesso</label>
-                              <select name="tipoAcesso" id="tipoAcesso" class="form-control">
+                              <select name="tipoAcesso" id="tipoAcesso" class="form-control"required/>
                                   <option>Selecione...</option>
                                 <option name="tipoAdm" id="tipoAdm" value="adm">Administrador</option>
 	                        <option name="tipoComum" id="tipoComum" value="comum">Comum</option>     
                               </select>
                           </div>
-                          <button type="submit" class="btn btn-lg btn-default">Cadastrar</button>
+                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>
+                          <button type="submit" class="btn btn-lg btn-default">Salvar</button>
 
                 </div>
               </form>
