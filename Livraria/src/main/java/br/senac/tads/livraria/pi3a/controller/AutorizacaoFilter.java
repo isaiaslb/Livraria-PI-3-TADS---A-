@@ -18,7 +18,11 @@ import javax.servlet.http.HttpSession;
  * @author Fernanda
  */
 
-@WebFilter(filterName = "AutorizacaoFilter",urlPatterns = "/bootstrap/*")
+//@WebFilter(filterName = "AutorizacaoFilter",urlPatterns = "/bootstrap/*")
+@WebFilter(filterName = "AutorizacaoFilter",
+	servletNames = {"BuscarCliente", "BuscarEmpresa", "BuscarProduto", 
+                        "BuscarUsuario", "ClienteServlet", "EmpresaServlet", "ProdutoServlet",
+                        "UsuarioServlet","VendaServlet"},urlPatterns = {"/bootstrap/*"})
 public class AutorizacaoFilter implements Filter {
 
     @Override

@@ -49,7 +49,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="login.jsp">Astec</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/bootstrap/index.jsp">Astec</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
@@ -73,18 +73,18 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="emp" class="collapse">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
-                                </li>
-                            </ul>
-                        </li>
-                         </c:if>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="emp" class="collapse">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
@@ -97,19 +97,19 @@
                             </ul>
                         </li>
                         <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="usu" class="collapse">
-                                
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
-                                </li>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="usu" class="collapse">
 
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarUsuario.jsp">Buscar</a>
-                                </li>
-                            </ul>
-                        </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/buscarUsuario.jsp">Buscar</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
@@ -123,9 +123,9 @@
                             </ul>
                         </li>
                         <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
-                        </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
+                            </li>
                         </c:if>
                         <li>
                             <a href="${pageContext.request.contextPath}/bootstrap/venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
@@ -145,7 +145,7 @@
                     <div class="row">
                         <div align="center" class="col-lg-12">
                             <h1  class="page-header">
-                              Olá ${usuAutenticado.nome}, Seja Bem vindo a Livraria Astec
+                                Olá ${usuAutenticado.nome}, Seja Bem vindo a Livraria Astec
                             </h1>
 
 
@@ -181,30 +181,30 @@
                                     </div>
 
                                 </div>
-                                            <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="panel panel-green">
-                                        <div class="panel-heading">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <i class="fa fa-tasks fa-5x"></i>
-                                                </div><a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">
-                                                    <div class="col-xs-9 text-right">
-                                                        <div class="huge"><img src="${pageContext.request.contextPath}/bootstrap/imagens/system-user-man-icon.png" width="100" height="100"/></div>
+                                <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="panel panel-green">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <i class="fa fa-tasks fa-5x"></i>
+                                                    </div><a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">
+                                                        <div class="col-xs-9 text-right">
+                                                            <div class="huge"><img src="${pageContext.request.contextPath}/bootstrap/imagens/system-user-man-icon.png" width="100" height="100"/></div>
 
-                                                    </div>
+                                                        </div>
+                                                </div>
                                             </div>
+                                            <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">
+                                                <div class="panel-footer">
+                                                    <span class="pull-left">Usuario Cadastrar</span>
+                                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">
-                                            <div class="panel-footer">
-                                                <span class="pull-left">Usuario Cadastrar</span>
-                                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </a>
                                     </div>
-                                </div>
-                                            </c:if>
+                                </c:if>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="panel panel-yellow">
                                         <div class="panel-heading">
@@ -228,31 +228,31 @@
                                         </a>
                                     </div>
                                 </div>
-                                      <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">      
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="panel panel-red">
-                                        <div class="panel-heading">
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <i class="fa fa-support fa-5x"></i>
-                                                </div>
-                                                <div class="col-xs-9 text-right">
-                                                    <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">  
-                                                        <div class="huge"><img src="${pageContext.request.contextPath}/bootstrap/imagens/condominio.png" width="100" height="100"/></div>
+                                <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">      
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="panel panel-red">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <i class="fa fa-support fa-5x"></i>
+                                                    </div>
+                                                    <div class="col-xs-9 text-right">
+                                                        <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">  
+                                                            <div class="huge"><img src="${pageContext.request.contextPath}/bootstrap/imagens/condominio.png" width="100" height="100"/></div>
 
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">
+                                                <div class="panel-footer">
+                                                    <span class="pull-left">Cadastrar filial </span>
+                                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">
-                                            <div class="panel-footer">
-                                                <span class="pull-left">Cadastrar filial </span>
-                                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </a>
                                     </div>
-                                </div>
-                                                </c:if>
+                                </c:if>
                             </form>
                         </div>
                         <!-- /.row -->
