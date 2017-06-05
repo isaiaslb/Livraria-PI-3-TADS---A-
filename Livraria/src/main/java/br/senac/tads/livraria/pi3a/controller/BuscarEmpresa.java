@@ -63,12 +63,10 @@ public class BuscarEmpresa extends HttpServlet {
         empresas.setCidade(request.getParameter("cidadeBusca"));
         empresas.setEstado(request.getParameter("estadoBusca"));
 
-        try {
-            emp.atualizar(empresas);
-        } catch (Exception ex) {
-
-        }
         
+            emp.atualizar(empresas);
+        
+            request.getRequestDispatcher("bootstrap/buscarEmpresa.jsp").forward(request, response);
         //response.sendRedirect("bootstrap/cliente.jsp");
 
     }

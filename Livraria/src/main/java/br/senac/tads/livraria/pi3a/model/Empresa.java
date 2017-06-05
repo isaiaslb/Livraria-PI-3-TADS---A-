@@ -23,22 +23,22 @@ public class Empresa {
      public Empresa(){
         
     }
-    public Empresa(String razao, String cnpj, String ie, String telefone, String endereco, 
-            String numero, String complemento, String cep, String bairro,String cidade,String estado) {
-    
-    this.razao = razao;
-    this.cnpj = cnpj;
-    this.ie = ie;
-    this.telefone = telefone;
-    this.endereco = endereco;
-    this.numero = numero;
-    this.complemento = complemento;
-    this.cep = cep;
-    this.bairro = bairro;
-    this.cidade=cidade;
-    this.estado = estado;
-    
-  }
+//    public Empresa(String razao, String cnpj, String ie, String telefone, String endereco, 
+//            String numero, String complemento, String cep, String bairro,String cidade,String estado) {
+//    
+//    this.razao = razao;
+//    this.cnpj = cnpj;
+//    this.ie = ie;
+//    this.telefone = telefone;
+//    this.endereco = endereco;
+//    this.numero = numero;
+//    this.complemento = complemento;
+//    this.cep = cep;
+//    this.bairro = bairro;
+//    this.cidade=cidade;
+//    this.estado = estado;
+//    
+//  }
     
     public Empresa(int id,String razao, String cnpj,  String ie, String telefone, String endereco, 
             String numero, String complemento, String cep, String bairro,String cidade,String estado) {

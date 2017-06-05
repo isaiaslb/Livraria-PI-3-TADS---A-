@@ -151,13 +151,13 @@ public class EmpresaDao extends ConexaoBD {
             stmt.setString(1, empresa.getRazao());
             stmt.setString(2, empresa.getIe());
             stmt.setString(3, empresa.getTelefone());
-            stmt.setString(4, empresa.getNumero());
-            stmt.setString(5, empresa.getComplemento());
-            stmt.setString(6, empresa.getCep());
-            stmt.setString(7, empresa.getBairro());
-            stmt.setString(8, empresa.getCidade());
-            stmt.setString(9, empresa.getEstado());
-            stmt.setString(10, empresa.getEstado());
+            stmt.setString(4,empresa.getEndereco());
+            stmt.setString(5, empresa.getNumero());
+            stmt.setString(6, empresa.getComplemento());
+            stmt.setString(7, empresa.getCep());
+            stmt.setString(8, empresa.getBairro());
+            stmt.setString(9, empresa.getCidade());
+            stmt.setString(10, empresa.getEstado());            
             stmt.setInt(11, empresa.getId());
 
             stmt.executeUpdate();

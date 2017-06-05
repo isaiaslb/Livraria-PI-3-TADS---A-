@@ -55,7 +55,7 @@ public class BuscarUsuario extends HttpServlet {
 
         UsuarioDAO usu = new UsuarioDAO();
         Usuario usuario = new Usuario();
- 
+        usuario.setId(Integer.parseInt(request.getParameter("idBusca")));
         usuario.setNome(request.getParameter("nomeBusca"));
         usuario.setCpf(request.getParameter("cpfBusca"));
         //usuario.setDataNasc(request.getParameter("dataNascBusca"));
@@ -67,8 +67,9 @@ public class BuscarUsuario extends HttpServlet {
         usuario.setSenha(request.getParameter("senhaBusca"));
         usuario.setTipoAcesso(request.getParameter("tipoAcessoBusca"));
 
-   
+         usu.alterar(usuario);
         
+         request.getRequestDispatcher("bootstrap/buscarUsuario.jsp").forward(request, response);
         //response.sendRedirect("bootstrap/cliente.jsp");
 
     }

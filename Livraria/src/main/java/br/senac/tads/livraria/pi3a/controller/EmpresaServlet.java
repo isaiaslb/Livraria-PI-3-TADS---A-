@@ -52,7 +52,7 @@ public class EmpresaServlet extends HttpServlet {
 
         // Cria um novo contato e salva
         // através do DAO
-        Empresa nova = new Empresa(razao,cnpj,ie,telefone,endereco,numero,complemento,cep,bairro,cidade,estado);
+        Empresa nova = new Empresa(0,razao,cnpj,ie,telefone,endereco,numero,complemento,cep,bairro,cidade,estado);
         EmpresaDao dao = new EmpresaDao();
         dao.incluirComTransacao(nova);
 

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class UsuarioDAO extends ConexaoBD {
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-
+                p.setId(resultados.getInt("cod_user"));
                 p.setNome(resultados.getString("nome"));
                 p.setCpf(resultados.getString("cpf"));
                 p.setDataNasc(resultados.getDate("dtNasc"));
@@ -70,7 +71,68 @@ public class UsuarioDAO extends ConexaoBD {
         }
         return p;
     }
+    public void alterar(Usuario usuario){
+        PreparedStatement stmt = null;
+        Connection conn = null;
 
+        String sql = "UPDATE usuario SET nome=?, email=?, fixo=?, enabled=true, cel=?, setor=?,"
+                + "sexo=?, senha=?, tp_acesso=?, cpf=? "
+                + "WHERE cod_user=?";
+        try {
+            conn = obterConexao();
+
+             stmt = conn.prepareStatement(sql);
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getEmail());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setString(4, usuario.getCelular());
+            stmt.setString(5, usuario.getSetor());
+            stmt.setString(6, usuario.getSexo());
+            stmt.setString(7, usuario.getSenha());
+            stmt.setString(8, usuario.getTipoAcesso());            
+            stmt.setString(9, usuario.getCpf());            
+            stmt.setInt(10, usuario.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            try {
+                // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
+                if (conn != null & !conn.isClosed()) {
+                    conn.rollback();
+                }
+            } catch (SQLException ex1) {
+                Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            try {
+                // Caso ocorra algum erro, tenta desfazer todas as ações realizadas no BD.
+                if (conn != null & !conn.isClosed()) {
+                    conn.rollback();
+                }
+            } catch (SQLException ex1) {
+                Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+    }
     public List<Usuario> listar() {
         Statement stmt = null;
         Connection conn = null;

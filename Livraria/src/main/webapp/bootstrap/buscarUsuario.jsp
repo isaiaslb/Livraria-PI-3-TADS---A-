@@ -182,6 +182,7 @@
                             </div>
                         </form>
                         <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
+                            <input class="form-control" id="id" name="idBusca" type="hidden" value="${listaUsuario.id}" />
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input onKeypress="return teste(event)" maxlength="150"  class="form-control" name="nomeBusca" id="nome" value="${listaUsuario.nome}" disabled="">
