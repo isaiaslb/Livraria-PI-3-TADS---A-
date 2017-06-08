@@ -74,16 +74,15 @@ public class ProdutoServlet extends HttpServlet {
         String produto = request.getParameter("PRODNOME");
         String autor = request.getParameter("PRODAUTOR");
         String genero = request.getParameter("PRODGENERO");
-        int qtd = Integer.parseInt(request.getParameter("PRODQTD"));
-        double valCompra = Double.parseDouble(request.getParameter("PRODVALCOMPRA"));
-        double valVenda = Double.parseDouble(request.getParameter("PRODVALVENDA"));
+        int qtd = Integer.parseInt(request.getParameter("PRODQTD"));        
+        double val = Double.parseDouble(request.getParameter("PRODVAL"));
         String descricao = request.getParameter("PRODDESC");
         
         
 
         // Cria um novo contato e salva
         // através do DAO
-        Produtos novo = new Produtos(0,filial, produto, autor, genero, qtd, valCompra, valVenda, descricao);
+        Produtos novo = new Produtos(0,filial, produto, autor, genero, qtd, val, descricao);
         ProdutosDao dao = new JDBCProdutosDao();
         dao.inserir(novo);
 

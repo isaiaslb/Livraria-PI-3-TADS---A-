@@ -16,36 +16,33 @@ public class Produtos {
     private String prodNome;
     private String prodAutor;
     private String prodGenero;
-    private int prodQtd;
-    private double prodValCompra;
-    private double prodValVenda;
+    private int prodQtd;    
+    private double prodVal;
     private String prodDesc;
     
     public Produtos(){
         
     }
 //    public Produtos(int filial, String nome, String autor, 
-//            String genero, int qtd, double valCompra, double valVenda, String descricao) {
+//            String genero, int qtd, double val, String descricao) {
 //   // this.prodId = id;
 //    this.prodFilial = filial;
 //    this.prodNome = nome;
 //    this.prodAutor = autor;
 //    this.prodGenero = genero;
 //    this.prodQtd = qtd;
-//    this.prodValCompra = valCompra;
-//    this.prodValVenda = valVenda;
+//    this.prodValVenda = val;
 //    this.prodDesc = descricao;
 //  }      
     public Produtos(int id,int filial, String nome, String autor, 
-            String genero, int qtd, double valCompra, double valVenda, String descricao) {
+            String genero, int qtd, double val, String descricao) {
     this.prodId = id;
     this.prodFilial = filial;
     this.prodNome = nome;
     this.prodAutor = autor;
     this.prodGenero = genero;
-    this.prodQtd = qtd;
-    this.prodValCompra = valCompra;
-    this.prodValVenda = valVenda;
+    this.prodQtd = qtd;   
+    this.prodVal = val;
     this.prodDesc = descricao;
   }      
 
@@ -93,17 +90,12 @@ public class Produtos {
     public void setProdQtd(int qtd){
         this.prodQtd = qtd;
     }
-    public double getProdValCompra(){
-        return prodValCompra;
+   
+    public double getProdVal(){
+        return prodVal;
     }
-    public void setProdValCompra(double vCompra){
-        this.prodValCompra = vCompra;
-    }
-    public double getProdValVenda(){
-        return prodValVenda;
-    }
-    public void setProdValVenda(double vVenda){
-        this.prodValVenda = vVenda;
+    public void setProdVal(double vVenda){
+        this.prodVal = vVenda;
     }
     public String getProdDesc(){
         return prodDesc;

@@ -55,9 +55,8 @@ public class BuscarProduto extends HttpServlet {
         prod.setProdNome(request.getParameter("bNome"));
         prod.setProdAutor(request.getParameter("bAutor"));
         prod.setProdGenero(request.getParameter("bGenero"));
-        prod.setProdQtd(Integer.parseInt(request.getParameter("bQtd")));
-        prod.setProdValCompra(Double.parseDouble(request.getParameter("bValCompra")));
-        prod.setProdValVenda(Double.parseDouble(request.getParameter("bValVenda")));
+        prod.setProdQtd(Integer.parseInt(request.getParameter("bQtd")));        
+        prod.setProdVal(Double.parseDouble(request.getParameter("bVal")));
         prod.setProdDesc(request.getParameter("bDesc"));                
         
         //request.getSession().setAttribute("prod", prod);

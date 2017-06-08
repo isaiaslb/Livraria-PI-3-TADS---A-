@@ -42,17 +42,16 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
     public void inserir(Produtos produto) {
         try {
 
-            String sql = "INSERT INTO PRODUTOS (PRODFILIAL, PRODNOME, PRODAUTOR, PRODGENERO, PRODQTD, PRODVALCOMPRA, PRODVALVENDA, PRODDESC, ENABLED) VALUES"
-                    + "(?,?,?,?,?,?,?,?,true)";
+            String sql = "INSERT INTO PRODUTOS (PRODFILIAL, PRODNOME, PRODAUTOR, PRODGENERO, PRODQTD, PRODVAL, PRODDESC, ENABLED) VALUES"
+                    + "(?,?,?,?,?,?,?,true)";
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, produto.getProdFilial());
             ps.setString(2, produto.getProdNome());
             ps.setString(3, produto.getProdAutor());
             ps.setString(4, produto.getProdGenero());
-            ps.setInt(5, produto.getProdQtd());
-            ps.setDouble(6, produto.getProdValCompra());
-            ps.setDouble(7, produto.getProdValVenda());
-            ps.setString(8, produto.getProdDesc());
+            ps.setInt(5, produto.getProdQtd());   
+            ps.setDouble(6, produto.getProdVal());
+            ps.setString(7, produto.getProdDesc());
 
             ps.executeUpdate();
 
@@ -94,9 +93,8 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
                 produto.setProdNome(rs.getString("PRODNOME"));
                 produto.setProdAutor(rs.getString("PRODAUTOR"));
                 produto.setProdGenero(rs.getString("PRODGENERO"));
-                produto.setProdQtd(rs.getInt("PRODQTD"));
-                produto.setProdValCompra(rs.getDouble("PRODVALCOMPRA"));
-                produto.setProdValVenda(rs.getDouble("PRODVALVENDA"));
+                produto.setProdQtd(rs.getInt("PRODQTD"));                
+                produto.setProdVal(rs.getDouble("PRODVAL"));
                 produto.setProdDesc(rs.getString("PRODDESC"));
                 produtos.add(produto);
                 
@@ -129,8 +127,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             p.setProdAutor(rs.getString("PRODAUTOR"));
             p.setProdGenero(rs.getString("PRODGENERO"));
             p.setProdQtd(rs.getInt("PRODQTD"));
-            p.setProdValCompra(rs.getDouble("PRODVALCOMPRA"));
-            p.setProdValVenda(rs.getDouble("PRODVALVENDA"));
+            p.setProdVal(rs.getDouble("PRODVAL"));
             p.setProdDesc(rs.getString("PRODDESC"));
             
             ps.close();
@@ -149,7 +146,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
     public void alterar(Produtos produto) {
         try {
             String sql = "UPDATE PRODUTOS SET PRODFILIAL=?,PRODNOME=?,PRODAUTOR=?,"
-                    +"PRODGENERO=?,PRODQTD=?,PRODVALCOMPRA=?,PRODVALVENDA=?,PRODDESC=? WHERE PRODID=?";
+                    +"PRODGENERO=?,PRODQTD=?,PRODVAL=?,PRODDESC=? WHERE PRODID=?";
             
             PreparedStatement ps = conn.prepareStatement(sql);
             
@@ -157,11 +154,10 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.setString(2, produto.getProdNome());
             ps.setString(3, produto.getProdAutor());
             ps.setString(4, produto.getProdGenero());
-            ps.setInt(5, produto.getProdQtd());
-            ps.setDouble(6, produto.getProdValCompra());
-            ps.setDouble(7, produto.getProdValVenda());
-            ps.setString(8, produto.getProdDesc());
-            ps.setInt(9, produto.getProdId());
+            ps.setInt(5, produto.getProdQtd());            
+            ps.setDouble(6, produto.getProdVal());
+            ps.setString(7, produto.getProdDesc());
+            ps.setInt(8, produto.getProdId());
                         
             ps.executeUpdate();
             

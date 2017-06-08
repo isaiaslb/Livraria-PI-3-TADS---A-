@@ -39,9 +39,8 @@
                 document.getElementById('produto').disabled = false;
                 document.getElementById('autor').disabled = false;
                 document.getElementById('genero').disabled = false;
-                document.getElementById('qtd').disabled = false;
-                document.getElementById('valCompra').disabled = false;
-                document.getElementById('valVenda').disabled = false;
+                document.getElementById('qtd').disabled = false;                
+                document.getElementById('val').disabled = false;
                 document.getElementById('descricao').disabled = false;
             }
         </script>
@@ -209,20 +208,16 @@
                             <input type="number" class="form-control" id="qtd" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
                         </div>
                         <div class="form-group">
-                            <label>Valor de Compra</label>
-                            <input type="number" class="form-control" id="valCompra" name="bValCompra" value="${buscaProdutos.prodValCompra}" disabled/>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor de Venda</label>
-                            <input type="number" class="form-control" id="valVenda" name="bValVenda" value="${buscaProdutos.prodValVenda}" disabled/>
+                            <label>Valor do Produto</label>
+                            <input type="number" class="form-control" id="val" name="bVal" value="${buscaProdutos.prodVal}" disabled/>
                         </div>
                         <div class="form-group">
                             <label>Descrição</label>
                             <textarea maxlength="255" class="form-control" id="descricao" name="bDesc"  rows="3" disabled>${buscaProdutos.prodDesc}"</textarea>
                         </div>
                         <div class="form-group">
+                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>                            
                             <button type="submit" class="btn btn-lg btn-default">Salvar</button>
-                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
                             <button type="submit" class="btn btn-lg btn-default">Excluir</button>
                         </div>    
 
