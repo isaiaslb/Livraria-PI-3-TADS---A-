@@ -97,26 +97,8 @@ public class ClienteDao extends ConexaoBD {
             }
             listaCliente.add(p);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        }  catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("ERRO NO Lista");
         }
         return listaCliente;
     }

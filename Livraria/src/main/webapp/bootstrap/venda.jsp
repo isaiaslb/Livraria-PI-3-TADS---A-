@@ -230,7 +230,7 @@
                                         <input type="hidden" name="comando" value="buscaProd"  />
                                         <td><label>Produto:</label></td>
                                         <td><input class="form-control" nome="prodbusca" placeholder="produto.." type="text"/></td>
-                                        <td><input type="image" src="imagens/adicionar.jpg" width="30"></td>
+                                        <td><input type="image" src="imagens/adicionar.jpg" width="30"></td>             
                                         </tr>
                                     </form>    
                                     <tr>
@@ -251,61 +251,20 @@
                                     <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Codigo</th>
-                                                <th>Produto</th>
-                                                <th>Quantidade</th>
+                                                <th>Nome</th>
+                                                <th>Genero</th>
+                                                <th>Autor</th>
                                                 <th>Vl. Unitario</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-
-
-
+                                                <td>${sessionScope.listProd.prodNome}</td>
+                                                <td>${sessionScope.listProd.prodGenero}</td>
+                                                <td>${sessionScope.listProd.prodAutor}</td>
+                                                <td>${sessionScope.listProd.prodValVenda}</td>
+                                            </tr>                     
                                         </tbody>
                                     </table>
                                 </div>
