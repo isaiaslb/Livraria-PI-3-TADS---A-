@@ -65,13 +65,13 @@
 
         <div id="wrapper">
 
-             <c:choose>
+            <c:choose>
                 <c:when test="${papel eq 'Admin'}"></c:when>
                 <c:when test="${papel eq 'Com'}"></c:when>	
             </c:choose>
 
             <!-- Navigation -->  
-                  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -104,18 +104,18 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="emp" class="collapse">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
-                                </li>
-                            </ul>
-                        </li>
-                         </c:if>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="emp" class="collapse">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
@@ -128,19 +128,19 @@
                             </ul>
                         </li>
                         <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="usu" class="collapse">
-                                
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
-                                </li>
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="usu" class="collapse">
 
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarUsuario.jsp">Buscar</a>
-                                </li>
-                            </ul>
-                        </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/buscarUsuario.jsp">Buscar</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
@@ -154,9 +154,9 @@
                             </ul>
                         </li>
                         <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
-                        </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
+                            </li>
                         </c:if>
                         <li>
                             <a href="${pageContext.request.contextPath}/bootstrap/venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
@@ -258,13 +258,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
-                                            <tr>
-                                                <td>${sessionScope.listProd.prodNome}</td>
-                                                <td>${sessionScope.listProd.prodGenero}</td>
-                                                <td>${sessionScope.listProd.prodAutor}</td>
-                                                <td>${sessionScope.listProd.prodValVenda}</td>
-                                            </tr>                     
+                                            <c:forEach var="produto" items="${listProd}">
+                                                <tr>
+                                                    <td>${sessionScope.produto.prodNome}</td>
+                                                    <td>${sessionScope.produto.prodGenero}</td>
+                                                    <td>${sessionScope.produto.prodAutor}</td>
+                                                    <td>${sessionScope.produto.prodValVenda}</td>
+                                                </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -279,7 +280,7 @@
                             </div>
                             <div class="col-lg-6">
 
-                                <button type="button" class="btn btn-lg btn-default">Salvar</button>
+                                <button type="button" class="btn btn-lg btn-default">Salvar</button>                              
                                 <button type="button" class="btn btn-lg btn-default">Sair</button>
                             </div>
 

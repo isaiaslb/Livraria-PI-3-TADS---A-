@@ -9,6 +9,7 @@ import br.senac.tads.livraria.pi3a.dao.ClienteDao;
 import br.senac.tads.livraria.pi3a.model.Cliente;
 import br.senac.tads.livraria.pi3a.model.Produtos;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,7 @@ public class VendaServlet extends HttpServlet {
         //String b = request.getParameter("prodbusca");
         
         JDBCProdutosDao prod = new JDBCProdutosDao();
-        Produtos lis = (Produtos) prod.listar();
+        List<Produtos> lis = prod.listar();
         
         request.getSession().setAttribute("listProd", lis);
         
@@ -61,6 +62,11 @@ public class VendaServlet extends HttpServlet {
         String comando = request.getParameter("comando");
         if (comando.equals("buscaCli")) {
              buscaCli(request, response);  
+             return;
+        }
+        
+        if (comando.equals("buscaProd")) {
+             buscaProd(request, response);  
              return;
         }
         

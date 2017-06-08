@@ -49,7 +49,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.setString(2, produto.getProdNome());
             ps.setString(3, produto.getProdAutor());
             ps.setString(4, produto.getProdGenero());
-            ps.setInt(5, produto.getProdQtd());   
+            ps.setInt(5, produto.getProdQtd());
             ps.setDouble(6, produto.getProdVal());
             ps.setString(7, produto.getProdDesc());
 
@@ -59,10 +59,10 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             //conecta.close();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException ("Erro ao incluir um novo registro de produtos JDBCProdutosDao");
+            throw new RuntimeException("Erro ao incluir um novo registro de produtos JDBCProdutosDao");
         }
     }
- 
+
     @Override
     public void remover(int id) {
         try {
@@ -70,34 +70,31 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
-            
+
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException ("Erro ao deletar registro de produtos JDBCProdutosDao");
+            throw new RuntimeException("Erro ao deletar registro de produtos JDBCProdutosDao");
         }
-        
+
     }
 
     @Override
     public List<Produtos> listar() {
-        List<Produtos> produtos = new ArrayList<Produtos>();
+        List<Produtos> produtos = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM PRODUTOS";
+            String sql = "SELECT PRODNOME, PRODGENERO, PRODAUTOR, PRODVAL FROM PRODUTOS ORDER BY PRODNOME";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+            
             while (rs.next()) {
-                Produtos produto = new Produtos();
-                //produto.setIdProd(rs.getInt("PRODID"));
-                produto.setProdFilial(rs.getInt("PRODFILIAL"));
+                Produtos produto = new Produtos();              
                 produto.setProdNome(rs.getString("PRODNOME"));
-                produto.setProdAutor(rs.getString("PRODAUTOR"));
                 produto.setProdGenero(rs.getString("PRODGENERO"));
-                produto.setProdQtd(rs.getInt("PRODQTD"));                
+                produto.setProdAutor(rs.getString("PRODAUTOR"));
                 produto.setProdVal(rs.getDouble("PRODVAL"));
-                produto.setProdDesc(rs.getString("PRODDESC"));
                 produtos.add(produto);
-                
+
                 ps.close();
                 rs.close();
             }
@@ -115,12 +112,12 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             Produtos p = new Produtos();
             String sql = "SELECT * FROM PRODUTOS WHERE PRODNOME = ? AND ENABLED = TRUE";
             PreparedStatement ps = conn.prepareStatement(sql);
-            
-            ps.setString(1, produto);            
+
+            ps.setString(1, produto);
             ResultSet rs = ps.executeQuery();
-            
+
             rs.next();
-            
+
             p.setProdId(rs.getInt("PRODID"));
             p.setProdFilial(rs.getInt("PRODFILIAL"));
             p.setProdNome(rs.getString("PRODNOME"));
@@ -129,40 +126,40 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             p.setProdQtd(rs.getInt("PRODQTD"));
             p.setProdVal(rs.getDouble("PRODVAL"));
             p.setProdDesc(rs.getString("PRODDESC"));
-            
+
             ps.close();
             rs.close();
-            
+
             return p;
-                        
+
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Erro ao buscar registro de produtos JDBCProdutosDao");
         }
-        
+
     }
 
     @Override
     public void alterar(Produtos produto) {
         try {
             String sql = "UPDATE PRODUTOS SET PRODFILIAL=?,PRODNOME=?,PRODAUTOR=?,"
-                    +"PRODGENERO=?,PRODQTD=?,PRODVAL=?,PRODDESC=? WHERE PRODID=?";
-            
+                    + "PRODGENERO=?,PRODQTD=?,PRODVAL=?,PRODDESC=? WHERE PRODID=?";
+
             PreparedStatement ps = conn.prepareStatement(sql);
-            
+
             ps.setInt(1, produto.getProdFilial());
             ps.setString(2, produto.getProdNome());
             ps.setString(3, produto.getProdAutor());
             ps.setString(4, produto.getProdGenero());
-            ps.setInt(5, produto.getProdQtd());            
+            ps.setInt(5, produto.getProdQtd());
             ps.setDouble(6, produto.getProdVal());
             ps.setString(7, produto.getProdDesc());
             ps.setInt(8, produto.getProdId());
-                        
+
             ps.executeUpdate();
-            
+
             ps.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Erro ao atualizar o registro de produtos JDBCProdutosDao");
