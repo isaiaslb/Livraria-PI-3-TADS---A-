@@ -162,7 +162,7 @@
                       <form onsubmit="window.open('resultadoProduto.jsp', 'popup', 'width=300,height=400');" role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
                           <div class="form-group">
                               <label>Filial</label>
-                              <input name="PRODFILIAL" class="form-control" maxlength="6" onkeypress="formatar('######', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o codigo da filial..."required/>
+                              <input name="PRODFILIAL" class="form-control" maxlength="6" onkeyup="somenteNumeros(this);" placeholder="Digite o codigo da filial..."required/>
                           </div>                        
                           <div class="form-group">
                               <label>Produto</label>
@@ -206,18 +206,16 @@
         <!-- /#page-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
- <script>
-               function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;   
-    if((tecla>47 && tecla<58)) return true;
-    else{
-    	if (tecla==8 || tecla==0) return true;
-	else  return false;
+          <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
     }
-}
-                
-            </script>
+ </script>
 
 
 
@@ -240,20 +238,7 @@
                 
             </script>
 
- <script>
-		function formatar(mascara, documento){
-			var i = documento.value.length;
-			var saida = mascara.substring(0,1);
-			var texto = mascara.substring(i)
-			
-			if (texto.substring(0,1) != saida){
-				documento.value += texto.substring(0,1);
-			}
-			
-		}
-                
-                
-            </script>  
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

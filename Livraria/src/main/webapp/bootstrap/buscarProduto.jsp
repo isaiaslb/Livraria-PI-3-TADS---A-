@@ -182,7 +182,7 @@
                         <input  class="form-control" id="id" name="bId" type="hidden" value="${buscaProdutos.prodId}"/>                                                       
                         <div class="form-group">
                             <label>Filial</label>
-                            <input maxlength="6" onkeypress="formatar('######', this)" onKeyDown='return SomenteNumero(event)' class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
+                            <input maxlength="6" onkeypress="formatar('######', this)" onkeyup="somenteNumeros(this);" class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
                         </div>
                         <div class="form-group">
                             <label>Produto</label>
@@ -228,21 +228,16 @@
             </div>     
         </div>  
     
-            <script>
-                function SomenteNumero(e) {
-                    var tecla = (window.event) ? event.keyCode : e.which;
-                    if ((tecla > 47 && tecla < 58))
-                        return true;
-                    else {
-                        if (tecla == 8 || tecla == 0)
-                            return true;
-                        else
-                            return false;
-                    }
-                }
-
-            </script>
-
+                 <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
 
 
             <script>

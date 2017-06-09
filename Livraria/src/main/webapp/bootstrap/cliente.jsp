@@ -164,7 +164,7 @@
                             </div>
                             <div class="form-group">
                                 <label>CPF</label>
-                                <input type="text" OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
+                                <input type="text" OnKeyPress="formatar('###.###.###-##', this)"onkeyup="somenteNumeros(this);" class="form-control" name="cpf" maxlength="14" id="cpf" placeholder="Digite o CPF..." required />
 
                             </div>
                             <div class="form-group">
@@ -177,7 +177,7 @@
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input OnKeyPress="formatar('#####-###', this)" onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
+                                <input OnKeyPress="formatar('#####-###', this)"onkeyup="somenteNumeros(this);" class="form-control" name="cep" maxlength="9" type="text" id="cep" placeholder="Digite o CEP..." required/>
                             </div>
                             <div class="form-group">
                                 <label>Estado</label>
@@ -214,7 +214,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' type="tel" class="form-control" maxlength="13" name="cel" placeholder="Digite Celular...">
+                                <input OnKeyPress="formatar('##-#####-####', this)"onkeyup="somenteNumeros(this);" type="tel" class="form-control" maxlength="13" name="cel" placeholder="Digite Celular...">
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
@@ -243,20 +243,16 @@
 
                 }
             </script>  
-            <script>
-                function SomenteNumero(e) {
-                    var tecla = (window.event) ? event.keyCode : e.which;
-                    if ((tecla > 47 && tecla < 58))
-                        return true;
-                    else {
-                        if (tecla == 8 || tecla == 0)
-                            return true;
-                        else
-                            return false;
-                    }
-                }
-
-            </script>
+       <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
 
 
 
