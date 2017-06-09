@@ -66,7 +66,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
     @Override
     public void remover(int id) {
         try {
-            String sql = "DELETE FROM PRODUTOS WHERE PRODID= ?";
+            String sql = "UPDATE PRODUTOS SET ENABLED=false WHERE PRODID= ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
