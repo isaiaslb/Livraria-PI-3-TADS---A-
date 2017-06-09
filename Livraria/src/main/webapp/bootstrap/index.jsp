@@ -55,7 +55,7 @@
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <c:if test="${not empty sessionScope.usuAutenticado}">
-                            <a href="#" ><i class="fa fa-home"></i> ${usuAutenticado.nome}</a>
+                           
                         <li class="dropdown">
                             <a href="#"><i class="fa fa-gear"></i> ${sessionScope.usuAutenticado.tipoAcesso}</a>
                         </li>
@@ -72,7 +72,7 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin') && sessionScope.usuAutenticado.temEmpresa('matriz')}">
                             <li>
                                 <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="emp" class="collapse">
@@ -88,9 +88,11 @@
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
+                             <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
                                 <li>
                                     <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
                                 </li>
+                                </c:if>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
                                 </li>
@@ -100,7 +102,7 @@
                             <li>
                                 <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="usu" class="collapse">
-
+                                       
                                     <li>
                                         <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
                                     </li>
@@ -122,7 +124,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin') && sessionScope.usuAutenticado.temEmpresa('matriz')}">
                             <li>
                                 <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
                             </li>
@@ -147,6 +149,15 @@
                             <h1  class="page-header">
                                 Olá ${usuAutenticado.nome}, Seja Bem vindo a Livraria Astec
                             </h1>
+                            <h3  class="page-header">
+                                Você está na 
+                                 <c:if test="${not empty sessionScope.usuAutenticado &&  sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                                    Matriz , Localizada em São Paulo.</c:if>
+                                  <c:if test="${not empty sessionScope.usuAutenticado &&  sessionScope.usuAutenticado.temEmpresa('filialA')}">
+                                    Filial , Localizada em Recife.</c:if> 
+                                  <c:if test="${not empty sessionScope.usuAutenticado &&  sessionScope.usuAutenticado.temEmpresa('filialB')}">
+                                    Filial , Localizada em Porto Alegre.</c:if>
+                            </h3>
 
 
                         </div>
@@ -228,7 +239,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">      
+                                <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')  && sessionScope.usuAutenticado.temEmpresa('matriz')}">      
                                     <div class="col-lg-3 col-md-6">
                                         <div class="panel panel-red">
                                             <div class="panel-heading">
@@ -258,9 +269,8 @@
                         <!-- /.row -->
 
                         <div class="row">
-                            <div class="col-lg-12">
-                                <img src="${pageContext.request.contextPath}/bootstrap/imagens/livro.png" width="40%" height="20%"/>
-                                <img src="${pageContext.request.contextPath}/bootstrap/imagens/book2.png" left="90%" width="40%" height="20%"/>
+                <div class="col-lg-12">
+                          <img src="${pageContext.request.contextPath}/bootstrap/imagens/livroIndex.jpg" style="width:100%;height:350px;position:absolute;top:50%;margin-top:-21px;" />
                             </div>
                         </div>
                         <!-- /.row -->
