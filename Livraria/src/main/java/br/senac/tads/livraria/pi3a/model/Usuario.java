@@ -23,13 +23,14 @@ public class Usuario {
     private String senha;
     private String tipoAcesso;
     private Date dataNasc;
-    private String cpf;        
+    private String cpf;    
+    private String tipoEmpresa;    
     public Usuario() {
 
     }
 
     public Usuario(String nome,String cpf, String email, String telefone, String cel, String setor,
-            String sexo, String senha, String tipoAcesso, Date dataNasc) {
+            String sexo, String senha, String tipoAcesso,String tipoEmpresa, Date dataNasc) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -38,12 +39,13 @@ public class Usuario {
         this.sexo = sexo;
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
+        this.tipoEmpresa = tipoEmpresa;
         this.dataNasc = dataNasc;
         this.cpf = cpf;
     }
 
     public Usuario(int id, String nome,String cpf, String email, String telefone, String cel,
-            String setor, String sexo, String senha, String tipoAcesso, Date dataNasc) {
+            String setor, String sexo, String senha, String tipoAcesso,String tipoEmpresa, Date dataNasc) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -53,6 +55,7 @@ public class Usuario {
         this.sexo = sexo;
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
+        this.tipoEmpresa = tipoEmpresa;
         this.dataNasc = dataNasc;
         this.cpf = cpf;
     }
@@ -143,6 +146,21 @@ public class Usuario {
     public void setCpf(String cpf) {
     this.cpf = cpf;
     }
+    public String getTipoEmpresa() {
+        return tipoEmpresa;
+    }
+
+    public void setTipoEmpresa(String tipoEmpresa) {
+    this.tipoEmpresa = tipoEmpresa;
+    }
+    public boolean temEmpresa(String empresa) {
+     if(tipoEmpresa.equals(empresa)){
+         return true;
+     }else{
+            
+    return false; 
+     }    
+  }
     public boolean temPapel(String papel) {
      if(tipoAcesso.equals(papel)){
          return true;
