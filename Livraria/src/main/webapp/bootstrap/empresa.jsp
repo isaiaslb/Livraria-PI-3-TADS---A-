@@ -163,17 +163,17 @@
                             <div class="form-group">
                                 <label>CNPJ</label>
 
-                                <input name="cnpj"  onkeypress="formatar('##.###.###/####-##', this)" onkeydown='return SomenteNumero(event)' class="form-control" maxlength="18" placeholder="Informe o CNPJ..."required/>
+                                <input name="cnpj"  onkeypress="formatar('##.###.###/####-##', this)" onkeyup="somenteNumeros(this);" class="form-control" maxlength="18" placeholder="Informe o CNPJ..."required/>
 
                             </div>
 
                             <div class="form-group">
                                 <label>Insc. Estadual</label>
-                                <input  name="INS_ESTAD" OnKeyPress="formatar('###.###.###.###', this)" onKeyDown='return SomenteNumero(event)' maxlength="15" class="form-control" placeholder="Informe Inscrição Estadual..."required/>
+                                <input  name="INS_ESTAD" OnKeyPress="formatar('###.###.###.###', this)" onkeyup="somenteNumeros(this);" maxlength="15" class="form-control" placeholder="Informe Inscrição Estadual..."required/>
                             </div>
                             <div class="form-group">
                                 <label>Telefone Fixo</label>
-                                <input name="tel" class="form-control" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)'  maxlength="13" placeholder="Informe Telefone..."/>
+                                <input name="tel" class="form-control" OnKeyPress="formatar('##-#####-####', this)" onkeyup="somenteNumeros(this);"  maxlength="13" placeholder="Informe Telefone..."/>
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>
@@ -181,7 +181,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Numero</label>
-                                <input name="numero" maxlength="9" onKeyDown='return SomenteNumero(event)'  class="form-control" placeholder="Informe Número...">
+                                <input name="numero" maxlength="9" onkeyup="somenteNumeros(this);"  class="form-control" placeholder="Informe Número...">
                             </div>
                             <div class="form-group">
                                 <label>Complemento</label>
@@ -189,7 +189,7 @@
                             </div>
                             <div class="form-group">
                                 <label>CEP</label>
-                                <input name="cep" OnKeyPress="formatar('#####-###', this)"onKeyDown='return SomenteNumero(event)' class="form-control" name="cep" maxlength="9" type="text" id="cep"placeholder="Informe CEP..."/>
+                                <input name="cep" OnKeyPress="formatar('#####-###', this)"onkeyup="somenteNumeros(this);" class="form-control" name="cep" maxlength="9" type="text" id="cep"placeholder="Informe CEP..."/>
                             </div>
                             <div class="form-group">
                                 <label>Bairro</label>
@@ -267,20 +267,16 @@
 
             </script>  
 
-            <script>
-                function SomenteNumero(e) {
-                    var tecla = (window.event) ? event.keyCode : e.which;
-                    if ((tecla > 47 && tecla < 58))
-                        return true;
-                    else {
-                        if (tecla == 8 || tecla == 0)
-                            return true;
-                        else
-                            return false;
-                    }
-                }
-
-            </script>
+                   <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
 
             <script>
                 function teste(e)

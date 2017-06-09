@@ -177,7 +177,7 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarUsuario" method="get">
                             <div>
                                 <label>Pesquisa CPF</label>
-                                <input  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."required/></br>
+                                <input  OnKeyPress="formatar('###.###.###-##', this)" onkeyup="somenteNumeros(this);"maxlength="14" class="form-control" name="buscarCpf" var="testaBusca" placeholder="Digite o CPF para buscar..."required/></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>
@@ -193,7 +193,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
-                                <input OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" class="form-control" id="dtnasc" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
+                                <input OnKeyPress="formatar('##/##/####', this)" onkeyup="somenteNumeros(this);" maxlength="10" class="form-control" id="dtnasc" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Sexo</label>
@@ -210,11 +210,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Telefone</label>
-                                <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" class="form-control" id="fixo" name="telefoneBusca" id="telefone" value="${listaUsuario.telefone}" disabled="">
+                                <input OnKeyPress="formatar('##-#####-####', this)" onkeyup="somenteNumeros(this);" maxlength="13" class="form-control" id="fixo" name="telefoneBusca" id="telefone" value="${listaUsuario.telefone}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" class="form-control" id="cel" name="celularBusca" id="celular" value="${listaUsuario.celular}" disabled="">
+                                <input OnKeyPress="formatar('##-#####-####', this)"onkeyup="somenteNumeros(this);" maxlength="13" class="form-control" id="cel" name="celularBusca" id="celular" value="${listaUsuario.celular}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Setor</label>
@@ -245,17 +245,16 @@
 
             </div>
             <!-- /#wrapper -->
- <script>
-               function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;   
-    if((tecla>47 && tecla<58)) return true;
-    else{
-    	if (tecla==8 || tecla==0) return true;
-	else  return false;
+       <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
     }
-}
-                
-            </script>
+ </script>
 
 
 

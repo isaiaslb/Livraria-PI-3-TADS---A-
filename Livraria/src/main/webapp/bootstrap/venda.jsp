@@ -205,7 +205,7 @@
                                     <form  action="${pageContext.request.contextPath}/vendaServlet" method="get">
                                         <input type="hidden" name="comando" value="buscaCli"  />
                                         <td><label>Cliente:</label></td>
-                                        <td><input class="form-control" name="clibusca" placeholder="Digite o cpf.." type="text"/></td>
+                                        <td><input onkeypress="formatar('###.###.###-##', this)" maxlength="14" onkeyup="somenteNumeros(this);"class="form-control" name="clibusca" placeholder="Digite o cpf.." type="text"/></td>
                                         <td><input type="image" src="imagens/Imagens-em-png-queroimagem.png" width="30"></td>           
                                         <td><label>${sessionScope.listCliente.nome}</label></td>
 
@@ -301,6 +301,31 @@
     </div>
 
     <!-- /#wrapper -->
+         <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
+ 
+   <script>
+                function formatar(mascara, documento) {
+                    var i = documento.value.length;
+                    var saida = mascara.substring(0, 1);
+                    var texto = mascara.substring(i)
+
+                    if (texto.substring(0, 1) != saida) {
+                        documento.value += texto.substring(0, 1);
+                    }
+
+                }
+
+
+            </script>  
 
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
