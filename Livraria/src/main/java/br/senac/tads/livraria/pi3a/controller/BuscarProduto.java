@@ -47,6 +47,9 @@ public class BuscarProduto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
+        String bt1 = request.getParameter("btAlterar"); 
+        String bt2 = request.getParameter("btExcluir"); 
         
         JDBCProdutosDao dao = new JDBCProdutosDao();
         Produtos prod = new Produtos();        
@@ -60,7 +63,12 @@ public class BuscarProduto extends HttpServlet {
         prod.setProdDesc(request.getParameter("bDesc"));                
         
         //request.getSession().setAttribute("prod", prod);
-        dao.alterar(prod);
+
+        if(bt1 != null){  
+           dao.alterar(prod);
+        }else if(bt2 != null){
+           dao.remover(Integer.parseInt(request.getParameter("bId")));  
+        }   
         
         //request.setAttribute("livro", resultadoPesquisa);
         //request.getServletContext().setAttribute("livro", resultadoPesquisa);
