@@ -154,11 +154,11 @@
                           </div>
                           <div class="form-group">
                               <label>CPF</label>
-                              <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onKeyDown='return SomenteNumero(event)' maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}"required/>
+                              <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onkeyup="somenteNumeros(this);" maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}"required/>
                           </div>
                              <div class="form-group">
                               <label>Data de Nascimento</label>
-                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onKeyDown='return SomenteNumero(event)' maxlength="10" id="dataNasc" class="form-control" type="text" placeholder="dd/mm/aaaa" required/>
+                              <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onkeyup="somenteNumeros(this);" maxlength="10" id="dataNasc" class="form-control" type="text" placeholder="dd/mm/aaaa" required/>
                           </div>
                            <div class="form-group">
                               <label>Sexo</label>
@@ -175,11 +175,11 @@
                           </div>
                              <div class="form-group">
                               <label>Telefone</label>
-                              <input name="telefone" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13" id="telefone" class="form-control" placeholder="Digite o telefone...">
+                              <input name="telefone" OnKeyPress="formatar('##-#####-####', this)" onkeyup="somenteNumeros(this);" maxlength="13" id="telefone" class="form-control" placeholder="Digite o telefone...">
                           </div>
                              <div class="form-group">
                               <label>Celular</label>
-                              <input name="celular" OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13"  id="celular" class="form-control" placeholder="Digite o celular...">
+                              <input name="celular" OnKeyPress="formatar('##-#####-####', this)" onkeyup="somenteNumeros(this);" maxlength="13"  id="celular" class="form-control" placeholder="Digite o celular...">
                           </div>
                              <div class="form-group">
                               <label>Setor</label>
@@ -213,21 +213,16 @@
             <!-- /#wrapper -->
 
 
-            <script>
-                function SomenteNumero(e) {
-                    var tecla = (window.event) ? event.keyCode : e.which;
-                    if ((tecla > 47 && tecla < 58))
-                        return true;
-                    else {
-                        if (tecla == 8 || tecla == 0)
-                            return true;
-                        else
-                            return false;
-                    }
-                }
-
-            </script>
-
+                     <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
 
 
             <script>

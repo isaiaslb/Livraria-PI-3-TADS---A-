@@ -178,7 +178,7 @@
                         <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="get">
                             <div>
                                 <label>Pesquisa CNPJ</label>
-                                <input class="form-control" name="buscarCnpj" var="testaBusca" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)" onKeyDown='return SomenteNumero(event)' placeholder="Digite o CNPJ para buscar..."required/></br>
+                                <input class="form-control" name="buscarCnpj" var="testaBusca" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)" onkeyup="somenteNumeros(this);" placeholder="Digite o CNPJ para buscar..."required/></br>
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>                            
@@ -200,11 +200,11 @@
                                                                                     
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input OnKeyPress="formatar('###.###.###.###', this)" onKeyDown='return SomenteNumero(event)' maxlength="15"  class="form-control" name="ieBusca" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
+                              <input OnKeyPress="formatar('###.###.###.###', this)" onkeyup="somenteNumeros(this);" maxlength="15"  class="form-control" name="ieBusca" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
-                              <input OnKeyPress="formatar('##-#####-####', this)" onKeyDown='return SomenteNumero(event)' maxlength="13"class="form-control" name="telefoneBusca" id="tel" value="${listaEmpresa.telefone}"disabled="">
+                              <input OnKeyPress="formatar('##-#####-####', this)" onkeyup="somenteNumeros(this);" maxlength="13"class="form-control" name="telefoneBusca" id="tel" value="${listaEmpresa.telefone}"disabled="">
                           </div>
                             <div class="form-group">
                               <label>Endereço</label>
@@ -212,7 +212,7 @@
                           </div>
                             <div class="form-group">
                               <label>Numero</label>
-                              <input maxlength="9" onKeyDown='return SomenteNumero(event)' class="form-control" name="numeroBusca" id="numero" value="${listaEmpresa.numero}" disabled="">
+                              <input maxlength="9" onkeyup="somenteNumeros(this);" class="form-control" name="numeroBusca" id="numero" value="${listaEmpresa.numero}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Complemento</label>
@@ -220,7 +220,7 @@
                           </div>
                             <div class="form-group">
                               <label>CEP</label>
-                              <input OnKeyPress="formatar('#####-###', this)"onKeyDown='return SomenteNumero(event)' maxlength="9" class="form-control" name="cepBusca" id="cep" value="${listaEmpresa.cep}" disabled="">
+                              <input OnKeyPress="formatar('#####-###', this)"onkeyup="somenteNumeros(this);" maxlength="9" class="form-control" name="cepBusca" id="cep" value="${listaEmpresa.cep}" disabled="">
                           </div>
                             <div class="form-group">
                               <label>Bairro</label>
@@ -276,18 +276,16 @@
             </div>
             <!-- /#wrapper -->
             
-             <script>
-               function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;   
-    if((tecla>47 && tecla<58)) return true;
-    else{
-    	if (tecla==8 || tecla==0) return true;
-	else  return false;
+              <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9./-]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
     }
-}
-                
-            </script>
-
+ </script>
 
 
             <script>
@@ -322,8 +320,8 @@
 		}
                 
                 
-            </script>  
-
+            </script> 
+  
 
             <!-- jQuery -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
