@@ -60,7 +60,7 @@
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <c:if test="${not empty sessionScope.usuAutenticado}">
-                            <a href="#" ><i class="fa fa-home"></i> ${usuAutenticado.nome}</a>
+                           
                         <li class="dropdown">
                             <a href="#"><i class="fa fa-gear"></i> ${sessionScope.usuAutenticado.tipoAcesso}</a>
                         </li>
@@ -77,57 +77,68 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="emp" class="collapse">
-                                <li>
-                                    <a href="empresa.jsp">Cadastro</a>
-                                </li>
-                                <li>
-                                    <a href="buscarEmpresa.jsp">Buscar</a>
-                                </li>
-                            </ul>
-                        </li>
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin') && sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#emp"><i class="fa fa-fw fa-home"></i> Empresa <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="emp" class="collapse">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/empresa.jsp">Cadastro</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/buscarEmpresa.jsp">Buscar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
+                             <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
                                 <li>
-                                    <a href="produto.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
                                 </li>
+                                </c:if>
                                 <li>
-                                    <a href="buscarProduto.jsp">Buscar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuário <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="usu" class="collapse">
-                                <li>
-                                    <a href="usuario.jsp">Cadastro</a>
-                                </li>
-                                <li>
-                                    <a href="buscarUsuario.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin')}">
+                            <li>
+                                <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
+                                <ul id="usu" class="collapse">
+                                       
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/buscarUsuario.jsp">Buscar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </c:if>
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#cli"><i class="fa fa-fw fa-users"></i> Cliente <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="cli" class="collapse">
                                 <li>
-                                    <a href="cliente.jsp">Cadastro</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/cliente.jsp">Cadastro</a>
                                 </li>
                                 <li>
-                                    <a href="buscarCliente.jsp">Buscar</a>
+                                    <a href="${pageContext.request.contextPath}/bootstrap/buscarCliente.jsp">Buscar</a>
                                 </li>
                             </ul>
                         </li>
+                        <c:if test="${not empty sessionScope.usuAutenticado && sessionScope.usuAutenticado.temPapel('Admin') && sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/bootstrap/relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
+                            </li>
+                        </c:if>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/bootstrap/venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
+                        </li>
 
-                        <li>
-                            <a href="relatorio.jsp"><i class="fa fa-fw fa-list-alt"></i> Relatório</a>
-                        </li>
-                        <li>
-                            <a href="venda.jsp"><i class="fa fa-fw fa-shopping-cart"></i> Venda</a>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -195,6 +206,15 @@
                                   <option>Selecione...</option>
                                 <option name="tipoAdm" id="tipoAdm" value="adm">Administrador</option>
 	                        <option name="tipoComum" id="tipoComum" value="comum">Comum</option>     
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label>Tipo de empresa</label>
+                              <select name="tipoEmpresa" id="tipoEmpresa" class="form-control"required/>
+                                  <option>Selecione...</option>
+                                <option name="matriz" id="matriz" value="adm">São Paulo (matriz)</option>
+	                        <option name="filialA" id="filialA" value="filialA">Recife (filial)</option>   
+                                <option name="filialB" id="filialB" value="filialB">Porto Alegre (filial)</option>   
                               </select>
                           </div>
                           <button type="reset" class="btn btn-lg btn-default">Limpar</button>
