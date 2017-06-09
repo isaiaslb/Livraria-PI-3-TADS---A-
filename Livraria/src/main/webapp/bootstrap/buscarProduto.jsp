@@ -42,6 +42,8 @@
                 document.getElementById('qtd').disabled = false;                
                 document.getElementById('val').disabled = false;
                 document.getElementById('descricao').disabled = false;
+                document.getElementById('alt').disabled = false;
+                document.getElementById('exc').disabled = false;
             }
         </script>
 
@@ -217,8 +219,8 @@
                         </div>
                         <div class="form-group">
                             <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>                            
-                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>
-                            <button type="submit" class="btn btn-lg btn-default">Excluir</button>
+                            <button type="submit" id="alt" name="btAlterar" value="Alterar" class="btn btn-lg btn-default" disabled>Salvar</button>
+                            <button type="submit" id="exc" name="btExcluir" value="Excluir" class="btn btn-lg btn-default" disabled>Excluir</button>
                         </div>    
 
                 </div>
