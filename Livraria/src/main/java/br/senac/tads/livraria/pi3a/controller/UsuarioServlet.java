@@ -44,12 +44,13 @@ public class UsuarioServlet extends HttpServlet {
         String setor = request.getParameter("setor");
         String senha = request.getParameter("senha");
         String tipoAcesso = request.getParameter("tipoAcesso");
+        String tipoEmpresa = request.getParameter("tipoEmpresa");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dataNasc = null;
 
         // Cria um novo contato e salva
         // através do DAO
-        Usuario novo = new Usuario(nome,cpf, email, fixo, cel, setor, sexo, senha, tipoAcesso, dataNasc);
+        Usuario novo = new Usuario(nome,cpf, email, fixo, cel, setor, sexo, senha, tipoAcesso,tipoEmpresa, dataNasc);
         UsuarioDAO dao = new UsuarioDAO();
         dao.incluirComTransacao(novo);
 
