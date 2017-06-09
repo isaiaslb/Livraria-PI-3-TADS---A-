@@ -9,15 +9,16 @@ CREATE TABLE `usuario` (
   `NOME` varchar(100) NOT NULL,
   `EMAIL` varchar(100) DEFAULT NULL,
   `FIXO` varchar(100) DEFAULT NULL,
-  `ENABLED` tinyint(1) DEFAULT NULL,
   `CEL` varchar(100) DEFAULT NULL,
-  `SETOR` varchar(255) DEFAULT NULL,
+  `SETOR` varchar(100) DEFAULT NULL,
   `SEXO` varchar(11) DEFAULT NULL,
-  `SENHA` varchar(15) NOT NULL,
-  `TP_ACESSO` varchar(15) NOT NULL,
+  `SENHA` varchar(25) NOT NULL,
+  `TP_ACESSO` varchar(25) NOT NULL,
   `DTNASC` date DEFAULT NULL,
-  `cpf` varchar(20) DEFAULT NULL,
+  `cpf` varchar(25) DEFAULT NULL,
+  `empresa` varchar(100) DEFAULT NULL, 
   PRIMARY KEY (`COD_USER`),
+  ENABLED BOOLEAN,
   UNIQUE KEY `cpf` (`cpf`)
 ) ;
 
