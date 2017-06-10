@@ -26,7 +26,7 @@ public class UsuarioDAO extends ConexaoBD {
         Connection conn = null;
         Usuario p = new Usuario();
 
-        String sql = "SELECT * FROM usuario where cpf = ?";
+        String sql = "SELECT * FROM usuario where cpf = ? AND ENABLED = true";
 
         try {
             conn = obterConexao();
@@ -73,13 +73,30 @@ public class UsuarioDAO extends ConexaoBD {
         }
         return p;
     }
+    
+    public void remover(String cpf) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+
+        String sql = "UPDATE usuario SET ENABLED = FALSE WHERE cpf=?";
+        try {
+            conn = obterConexao();
+
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cpf);
+            stmt.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("ERRO NO EXCLUIR");
+        }
+    }    
     public void alterar(Usuario usuario){
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "UPDATE usuario SET nome=?, email=?, fixo=?, enabled=true, cel=?, setor=?,"
-                + "sexo=?, senha=?, tp_acesso=?,empresa = ?, cpf=? "
-                + "WHERE cod_user=?";
+        String sql = "UPDATE usuario SET nome=?, email=?, fixo=?, cel=?, setor=?,"
+                + "sexo=?, senha=?, tp_acesso=?,empresa = ? "
+                + "WHERE  cpf=?";
         try {
             conn = obterConexao();
 
@@ -94,7 +111,7 @@ public class UsuarioDAO extends ConexaoBD {
             stmt.setString(8, usuario.getTipoAcesso());            
             stmt.setString(9, usuario.getTipoEmpresa());            
             stmt.setString(10, usuario.getCpf());            
-            stmt.setInt(11, usuario.getId());
+            
 
             stmt.executeUpdate();
 
@@ -141,7 +158,7 @@ public class UsuarioDAO extends ConexaoBD {
         Connection conn = null;
 
         String sql = "SELECT cod_user, nome, email, fixo, cel, setor, sexo, senha, tp_acesso,empresa , dtnasc, cpf"
-                + "FROM bdlivraria";
+                + "FROM bdlivraria WHERE ENABLED = true";
 
         List<Usuario> lista = new ArrayList<Usuario>();
         try {
@@ -199,8 +216,8 @@ public class UsuarioDAO extends ConexaoBD {
         Connection conn = null;
 
         String sql = "INSERT INTO usuario (nome,"
-                + "email, fixo, cel, setor, sexo, senha, tp_acesso,empresa , dtnasc, cpf) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "email, fixo, cel, setor, sexo, senha, tp_acesso,empresa , dtnasc, cpf, enabled) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, true)";
         try {
             conn = obterConexao();
 
@@ -272,8 +289,8 @@ public class UsuarioDAO extends ConexaoBD {
         Connection conn = null;
 
         String sql = "INSERT INTO usuario (nome,"
-                + "email, fixo, cel, setor, sexo, senha, tp_acesso,empresa ,dtnasc,cpf) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "email, fixo, cel, setor, sexo, senha, tp_acesso,empresa ,dtnasc,cpf, enabled) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, true)";
         try {
             conn = obterConexao();
             stmt = conn.prepareStatement(sql);
@@ -287,6 +304,7 @@ public class UsuarioDAO extends ConexaoBD {
             stmt.setString(8, usuario.getTipoAcesso());
             stmt.setString(9, usuario.getTipoEmpresa());
             stmt.setDate(10, (java.sql.Date) usuario.getDataNasc());
+            stmt.setString(11,usuario.getCpf());
 
             stmt.executeUpdate();
 

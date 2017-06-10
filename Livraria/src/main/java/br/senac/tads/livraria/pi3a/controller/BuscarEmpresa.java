@@ -48,7 +48,9 @@ public class BuscarEmpresa extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String bt1 = request.getParameter("btAlterar"); 
+        String bt2 = request.getParameter("btExcluir"); 
+        
         EmpresaDao emp = new EmpresaDao();
         Empresa empresas = new Empresa();
          empresas.setId(Integer.parseInt(request.getParameter("codigoBusca")));
@@ -63,8 +65,12 @@ public class BuscarEmpresa extends HttpServlet {
         empresas.setCidade(request.getParameter("cidadeBusca"));
         empresas.setEstado(request.getParameter("estadoBusca"));
 
-        
-            emp.atualizar(empresas);
+        if(bt1 != null){  
+           emp.atualizar(empresas);
+        }else if(bt2 != null){
+           emp.remover(Integer.parseInt(request.getParameter("codigoBusca")));
+        }   
+           
         
             request.getRequestDispatcher("bootstrap/buscarEmpresa.jsp").forward(request, response);
         //response.sendRedirect("bootstrap/cliente.jsp");
