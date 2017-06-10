@@ -28,7 +28,7 @@ public class EmpresaDao extends ConexaoBD {
         Connection conn = null;
         Empresa p = new Empresa();
 
-        String sql = "SELECT * FROM empresa where cnpj = ?";
+        String sql = "SELECT * FROM empresa where cnpj = ? AND ENABLED = true";
 
         try {
             conn = obterConexao();
@@ -38,7 +38,7 @@ public class EmpresaDao extends ConexaoBD {
             ResultSet resultados = stmt.executeQuery();
 
             while (resultados.next()) {
-                
+               p.setId(resultados.getInt("cod_emp")); 
                p.setRazao(resultados.getString("rz_social"));
                 p.setCnpj(resultados.getString("cnpj"));
                 p.setIe(resultados.getString("ins_estad"));
@@ -83,7 +83,7 @@ public class EmpresaDao extends ConexaoBD {
         Connection conn = null;
 
        String sql = "SELECT cod_user, RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO"
-                + "FROM bdlivraria";
+                + "FROM bdlivraria WHERE ENABLED = true";
 
         List<Empresa> lista = new ArrayList<Empresa>();
         try {
@@ -205,8 +205,8 @@ public class EmpresaDao extends ConexaoBD {
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO,ENABLED) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, true)";
         try {
             conn = obterConexao();
 
@@ -278,8 +278,8 @@ public class EmpresaDao extends ConexaoBD {
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO EMPRESA (RZ_SOCIAL,CNPJ,INS_ESTAD,TEL,ENDERECO,NUMERO,COMPLEMENTO,CEP,BAIRRO,CIDADE,ESTADO, ENABLED)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, true)";
         try {
             conn = obterConexao();
              stmt = conn.prepareStatement(sql);

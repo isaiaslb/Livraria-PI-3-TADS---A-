@@ -185,7 +185,7 @@
                             </div>
                         </form>                            
                         <form role="form" action="${pageContext.request.contextPath}/buscarEmpresa" method="post">
-                            <input class="form-control" id="cod" name="codigoBusca" type="hidden" value="${listaEmpresa.id}"/>
+                            <input class="form-control" id="cod_emp" name="codigoBusca" type="hidden" value="${listaEmpresa.id}"/>
                             <div class="form-group">
                               <label>Razão Social</label>
                               <input  class="form-control" onKeypress="return teste(event)" maxlength="50" name="razaoBusca" id="rz_social" value="${listaEmpresa.razao}" disabled />
