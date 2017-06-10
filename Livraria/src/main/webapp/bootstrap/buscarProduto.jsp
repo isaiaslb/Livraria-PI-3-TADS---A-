@@ -220,8 +220,8 @@
                             <textarea maxlength="255" class="form-control" id="descricao" name="bDesc"  rows="3" disabled>${buscaProdutos.prodDesc}"</textarea>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>                            
-                            <button type="submit" id="alt" name="btAlterar" value="Alterar" class="btn btn-lg btn-default" disabled>Salvar</button>
+                            <button type="submit" id="alt" name="btAlterar" value="Alterar" class="btn btn-lg btn-default" disabled>Salvar</button>                            
+                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>                                                        
                             <button type="submit" id="exc" name="btExcluir" value="Excluir" class="btn btn-lg btn-default" disabled>Excluir</button>
                         </div>    
 
