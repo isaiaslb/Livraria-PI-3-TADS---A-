@@ -204,7 +204,7 @@
                               <label>Tipo de acesso</label>
                               <select name="tipoAcesso" id="tipoAcesso" class="form-control"required/>
                                   <option>Selecione...</option>
-                                <option name="tipoAdm" id="tipoAdm" value="adm">Administrador</option>
+                                <option name="tipoAdm" id="tipoAdm" value="Admin">Administrador</option>
 	                        <option name="tipoComum" id="tipoComum" value="comum">Comum</option>     
                               </select>
                           </div>
@@ -212,7 +212,7 @@
                               <label>Tipo de empresa</label>
                               <select name="tipoEmpresa" id="tipoEmpresa" class="form-control"required/>
                                   <option>Selecione...</option>
-                                <option name="matriz" id="matriz" value="adm">São Paulo (matriz)</option>
+                                <option name="matriz" id="matriz" value="matriz">São Paulo (matriz)</option>
 	                        <option name="filialA" id="filialA" value="filialA">Recife (filial)</option>   
                                 <option name="filialB" id="filialB" value="filialB">Porto Alegre (filial)</option>   
                               </select>
