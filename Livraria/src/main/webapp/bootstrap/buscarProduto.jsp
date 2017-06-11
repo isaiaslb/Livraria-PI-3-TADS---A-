@@ -39,27 +39,28 @@
                 document.getElementById('produto').disabled = false;
                 document.getElementById('autor').disabled = false;
                 document.getElementById('genero').disabled = false;
-                document.getElementById('qtd').disabled = false;                
+                document.getElementById('qtd').disabled = false;
                 document.getElementById('val').disabled = false;
                 document.getElementById('descricao').disabled = false;
                 document.getElementById('alt').disabled = false;
                 document.getElementById('exc').disabled = false;
+                document.getElementById('add').disabled = false;
             }
         </script>
 
     </head>
 
     <body>
-        
+
         <div id="wrapper">
 
-           <c:choose>
+            <c:choose>
                 <c:when test="${papel eq 'Admin'}"></c:when>
                 <c:when test="${papel eq 'Com'}"></c:when>	
             </c:choose>
 
             <!-- Navigation -->  
-                <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -74,7 +75,7 @@
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <c:if test="${not empty sessionScope.usuAutenticado}">
-                           
+
                         <li class="dropdown">
                             <a href="#"><i class="fa fa-gear"></i> ${sessionScope.usuAutenticado.tipoAcesso}</a>
                         </li>
@@ -107,10 +108,10 @@
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
-                             <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
-                                </li>
+                                <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
+                                    </li>
                                 </c:if>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
@@ -121,7 +122,7 @@
                             <li>
                                 <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="usu" class="collapse">
-                                       
+
                                     <li>
                                         <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
                                     </li>
@@ -172,74 +173,80 @@
                         </div>
                     </div>
 
-                <div class="col-lg-6">
-                    <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="get">
-                        <div>                     
-                            <label>Pesquisa Produto</label>
-                            <input   maxlength="100" class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."required/></br>                        
-                            <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>                                                    
-                        </div>  
-                    </form>
-                    <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="post">                        
-                        <input  class="form-control" id="id" name="bId" type="hidden" value="${buscaProdutos.prodId}"/>                                                       
-                        <div class="form-group">
-                            <label>Filial</label>
-                            <input maxlength="6" onkeypress="formatar('######', this)" onkeyup="somenteNumeros(this);" class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
-                        </div>
-                        <div class="form-group">
-                            <label>Produto</label>
-                            <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="produto" name="bNome" value="${buscaProdutos.prodNome}" disabled/>
-                        </div>
-                        <div class="form-group">
-                            <label>Autor</label>
-                            <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="autor" name="bAutor" value="${buscaProdutos.prodAutor}" disabled/>
-                        </div>                          
-                        <div class="form-group">
-                            <label>Genêro</label>
-                            <select class="form-control" id="genero" name="bGenero" value="${buscaProdutos.prodGenero}" disabled="">
-                                <option>Selecione...</option>
-                                <option value="Literatura">Literatura</option>
-                                <option value="Romance">Romance</option>
-                                <option value="Autoajuda">Autoajuda</option>
-                                <option value="Infantojuvenil">Infantojuvenil</option>
-                                <option value="Didático">Didático</option>
-                                <option value="Artes">Artes</option>
-                                <option value="Dicionários">Dicionários</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Quantidade</label>
-                            <input type="number" class="form-control" id="qtd" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor do Produto</label>
-                            <input type="number" class="form-control" id="val" name="bVal" value="${buscaProdutos.prodVal}" disabled/>
-                        </div>
-                        <div class="form-group">
-                            <label>Descrição</label>
-                            <textarea maxlength="255" class="form-control" id="descricao" name="bDesc"  rows="3" disabled>${buscaProdutos.prodDesc}"</textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>                            
-                            <button type="submit" id="alt" name="btAlterar" value="Alterar" class="btn btn-lg btn-default" disabled>Salvar</button>
-                            <button type="submit" id="exc" name="btExcluir" value="Excluir" class="btn btn-lg btn-default" disabled>Excluir</button>
-                        </div>    
+                    <div class="col-lg-6">
+                        <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="get">
+                            <div>                     
+                                <label>Pesquisa Produto</label>
+                                <input type="hidden" name="comando" value="buscaProd"  />
+                                <input   maxlength="100" class="form-control" name="buscaProduto" var="testeProduto" type="text" placeholder="Digite o Nome do produto..."required/></br>                        
+                                <button type="submit" class="btn btn-lg btn-default">Pesquisar</button>              
+                            </div>  
+                        </form>
+                        <form role="form" action="${pageContext.request.contextPath}/buscarProduto" method="post">                        
+                            <input  class="form-control" id="id" name="bId" type="hidden" value="${buscaProdutos.prodId}"/>                                                       
+                            <div class="form-group">
+                                <label>Filial</label>
+                                <input maxlength="6" onkeypress="formatar('######', this)" onkeyup="somenteNumeros(this);" class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Produto</label>
+                                <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="produto" name="bNome" value="${buscaProdutos.prodNome}" disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Autor</label>
+                                <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="autor" name="bAutor" value="${buscaProdutos.prodAutor}" disabled/>
+                            </div>                          
+                            <div class="form-group">
+                                <label>Genêro</label>
+                                <select class="form-control" id="genero" name="bGenero" value="${buscaProdutos.prodGenero}" disabled="">
+                                    <option>Selecione...</option>
+                                    <c:forEach var="bGeneros" items="${bGenero}"> 
+                                        <option value="${bGeneros.bGenero}"> ${bGeneros.bGenero} </option>
+                                    </c:forEach>
+                                    <option value="Literatura">Literatura</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Autoajuda">Autoajuda</option>
+                                    <option value="Infantojuvenil">Infantojuvenil</option>
+                                    <option value="Didático">Didático</option>
+                                    <option value="Artes">Artes</option>
+                                    <option value="Dicionários">Dicionários</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantidade</label>
+                                <input type="number" class="form-control" id="qtd" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Valor do Produto</label>
+                                <input type="number" class="form-control" id="val" name="bVal" value="${buscaProdutos.prodVal}" disabled/>
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <textarea maxlength="255" class="form-control" id="descricao" name="bDesc"  rows="3" disabled>${buscaProdutos.prodDesc}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>                            
+                                <button type="submit" id="alt" name="btAlterar" value="Alterar" class="btn btn-lg btn-default" disabled>Salvar</button>
+                                <button type="submit" id="exc" name="btExcluir" value="Excluir" class="btn btn-lg btn-default" disabled>Excluir</button>
+                                <button type="submit" id="add" name="btAdicionar" class="btn btn-lg btn-default" disabled>Adicionar</button>
+                            </div>    
 
-                </div>
-                <!-- /.container-fluid -->
-            </div>     
-        </div>  
-    
-                 <script>
-    function somenteNumeros(num) {
-        var er = /[^0-9./-]/;
-        er.lastIndex = 0;
-        var campo = num;
-        if (er.test(campo.value)) {
-          campo.value = "";
-        }
-    }
- </script>
+                    </div>
+                    </form>        
+                    <!-- /.container-fluid -->
+                </div>     
+            </div>  
+
+            <script>
+                function somenteNumeros(num) {
+                    var er = /[^0-9./-]/;
+                    er.lastIndex = 0;
+                    var campo = num;
+                    if (er.test(campo.value)) {
+                        campo.value = "";
+                    }
+                }
+            </script>
 
 
             <script>

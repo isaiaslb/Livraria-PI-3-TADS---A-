@@ -199,7 +199,7 @@
                               <textarea  maxlength="255" name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
                           </div>
                           <button type="submit" class="btn btn-lg btn-default">Salvar</button>
-                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>
+                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>                          
                 </div>
             <!-- /.container-fluid -->
 

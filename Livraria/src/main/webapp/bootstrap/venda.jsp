@@ -3,6 +3,9 @@
     Created on : 09/05/2017, 10:32:00
     Author     : Fernanda
 --%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Vector"%>
+<%@page import="br.senac.tads.livraria.pi3a.model.Produtos"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -71,7 +74,7 @@
             </c:choose>
 
             <!-- Navigation -->  
-             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -86,7 +89,7 @@
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <c:if test="${not empty sessionScope.usuAutenticado}">
-                           
+
                         <li class="dropdown">
                             <a href="#"><i class="fa fa-gear"></i> ${sessionScope.usuAutenticado.tipoAcesso}</a>
                         </li>
@@ -119,10 +122,10 @@
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
-                             <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
-                                </li>
+                                <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
+                                    </li>
                                 </c:if>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
@@ -133,7 +136,7 @@
                             <li>
                                 <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="usu" class="collapse">
-                                       
+
                                     <li>
                                         <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
                                     </li>
@@ -198,7 +201,7 @@
                         <div class="col-lg-6">
                             <table ><tr>
                                     <td><label for="codigo" class="alinhar" >Codigo filial:</label></td>
-                                    <td><input class="form-control" id="codigo" name="codigo" type="text" disabled/></td>
+                                    <td><input class="form-control" id="codigo" name="codigo" type="text" readonly/></td>
                                     </div>
                                 </tr>
 
@@ -207,7 +210,7 @@
                                     <form  action="${pageContext.request.contextPath}/vendaServlet" method="get">
                                         <input type="hidden" name="comando" value="buscaCli"  />
                                         <td><label>Cliente:</label></td>
-                                        <td><input onkeypress="formatar('###.###.###-##', this)" maxlength="14" onkeyup="somenteNumeros(this);"class="form-control" name="clibusca" placeholder="Digite o cpf.." type="text"/></td>
+                                        <td><input value="${sessionScope.listCliente.cpf}" onkeypress="formatar('###.###.###-##', this)" maxlength="14" onkeyup="somenteNumeros(this);"class="form-control" name="clibusca" placeholder="Digite o cpf.." type="text"/></td>
                                         <td><input type="image" src="imagens/Imagens-em-png-queroimagem.png" width="30"></td>           
                                         <td><label>${sessionScope.listCliente.nome}</label></td>
 
@@ -216,7 +219,7 @@
                                     </form>   
                                     <tr>
                                         <td><label for="vendedor" class="alinhar" >Vendedor:</label></td>
-                                        <td><input class="form-control" value="${usuAutenticado.nome}" id="vendedor" name="vendedor" type="text" disabled/></td>
+                                        <td><input class="form-control" value="${usuAutenticado.nome}" id="vendedor" name="vendedor" type="text" readonly/></td>
                                 </div>
                                 </tr>
 
@@ -224,24 +227,7 @@
                         </div>
                         <div class="col-lg-6">
 
-                            <table >
 
-                                <tr>
-                                <div class="col-lg-7">
-                                    <form  action="${pageContext.request.contextPath}/vendaServlet" method="get">
-                                        <input type="hidden" name="comando" value="buscaProd"  />
-                                        <td><label>Produto:</label></td>
-                                        <td><input class="form-control" nome="prodbusca" placeholder="produto.." type="text"/></td>
-                                        <td><input type="image" src="imagens/adicionar.jpg" width="30"></td>             
-                                        </tr>
-                                    </form>    
-                                    <tr>
-                                        <td><label for="qnt" class="alinhar" >Quantidade:</label></td>
-                                        <td><input class="form-control" id="qnt" name="qnt" type="numer" /></td>
-                                </div>
-                                </tr>
-
-                            </table>                                                     
                         </div>
                         <br>
 
@@ -253,29 +239,47 @@
                                     <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
+                                                <th>Id Prod.</th>
                                                 <th>Nome</th>
                                                 <th>Genero</th>
                                                 <th>Autor</th>
                                                 <th>Vl. Unitario</th>
+                                                <th>Qtd</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
+                                        <%
+                                            Vector carrinho = (Vector) session.getAttribute("carrinho");
+                                            double total = 0;
+                                            for (int cont = 0; cont < carrinho.size(); cont++) {
+                                                Produtos p = (Produtos) carrinho.get(cont);
+                                                total += p.getProdVal();
+
+                                        %>    
                                         <tbody>
-                                            <c:forEach var="produto" items="${listProd}">
-                                                <tr>
-                                                    <td>${sessionScope.produto.prodNome}</td>
-                                                    <td>${sessionScope.produto.prodGenero}</td>
-                                                    <td>${sessionScope.produto.prodAutor}</td>
-                                                    <td>${sessionScope.produto.prodValVenda}</td>
-                                                </tr>
-                                            </c:forEach>
+                                            <tr>
+                                                <td><%=p.getProdId()%></td>;
+                                                <td><%=p.getProdNome()%></td>
+                                                <td><%=p.getProdGenero()%></td>
+                                                <td><%=p.getProdAutor()%></td>
+                                                <td><%=p.getProdVal()%></td>
+                                                <td><input type="number" /></td>  
+                                                <td style type="text-align: left">
+
+                                                    <input type="button" onclick="window.open('excluir?id=<%= cont%>', '_self')" value="Remover" />
+
+                                                </td>
+                                            </tr>
+
                                         </tbody>
+                                        <%
+                                            }
+                                        %>
                                     </table>
                                 </div>
                                 <div class="col-lg-6">
-
-
                                     <h2><label for="total" class="alinhar">Total</label></h2>
-                                    <input id="total" class="form-control" name="total" type="text" disabled=""/> </br> </br>
+                                    <input id="total" value="<%out.println(NumberFormat.getCurrencyInstance().format(total));%>" class="form-control" name="total" type="text" readonly/>     
                                 </div>
 
 
@@ -303,31 +307,31 @@
     </div>
 
     <!-- /#wrapper -->
-         <script>
-    function somenteNumeros(num) {
-        var er = /[^0-9./-]/;
-        er.lastIndex = 0;
-        var campo = num;
-        if (er.test(campo.value)) {
-          campo.value = "";
+    <script>
+        function somenteNumeros(num) {
+            var er = /[^0-9./-]/;
+            er.lastIndex = 0;
+            var campo = num;
+            if (er.test(campo.value)) {
+                campo.value = "";
+            }
         }
-    }
- </script>
- 
-   <script>
-                function formatar(mascara, documento) {
-                    var i = documento.value.length;
-                    var saida = mascara.substring(0, 1);
-                    var texto = mascara.substring(i)
+    </script>
 
-                    if (texto.substring(0, 1) != saida) {
-                        documento.value += texto.substring(0, 1);
-                    }
+    <script>
+        function formatar(mascara, documento) {
+            var i = documento.value.length;
+            var saida = mascara.substring(0, 1);
+            var texto = mascara.substring(i)
 
-                }
+            if (texto.substring(0, 1) != saida) {
+                documento.value += texto.substring(0, 1);
+            }
+
+        }
 
 
-            </script>  
+    </script>  
 
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>

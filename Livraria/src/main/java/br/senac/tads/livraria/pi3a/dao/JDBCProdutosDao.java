@@ -82,24 +82,23 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
     @Override
     public List<Produtos> listar() {
         try {
-            List<Produtos> produtos = new ArrayList<>();
-            Produtos produto = new Produtos();
+
             String sql = "SELECT PRODNOME, PRODGENERO, PRODAUTOR, PRODVAL FROM PRODUTOS ORDER BY PRODNOME";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-
+            List<Produtos> produtos = new ArrayList<>();
             while (rs.next()) {
-
+                Produtos produto = new Produtos();
                 produto.setProdNome(rs.getString("PRODNOME"));
                 produto.setProdGenero(rs.getString("PRODGENERO"));
                 produto.setProdAutor(rs.getString("PRODAUTOR"));
                 produto.setProdVal(rs.getDouble("PRODVAL"));
-                produtos.add(produto);    
+                produtos.add(produto);
             }
             return produtos;
 
         } catch (SQLException ex) {
-            
+
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException("Erro ao Listar Produtos em JDBCProdutosDao");
         }
@@ -127,7 +126,6 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             p.setProdVal(rs.getDouble("PRODVAL"));
             p.setProdDesc(rs.getString("PRODDESC"));
 
-            
             return p;
 
         } catch (SQLException ex) {
