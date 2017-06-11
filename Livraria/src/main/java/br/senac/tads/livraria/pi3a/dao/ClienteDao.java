@@ -28,7 +28,7 @@ public class ClienteDao extends ConexaoBD {
         Connection conn = null;
         Cliente p = new Cliente();
 
-        String sql = "SELECT * FROM cliente where cpf = ?";
+        String sql = "SELECT * FROM cliente where cpf = ? AND ENABLED = true";
 
         try {
             conn = obterConexao();
@@ -82,7 +82,7 @@ public class ClienteDao extends ConexaoBD {
 
         List<Cliente> listaCliente = new ArrayList<Cliente>();
 
-        String sql = "SELECT cod_cli, nome, cpf, email FROM cliente";
+        String sql = "SELECT cod_cli, nome, cpf, email FROM cliente AND enabled = true";
 
         try {
             conn = obterConexao();
@@ -129,6 +129,22 @@ public class ClienteDao extends ConexaoBD {
 
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println("ERRO NO UPDATE");
+        }
+    }
+    public void remover(String cpf) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+
+        String sql = "UPDATE CLIENTE SET ENABLED = FALSE WHERE cpf=?";
+        try {
+            conn = obterConexao();
+
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1,cpf);
+            stmt.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println("ERRO NO EXCLUIR");
         }
     }
 

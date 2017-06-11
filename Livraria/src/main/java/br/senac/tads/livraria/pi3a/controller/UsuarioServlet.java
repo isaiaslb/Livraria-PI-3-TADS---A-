@@ -60,7 +60,7 @@ public class UsuarioServlet extends HttpServlet {
         // dados
         HttpSession sessao = request.getSession();
         sessao.setAttribute("novoUsuario", novo);
-        response.sendRedirect("bootstrap/usuario.jsp");
+        response.sendRedirect("bootstrap/usuario.jsp?gravou");
 
     }
 }

@@ -81,8 +81,10 @@ public class BuscarProduto extends HttpServlet {
         //request.getSession().setAttribute("prod", prod);
         if (bt1 != null) {
             dao.alterar(prod);
+            response.sendRedirect("bootstrap/buscarProduto.jsp");
         } else if (bt2 != null) {
             dao.remover(Integer.parseInt(request.getParameter("bId")));
+            response.sendRedirect("bootstrap/buscarProduto.jsp");
         } else if (bt3 != null) {
             HttpSession session = request.getSession();
 

@@ -56,7 +56,10 @@ public class BuscarCliente extends HttpServlet {
 
         ClienteDao cli = new ClienteDao();
         Cliente clientes = new Cliente();
-
+        String bt1 = request.getParameter("btAlterar"); 
+        String bt2 = request.getParameter("btExcluir"); 
+        
+        clientes.setCpf(request.getParameter("cpfBusca"));
         clientes.setNome(request.getParameter("nomeBusca"));
         clientes.setEnd(request.getParameter("endBusca"));
         clientes.setBairro(request.getParameter("bairroBusca"));
@@ -65,7 +68,13 @@ public class BuscarCliente extends HttpServlet {
         clientes.setCel(request.getParameter("celBusca"));
         clientes.setEmail(request.getParameter("emailBusca"));
         clientes.setCpf(request.getParameter("cpfBusca"));
-        cli.atualizar(clientes);
+        
+        if(bt1 != null){  
+           cli.atualizar(clientes);
+        }else if(bt2 != null){
+           cli.remover(request.getParameter("cpfBusca"));           
+        }   
+        
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("bootstrap/buscarCliente.jsp");

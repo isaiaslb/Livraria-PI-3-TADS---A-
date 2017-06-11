@@ -317,4 +317,38 @@ public class EmpresaDao extends ConexaoBD {
             }
         }
     }
+
+    public void remover(int id) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+
+        String sql = "UPDATE EMPRESA SET ENABLED=false WHERE COD_EMP= ?";
+                
+        try {
+            conn = obterConexao();
+             stmt = conn.prepareStatement(sql);            
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }

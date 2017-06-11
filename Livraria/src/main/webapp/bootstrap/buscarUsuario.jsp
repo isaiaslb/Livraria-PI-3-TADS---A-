@@ -46,6 +46,9 @@
                 document.getElementById('cel').disabled = false;
                 document.getElementById('setor').disabled = false;
                 document.getElementById('tp_acesso').disabled = false;
+                document.getElementById('alt').disabled = false;
+                document.getElementById('exc').disabled = false;
+
             }
         </script>
 
@@ -183,15 +186,11 @@
                                 <button type="submit" class="btn btn-lg btn-default">Pesquisa</button></br></br>
                             </div>
                         </form>
-                        <form role="form" action="${pageContext.request.contextPath}/buscarCliente" method="post">
-                            <input class="form-control" id="id" name="idBusca" type="hidden" value="${listaUsuario.id}" />
+                        <form role="form" action="${pageContext.request.contextPath}/buscarUsuario" method="post">
+                            <input type="hidden" name="cpfBusca" value="${listaUsuario.cpf}">
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input onKeypress="return teste(event)" maxlength="150"  class="form-control" name="nomeBusca" id="nome" value="${listaUsuario.nome}" disabled="">
-                            </div>
-                            <div class="form-group">
-                                <label>CPF</label>
-                                <input class="form-control" name="cpfBusca" id="cpf" value="${listaUsuario.cpf}" disabled="">
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
@@ -234,9 +233,9 @@
                                     <option value="comum">Comum</option>     
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-lg btn-default">Salvar</button>                    
+                            <button type="submit" id="alt" name="btAlterar" value="Alterar"  class="btn btn-lg btn-default" disabled >Salvar</button>                    
                             <button type="button" class="btn btn-lg btn-default" onclick="javascript:habilita_a();">Editar</button>
-                            <button type="submit" class="btn btn-lg btn-default">Excluir</button>
+                            <button type="submit" id="exc" name="btExcluir" value="Excluir" class="btn btn-lg btn-default" disabled >Excluir</button>
                         </form>
 
                     </div>
