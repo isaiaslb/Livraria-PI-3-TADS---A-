@@ -154,6 +154,13 @@
                             <h1 class="page-header">
                                 Cadastrar usuário
                             </h1>
+                     <div id="banner_popup" style="display:none;">
+                             <h1> Usuario cadstrado com sucesso ! 
+                                 <input type="image" src="imagens/com_sucesso.png" width="30">
+                             </h1>
+                         </div>
+                             
+
                         </div>
                     </div>
                     
@@ -217,6 +224,7 @@
                                 <option name="filialB" id="filialB" value="filialB">Porto Alegre (filial)</option>   
                               </select>
                           </div>
+                         
                           <button type="reset" class="btn btn-lg btn-default">Limpar</button>
                           <button type="submit" class="btn btn-lg btn-default">Salvar</button>  </form>
 
@@ -231,8 +239,49 @@
 
             </div>
             <!-- /#wrapper -->
+<style>
+    #banner_popup {
+        position: absolute;
+        left:35%;
+        top: 15%;
+     filter:alpha(opacity=70);
+     opacity: 0.7;
+     -moz-opacity:0.7;
+     -webkit-opacity:0.7; 
+     width: 100%;
+     background-color:#FFf;
+}
+    </style>
+    
+<script language="JavaScript">
+window.onload = pegarParametro;
+    function pegarParametro(){
+var url   = window.location.search.replace("?", "");
+var items = url.split("&");
+//alert(items); 
+if (items == 'gravou'){
+    //alert(1);
+     var banner_obj = document.getElementById('banner_popup');
+        banner_obj.style.display = 'block';
+       items = "";
+   //banner_obj.style.display = 'block'; 
+   //alert(2);
+}else {
+      var banner_obj = document.getElementById('banner_popup');
+        banner_obj.style.display = 'none';
+    
+}
 
+}
+function fecha_banner()
+{
+ var banner_obj = document.getElementById('banner_popup');
+ banner_obj.style.display = 'none';
+}
 
+setTimeout('fecha_banner()', 3500);
+
+</script>
                      <script>
     function somenteNumeros(num) {
         var er = /[^0-9./-]/;
