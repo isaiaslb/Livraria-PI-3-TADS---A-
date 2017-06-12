@@ -87,7 +87,7 @@ public class ProdutoServlet extends HttpServlet {
         // dados
         HttpSession sessao = request.getSession();
         sessao.setAttribute("novoProduto", novo);
-        response.sendRedirect("bootstrap/produto.jsp");
+        response.sendRedirect("bootstrap/produto.jsp?gravou");
     }
 }
 //

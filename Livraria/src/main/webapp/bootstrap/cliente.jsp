@@ -48,7 +48,7 @@
             </c:choose>
 
             <!-- Navigation -->  
-                 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -63,7 +63,7 @@
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <c:if test="${not empty sessionScope.usuAutenticado}">
-                           
+
                         <li class="dropdown">
                             <a href="#"><i class="fa fa-gear"></i> ${sessionScope.usuAutenticado.tipoAcesso}</a>
                         </li>
@@ -96,10 +96,10 @@
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
-                             <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
-                                </li>
+                                <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
+                                    </li>
                                 </c:if>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
@@ -110,7 +110,7 @@
                             <li>
                                 <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="usu" class="collapse">
-                                       
+
                                     <li>
                                         <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
                                     </li>
@@ -157,10 +157,17 @@
                             <h1 class="page-header">
                                 Cadastrar Cliente
                             </h1>
+
+                            <div id="banner_popup" style="display:none;">
+                                <h1> Cliente cadstrado com sucesso ! 
+                                    <input type="image" src="imagens/com_sucesso.png" width="30">
+                                </h1>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <form onsubmit="window.open('resultadoCliente.jsp', 'popup', 'width=300,height=400');" role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
+                        <form  role="form" action="${pageContext.request.contextPath}/clienteServlet" method="post">
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input class="form-control" onKeypress="return teste(event)"  maxlength="150" name="nome" placeholder="Digite o nome..." required />
@@ -246,16 +253,16 @@
 
                 }
             </script>  
-       <script>
-    function somenteNumeros(num) {
-        var er = /[^0-9./-]/;
-        er.lastIndex = 0;
-        var campo = num;
-        if (er.test(campo.value)) {
-          campo.value = "";
-        }
-    }
- </script>
+            <script>
+                function somenteNumeros(num) {
+                    var er = /[^0-9./-]/;
+                    er.lastIndex = 0;
+                    var campo = num;
+                    if (er.test(campo.value)) {
+                        campo.value = "";
+                    }
+                }
+            </script>
 
 
 
@@ -264,7 +271,7 @@
                 {
                     var expressao;
 
-		expressao = /[a-zA-Z ]/;
+                    expressao = /[a-zA-Z ]/;
 
                     if (expressao.test(String.fromCharCode(e.keyCode)))
                     {
@@ -276,6 +283,51 @@
                 }
 
             </script>
+
+            <script language="JavaScript">
+                window.onload = pegarParametro;
+                function pegarParametro() {
+                    var url = window.location.search.replace("?", "");
+                    var items = url.split("&");
+//alert(items); 
+                    if (items == 'gravou') {
+                        //alert(1);
+                        var banner_obj = document.getElementById('banner_popup');
+                        banner_obj.style.display = 'block';
+                        items = "";
+                        //banner_obj.style.display = 'block'; 
+                        //alert(2);
+                    } else {
+                        var banner_obj = document.getElementById('banner_popup');
+                        banner_obj.style.display = 'none';
+
+                    }
+
+                }
+                function fecha_banner()
+                {
+                    var banner_obj = document.getElementById('banner_popup');
+                    banner_obj.style.display = 'none';
+                }
+
+                setTimeout('fecha_banner()', 3500);
+
+            </script>
+
+
+            <style>
+                #banner_popup {
+                    position: absolute;
+                    left:35%;
+                    top: 15%;
+                    filter:alpha(opacity=70);
+                    opacity: 0.7;
+                    -moz-opacity:0.7;
+                    -webkit-opacity:0.7; 
+                    width: 100%;
+                    background-color:#FFf;
+                }
+            </style>
             <!-- jQuery -->
             <script src="${pageContext.request.contextPath}/bootstrap/js/jquery.js"></script>
 

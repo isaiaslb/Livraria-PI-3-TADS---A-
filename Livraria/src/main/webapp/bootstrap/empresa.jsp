@@ -49,7 +49,7 @@
             </c:choose>
 
             <!-- Navigation -->  
-             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -64,7 +64,7 @@
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <c:if test="${not empty sessionScope.usuAutenticado}">
-                           
+
                         <li class="dropdown">
                             <a href="#"><i class="fa fa-gear"></i> ${sessionScope.usuAutenticado.tipoAcesso}</a>
                         </li>
@@ -97,10 +97,10 @@
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#prod"><i class="fa fa-fw fa-book"></i> Produto <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="prod" class="collapse">
-                             <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
-                                </li>
+                                <c:if test="${not empty sessionScope.usuAutenticado  && sessionScope.usuAutenticado.temEmpresa('matriz')}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/bootstrap/produto.jsp">Cadastro</a>
+                                    </li>
                                 </c:if>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/bootstrap/buscarProduto.jsp">Buscar</a>
@@ -111,7 +111,7 @@
                             <li>
                                 <a href="javascript:;" data-toggle="collapse" data-target="#usu"><i class="fa fa-fw fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
                                 <ul id="usu" class="collapse">
-                                       
+
                                     <li>
                                         <a href="${pageContext.request.contextPath}/bootstrap/usuario.jsp">Cadastro</a>
                                     </li>
@@ -156,25 +156,32 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Cadastro Empresa
+                                Cadastrar Empresa
                             </h1>
+
+                            <div id="banner_popup" style="display:none;">
+                                <h1> Empresa cadstrada com sucesso ! 
+                                    <input type="image" src="imagens/com_sucesso.png" width="30">
+                                </h1>
+                            </div>
+
                         </div>
                     </div>
                     <!-- /.row -->
 
                     <!-- /.row -->
                     <div class="col-lg-6">
-                        <form onsubmit="window.open('resultadoEmpresa.jsp', 'popup', 'width=300,height=400');" action="${pageContext.request.contextPath}/EmpresaServlet" method="post">
+                        <form  action="${pageContext.request.contextPath}/EmpresaServlet" method="post">
                             <div class="form-group">
                                 <label>Razão Social</label>
-                                <input  onKeypress="return teste(event)" maxlength="50"name="RZ_SOCIAL" class="form-control" placeholder="Informe a Razão..."required/>
+                                <input  onKeypress="return teste(event)" maxlength="50"name="RZ_SOCIAL" class="form-control"  value="${resusuario.nome}" placeholder="Informe a Razão..."required/>
                             </div>
 
 
                             <div class="form-group">
                                 <label>CNPJ</label>
 
-                                <input name="cnpj"  onkeypress="formatar('##.###.###/####-##', this)" onkeyup="somenteNumeros(this);" class="form-control" maxlength="18" placeholder="Informe o CNPJ..."required/>
+                                <input name="cnpj"  onkeypress="formatar('##.###.###/####-##', this)" onkeyup="somenteNumeros(this);"  value="${resusuario.nome}"class="form-control" maxlength="18" placeholder="Informe o CNPJ..."required/>
 
                             </div>
 
@@ -246,11 +253,11 @@
 
 
 
-                            
-                            <button type="reset" class="btn btn-lg btn-default">Limpar</button>
-                            <button type="submit" class="btn btn-lg btn-default"  >Salvar</button>
-                        </form>
 
+                            <button type="reset" class="btn btn-lg btn-default">Limpar</button>
+                            <button type="submit" class="btn btn-lg btn-default"  >Salvar</button></form>
+
+                        
 
                         <!---row row-->
 
@@ -262,6 +269,52 @@
 
             </div>
             <!-- /#wrapper -->
+            
+               <style>
+                #banner_popup {
+                    position: absolute;
+                    left:35%;
+                    top: 15%;
+                    filter:alpha(opacity=70);
+                    opacity: 0.7;
+                    -moz-opacity:0.7;
+                    -webkit-opacity:0.7; 
+                    width: 100%;
+                    background-color:#FFf;
+                }
+            </style>
+            
+            <script language="JavaScript">
+                window.onload = pegarParametro;
+                function pegarParametro() {
+                    var url = window.location.search.replace("?", "");
+                    var items = url.split("&");
+//alert(items); 
+                    if (items == 'gravou') {
+                        //alert(1);
+                        var banner_obj = document.getElementById('banner_popup');
+                        banner_obj.style.display = 'block';
+                        items = "";
+                        //banner_obj.style.display = 'block'; 
+                        //alert(2);
+                    } else {
+                        var banner_obj = document.getElementById('banner_popup');
+                        banner_obj.style.display = 'none';
+
+                    }
+
+                }
+                function fecha_banner()
+                {
+                    var banner_obj = document.getElementById('banner_popup');
+                    banner_obj.style.display = 'none';
+                }
+
+                setTimeout('fecha_banner()', 3500);
+
+            </script>
+
+            
 
             <script>
                 function formatar(mascara, documento) {
@@ -278,16 +331,16 @@
 
             </script>  
 
-                   <script>
-    function somenteNumeros(num) {
-        var er = /[^0-9./-]/;
-        er.lastIndex = 0;
-        var campo = num;
-        if (er.test(campo.value)) {
-          campo.value = "";
-        }
-    }
- </script>
+            <script>
+                function somenteNumeros(num) {
+                    var er = /[^0-9./-]/;
+                    er.lastIndex = 0;
+                    var campo = num;
+                    if (er.test(campo.value)) {
+                        campo.value = "";
+                    }
+                }
+            </script>
 
             <script>
                 function teste(e)
@@ -307,10 +360,9 @@
 
             </script>
 
-           
+            
 
-           
-
+         
 
 
 

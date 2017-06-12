@@ -165,7 +165,7 @@
                     </div>
                     
                   <div class="col-lg-6">
-                          <form onsubmit="window.open('resultadoUsuario.jsp', 'popup', 'width=300,height=400');" action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
+                          <form  action="${pageContext.request.contextPath}/UsuarioServlet" method="post">
                           <div class="form-group">
                               <label>Nome</label>
                               <input name="nome" onKeypress="return teste(event)" maxlength="150" id="nome" class="form-control" placeholder="Digite o nome..." value="${resusuario.nome}"required/>

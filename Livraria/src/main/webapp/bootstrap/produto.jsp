@@ -154,13 +154,19 @@
                         <h1 class="page-header">
                            Cadastrar Produto
                         </h1>
+                        
+                          <div id="banner_popup" style="display:none;">
+                             <h1> Produto cadstrado com sucesso ! 
+                                 <input type="image" src="imagens/com_sucesso.png" width="30">
+                             </h1>
+                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
 
        
                   <div class="col-lg-6">
-                      <form onsubmit="window.open('resultadoProduto.jsp', 'popup', 'width=300,height=400');" role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
+                      <form  role="form" action="${pageContext.request.contextPath}/Produtos" method="post">
                           <div class="form-group">
                               <label>Filial</label>
                               <input name="PRODFILIAL" class="form-control" maxlength="6" onkeyup="somenteNumeros(this);" placeholder="Digite o codigo da filial..."required/>
@@ -199,7 +205,8 @@
                               <textarea  maxlength="255" name="PRODDESC"class="form-control" placeholder="" rows="3"></textarea>
                           </div>
                           <button type="submit" class="btn btn-lg btn-default">Salvar</button>
-                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>                          
+                          <button type="reset" class="btn btn-lg btn-default">Limpar</button>   
+                      </form>
                 </div>
             <!-- /.container-fluid -->
 
@@ -238,7 +245,51 @@
 	}
                 
             </script>
+            
+            
+            <script language="JavaScript">
+window.onload = pegarParametro;
+    function pegarParametro(){
+var url   = window.location.search.replace("?", "");
+var items = url.split("&");
+//alert(items); 
+if (items == 'gravou'){
+    //alert(1);
+     var banner_obj = document.getElementById('banner_popup');
+        banner_obj.style.display = 'block';
+       items = "";
+   //banner_obj.style.display = 'block'; 
+   //alert(2);
+}else {
+      var banner_obj = document.getElementById('banner_popup');
+        banner_obj.style.display = 'none';
+    
+}
 
+}
+function fecha_banner()
+{
+ var banner_obj = document.getElementById('banner_popup');
+ banner_obj.style.display = 'none';
+}
+
+setTimeout('fecha_banner()', 3500);
+
+</script>
+
+<style>
+    #banner_popup {
+        position: absolute;
+        left:35%;
+        top: 15%;
+     filter:alpha(opacity=70);
+     opacity: 0.7;
+     -moz-opacity:0.7;
+     -webkit-opacity:0.7; 
+     width: 100%;
+     background-color:#FFf;
+}
+    </style>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
