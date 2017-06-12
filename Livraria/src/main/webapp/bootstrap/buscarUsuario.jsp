@@ -190,11 +190,11 @@
                             <input type="hidden" name="cpfBusca" value="${listaUsuario.cpf}">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input onKeypress="return teste(event)" maxlength="150"  class="form-control" name="nomeBusca" id="nome" value="${listaUsuario.nome}" disabled="">
+                                <input onKeypress="return teste(event)" maxlength="150"  class="form-control" name="nomeBusca" id="nome" value="${listaUsuario.nome}" disabled="" required/>
                             </div>
                             <div class="form-group">
                                 <label>Data de Nascimento</label>
-                                <input OnKeyPress="formatar('##/##/####', this)" onkeyup="somenteNumeros(this);" maxlength="10" class="form-control" id="dtnasc" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="">
+                                <input OnKeyPress="formatar('##/##/####', this)" onkeyup="somenteNumeros(this);" maxlength="10" class="form-control" id="dtnasc" name="dataNascBusca" id="dataNasc" value="${listaUsuario.dataNasc}" type="date" disabled="" required/>
                             </div>
                             <div class="form-group">
                                 <label>Sexo</label>

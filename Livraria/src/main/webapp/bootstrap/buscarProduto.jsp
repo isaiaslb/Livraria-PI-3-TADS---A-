@@ -186,15 +186,15 @@
                             <input  class="form-control" id="id" name="bId" type="hidden" value="${buscaProdutos.prodId}"/>                                                       
                             <div class="form-group">
                                 <label>Filial</label>
-                                <input maxlength="6" onkeypress="formatar('######', this)" onkeyup="somenteNumeros(this);" class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled/>
+                                <input maxlength="6" onkeypress="formatar('######', this)" onkeyup="somenteNumeros(this);" class="form-control" id="filial" name="bFilial" value="${buscaProdutos.prodFilial}" disabled required/>
                             </div>
                             <div class="form-group">
                                 <label>Produto</label>
-                                <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="produto" name="bNome" value="${buscaProdutos.prodNome}" disabled/>
+                                <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="produto" name="bNome" value="${buscaProdutos.prodNome}" disabled required/>
                             </div>
                             <div class="form-group">
                                 <label>Autor</label>
-                                <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="autor" name="bAutor" value="${buscaProdutos.prodAutor}" disabled/>
+                                <input onKeypress="return teste(event)" maxlength="100" class="form-control" id="autor" name="bAutor" value="${buscaProdutos.prodAutor}" disabled required/>
                             </div>                          
                             <div class="form-group">
                                 <label>Genêro</label>
@@ -214,11 +214,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Quantidade</label>
-                                <input type="number" class="form-control" id="qtd" name="bQtd" value="${buscaProdutos.prodQtd}" disabled/>
+                                <input type="number" class="form-control" id="qtd" name="bQtd" value="${buscaProdutos.prodQtd}" disabled required/>
                             </div>
                             <div class="form-group">
                                 <label>Valor do Produto</label>
-                                <input type="number" class="form-control" id="val" name="bVal" value="${buscaProdutos.prodVal}" disabled/>
+                                <input type="number" class="form-control" id="val" name="bVal" value="${buscaProdutos.prodVal}" disabled required/>
                             </div>
                             <div class="form-group">
                                 <label>Descrição</label>

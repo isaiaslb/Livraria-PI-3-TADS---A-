@@ -189,7 +189,7 @@
                          
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input onKeypress="return teste(event)"  maxlength="150" class="form-control" name="nomeBusca" id="nome" value="${listaCliente.nome}" disabled />
+                                <input onKeypress="return teste(event)"  maxlength="150" class="form-control" name="nomeBusca" id="nome" value="${listaCliente.nome}" disabled required/>
                             </div>
                             <div class="form-group">
                                 <label>Endereço</label>

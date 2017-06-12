@@ -191,21 +191,15 @@
                             <input class="form-control" id="cod_emp" name="codigoBusca" type="hidden" value="${listaEmpresa.id}"/>
                             <div class="form-group">
                               <label>Razão Social</label>
-                              <input  class="form-control" onKeypress="return teste(event)" maxlength="50" name="razaoBusca" id="rz_social" value="${listaEmpresa.razao}" disabled />
+                              <input  class="form-control" onKeypress="return teste(event)" maxlength="50" name="razaoBusca" id="rz_social" value="${listaEmpresa.razao}" disabled required/>
                           </div>
-                            
-                            <div class="form-group">
-                                <label>CNPJ</label>
-
-                                <input  class="form-control"name="cnpjBusca"  id="cnpj" value="${listaEmpresa.cnpj}" disabled />
-
-                            </div>
+                          
                             
                           
                                                                                     
                             <div class="form-group">
                               <label>Insc. Estadual</label>
-                              <input OnKeyPress="formatar('###.###.###.###', this)" onkeyup="somenteNumeros(this);" maxlength="15"  class="form-control" name="ieBusca" id="ins_estad" value="${listaEmpresa.ie}"disabled="">
+                              <input OnKeyPress="formatar('###.###.###.###', this)" onkeyup="somenteNumeros(this);" maxlength="15"  class="form-control" name="ieBusca" id="ins_estad" value="${listaEmpresa.ie}"disabled="" required/>
                           </div>
                             <div class="form-group">
                               <label>Telefone Fixo</label>
