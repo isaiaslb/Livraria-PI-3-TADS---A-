@@ -250,6 +250,10 @@
                                         </thead>
                                         <%
                                             Vector carrinho = (Vector) session.getAttribute("carrinho");
+                                            if (carrinho == null) {
+                                                carrinho = new Vector();
+                                                session.setAttribute("carrinho", carrinho);
+                                            }
                                             double total = 0;
                                             for (int cont = 0; cont < carrinho.size(); cont++) {
                                                 Produtos p = (Produtos) carrinho.get(cont);
@@ -266,7 +270,7 @@
                                                 <td><input type="number" /></td>  
                                                 <td style type="text-align: left">
 
-                                                    <input type="button" onclick="window.open('excluir?id=<%= cont%>', '_self')" value="Remover" />
+                                                    <input type="button" onclick="window.open('${pageContext.request.contextPath}/excluir?id=<%= cont%>', '_self')" value="Remover" />
 
                                                 </td>
                                             </tr>

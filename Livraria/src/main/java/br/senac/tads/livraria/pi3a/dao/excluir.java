@@ -41,6 +41,8 @@ public class excluir extends HttpServlet {
             carrinho.remove(id);
             if(carrinho.size()!=0){
                 response.sendRedirect("bootstrap/venda.jsp");
+            }else{
+                response.sendRedirect("bootstrap/venda.jsp");
             }
     }
 
