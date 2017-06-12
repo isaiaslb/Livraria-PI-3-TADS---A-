@@ -58,8 +58,9 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.close();
             //conecta.close();
         } catch (SQLException ex) {
+            
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Erro ao incluir um novo registro de produtos JDBCProdutosDao");
+            //throw new RuntimeException("Erro ao incluir um novo registro de produtos JDBCProdutosDao");
         }
     }
 
@@ -74,7 +75,7 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Erro ao deletar registro de produtos JDBCProdutosDao");
+            //throw new RuntimeException("Erro ao deletar registro de produtos JDBCProdutosDao");
         }
 
     }
@@ -128,12 +129,12 @@ public class JDBCProdutosDao extends ConexaoBD implements ProdutosDao {
 
             return p;
 
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             Logger.getLogger(JDBCProdutosDao.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Erro ao buscar registro de produtos JDBCProdutosDao");
+            //throw new RuntimeException("Erro ao buscar registro de produtos JDBCProdutosDao");
         }
-
-    }
+            return null;
+    } 
 
     @Override
     public void alterar(Produtos produto) {

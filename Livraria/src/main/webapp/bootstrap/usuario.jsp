@@ -174,7 +174,7 @@
                               <label>CPF</label>
                               <input name="cpf"  OnKeyPress="formatar('###.###.###-##', this)" onkeyup="somenteNumeros(this);" maxlength="14" id="cpf" class="form-control" placeholder="Digite o cpf..." value="${resusuario.nome}"required/>
                           </div>
-                             <div class="form-group">
+                             <div class="form-group" style="display:none;">
                               <label>Data de Nascimento</label>
                               <input name="dataNasc" OnKeyPress="formatar('##/##/####', this)" onkeyup="somenteNumeros(this);" maxlength="10" id="dataNasc" class="form-control" type="text" placeholder="dd/mm/aaaa" required/>
                           </div>
